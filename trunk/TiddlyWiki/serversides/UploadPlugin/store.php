@@ -20,7 +20,7 @@ No change needed under
 
 /***
  * store.php - upload a file in this directory
- * version :1.5.0 - 2007/01/15 - BidiX@BidiX.info
+ * version :1.5.2 - 2007/02/11 - BidiX@BidiX.info
  * 
  * see : 
  *	http://tiddlywiki.bidi.info/#UploadPlugin for usage
@@ -33,6 +33,10 @@ No change needed under
  *	GET
  *
  * Revision history
+ * V1.5.2 - 2007/02/11
+ * Minor update: Typos
+ * V1.5.1 - 2007/02/01
+ * Enhancement: Check value of file_uploads in php.ini. Thanks to Didier Corbière
  * V1.5.0 - 2007/01/15
  * Correct a bug in moving uploadFile in uploadDir thanks to DaniGutiérrez for reporting
  * Refactoring
@@ -80,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	</head>
 	<body>
 		<p>
-		<p>store.php V 1.5.0
+		<p>store.php V 1.5.2
 		<p>BidiX@BidiX.info
 		<p>&nbsp;</p>
 		<p>&nbsp;</p>
@@ -123,6 +127,13 @@ function toExit() {
 		print_r($options);
 }
 exit;
+}
+
+
+// Check if file_uploads is active in php config
+if (ini_get('file_uploads') != '1') {
+   echo "Error : File upload is not active in php.ini\n";
+   toExit();
 }
 
 // var definitions
@@ -192,7 +203,7 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $destfile)) {
 	}
 	echo("destfile:$destfile \n");
 	if (($backupFilename) && (!$backupError)) {
-		echo "backupfile:$backupFilename;\n";
+		echo "backupfile:$backupFilename\n";
 	}
 	$mtime = filemtime($destfile);
 	echo("mtime:$mtime");
