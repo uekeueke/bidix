@@ -4,12 +4,12 @@
 Edit these lines according to your need
 ***/
 //{{{
-$AUTHENTICATE_USER = true;       // true | false
+$AUTHENTICATE_USER = true;	// true | false
 $USERS = array(
 	'UserName1'=>'Password1', 
 	'UserName2'=>'Password2', 
 	'UserName3'=>'Password3'); // set usernames and strong passwords
-$DEBUG = false;                  // true | false
+$DEBUG = false;				// true | false
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 //}}}
 /***
@@ -20,7 +20,7 @@ No change needed under
 
 /***
  * store.php - upload a file in this directory
- * version :1.5.2 - 2007/02/11 - BidiX@BidiX.info
+ * version :1.5.2 - 2007/02/13 - BidiX@BidiX.info
  * 
  * see : 
  *	http://tiddlywiki.bidi.info/#UploadPlugin for usage
@@ -28,41 +28,41 @@ No change needed under
  *		for détails on uploading files
  * usage : 
  *	POST  
- *		UploadPlugin[backupDir=<backupdir>;user=<user>;password=<password>;uploadir=<uploaddir>]
+ *		UploadPlugin[backupDir=<backupdir>;user=<user>;password=<password>;uploadir=<uploaddir>;[debug=1];;]
  *		userfile <file>
  *	GET
  *
  * Revision history
- * V1.5.2 - 2007/02/11
- * Minor update: Typos
+ * V1.5.2 - 2007/02/13
+ * Enhancement: Add optional debug option in client parameters
  * V1.5.1 - 2007/02/01
  * Enhancement: Check value of file_uploads in php.ini. Thanks to Didier Corbière
  * V1.5.0 - 2007/01/15
- * Correct a bug in moving uploadFile in uploadDir thanks to DaniGutiérrez for reporting
+ * Correct: a bug in moving uploadFile in uploadDir thanks to DaniGutiérrez for reporting
  * Refactoring
  * V 1.4.3 - 2006/10/17 
  * Test if $filename.lock exists for GroupAuthoring compatibility
  * return mtime, destfile and backupfile after the message line
  * V 1.4.2 - 2006/10/12
  *  add error_reporting(E_PARSE);
- * v 1.4.1 - 15/03/2006
+ * v 1.4.1 - 2006/03/15
  *	add chmo 0664 on the uploadedFile
- * v 1.4 - 23/02/2006 :
+ * v 1.4 - 2006/02/23
  * 	add uploaddir option :  a path for the uploaded file relative to the current directory
  *	backupdir is a relative path
  *	make recusively directories if necessary for backupDir and uploadDir
- * v 1.3 - 17/02/2006 :
+ * v 1.3 - 2006/02/17
  *	presence and value of user are checked with $USERS Array (thanks to PauloSoares)
- * v 1.2 - 12/02/2006 : 
+ * v 1.2 - 2006/02/12 
   *	POST  
  *		UploadPlugin[backupDir=<backupdir>;user=<user>;password=<password>;]
  *		userfile <file>
 *	if $AUTHENTICATE_USER
  *		presence and value of user and password are checked with 
  *		$USER and $PASSWORD
- * v 1.1 - 23/12/2005 : 
+ * v 1.1 - 2005/12/23 
  *	POST  UploadPlugin[backupDir=<backupdir>]  userfile <file>
- * v 1.0 - 12/12/2005 : 
+ * v 1.0 - 2005/12/12 
  *	POST userfile <file>
  *
  * Copyright (c) BidiX@BidiX.info 2005-2007
@@ -151,6 +151,11 @@ $destfile = $filename;
 foreach($optionArr as $o) {
 	list($key, $value) = split('=', $o);
 	$options[$key] = $value;
+}
+
+// debug activated by client
+if ($options['debug'] == 1) {
+	$DEBUG = true;
 }
 
 // authenticate User
