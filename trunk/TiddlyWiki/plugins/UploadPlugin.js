@@ -1,10 +1,21 @@
-﻿// ---------------------------------------------------------------------------------
-// UploadPlugin
-// ---------------------------------------------------------------------------------
-
+﻿/***
+|''Name:''|UploadPlugin|
+|''Description:''|Save to web a TiddlyWiki|
+|''Version:''|4.0.0|
+|''Date:''|Feb 27, 2007|
+|''Source:''|http://tiddlywiki.bidix.info/#UploadPlugin|
+|''Documentation:''|http://tiddlywiki.bidix.info/#UploadDoc|
+|''Author:''|BidiX (BidiX (at) bidix (dot) info)|
+|''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
+|''~CoreVersion:''|2.2.0 (Changeset 1583)|
+|''Browser:''|Firefox 1.5; InternetExplorer 6.0; Safari|
+|''Include:''||
+|''Require:''|[[UploadService|http://tiddlywiki.bidix.info/#UploadService]]|
+***/
+//{{{
 if (!window.bidix) window.bidix = {};
 
-bidix.debugMode = false;	// true to activate 
+bidix.debugMode = false;	// true to activate both in Plugin and ServerSide
 
 //
 // Macro Upload
@@ -49,40 +60,41 @@ config.macros.upload.handler = function(place,macroName,params) {
 		prompt = this.label.promptOption;
 	}
 	createTiddlyButton(place, label, prompt, 
-		function () {
-			// take option for missing macro parameter
-			var storeUrl = params[0] ? params[0] : config.options.txtUploadStoreUrl;
-			var toFilename = params[1] ? params[1] : config.options.txtUploadFilename;
-			var backupDir = params[2] ? params[2] : config.options.txtUploadBackupDir;
-			var uploadDir = params[3] ? params[3] : config.options.txtUploadDir;
-			var username = params[4] ? params[4] : config.options.txtUploadUserName;
-			var password = config.options.pasUploadPassword; // for security reason no password as macro parameter	
-			// for still missing parameter set default value
-			if ((!storeUrl) && (document.location.toString().substr(0,4) == "http")) 
-				storeUrl = bidix.dirname(document.location.toString())+'/'+config.macros.upload.defaultStoreScript;
-			if (!toFilename)
-				toFilename = bidix.basename(window.location.toString());
-			if (!toFilename)
-				toFilename = config.macros.upload.defaultToFilename;
-			if (!uploadDir)
-				uploadDir = config.macros.upload.defaultUploadDir;
-			if (!backupDir)
-				backupDir = config.macros.upload.defaultBackupDir;
-			// report error if still missing
-			if (!storeUrl) {
-				alert(config.macros.upload.messages.noStoreUrl);
-				clearMessage();
-				return;
-			};
-			if (config.macros.upload.authenticateUser && (!username || !password)) {
-				alert(config.macros.upload.messages.usernameOrPasswordMissing);
-				clearMessage();
-				return;
-			};
-			bidix.uploadChanges(false,null,storeUrl, toFilename, uploadDir, backupDir, username, password); 
-			return false;
-		}, 
-		null, null, this.accessKey);
+						function () {
+							// take option for missing macro parameter
+							var storeUrl = params[0] ? params[0] : config.options.txtUploadStoreUrl;
+							var toFilename = params[1] ? params[1] : config.options.txtUploadFilename;
+							var backupDir = params[2] ? params[2] : config.options.txtUploadBackupDir;
+							var uploadDir = params[3] ? params[3] : config.options.txtUploadDir;
+							var username = params[4] ? params[4] : config.options.txtUploadUserName;
+							var password = config.options.pasUploadPassword; // for security reason no password as macro parameter	
+							// for still missing parameter set default value
+							if ((!storeUrl) && (document.location.toString().substr(0,4) == "http")) 
+								storeUrl = bidix.dirname(document.location.toString())+'/'+config.macros.upload.defaultStoreScript;
+							if (storeUrl.substr(0,4) != "http")
+								storeUrl = bidix.dirname(document.location.toString()) +'/'+ storeUrl;
+							if (!toFilename)
+								toFilename = bidix.basename(window.location.toString());
+							if (!toFilename)
+								toFilename = config.macros.upload.defaultToFilename;
+							if (!uploadDir)
+								uploadDir = config.macros.upload.defaultUploadDir;
+							if (!backupDir)
+								backupDir = config.macros.upload.defaultBackupDir;
+							// report error if still missing
+							if (!storeUrl) {
+								alert(config.macros.upload.messages.noStoreUrl);
+								clearMessage();
+								return;
+							};
+							if (config.macros.upload.authenticateUser && (!username || !password)) {
+								alert(config.macros.upload.messages.usernameOrPasswordMissing);
+								clearMessage();
+								return;
+							};
+							bidix.upload.uploadChanges(false,null,storeUrl, toFilename, uploadDir, backupDir, username, password); 
+							return false;}, 
+						null, null, this.accessKey);
 };
 
 config.macros.upload.destFile = function(storeUrl, toFilename, uploadDir) 
@@ -100,7 +112,9 @@ config.macros.upload.destFile = function(storeUrl, toFilename, uploadDir)
 // upload functions
 //
 
-if (!bidix.messages) bidix.messages = {
+if (!bidix.upload) bidix.upload = {};
+
+if (!bidix.upload.messages) bidix.upload.messages = {
 	//from saving
 	notFileUrlError: "You need to save this TiddlyWiki to a file before you can save changes",
 	cantSaveError: "It's not possible to save changes. Possible reasons include:\n- your browser doesn't support saving (Firefox, Internet Explorer, Safari and Opera all work if properly configured)\n- the pathname to your TiddlyWiki file contains illegal characters\n- the TiddlyWiki HTML file has been moved or renamed",
@@ -119,49 +133,33 @@ if (!bidix.messages) bidix.messages = {
 	storePhpNotFound: "The store script '%0' was not found."
 };
 
-bidix.uploadChanges = function(onlyIfDirty,tiddlers,storeUrl,toFilename,uploadDir,backupDir,username,password)
+bidix.upload.uploadChanges = function(onlyIfDirty,tiddlers,storeUrl,toFilename,uploadDir,backupDir,username,password)
 {
-	if(onlyIfDirty && !store.isDirty())
-		return;
-	clearMessage();
-	// get original
+
 	var callback = function(status,uploadParams,original,url,xhr) {
 		if (!status) {
-			displayMessage(bidix.messages.loadOriginalHttpPostError);
+			displayMessage(bidix.upload.messages.loadOriginalHttpPostError);
 			return;
 		}
-		// url = (url.indexOf("nocache=") < 0 ? url : url.substring(0,url.indexOf("nocache=")-1));
 		// Locate the storeArea div's 
 		var posDiv = locateStoreArea(original);
 		if((posDiv[0] == -1) || (posDiv[1] == -1)) {
 			alert(config.messages.invalidFileError.format([localPath]));
 			return;
 		}
-		alert(original);
-		// save original
-		if (document.location.toString().substr(0,4) == "file") {
-			//alert("document.location file");
-			var originalPath = document.location.toString();
-			var localPath = getLocalPath(originalPath);
-			saveChanges();
-			/*
-			if(window.Components) {
-			// it's a mozilla browser
-			try {
-				netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
-				var converter = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"]
-									.createInstance(Components.interfaces.nsIScriptableUnicodeConverter);
-				converter.charset = "UTF-8";
-				original = converter.ConvertToUnicode(original);
-			}
-			catch(e) {
-			}
-			*/
-		//alert(original);
-		//}
-		}
-		bidix.uploadRss(uploadParams,original,posDiv);
+		bidix.upload.uploadRss(uploadParams,original,posDiv);
 	};
+	// get original
+	if(onlyIfDirty && !store.isDirty())
+		return;
+	clearMessage();
+	// save original
+	if (document.location.toString().substr(0,4) == "file") {
+		//alert("document.location file");
+		var originalPath = document.location.toString();
+		var localPath = getLocalPath(originalPath);
+		saveChanges();
+	}
 	var uploadParams = Array(storeUrl,toFilename,uploadDir,backupDir,username,password);
 	var originalPath = document.location.toString();
 	//FIXME: If url is a directory not sure we always could add index.html !
@@ -170,32 +168,32 @@ bidix.uploadChanges = function(onlyIfDirty,tiddlers,storeUrl,toFilename,uploadDi
 	var dest = config.macros.upload.destFile(storeUrl,toFilename,uploadDir);
 	var log = new bidix.UploadLog();
 	log.startUpload(storeUrl, dest, uploadDir,  backupDir);
-	displayMessage(bidix.messages.aboutToSaveOnHttpPost.format([dest]));
+	displayMessage(bidix.upload.messages.aboutToSaveOnHttpPost.format([dest]));
 	var headers = {};
 	doHttp("GET",originalPath,null,null,null,null,callback,uploadParams,headers);
 };
 
-bidix.uploadRss = function(uploadParams,original,posDiv) 
+bidix.upload.uploadRss = function(uploadParams,original,posDiv) 
 {
 	var callback = function(status,params,responseText,url,xhr) {
 		if(status) {
 			var destfile = responseText.substring(responseText.indexOf("destfile:")+9,responseText.indexOf("\n", responseText.indexOf("destfile:")));
-			displayMessage(bidix.messages.rssSaved,bidix.dirname(url)+'/'+destfile);
-			bidix.uploadMain(params[0],params[1],params[2]);
+			displayMessage(bidix.upload.messages.rssSaved,bidix.dirname(url)+'/'+destfile);
+			bidix.upload.uploadMain(params[0],params[1],params[2]);
 		} else {
-			displayMessage(bidix.messages.rssFailed);			
+			displayMessage(bidix.upload.messages.rssFailed);			
 		}
 	};
 	if(config.options.chkGenerateAnRssFeed) {
 		var rssPath = uploadParams[1].substr(0,uploadParams[1].lastIndexOf(".")) + ".xml";
 		var rssUploadParams = Array(uploadParams[0],rssPath,uploadParams[2],null,uploadParams[4],uploadParams[5]);
-		bidix.httpUpload(rssUploadParams,convertUnicodeToUTF8(generateRss()),callback,Array(uploadParams,original,posDiv));
+		bidix.upload.httpUpload(rssUploadParams,convertUnicodeToUTF8(generateRss()),callback,Array(uploadParams,original,posDiv));
 	} else {
-		bidix.uploadMain(uploadParams,original,posDiv);
+		bidix.upload.uploadMain(uploadParams,original,posDiv);
 	}
 }
 
-bidix.uploadMain = function(uploadParams,original,posDiv) 
+bidix.upload.uploadMain = function(uploadParams,original,posDiv) 
 {
 	var callback = function(status,params,responseText,url,xhr) {
 		var log = new bidix.UploadLog();
@@ -203,29 +201,29 @@ bidix.uploadMain = function(uploadParams,original,posDiv)
 			// if backupDir specified
 			if ((params[3]) && (responseText.indexOf("backupfile:") > -1))  {
 				var backupfile = responseText.substring(responseText.indexOf("backupfile:")+11,responseText.indexOf("\n", responseText.indexOf("backupfile:")));
-				displayMessage(bidix.messages.backupSaved,bidix.dirname(url)+'/'+backupfile);
+				displayMessage(bidix.upload.messages.backupSaved,bidix.dirname(url)+'/'+backupfile);
 			}
 			var destfile = responseText.substring(responseText.indexOf("destfile:")+9,responseText.indexOf("\n", responseText.indexOf("destfile:")));
-			displayMessage(bidix.messages.mainSaved,bidix.dirname(url)+'/'+destfile);
+			displayMessage(bidix.upload.messages.mainSaved,bidix.dirname(url)+'/'+destfile);
 			store.setDirty(false);
 			log.endUpload("ok");
 		} else {
-			alert(bidix.messages.mainFailed);
-			displayMessage(bidix.messages.mainFailed);
+			alert(bidix.upload.messages.mainFailed);
+			displayMessage(bidix.upload.messages.mainFailed);
 			log.endUpload("failed");			
 		}
 	};	
 	// Save new file
-	var revised = bidix.updateOriginalForUpload(original,posDiv);
-	bidix.httpUpload(uploadParams,revised,callback,uploadParams);
+	var revised = bidix.upload.updateOriginal(original,posDiv);
+	bidix.upload.httpUpload(uploadParams,revised,callback,uploadParams);
 }
 
-bidix.httpUpload = function(uploadParams,data,callback,params)
+bidix.upload.httpUpload = function(uploadParams,data,callback,params)
 {
 	var localCallback = function(status,params,responseText,url,xhr) {
 		url = (url.indexOf("nocache=") < 0 ? url : url.substring(0,url.indexOf("nocache=")-1));
 		if (xhr.status == httpStatus.NotFound)
-			alert(bidix.messages.storePhpNotFound.format([url]));
+			alert(bidix.upload.messages.storePhpNotFound.format([url]));
 		//responsesText = (responseText.indexOf("Debug mode") < 0 ? responseText : responseText.substring(responseText.indexOf("\n\n")+2));
 		if (responseText.indexOf("Debug mode") >= 0 ) {
 			alert(responseText);
@@ -265,33 +263,8 @@ bidix.httpUpload = function(uploadParams,data,callback,params)
 	return r;
 }
 
-//
-// Utilities
-// 
 
-bidix.dirname = function (filePath) {
-	if (!filePath) 
-		return;
-	var lastpos;
-	if ((lastpos = filePath.lastIndexOf("/")) != -1) {
-		return filePath.substring(0, lastpos);
-	} else {
-		return filePath.substring(0, filePath.lastIndexOf("\\"));
-	}
-};
-bidix.basename = function (filePath) {
-	if (!filePath) 
-		return;
-	var lastpos;
-	if ((lastpos = filePath.lastIndexOf("#")) != -1) 
-		filePath = filePath.substring(0, lastpos);
-	if ((lastpos = filePath.lastIndexOf("/")) != -1) {
-		return filePath.substring(lastpos + 1);
-	} else
-		return filePath.substring(filePath.lastIndexOf("\\")+1);
-};
-
-bidix.updateOriginalForUpload = function(original, posDiv)
+bidix.upload.updateOriginal = function(original, posDiv)
 // same as updateOriginal but without convertUnicodeToUTF8 call
 {
 	if (!posDiv)
@@ -312,11 +285,41 @@ bidix.updateOriginalForUpload = function(original, posDiv)
 	return revised;
 }
 
+
+//
+// Utilities
+// 
+
+bidix.dirname = function (filePath) {
+	if (!filePath) 
+		return;
+	var lastpos;
+	if ((lastpos = filePath.lastIndexOf("/")) != -1) {
+		return filePath.substring(0, lastpos);
+	} else {
+		return filePath.substring(0, filePath.lastIndexOf("\\"));
+	}
+};
+
+bidix.basename = function (filePath) {
+	if (!filePath) 
+		return;
+	var lastpos;
+	if ((lastpos = filePath.lastIndexOf("#")) != -1) 
+		filePath = filePath.substring(0, lastpos);
+	if ((lastpos = filePath.lastIndexOf("/")) != -1) {
+		return filePath.substring(lastpos + 1);
+	} else
+		return filePath.substring(filePath.lastIndexOf("\\")+1);
+};
+
 //
 // UploadLog
 // 
 
 bidix.UploadLog = function() {
+	if (!config.options.chkUploadLog) 
+		return; // this.tiddler = null
 		this.tiddler = store.getTiddler("UploadLog");
 	if (!this.tiddler) {
 		this.tiddler = new Tiddler();
@@ -331,7 +334,20 @@ bidix.UploadLog = function() {
 };
 
 bidix.UploadLog.prototype.addText = function(text) {
-	this.tiddler.text = this.tiddler.text + text;
+	if (!this.tiddler)
+		return;
+	var maxLine = parseInt(config.options.txtUploadLogMaxLine);
+	if (isNaN(maxLine))
+		maxLine = -1;
+	if (maxLine != 0) 
+		this.tiddler.text = this.tiddler.text + text;
+	// Trunck to txtUploadLogMaxLine
+	if (maxLine >= 0) {
+		var textArray = this.tiddler.text.split('\n');
+		if (textArray.length > maxLine + 1)
+			textArray.splice(1,textArray.length-1-maxLine)
+			this.tiddler.text = textArray.join('\n');		
+	}
 	this.tiddler.modifier = config.options.txtUserName;
 	this.tiddler.modified = new Date();
 	store.addTiddler(this.tiddler);
@@ -340,12 +356,13 @@ bidix.UploadLog.prototype.addText = function(text) {
 };
 
 bidix.UploadLog.prototype.startUpload = function(storeUrl, toFilename, uploadDir,  backupDir) {
+	if (!this.tiddler)
+		return;
 	var now = new Date();
 	var text = "\n| ";
 	var filename = bidix.basename(document.location.toString());
 	if (!filename) filename = '/';
-	text += now.getDate()+"/"+(now.getMonth()+1)+"/"+now.getFullYear() + " ";
-	text += now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()+" | ";
+	text += now.formatString("0DD/0MM/YYYY 0hh:0mm:0ss") +" | ";
 	text += config.options.txtUserName + " | ";
 	text += "[["+filename+"|"+location + "]] |";
 	text += " [[" + bidix.basename(storeUrl) + "|" + storeUrl + "]] | ";
@@ -356,17 +373,22 @@ bidix.UploadLog.prototype.startUpload = function(storeUrl, toFilename, uploadDir
 };
 
 bidix.UploadLog.prototype.endUpload = function(status) {
-		this.addText(" "+status+" |");
+	if (!this.tiddler)
+		return;
+	this.addText(" "+status+" |");
 };
 
-//init Options
+//
+// init Options
+//
+
 if (!config.options['txtUploadStoreUrl']) config.options['txtUploadStoreUrl'] = '';
 if (!config.options['txtUploadFilename']) config.options['txtUploadFilename'] = '';
 if (!config.options['txtUploadDir']) config.options['txtUploadDir'] = '';
 if (!config.options['txtUploadBackupDir']) config.options['txtUploadBackupDir'] = '';
 if (!config.options['txtUploadUserName']) config.options['txtUploadUserName'] = '';
 if (!config.options['pasUploadPassword']) config.options['pasUploadPassword'] = '';
-
-
-
+if (!config.options['chkUploadLog']) config.options['chkUploadLog'] = 'false';
+if (!config.options['txtUploadLogMaxLine']) config.options['txtUploadLogMaxLine'] = '3';
+//}}}
 
