@@ -1,10 +1,10 @@
-﻿/***
+/***
 |''Name:''|UploadPlugin|
 |''Description:''|Save to web a TiddlyWiki|
 |''Version:''|4.0.0 (beta 0)|
 |''Date:''|Feb 28, 2007|
 |''Source:''|http://tiddlywiki.bidix.info/#UploadPlugin|
-|''Documentation:''|http://tiddlywiki.bidix.info/#UploadDoc|
+|''Documentation:''|http://tiddlywiki.bidix.info/#UploadPluginDoc|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
 |''~CoreVersion:''|2.2.0 (Changeset 1583)|
@@ -412,6 +412,8 @@ bidix.basename = function (filePath) {
 //
 // Options Initializations
 //
+
+setStylesheet('.urlInput {width: 22em;}',"uploadPluginStyles");
 
 bidix.initOption = function(name,value) {
 	if (!config.options[name])
