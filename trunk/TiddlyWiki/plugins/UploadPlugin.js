@@ -1,8 +1,8 @@
 /***
 |''Name:''|UploadPlugin|
 |''Description:''|Save to web a TiddlyWiki|
-|''Version:''|4.0.0 (beta 0)|
-|''Date:''|Feb 28, 2007|
+|''Version:''|4.0.0 (beta 1)|
+|''Date:''|Mar 2, 2007|
 |''Source:''|http://tiddlywiki.bidix.info/#UploadPlugin|
 |''Documentation:''|http://tiddlywiki.bidix.info/#UploadPluginDoc|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
@@ -13,8 +13,8 @@
 ***/
 //{{{
 version.extensions.UploadPlugin = {
- major: 4, minor: 0, revision: 0, beta: 0,
- date: new Date("Feb 28, 2007"),
+ major: 4, minor: 0, revision: 0, beta: 1,
+ date: new Date("Mar 2, 2007"),
  source: 'http://tiddlywiki.bidix.info/#UploadPlugin',
  author: 'BidiX (BidiX (at) bidix (dot) info',
  license: '[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D]]',
@@ -27,11 +27,14 @@ version.extensions.UploadPlugin = {
 
 if (!window.bidix) window.bidix = {}; // bidix namespace
 bidix.debugMode = false;	// true to activate both in Plugin and UploadService
-// require PasswordOptionPlugin 1.0.1
-if (!(version.extensions.PasswordOptionPlugin 
-	&& (version.extensions.PasswordOptionPlugin.major == 1)
-	&& (version.extensions.PasswordOptionPlugin.minor == 0)
-	&& (version.extensions.PasswordOptionPlugin.revision == 1))) {
+// require PasswordOptionPlugin 1.0.1 or better
+var plugin = version.extensions.PasswordOptionPlugin;
+if (!
+	(plugin  
+	&& ((plugin.major > 1) 
+		|| ((plugin.major == 1) && (plugin.minor > 0))
+		|| ((plugin.major == 1) && (plugin.minor == 0) && (plugin.revision >= 1))))) {
+		// write error in PluginManager
 		if (pluginInfo)
 			pluginInfo.log.push("UploadPlugin requires PasswordOptionPlugin V1.0.1");
 		PasswordOptionPlugin; // generate an error : "Error: ReferenceError: PasswordOptionPlugin is not defined"
