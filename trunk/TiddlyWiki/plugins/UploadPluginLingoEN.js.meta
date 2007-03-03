@@ -1,6 +1,8 @@
 title: UploadPluginLingoEN
 modifier: BidiX
-created: 200703021727
+created: 200703021731
 modified: 200703021731
 tags: Upload systemConfig systemConfigDisable
-changecount: 111
+server.host: file:///Volumes/galapagos/Dev/index.html
+server.type: file
+server.page.version: 200703021731

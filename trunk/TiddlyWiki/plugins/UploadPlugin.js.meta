@@ -1,8 +1,8 @@
 title: UploadPlugin
 modifier: BidiX
-created: 200702281355
+created: 200703021728
 modified: 200703021728
 tags: systemConfig Upload
-server.host: http://tiddlywiki.bidix.info/
+server.host: file:///Volumes/galapagos/Dev/index.html
 server.type: file
-changecount: 111111111111111111111111111111111111
+server.page.version: 200703021728

@@ -11,32 +11,32 @@
 ***/
 //{{{
 config.macros.upload.label = {
-	promptOption: "Sauvegarde et télécharge ce TiddlyWiki avec les UploadOptions",
-	promptParamMacro: "Sauvegarde et télécharge ce TiddlyWiki vers %0",
+	promptOption: "Sauvegarde et tÃ©lÃ©charge ce TiddlyWiki avec les UploadOptions",
+	promptParamMacro: "Sauvegarde et tÃ©lÃ©charge ce TiddlyWiki vers %0",
 	saveLabel: "sauvegarde sur le web", 
 	saveToDisk: "sauvegarde sur le disque",
-	uploadLabel: "Télécharge vers le web"	
+	uploadLabel: "TÃ©lÃ©charge vers le web"	
 };
 
 config.macros.upload.messages = {
-	noStoreUrl: "Pas de 'store URL' dans les paramètres ou dans les options",
+	noStoreUrl: "Pas de 'store URL' dans les paramÃ¨tres ou dans les options",
 	usernameOrPasswordMissing: "nom d'utilisateur ou mot de passe absent"
 };
 
 bidix.upload.messages = {
 	//from saving
-	invalidFileError: "Le fichier '%0' d'origine ne semble pas être un TiddlyWiki valide",
-	backupSaved: "backup téléchargé vers le web",
-	backupFailed: "Echec du téléchargement enregistrement du backup",
-	rssSaved: "Flux RSS a été téléchargé",
-	rssFailed: "Echec du téléchargement du flux RSS",
-	emptySaved: "Fichier de base 'empty.html' téléchargé",
-	emptyFailed: "Echec du téléchargement du fichier de base 'empty.html'",
-	mainSaved: "Fichier principal TiddlyWiki téléchargé",
-	mainFailed: "Echec du téléchargement du fchier principal TiddlyWiki. Vos modifications n'ont pas été téléchargées",
+	invalidFileError: "Le fichier '%0' d'origine ne semble pas Ãªtre un TiddlyWiki valide",
+	backupSaved: "backup tÃ©lÃ©chargÃ© vers le web",
+	backupFailed: "Echec du tÃ©lÃ©chargement enregistrement du backup",
+	rssSaved: "Flux RSS a Ã©tÃ© tÃ©lÃ©chargÃ©",
+	rssFailed: "Echec du tÃ©lÃ©chargement du flux RSS",
+	emptySaved: "Fichier de base 'empty.html' tÃ©lÃ©chargÃ©",
+	emptyFailed: "Echec du tÃ©lÃ©chargement du fichier de base 'empty.html'",
+	mainSaved: "Fichier principal TiddlyWiki tÃ©lÃ©chargÃ©",
+	mainFailed: "Echec du tÃ©lÃ©chargement du fchier principal TiddlyWiki. Vos modifications n'ont pas Ã©tÃ© tÃ©lÃ©chargÃ©es",
 	//specific upload
-	loadOriginalHttpPostError: "Le fichier d'origine n'a pas pu être accédé",
-	aboutToSaveOnHttpPost: "Préparation du téléchargement du TiddlyWiki vers  %0 ...",
-	storePhpNotFound: "Le script de téléchargement '%0' n'a pas pu être trouvé."
+	loadOriginalHttpPostError: "Le fichier d'origine n'a pas pu Ãªtre accÃ©dÃ©",
+	aboutToSaveOnHttpPost: "PrÃ©paration du tÃ©lÃ©chargement du TiddlyWiki vers  %0 ...",
+	storePhpNotFound: "Le script de tÃ©lÃ©chargement '%0' n'a pas pu Ãªtre trouvÃ©."
 };
 //}}}
