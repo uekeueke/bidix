@@ -319,31 +319,63 @@ config.macros.slider.handler = function(place,macroName,params)
 		wikify(text,panel,null,store.getTiddler(params[1]));
 };
 
+config.macros.option.handlers = {};	
+config.macros.option.handlers = {
+	'txt': {
+		elementType: "input",
+		valueField: "value",
+		eventName: "onkeyup",
+		className: "txtOptionInput",
+		handler: function(opt,place,params) { config.macros.option.defaultHandler(opt,place,params,this);}
+	},
+	'chk': {
+		elementType: "input",
+		valueField: "checked",
+		eventName: "onclick",
+		className: "chkOptionInput",
+		typeValue: "checkbox",
+		handler: function(opt,place,params) { config.macros.option.defaultHandler(opt,place,params,this);}
+	}
+};
+
+config.macros.option.changeOption = function(opt, valueField, value, elementType) {
+	config.options[opt] = value;
+	saveOptionCookie(opt);
+	var nodes = document.getElementsByTagName(elementType);
+	for(var t=0; t<nodes.length; t++)
+		{
+		var optNode = nodes[t].getAttribute("option");
+		if(opt == optNode)
+			nodes[t][valueField] = value;
+		}
+};
+
 config.macros.option.onChangeOption = function(e)
 {
 	var opt = this.getAttribute("option");
-	var elementType,valueField;
 	if(opt) {
-		switch(opt.substr(0,3)) {
-			case "txt":
-				elementType = "input";
-				valueField = "value";
-				break;
-			case "chk":
-				elementType = "input";
-				valueField = "checked";
-				break;
+		var optType = opt.substr(0,3);
+		var handler = config.macros.option.handlers[optType];
+		if (handler.elementType && handler.valueField)
+			config.macros.option.changeOption(opt,handler.valueField, this[handler.valueField], handler.elementType)
 		}
-		config.options[opt] = this[valueField];
-		saveOptionCookie(opt);
-		var nodes = document.getElementsByTagName(elementType);
-		for(var t=0; t<nodes.length; t++) {
-			var optNode = nodes[t].getAttribute("option");
-			if(opt == optNode)
-				nodes[t][valueField] = this[valueField];
-		}
-	}
 	return true;
+};
+
+// @param def {elementType:, valueField:, eventName:, className:, typeValue: /*optional*/}
+config.macros.option.defaultHandler = function(opt,place,params,def) {
+    var c = document.createElement(def.elementType);
+    c[def.eventName] = config.macros.option.onChangeOption;
+    c.setAttribute("option",opt);
+	if (params[1])
+		c.className = params[1];
+	else
+    	c.className = def.className;
+    place.appendChild(c);
+    c[def.valueField] = config.options[opt];
+    if (def.typeValue)
+        c.setAttribute("type",def.typeValue);
+    return c;
 };
 
 config.macros.option.handler = function(place,macroName,params)
@@ -351,26 +383,10 @@ config.macros.option.handler = function(place,macroName,params)
 	var opt = params[0];
 	if(config.options[opt] == undefined)
 		return;
-	var c;
-	switch(opt.substr(0,3)) {
-		case "txt":
-			c = document.createElement("input");
-			c.onkeyup = this.onChangeOption;
-			c.setAttribute("option",opt);
-			c.className = "txtOptionInput";
-			place.appendChild(c);
-			c.value = config.options[opt];
-			break;
-		case "chk":
-			c = document.createElement("input");
-			c.setAttribute("type","checkbox");
-			c.onclick = this.onChangeOption;
-			c.setAttribute("option",opt);
-			c.className = "chkOptionInput";
-			place.appendChild(c);
-			c.checked = config.options[opt];
-			break;
-	}
+	var optType = opt.substr(0,3);
+	var h = config.macros.option.handlers[optType];
+	if (h && h.handler) 
+			h.handler(opt,place,params);
 };
 
 config.macros.newTiddler.createNewTiddlerButton = function(place,title,params,label,prompt,accessKey,newFocus,isJournal)
