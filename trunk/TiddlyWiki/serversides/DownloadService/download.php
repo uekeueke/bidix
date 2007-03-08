@@ -1,11 +1,12 @@
 <?php
+//{{{
 /***
  * download.php - download an html file as an attachement. 
  * version:1.0.0 - 2007/03/08 - BidiX@BidiX.info
  * source: http://tiddlywiki.bidix.info/#download.php
  * license: BSD open source license (http://tiddlywiki.bidix.info/#[[BSD open source license]])
  *
- * Simply put [[download|download.php]] in your TiddlyWiki viewed over http to download it in one click*.
+ * Simply put [[download|download.php?]] in your TiddlyWiki viewed over http to download it in one click*.
  *	* If it is named index.html 
  * usage :
  *			http://host/path/to/download.php[?file=afile.html|?help]
@@ -65,4 +66,5 @@ header('Cache-control: private, must-revalidate');
 header('Content-type: text/html');
 header('Content-Disposition: attachment; filename='.$filename);
 readfile($filename);	
+//}}}
 ?>
