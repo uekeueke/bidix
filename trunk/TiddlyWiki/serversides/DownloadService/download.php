@@ -1,5 +1,16 @@
 <?php
-//http://TiddlyWiki.bidix.info/download.php?file=BidiXTW.html
+/***
+ * download.php - download an html file as an attachement. 
+ * version :1.0.0 - 2007/03/08 - BidiX@BidiX.info
+ *
+ * Simply put [[download|download.php]] in your TiddlyWiki viewed over http to download it in one click*.
+ *	* If it is named index.html 
+ * usage :
+ *			http://host/path/to/download.php[?file=afile.html|?help]
+ *				afile.html : for security reason, must be a file with an .html suffix
+ *				?file=afile.html : if not specified index.html is used
+ *				?help : display the "usage" message
+ ***/
 
 function display($msg) {
 	?>
@@ -23,7 +34,6 @@ function display($msg) {
 	</html>
 	<?php
 	return;
-	
 }
 
 /*
