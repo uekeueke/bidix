@@ -1,7 +1,9 @@
 <?php
 /***
  * download.php - download an html file as an attachement. 
- * version :1.0.0 - 2007/03/08 - BidiX@BidiX.info
+ * version:1.0.0 - 2007/03/08 - BidiX@BidiX.info
+ * source: http://tiddlywiki.bidix.info/#download.php
+ * license: BSD open source license (http://tiddlywiki.bidix.info/#[[BSD open source license]])
  *
  * Simply put [[download|download.php]] in your TiddlyWiki viewed over http to download it in one click*.
  *	* If it is named index.html 
