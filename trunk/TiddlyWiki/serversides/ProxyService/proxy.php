@@ -1,21 +1,32 @@
 <?php
 //{{{
 /***
- * proxy.php - access an url if the target host is allowed. 
- * version: 2.0.0 (beta) - 2007/03/15 - BidiX@BidiX.info
+ * proxy.php - access an url if the target host is allowed
+ * version: 2.0.0 - 2007/03/16 - BidiX@BidiX.info
  * source: http://tiddlywiki.bidix.info/#proxy.php
  * license: BSD open source license (http://tiddlywiki.bidix.info/#[[BSD open source license]])
- *
- * Simply put [[download|download.php?]] in your TiddlyWiki viewed over http to download it in one click*.
- *	* If it is named index.html 
- * usage :
- *			http://host/path/to/download.php[?file=afile.html|?help]
- *				afile.html : for security reason, must be a file with an .html suffix
- *				?file=afile.html : if not specified index.html is used
- *				?help : display the "usage" message
+ * Copyright (c) BidiX@BidiX.info 2006-2007
+ *			 
+ * usage: 
+ * 		proxy.php?url=<hostAndParameters>
+ *			return the corresponding url if the host is included in the <ALLOWED_SITE_FILENAME> file 
+ *			or is in the same domain
+ *		proxy.php?list
+ *			list all allowedHosts
+ *		proxy.cgi[?help]
+ *			Display an help page
+ *			
+ * require: 
+ * 		<ALLOWED_SITE_FILENAME> a file located on the server containing a list af allowed hosts
+ *			each host on a separate line. 
+ *     example :
+ *				www.tiddlywiki.com
+ *				tiddliwiki.bidix.info
+ *				tiddlyspot.com
  ***/
-$ALLOWED_SITE_FILENAME = 'allowedsites.txt';
 
+$ALLOWED_SITE_FILENAME = 'allowedsites.txt';
+error_reporting(E_ERROR | E_PARSE);
 
 function display($msg) {
 	?>
@@ -33,7 +44,7 @@ function display($msg) {
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
 			<p align="center"><?=$msg?></p>
-			<p align="center">Usage : http://<?=$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']?>[?url=<i>URL</i>|help].</p>	
+			<p align="center">Usage : http://<?=$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']?>[?url=<i>URL</i>|help|list].</p>	
 			<p align="center">for details see : <a href="http://TiddlyWiki.bidix.info/#proxy.php">TiddlyWiki.bidix.info/#proxy.php<a>.</p>	
 		</body>
 	</html>
@@ -41,17 +52,48 @@ function display($msg) {
 	return;
 }
 
+function domain($host) {
+	// get last two segments of host name
+	// See : http://fr2.php.net/manual/en/function.preg-match.php#id5827438
+	preg_match('/[^.]+\.[^.]+$/', $host, $matches);
+	return $matches[0];
+}
+
+function inMyDomain($host) {
+	return (domain($_SERVER['HTTP_HOST']) == domain($host));
+}
 
 /*
  * Main
  */
 
 // help command
+
 if (array_key_exists('help',$_GET)) {
 	display('');
 	exit;
 }
+
+// load allowed hosts
+
+$allowedHosts = array_map('rtrim',file($ALLOWED_SITE_FILENAME));
+if (!$allowedHosts) {
+	echo("allowedSites file '$ALLOWED_SITE_FILENAME' is not found or empty.");
+	exit;	
+}
+
+// list command
+
+if (array_key_exists('list',$_GET)) {
+	echo "<h3>Hosts allowed through this proxy :</h3>\n<ul>\n";	
+	foreach ($allowedHosts as $host) 
+		echo("<li>$host</li>\n");
+	echo "</ul>\n";
+	exit;
+}
+
 // url command
+
 $url = $_GET['url'];
 if (!$url) {
 	display('');
@@ -61,28 +103,18 @@ $url = strtolower($url);
 if (substr($url, 0, 4) != 'http')
 	$url = 'http://'.$url;
 $urlArray = parse_url($url);
-$host = $urlArray['host'];
 if (!$urlArray) {
-	display("URL: '$url' is not well formed");
+	echo("URL '$url' is not well formed");
 	exit;
 }
-
-// load allowed hosts
-
-$allowedHosts = array_map('rtrim',file($ALLOWED_SITE_FILENAME));
-if (!$allowedHosts) {
-	display("allowedSites file '$ALLOWED_SITE_FILENAME' is not found or empty.");
-	exit;	
+$host = $urlArray['host'];
+if (!in_array($host, $allowedHosts) && !inMyDomain($host)) {
+	echo("Host '$host' is not allowed.");
+	exit;
 }
-
-if (!in_array($host, $allowedHosts)) {
-	display("Host '$host' is not allowed.");
-}
-
-echo("<pre>");
-print_r($allowedHosts);
-print_r($urlArray);
-echo("</pre>");
-echo(file_get_contents($url));
+if ($file=file_get_contents($url))
+	echo($file);
+else
+	echo("URL '$url' is not found.");
 //}}}
 ?>
