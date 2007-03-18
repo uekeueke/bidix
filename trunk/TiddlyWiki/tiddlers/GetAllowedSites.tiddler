@@ -1,0 +1,1 @@
+<div tiddler="GetAllowedSites" modifier="BidiX" modified="200703182159" created="200703181849" tags="ProxyService" changecount="111">Above are sites allowed to be accessed\n----\n&lt;&lt;HttpGet &quot;proxy.php?list&quot; html&gt;&gt;\n----</div>
