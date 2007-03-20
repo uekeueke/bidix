@@ -4,7 +4,7 @@
 |''Version:''|2.0.0|
 |''Date:''|Mar 19, 2007|
 |''Source:''|http://tiddlywiki.bidix.info/#UploadToFileMacro|
-|''Usage:''|{{{<<uploadToFile>>}}}<br>{{{<<uploadTofile [filename [tiddlerTitle]]>>}}}<br>{{{tiddlerTitle: if omitted the title of the current tiddler}}}<br>{{{filename: if omitted the title of the current tiddler}}}|
+|''Usage:''|{{{<<uploadTofile [filename [tiddlerTitle]]>>}}}<br>{{{tiddlerTitle, filename: if omitted the title of the current tiddler}}}|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
 |''CoreVersion:''|2.2.0|
@@ -20,18 +20,6 @@ version.extensions.UploadToFileMacro = {
 };
 
 // require UploadPlugin 4.0.0 or better
-var plugin = version.extensions.UploadPlugin;
-if (!
-	(plugin  && 
-		((plugin.major > 4) || 
-		((plugin.major == 4) && (plugin.minor > 0))  ||
-		((plugin.major == 4) && (plugin.minor === 0) && (plugin.revision >= 0))))) {
-		// write error in PluginManager
-		if (pluginInfo)
-			pluginInfo.log.push("UploadToFileMacro requires UploadPlugin V4.0.0");
-		UploadPlugin; // generate an error : "Error: ReferenceError: UploadPlugin is not defined"
-}
-
 config.macros.uploadToFile = {
 	label: "upload %0 to file %1",
 	prompt: "upload tiddler '%0' to file '%1' ",
@@ -106,4 +94,26 @@ config.macros.uploadToFile = {
 		
 	}
 };
+
+bidix.checkPlugin = function(plugin, major, minor, revision) {
+	var ext = version.extensions[plugin];
+	if (!
+		(ext  && 
+			((ext.major > major) || 
+			((ext.major == major) && (ext.minor > minor))  ||
+			((ext.major == major) && (ext.minor == minor) && (ext.revision >= revision))))) {
+			// write error in PluginManager
+			if (pluginInfo)
+				pluginInfo.log.push("Requires " + plugin + " " + major + "." + minor + "." + revision);
+			eval(plugin); // generate an error : "Error: ReferenceError: xxxx is not defined"
+	}
+};
+
+//
+// Initializations
+//
+
+// require PasswordOptionPlugin 1.0.1 or better
+bidix.checkPlugin("UploadPlugin", 4, 0, 0);
+
 //}}}

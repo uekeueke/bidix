@@ -36,7 +36,7 @@ config.macros.HttpGet = {
 				format: format,
 				place:	place
 				};
-		var r = loadRemoteFile(url,config.macros.HttpGet.display,params)
+		var r = loadRemoteFile(url,config.macros.HttpGet.display,params);
 		if (typeof r == "string")
 			displayMessage(r);
 		return r;
@@ -54,7 +54,7 @@ config.macros.HttpGet = {
 			if (config.macros.HttpGet.messages[xhr.status])
 				displayMessage(config.macros.HttpGet.messages[xhr.status].format([url]));
 			else
-				displayMessage("HTTP Error " + xhr.status + " in accessing " + url)
+				displayMessage("HTTP Error " + xhr.status + " in accessing " + url);
 		}
 		
 	}
