@@ -42,8 +42,11 @@ config.macros.rssReader = {
 			this.displayRssFeed(this.cache[feedURL], feedURL, place, desc, toFilter, filterString);
 		}
 		else {
-			loadRemoteFile(feedURL,config.macros.rssReader.processResponse, [place, desc, toFilter, filterString])
+			var r = loadRemoteFile(feedURL,config.macros.rssReader.processResponse, [place, desc, toFilter, filterString]);
+			if (typeof r == "string")
+				displayMessage(r);
 		}
+		
 	},
 
 	// callback for loadRemoteFile 
@@ -57,8 +60,14 @@ config.macros.rssReader = {
 			}
 			catch (e) { displayMessage(e.description?e.description:e.toString()); }
 		}
-		if(!status) {
-			displayMessage(this.noRSSFeed.format(params[0]));
+		if (xhr.status == httpStatus.NotFound)
+		 {
+			displayMessage(config.macros.rssReader.noRSSFeed.format([url]));
+			return;
+		}
+		if (!status)
+		 {
+			displayMessage(config.macros.rssReader.noRSSFeed.format([url]));
 			return;
 		}
 		if (xhr.responseXML) {
@@ -67,18 +76,19 @@ config.macros.rssReader = {
 			config.macros.rssReader.displayRssFeed(xhr.responseXML, params[0], url, params[1], params[2], params[3]);
 		}
 		else {
-			// response exists but not return as XML -> try to parse it 
-			var dom = (new DOMParser()).parseFromString(responseText, "text/xml"); 
-			if (dom) {
-				// parsing successful so use it
-				config.macros.rssReader.cache[url] = dom;
-				config.macros.rssReader.displayRssFeed(dom, params[0], url, params[1], params[2], params[3]);
+			if (responseText.substr(0,5) == "<?xml") {
+				// response exists but not return as XML -> try to parse it 
+				var dom = (new DOMParser()).parseFromString(responseText, "text/xml"); 
+				if (dom) {
+					// parsing successful so use it
+					config.macros.rssReader.cache[url] = dom;
+					config.macros.rssReader.displayRssFeed(dom, params[0], url, params[1], params[2], params[3]);
+					return;
+				}
 			}
-			else {
-				// no XML display as html 
-				wikify("<html>" + responseText + "</html>", place);
-				displayMessage(this.msg.noRSSFeed.format([feedURL]));
-			}
+			// no XML display as html 
+			wikify("<html>" + responseText + "</html>", params[0]);
+			displayMessage(config.macros.rssReader.msg.noRSSFeed.format([url]));
 		}
 	},
 
