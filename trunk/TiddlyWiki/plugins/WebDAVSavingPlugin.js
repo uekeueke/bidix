@@ -91,7 +91,7 @@ bidix.WebDAVSaving.doSaveChanges = function()
 	if (originalPath.charAt(originalPath.length-1) == "/")
 		originalPath = originalPath + bidix.WebDAVSaving.defaultFilename;
 	displayMessage(bidix.WebDAVSaving.messages.aboutToSaveOnHttpDav.format([originalPath]));
-	doHttp("GET",originalPath,null,null,null,null,callback,originalPath,null):
+	doHttp("GET",originalPath,null,null,null,null,callback,originalPath,null);
 };
 
 bidix.WebDAVSaving.mkbackupfolder = function(root,dirs,url,original,posDiv) {
