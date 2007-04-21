@@ -60,7 +60,5 @@ bidix.generateRssByTag = function()
 bidix.generateRss = generateRss; // backup core version
 generateRss = bidix.generateRssByTag; // install new one
 config.options.txtRssTag = "toRSS"; // default RssTag. use <<option txtRssTag>> to overwritte
-merge(config.optionsDesc,{
-		txtRssTag: "Only tiddlers with this tag will be included in the RSS Feed."
-	});
+merge(config.optionsDesc,{txtRssTag: "Only tiddlers with this tag will be included in the RSS Feed."});
 //}}}
