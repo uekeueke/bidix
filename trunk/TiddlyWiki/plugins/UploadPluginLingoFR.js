@@ -85,7 +85,7 @@ if (config.macros.uploadToHome) {
 			tiddlerNotFound: "Tiddler %0 non trouvé"
 		}});
 	merge(config.tasks,{
-			uploadToHome: {text: "téléchargeVersMaison", tooltip: "Télécharge en utilisant le tiddler '" + config.macros.uploadToHome.messages.homeParamsTiddler + "'", action: this.action}
+			uploadToHome: {text: "téléchargeVersMaison", tooltip: "Télécharge en utilisant le tiddler '" + config.macros.uploadToHome.messages.homeParamsTiddler + "'", action: config.macros.uploadToHome.action}
 		});
 }
 
