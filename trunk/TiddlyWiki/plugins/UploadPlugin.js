@@ -200,66 +200,6 @@ config.macros.uploadOptions = {
 }
 
 //
-// uploadUsing Macro
-//
-
-config.macros.uploadUsing = {
-	handler: function(place,macroName,params) {
-		if (readOnly)
-			return;
-		var label;
-		if (document.location.toString().substr(0,4) == "http") 
-			label = config.macros.upload.label.saveLabel;
-		else
-			label = config.macros.upload.label.uploadLabel;
-		var prompt;
-		var homeParams = (params[0] ? params[0]:this.messages.homeParamsTiddler);
-		if (store.tiddlerExists(homeParams)) {
-			prompt = this.messages.prompt.toString().format([homeParams]);
-		} else {
-			throw(this.messages.tiddlerNotFound.toString().format([homeParams]));
-		}
-		var prompt = this.messages.prompt.toString().format([homeParams]);
-		createTiddlyButton(place, label, prompt, function() {config.macros.uploadUsing.action(homeParams);}, null, null, this.accessKey);		
-	},
-	
-	action: function(homeParams) {
-		homeParams = (homeParams ? homeParams:config.macros.uploadUsing.messages.homeParamsTiddler);
-		if (!store.tiddlerExists(homeParams) && !store.isShadowTiddler(homeParams)) {
-			throw(config.macros.uploadUsing.messages.tiddlerNotFound.toString().format([homeParams]));
-		}
-		config.macros.upload.action(config.macros.uploadUsing.getParamsFromTiddler(homeParams));
-	},
-	
-	getParamsFromTiddler: function(tiddlerTitle) {
-		tiddlerTitle = (tiddlerTitle ? tiddlerTitle:this.messages.homeParamsTiddler);
-		if (!store.tiddlerExists(tiddlerTitle) && !store.isShadowTiddler(tiddlerTitle)) {
-			throw(config.macros.uploadUsing.messages.tiddlerNotFound.toString().format([tiddlerTitle]));
-		}
-		var sliceNames = [
-			"UploadStoreUrl",
-			"UploadFilename",
-			"UploadBackupDir",
-			"UploadDir",
-			"UploadUserName"
-			//"UploadPassword", // no password in tiddlers
-		];
-		var sliceValues = store.getTiddlerSlices(tiddlerTitle,sliceNames);
-		var parameters = [];
-		for(var i=0; i<sliceNames.length; i++) {
-			parameters.push(sliceValues[sliceNames[i]]);
-		}
-		return parameters;
-	},
-	
-	messages: {
-		homeParamsTiddler: "UploadToHomeParameters",
-		prompt: "Save and Upload this TiddlyWiki using parameters in  '%0' tiddler",
-		tiddlerNotFound: "Tiddler %0 not found"
-	}
-}
-
-//
 // upload functions
 //
 
@@ -435,7 +375,7 @@ bidix.upload.updateOriginal = function(original, posDiv)
 	revised = updateMarkupBlock(revised,"PRE-HEAD","MarkupPreHead");
 	revised = updateMarkupBlock(revised,"POST-HEAD","MarkupPostHead");
 	revised = updateMarkupBlock(revised,"PRE-BODY","MarkupPreBody");
-	revised = updateMarkupBlock(revised,"POST-BODY","MarkupPostScript");
+	revised = updateMarkupBlock(revised,"POST-SCRIPT","MarkupPostBody");
 	return revised;
 };
 
@@ -594,30 +534,11 @@ bidix.initOption('pasUploadPassword','');
 bidix.initOption('chkUploadLog',true);
 bidix.initOption('txtUploadLogMaxLine','10');
 
-//shadowTiddler
-var storeUrl;
-if ((document.location.toString().substr(0,4) == "http")) 
-	storeUrl = bidix.dirname(document.location.toString())+'/'+config.macros.upload.defaultStoreScript;
-else
-	storeUrl = config.macros.upload.defaultStoreScript;
-
-merge(config.shadowTiddlers,{
-
-'UploadToHomeParameters':[
-	"|UploadUserName:|"+config.options['txtUploadUserName']+"|",
-	"|UploadStoreUrl:|"+storeUrl+"|",
-	"|UploadDir:|.|",
-	"|UploadFilename:|index.html|",
-	"|UploadBackupDir:||",
-	].join("\n")
-	});
 
 // Backstage
 merge(config.tasks,{
-	uploadHome: {text: "uploadToHome", tooltip: "Upload using '" + config.macros.uploadUsing.messages.homeParamsTiddler + "' tiddler", action: config.macros.uploadUsing.action},
 	uploadOptions: {text: "upload...", tooltip: "Change UploadOptions and Upload", content: '<<uploadOptions>>'}
 });
-config.backstageTasks.push("uploadHome");
 config.backstageTasks.push("uploadOptions");
 
 
