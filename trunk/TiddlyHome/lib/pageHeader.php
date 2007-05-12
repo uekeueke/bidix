@@ -4,9 +4,10 @@
  * Copyright (c) 2005-2007, BidiX (http://tiddlyhome.bidix.info/#License)
  *
  * source : http://tiddlyhome.bidix.info/#Source
- * usage :
+ * usage : include - not a command
  *
  ***/
+
 ?>
 		<p>
 		<p><a href="http://tiddlyhome.bidix.info/">TiddlyHome 2.0</a>

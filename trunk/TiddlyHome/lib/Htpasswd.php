@@ -1,16 +1,13 @@
 <?php
 /***
  * Htpasswd.php - manage an Apache htpasswd file
- * version: 0.0.1 - 2007/03/23 - BidiX@BidiX.info
- * source: http://tiddlywiki.bidix.info/admin/htaccess.php
- * license: BSD open source license (http://tiddlywiki.bidix.info/#[[BSD open source license]])
- * Copyright (c) BidiX@BidiX.info 2006-2007
- *			 
- * usage: 
- *			
- * require: 
+ * Copyright (c) 2005-2007, BidiX (http://tiddlyhome.bidix.info/#License)
+ *
+ * source : http://tiddlyhome.bidix.info/#Source
+ * usage : include - not a command
  *
  ***/
+
 class Htpasswd {
 	var $path;
 	var $txt;	// file content 
@@ -81,15 +78,4 @@ class Htpasswd {
 		echo("</table>\n");
 	}
 }
-/*
-$h = new Htpasswd('.htpasswd');
-echo("<pre>");
-print_r($h->users);
-echo("</pre>");
-
-if ($h->verifyPassword("BidiX", "bidix01"))
-	echo("Ok");
-else
-	echo("ko");
-*/
 ?>
