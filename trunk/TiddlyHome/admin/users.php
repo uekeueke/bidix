@@ -25,8 +25,13 @@ foreach($users->users as $u => $rec) {
 	echo("<td>". $u . "</td>");
 	// echo("<td>" . $rec['password'] . "</td>");
 	echo("<td>" . $rec['email'] . "</td>");
-	echo("<td><a href='?next=display&user=$u'>display</a> | <a href='?next=delete&user=$u'>delete</a> | <a href='?next=change%20email&user=$u'>change email</a> | <a href='?next=change%20password&user=$u'>change password</a> | <a href='?next=verify&user=$u'>verify password</a>\n");
-	echo("</tr>\n");
+	echo("<td>");
+	echo("<a href='?next=display&user=$u'>display</a>");
+	echo(" | <a href='?next=delete&user=$u'>delete</a>");
+	echo(" | <a href='?next=change%20email&user=$u'>change email</a>");
+	echo(" | <a href='?next=change%20password&user=$u'>change password</a>");
+	echo(" | <a href='?next=verify&user=$u'>verify password</a>");
+	echo("\n</tr>\n");
 }
 ?>
 	</table>

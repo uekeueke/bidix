@@ -37,6 +37,10 @@ class Htgroup {
 		unset($this->groups[$group]);
 	}
 	
+	function getGroup($group) {
+		return $this->groups[$group];
+	}
+
 	function setGroup($group,$users) {
 		$this->groups[$group] = $users;
 	}
