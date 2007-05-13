@@ -15,6 +15,8 @@
  *		<encoding>: charset encoding of the feed (default 'utf-8') 
  *
  * Revision history
+ * v 2.0.1 - 2007/05/13
+ *	small css tweak
  * v 2.0.0 - 2007/03/10
  *	should parse all RSS 2.0 feed
  *	embed a simple stylesheet
@@ -229,6 +231,8 @@ h2 {font-size: 1.25em;}
 h3 {font-size: 1.1em;}
 h4 {font-size: 1em;}
 h5 {font-size: .9em;}
+
+a img {border:0;}
 
 #feedTitle {
 	font-size: 2em;
