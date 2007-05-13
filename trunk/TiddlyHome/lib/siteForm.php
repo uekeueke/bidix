@@ -59,7 +59,7 @@ function checkAndSubmit() {
 	}
 ?>
 			</tr>
-				<td></td><td class="button"><b><a href="javascript:checkAndSubmit();" class="button"><?=$action?> &gt;&gt;</a></b></td>
+				<td></td><td class="button"><b><a href="javascript:checkAndSubmit();" class="button"><?=$action?> &#187;</a></b></td>
 			</tr>
 		</table>
 		</form>

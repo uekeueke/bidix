@@ -26,7 +26,6 @@ function displayPage($root,$owner,$site,$group,$private,$msg,$action) {
 <!-- Liste des sites -->
 	<table>
 <?php
-echo("$root<p>");
 chdir($root);
 if ($dh = opendir($root)) {
 	while(($f= readdir($dh)) !== false ) {
