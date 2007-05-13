@@ -11,13 +11,14 @@
 
 require_once('userForm.php');
 function displayPage($user,$email,$msg,$action) {
+	$pageTitle = "User";
 ?>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="styles.css">
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> 
-<title>TiddlyHome - sign</title>
+<title>TiddlyHome - <?=$pageTitle?></title>
 </head>
 
 

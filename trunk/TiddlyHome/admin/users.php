@@ -13,17 +13,11 @@ require_once('../lib/userForm.php');
 function displayPage($user,$email,$msg,$action) {
 	global $ADMIN_DIR, $HTPASSWD_FILENAME;
 	$users = new Htpasswd("$ADMIN_DIR/$HTPASSWD_FILENAME");
-	
-?>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="styles.css">
-<link rel="icon" href="/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> 
-<title>TiddlyHome - sign</title>
-</head>
+	$pageTitle = "Users";
+require("../lib/pageHeader.php");
 
-<body>
+?>
+	</center>
 	<table>
 <?php
 foreach($users->users as $u => $rec) {
@@ -38,11 +32,11 @@ foreach($users->users as $u => $rec) {
 	</table>
 	<p><a href="?next=new">new user</a></p>
 	<p style="text-align:left;color:#F00;"><?=$msg?></p>
+	<center>
 	<?displayForm($user,$email,$msg,$action);?>
 </div>
-</body>
-</html>
 <?php
+require("../lib/pageFooter.php");
 } // display page
 
 function displayStatus($user,$email,$msg) {

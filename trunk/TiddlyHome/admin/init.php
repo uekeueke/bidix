@@ -14,20 +14,8 @@ require_once('../lib/Htaccess.php');
 
 
 function displayHeader() {
-?>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="styles.css">
-<link rel="icon" href="/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> 
-<title>TiddlyHome - Init</title>
-</head>
-<body>
-<?php
+$pageTitle = "Admin directory initialiation";
 require("../lib/pageHeader.php");
-?>
-<center>
-<?php
 }
  
 function displayForm() {
@@ -67,7 +55,7 @@ function displayForm() {
 		</tr>
 		<tr>
 			<td></td>
-			<td class="button"><b><a href="javascript:checkAndSubmit();" class="button">Init Admin &gt;&gt;</a></b><br/>
+			<td class="button"><b><a href="javascript:checkAndSubmit();" class="button">Init Admin &#187;</a></b><br/>
 			</td>
 		</tr>
 	</table>
@@ -78,11 +66,7 @@ function displayForm() {
 
 
 function displayFooter() {
-?>
-</center>
-</body>
-</html>
-<?php
+require("../lib/pageFooter.php");
 }
 
 
