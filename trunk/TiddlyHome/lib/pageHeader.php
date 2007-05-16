@@ -18,10 +18,12 @@
 	<title>TiddlyHome - <?=$pageTitle?></title>
 </head>
 <body>
+	<!--
 	<p>
 	<p><a href="http://tiddlyhome.bidix.info/">TiddlyHome 2.0</a>
 	<p>TiddlyHome @ BidiX.info
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
+-->
 	<center>

@@ -14,7 +14,7 @@ function displayPage($user,$email,$msg,$action) {
 	global $ADMIN_DIR, $HTPASSWD_FILENAME;
 	$users = new Htpasswd("$ADMIN_DIR/$HTPASSWD_FILENAME");
 	$pageTitle = "Users";
-require("../lib/pageHeader.php");
+require('../lib/pageHeader.php');
 
 ?>
 	</center>

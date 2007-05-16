@@ -10,27 +10,18 @@
  ***/
 require_once('../lib/siteForm.php');
 function displayPage($root,$owner,$site,$group,$private,$msg,$action) {
+	global $LIB_DIR;
+		$pageTitle = "Sites";
+require("$LIB_DIR/pageHeader.php");
 ?>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="styles.css">
-<link rel="icon" href="/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> 
-<title>TiddlyHome - sign</title>
-<script type="text/javascript">
-</script>
-
-</head>
-
-<body>
-<!-- Liste des sites -->
+	</center>
 	<table>
 <?php
 chdir($root);
 if ($dh = opendir($root)) {
 	while(($f= readdir($dh)) !== false ) {
 		//if (is_dir($file) && (!preg_match('/^\./',$file ))) {
-		if (!preg_match('/^\./',$f ) && is_dir($f)) {
+		if (!preg_match('/^[_.]/',$f ) && is_dir($f)) {
 			$s = stat($f);
 			$htaccess = new Htaccess("$f/.htaccess");
 			$siteOwner = $htaccess->owner;
@@ -40,7 +31,7 @@ if ($dh = opendir($root)) {
 				//echo("<td><pre>");
 				//print_r($htaccess);
 				//echo("</pre></td>");
-				echo("<td>". $f . "</td>");
+				echo("<td><a href=\"$ROOT_URN/$f\" target=_blank>$f</a></td>");
 				echo("<td>". $siteOwner . "</td>");
 				echo("<td>". $siteAccess . "</td>");
 				//echo("<td>" . date('d/m/y H:i:s', filemtime("$f/lib")) . "<td>"); // date creation
@@ -59,13 +50,13 @@ if ($dh = opendir($root)) {
 }
 ?>
 	</table>
+	<center>
 <!-- form -->
 <p><a href="?next=new">new site</a></p>
 <p style="text-align:left;color:#F00;"><?=$msg?></p>
 <?displayForm($site,$owner,$password,$group,$private,$msg,$action);?>
-</body>
-</html>
 <?php
+require("$LIB_DIR/pageFooter.php");
 } // display page
 
 /*

@@ -10,6 +10,7 @@
 
 ?>
 	</center>
+	<!--
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
@@ -17,5 +18,6 @@
 	<center>
 	<small>Copyright (c) 2005-2007, BidiX (<a href="http://tiddlyhome.bidix.info/#License">BSD License</a>)</small>
 	</center>
+-->
 </body>
 </html>
