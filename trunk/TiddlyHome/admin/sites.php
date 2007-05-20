@@ -9,7 +9,7 @@
  *
  ***/
 require_once('../lib/siteForm.php');
-function displayPage($root,$owner,$site,$group,$private,$msg,$action) {
+function displayPage($root,$owner,$password,$site,$group,$private,$msg,$next,$action) {
 	global $LIB_DIR;
 		$pageTitle = "Sites";
 require("$LIB_DIR/pageHeader.php");
@@ -54,7 +54,7 @@ if ($dh = opendir($root)) {
 <!-- form -->
 <p><a href="?next=new">new site</a></p>
 <p style="text-align:left;color:#F00;"><?=$msg?></p>
-<?displayForm($site,$owner,$password,$group,$private,$msg,$action);?>
+<?displayForm($site,$owner,$password,$group,$private,$msg,$next,$action);?>
 <?php
 require("$LIB_DIR/pageFooter.php");
 } // display page
@@ -74,30 +74,37 @@ $siteName = $_REQUEST['site'];
 $group = $_REQUEST['group'];
 $private = $_REQUEST['private'];
 
-// GET
-
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-	if (!$next)
-		$next = 'new';
-	$site = new Site($siteName);
-	if ($site->access == 'private')
-		$checked = 'CHECKED';
-	else
-		$checked = '';
-	displayPage($ROOT,$site->owner,$site->name,$site->group,$checked,$msg,$next);
-	exit;
-}
-
-
- list($site, $msg) = process();
+$site = new Site($siteName);
 if ($site->access == 'private')
 	$checked = 'CHECKED';
 else
 	$checked = '';
-if ($site)
-	displayPage($ROOT,$site->owner,$site->name,$site->group,$checked,$msg,$action);
+
+// GET
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+	if (!$action)
+		if ($next)
+			$action = $next;
+		else
+			$action = 'new';
+	displayPage($ROOT,$site->owner,$password,$site->name,$site->group,$checked,$msg,$next,$action);
+	exit;
+}
+// POST
+list($result, $site, $msg) = process();
+if ($result) {
+	if ($site->access == 'private')
+		$checked = 'CHECKED';
+	else
+		$checked = '';
+	if ($action = 'valid owner for site')
+		displayPage($ROOT,$site->owner,$password,$site->name,$site->group,$checked,$msg,$next, $next);
+	else
+		displayPage($ROOT,$site->owner,$password,$site->name,$site->group,$checked,$msg,$next,$action);
+}
 else
-	displayPage($ROOT,$result->owner,$result->name,$checked,$msg,$action);
+	displayPage($ROOT,$site->owner,$password,$site->name,$site->group,$checked,$msg,$next,$action);
 exit;
 
 ?>

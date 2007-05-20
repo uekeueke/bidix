@@ -44,11 +44,11 @@ foreach($users->users as $u => $rec) {
 require("../lib/pageFooter.php");
 } // display page
 
-function displayStatus($user,$email,$msg) {
-	displayPage($user,$email,$msg,'new');
+function displayStatus($user,$email,$msg, $next) {
+	displayPage($user,$email,$msg,$next);
 } 
 
-
+$action = $_REQUEST['action'];
 $user = $_REQUEST['user'];
 $oldPassword = $_REQUEST['oldPassword'];
 $password = $_REQUEST['password'];
@@ -66,9 +66,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	exit;
 }
 
- list($result, $msg) = process();
+ list($result, $email, $msg) = process();
 if ($result)
-	displayStatus($user,$email,$msg);
+	if ($action == 'display')
+		displayStatus($user,$email,$msg,'no');
+	else
+		displayStatus($user,$email,$msg, $next);
 else
 	displayPage($user,$email,$msg,$next);
 
