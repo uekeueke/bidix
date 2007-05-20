@@ -1,8 +1,8 @@
 /***
 |''Name:''|UploadToHomeMacro|
 |''Description:''|Save TiddlyWiki using HomeParameters tiddler|
-|''Version:''|0.0.1|
-|''Date:''|May 8, 2007|
+|''Version:''|0.0.2|
+|''Date:''|May 19, 2007|
 |''Source:''|http://tiddlywiki.bidix.info/#UploadToHomeMacro|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
@@ -42,7 +42,7 @@ config.macros.uploadToHome = {
 			label = config.macros.upload.label.uploadLabel;
 		var prompt;
 		var homeParams = (params[0] ? params[0]:this.messages.homeParamsTiddler);
-		if (store.tiddlerExists(homeParams)) {
+		if (store.tiddlerExists(homeParams) || store.isShadowTiddler(homeParams)) {
 			prompt = this.messages.prompt.toString().format([homeParams]);
 		} else {
 			throw(this.messages.tiddlerNotFound.toString().format([homeParams]));
@@ -112,3 +112,4 @@ config.macros.uploadToHome = {
 
 config.macros.uploadToHome.initAtLoad();
 
+//}}}

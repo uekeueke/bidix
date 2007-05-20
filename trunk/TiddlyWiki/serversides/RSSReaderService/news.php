@@ -3,7 +3,7 @@
 /***
  * news.php - Display a RSS file using a CSS
  * Copyright (c) 2006-2007, BidiX@BidiX.info 
- * version: 2.0.0 - 2007/03/10 - BidiX@BidiX.info
+ * version: 2.0.1 - 2007/05/13 - BidiX@BidiX.info
  * source: http://tiddlywiki.bidix.info/#news.php
  * license: BSD open source license (http://tiddlywiki.bidix.info/#[[BSD open source license]])
  * 
