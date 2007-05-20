@@ -1392,7 +1392,7 @@ config.options.txtRssTag = &quot;toRSS&quot;; // default RssTag. use &lt;&lt;opt
 merge(config.optionsDesc,{txtRssTag: &quot;Only tiddlers with this tag will be included in the RSS Feed.&quot;});
 //}}}</pre>
 </div>
-<div title="GettingStarted" modifier="BidiX" modified="200705201112" created="200704011741" tags="systemTool News" date="200704011741" changecount="33">
+<div title="GettingStarted" modifier="BidiX" modified="200705201312" created="200704011741" tags="systemTool News toRSS" date="200704011741" changecount="35">
 <pre>[img[http://tiddlyhome.bidix.info/_th/images/TiddlyHomeLogo.32.jpg][http://tiddlyhome.bidix.info/]] TiddlyHome is a package design as an infrastructure for multi-user and multi-site TiddlyWiki hosting service based on UploadPlugin. 
 
 TiddlyHome is in alpha stage and use TiddlyWiki &lt;&lt;version&gt;&gt;.
@@ -1575,10 +1575,10 @@ config.macros.HttpGetUpdate = {
 };
 //}}}</pre>
 </div>
-<div title="Initialize your own TiddlyHome" modifier="BidiX" modified="200705201110" created="200705201013" tags="News Docs" date="200705201013" changecount="1">
+<div title="Initialize your own TiddlyHome" modifier="BidiX" modified="200705201315" created="200705201013" tags="News Docs" date="200705201013" changecount="2">
 <pre>//If you are not at your own TiddlyHome go immediately to it.//
 
-If you are at your own TiddlyHome go to your new own ~TiddlyHome [[admin/|admin/]] site.
+If you are at your own TiddlyHome go to your new own ~TiddlyHome [[admin/|_th/admin/]] site.
 </pre>
 </div>
 <div title="IsDirty" modifier="200703260000" created="200704281252" tags="excludeLists excludeSearch">
@@ -2384,18 +2384,18 @@ Pour plus d'information visiter [[www.TiddlyWiki.com|http://www.tiddlywiki.com]]
 <div title="TopMenu" modifier="BidiX" modified="200705201001" created="200705011951" tags="siteTiddler excludeLists excludeSearch" date="200705011951" changecount="2">
 <pre>GettingStarted &lt;&lt;tag User&gt;&gt; &lt;&lt;tag Site&gt;&gt; &lt;&lt;tag Docs&gt;&gt; &lt;&lt;tag About&gt;&gt;</pre>
 </div>
-<div title="UploadLog" modifier="BidiX" modified="200705201207" created="200702061345" tags="systemTiddler excludeLists excludeSearch" date="200702061345" anon="undefined">
+<div title="UploadLog" modifier="BidiX" modified="200705201315" created="200702061345" tags="systemTiddler excludeLists excludeSearch" date="200702061345" anon="undefined">
 <pre>| !date | !user | !location | !storeUrl | !uploadDir | !toFilename | !backupdir | !origin |
-| 20/05/2007 10:04:56 | BidiX | [[/|http://ibiza/home/#MainMenu]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] | backup |
-| 20/05/2007 13:13:39 | BidiX | [[/|http://ibiza/home/#GettingStarted]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] | backup | ok |
-| 20/05/2007 13:19:12 | BidiX | [[/|http://ibiza/home/#TiddlyHomeSetupPlugin]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] |  |
 | 20/05/2007 13:19:20 | BidiX | [[/|http://ibiza/home/#TiddlyHomeSetupPlugin]] | [[store.php|http://ibiza/home//home/store.php]] | . | [[index.html | http://ibiza/home//home/index.html]] | backup |
 | 20/05/2007 13:21:04 | BidiX | [[/|http://ibiza/home/#TiddlyHomeSetupPlugin]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] |  |
 | 20/05/2007 13:22:31 | YourName | [[/|http://ibiza/home/#TiddlyHomeSetupPlugin]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] |  | ok |
 | 20/05/2007 13:22:43 | YourName | [[/|http://ibiza/home/#TiddlyHomeSetupPlugin]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] | backup | ok |
 | 20/05/2007 13:33:30 | YourName | [[/|http://ibiza/home/#%5B%5BInitialize%20your%20own%20TiddlyHome%5D%5D]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] | backup | ok |
 | 20/05/2007 13:35:16 | BidiX | [[/|http://ibiza/home/#%5B%5BDownload%20and%20install%20package%5D%5D]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] | backup | ok |
-| 20/05/2007 14:07:18 | BidiX | [[/|http://ibiza/home/#%5B%5BDownload%20and%20install%20package%5D%5D]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] | backup |</pre>
+| 20/05/2007 14:07:18 | BidiX | [[/|http://ibiza/home/#%5B%5BDownload%20and%20install%20package%5D%5D]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] | backup |
+| 20/05/2007 15:08:34 | YourName | [[/|http://ibiza/home/#GettingStarted]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] | backup |
+| 20/05/2007 15:12:47 | BidiX | [[/|http://ibiza/home/#TiddlyHome]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] | backup | ok |
+| 20/05/2007 15:15:26 | BidiX | [[/|http://ibiza/home/#%5B%5BInitialize%20your%20own%20TiddlyHome%5D%5D]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] | backup |</pre>
 </div>
 <div title="UploadOptions" modifier="system" created="200602122222" tags="systemTiddler excludeLists excludeSearch">
 <pre>UploadPlugin uses the following sequence for finding parameters :
