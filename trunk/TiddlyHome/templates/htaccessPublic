@@ -9,6 +9,4 @@ AuthGroupFile $htgroup$
 <files store*>
 Require group $site$
 </files>
-RewriteEngine On
-RewriteBase   $siteUrn$
-RewriteRule  ^$siteUrn$/([^.]+)$  $1.php
+Options +Indexes

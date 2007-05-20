@@ -1,6 +1,6 @@
 <?php
 /***
- * Site.php - manage a site
+ * SiteClass.php - manage a site
  * Copyright (c) 2005-2007, BidiX (http://tiddlyhome.bidix.info/#License)
  *
  * source : http://tiddlyhome.bidix.info/#Source

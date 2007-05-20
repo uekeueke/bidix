@@ -74,7 +74,12 @@ function checkAndSubmit() {
 		</tr>
 <?php
 	}
-	if (($action == 'new') || ($action == 'change password') || ($action == 'change email') || ($action == 'delete') || ($action == 'verify')) {
+	if (($action == 'new') || 
+		($action == 'display') || 
+		($action == 'change password') || 
+		($action == 'change email') || 
+		($action == 'delete') || 
+		($action == 'verify')) {
 	
 ?>
 		<tr>
@@ -83,7 +88,8 @@ function checkAndSubmit() {
 		</tr>
 		<?php
 			}
-			if (($action == 'new') || ($action == 'change password')) {
+			if (($action == 'new') || 
+				($action == 'change password')) {
 
 		?>
 		<tr>
@@ -93,7 +99,9 @@ function checkAndSubmit() {
 		</tr>
 <?php
 	}
-	if (($action == 'new') || ($action == 'change email')) {
+	if (($action == 'new') || 
+		($action == 'no') || 
+		($action == 'change email')) {
 		
 ?>
 		<tr>
@@ -102,12 +110,17 @@ function checkAndSubmit() {
 		</tr>
 <?php
 	}
+	if ($action != 'no') {
 ?>
 		<tr>
 			<td></td>
 			<td class="button"><b><a href="javascript:checkAndSubmit();" class="button"><?=$action?> &#187; </a></b><br/>
 			</td>
 		</tr>
+<?php
+	}
+?>
+
 	</table>
 	</form>
 
@@ -151,16 +164,23 @@ function process() {
 			}
 	    break;
 		case 'display':
-		    if (isset($users->users[$user])) {
-					$msg = "user '$user' exists. ";
+			if($users->verifyPassword($user,$password) == false) {
+				$msg = "Name or Password does not match for $user";
+				$result = false;
+			}
+			else {
+				if (isset($users->users[$user])) {
+					$msg = "User '$user' exists.";
+					$email = $users->users[$user]['email'];
 					$result = true;
 				}
 				else {
 					$msg = "User '$user' doesn't exist.";
-					$result = true;
+					$result = false;
 				}
+			}
 		    break;
-	case 'change password':
+		case 'change password':
 			if($users->verifyPassword($user,$oldPassword) == true) {
 				if($users->setPassword($user,$password)) {
 					$msg = "password changed for '$user'";
@@ -218,7 +238,7 @@ function process() {
 			}
 	    break;
 	}
-	return array($result, $msg);
+	return array($result, $email, $msg);
 }
 
 

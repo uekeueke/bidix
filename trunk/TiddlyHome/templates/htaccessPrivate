@@ -7,6 +7,4 @@ AuthName "'private $owner$'s TiddlyWiki $site$'"
 AuthUserFile $htpasswd$
 AuthGroupFile $htgroup$
 Require group $site$
-RewriteEngine On
-RewriteBase   $siteUrn$
-RewriteRule  ^$siteUrn$/([^.]+)$  $1.php
+Options +Indexes

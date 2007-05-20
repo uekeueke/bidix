@@ -15,18 +15,34 @@
  ***/
 
 require_once('config.php');
-require_once('Site.php');
+require_once('SiteClass.php');
 require_once('Htpasswd.php');
 
-function displayForm($site,$owner,$password,$group,$private,$msg,$action) {
+function displayForm($site,$owner,$password,$group,$private,$msg,$next,$action) {
+	if ($action == '')
+		$action = $next;
+	if (($action != 'new') && (($site == '') || ($owner == '') || ($password == ''))){
+		$action = 'valid owner for site';
+	}
 ?>
 <script type="text/javascript">
 
 function checkAndSubmit() {
+	var site = document.getElementById('site').value;
+	var owner = document.getElementById('owner').value;
+	var password = document.getElementById('password').value;
+	if (site.length == 0)
+		alert('Site is required.');
+	else if (owner.length == 0)
+		alert('Owner is required.');
+	else if (password.length == 0)
+		alert('Password is required.');
+	else
 		the_form.submit();
 }
 </script>
 	<form id="the_form" method="POST" action="">
+		<input type="hidden" name="next" value="<?=$next?>">
 		<input type="hidden" name="action" value="<?=$action?>">
 		<table>
 			<tr>
@@ -35,32 +51,37 @@ function checkAndSubmit() {
 			<tr>
 				<td>Owner :</td><td><input type="text" name="owner" id="owner" value="<?=$owner?>"></td>
 			</tr>
-<?php 
-	if (($action == 'new') || ($action == 'delete') || ($action == 'change access') || ($action == 'change group')) {
-?>
 			<tr>
 				<td>Password :</td><td><input type="password" name="password" id="password" value="<?=$password?>"></td>
 			</tr>
 <?php 
-	}
-	if (($action == 'new') || ($action == 'display') || ($action == 'change group')) {
+	if (($action == 'new') || 
+		($action == 'display') || 
+		($action == 'change group')) {
 ?>
 			<tr>
 				<td>Group :</td><td><input type="text" name="group" id="group" value="<?=$group?>"></td>
 			</tr>
 <?php 
 	}
-	if (($action == 'new') || ($action == 'display') || ($action == 'change access')) {
+	if (($action == 'new') || 
+		($action == 'display') || 
+		($action == 'change access')) {
 ?>
 			</tr>
 				<td>Private :</td><td><input type="checkbox" name="private" id="private" "<?=$private?>"></td>
 			<tr>
 <?php 
 	}
+	if ($action != 'display') {
+	
 ?>
 			</tr>
 				<td></td><td class="button"><b><a href="javascript:checkAndSubmit();" class="button"><?=$action?> &#187;</a></b></td>
 			</tr>
+<?php 
+	}
+?>
 		</table>
 		</form>
 	</form>
@@ -140,7 +161,7 @@ function process() {
 			}
 			else {
 				$msg = "site '$site->name' exists.";
-				$result = $site;
+				$result = false;
 			}
 	    break;
 	case 'change group':
@@ -151,7 +172,7 @@ function process() {
 				else {
 					$site->changeGroup($group);
 					$msg = "group changed for '$site->name'";
-					$result = $site;
+					$result = true;
 			}
 			break;
 	case 'change access':
@@ -167,11 +188,22 @@ function process() {
 						$access = 'public';
 					$site->changeAccess($access);
 					$msg = "Access changed for '$site->name'";
-					$result = $site;					
+					$result = true;					
 			}
 			break;
+	case 'valid owner for site':
+		if (($site->owner != $owner) || ($users->verifyPassword($owner,$password) != true)) {
+			$msg = "Owner or Password does not match for $siteName";
+			$result = false;
+		}
+		else {
+			$msg = '';
+			$result = true;					
 	}
-	return array($site, $msg);
+	break;
+	}
+	
+	return array($result, $site, $msg);
 }
 
 

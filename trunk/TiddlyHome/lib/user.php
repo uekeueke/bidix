@@ -39,6 +39,7 @@ function displayStatus($user,$email,$msg) {
  * main
  */
 
+$action = $_REQUEST['action'];
 $user = $_REQUEST['user'];
 $oldPassword = $_REQUEST['oldPassword'];
 $password = $_REQUEST['password'];
@@ -55,12 +56,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	exit;
 }
 
- list($result, $msg) = process();
-if ($result)
-	displayStatus($user,$email,$msg);
-else
-	displayPage($user,$email,$msg,$next);
+ list($result, $email, $msg) = process();
 
+if ($result)
+	if ($action == 'display')
+		displayPage($user,$email,$msg,'no');
+	else
+		displayStatus($user,$email,$msg);
+else {
+	displayPage($user,$email,$msg,$next);
+}
 exit;
 
 ?>
