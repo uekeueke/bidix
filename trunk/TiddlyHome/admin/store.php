@@ -1,1 +1,1 @@
-<?php require("/Users/bruno/Sites/_th/lib/store.php")?>
+<?php require("../lib/store.php")?>

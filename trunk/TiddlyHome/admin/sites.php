@@ -10,7 +10,7 @@
  ***/
 require_once('../lib/siteForm.php');
 function displayPage($root,$owner,$password,$site,$group,$private,$msg,$next,$action) {
-	global $LIB_DIR;
+	global $LIB_DIR, $ROOT_URN;
 		$pageTitle = "Sites";
 require("$LIB_DIR/pageHeader.php");
 ?>
@@ -31,7 +31,7 @@ if ($dh = opendir($root)) {
 				//echo("<td><pre>");
 				//print_r($htaccess);
 				//echo("</pre></td>");
-				echo("<td><a href=\"$ROOT_URN/$f\" target=_blank>$f</a></td>");
+				echo("<td><a href=\"$ROOT_URN$f\" target=_blank>$f</a></td>");
 				echo("<td>". $siteOwner . "</td>");
 				echo("<td>". $siteAccess . "</td>");
 				//echo("<td>" . date('d/m/y H:i:s', filemtime("$f/lib")) . "<td>"); // date creation

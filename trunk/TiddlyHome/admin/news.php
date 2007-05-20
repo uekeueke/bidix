@@ -1,1 +1,1 @@
-<?php require("/Users/bruno/Sites/_th/lib/news.php")?>
+<?php require("../lib/news.php")?>

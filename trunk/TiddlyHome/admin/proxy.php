@@ -1,1 +1,1 @@
-<?php require("/Users/bruno/Sites/_th/lib/proxy.php")?>
+<?php require("../lib/proxy.php")?>
