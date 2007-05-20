@@ -3,7 +3,7 @@
 <head>
 <script type="text/javascript">
 //<![CDATA[
-var version = {title: "TiddlyWiki", major: 2, minor: 2, revision: 0, beta: 5, date: new Date("Apr 18, 2007"), extensions: {}};
+var version = {title: "TiddlyWiki", major: 2, minor: 2, revision: 0, beta: "#2135", date: new Date("Apr 18, 2007"), extensions: {}};
 //]]>
 </script>
 <!--
@@ -40,8 +40,8 @@ DAMAGE.
 <!--PRE-HEAD-START-->
 <!--{{{-->
 <link rel='alternate' type='application/rss+xml' title='RSS' href='index.xml'/>
-<link rel="shortcut icon" href="lib/favicon.ico" type="image/vnd.microsoft.icon" />
-<link rel="icon" href="lib/favicon.ico" type="image/vnd.microsoft.icon" /> 
+<link rel="shortcut icon"href="$rootUrl$_th/images/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="icon" href="$rootUrl$_th/images/favicon.ico" type="image/vnd.microsoft.icon" /> 
 <!--}}}-->
 <!--PRE-HEAD-END-->
 <style type="text/css">
@@ -502,1203 +502,74 @@ Welcome to TiddlyWiki by Jeremy Ruston, Copyright &copy; 2007 Osmosoft Limited
 <div id="contentWrapper"></div>
 <div id="contentStash"></div>
 <div id="storeArea">
-<div title="2007/05/07" modifier="BidiX" created="200705071632" tags="Journal excludeLists" date="200705071631" changecount="1">
-<pre>This TiddlyWiki initialization</pre>
-</div>
-<div title="AuthorEditTemplate" modifier="system" created="200702042046" tags="systemTiddler excludeLists excludeSearch" date="200702042046" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200702042046">
-<pre>&lt;!--{{{--&gt;
-&lt;div class='toolbar' macro='toolbar +saveTiddler -cancelTiddler deleteTiddler'&gt;&lt;/div&gt;
-&lt;div class='title' macro='view title'&gt;&lt;/div&gt;
-&lt;div class=&quot;editLabel&quot;&gt;Title&lt;/div&gt;&lt;div class=&quot;editor&quot; macro=&quot;edit title&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;editLabel&quot;&gt;Tags&lt;/div&gt;&lt;div class=&quot;editor&quot; macro=&quot;edit tags&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;editorFooter&quot;&gt;&lt;span macro=&quot;message views.editor.tagPrompt&quot;&gt;&lt;/span&gt;&lt;span macro=&quot;tagChooser&quot;&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div macro=&quot;showWhenExists EditPanelTemplate&quot;&gt;[[EditPanelTemplate]]&lt;/div&gt;
-&lt;div class='editor' macro='edit text'&gt;&lt;/div&gt;
-&lt;div class='editor'&gt;date&lt;span macro=&quot;edit date&quot;&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;!--}}}--&gt;</pre>
-</div>
-<div title="AuthorPageTemplate" modifier="system" created="200702041207" tags="systemTiddler excludeLists excludeSearch" date="200702041207" anon="undefined" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200702041207">
-<pre>&lt;!--{{{--&gt;
-&lt;div id='header' class='header'&gt;
- &lt;div id='topMenu' refresh='content' tiddler='TopMenu'&gt;&lt;/div&gt; 
- &lt;div class='siteTitle'&gt;
- &lt;span refresh='content' tiddler='IsDirty'&gt;&lt;/span&gt;
- &lt;span refresh='content' tiddler='SiteTitle'&gt;&lt;/span&gt;
-&lt;/div&gt;
- &lt;div class='siteSubtitle' refresh='content' tiddler='SiteSubtitle'&gt;&lt;/div&gt;
- &lt;/div&gt;
-&lt;/div&gt;
-&lt;div id='sidebar'&gt;
- &lt;div id='sidebarOptions' refresh='content' tiddler='SideBarOptions'&gt;&lt;/div&gt;
- &lt;div id='sidebarTabs' refresh='content' force='true' tiddler='SideBarTabs'&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id='displayArea'&gt;
- &lt;div id='messageArea'&gt;&lt;/div&gt;
-&lt;div id='tiddlerDisplay'&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;!--}}}--&gt;</pre>
-</div>
-<div title="AuthorScripts" modifier="system" created="200702041121" tags="systemTiddler excludeLists excludeSearch" date="" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200702041121">
-<pre></pre>
-</div>
-<div title="AuthorStyleSheet" modifier="BidiX" modified="200705071145" created="200702041725" tags="systemTiddler excludeLists excludeSearch" date="200702041725" anon="undefined" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200704281512" changecount="2">
-<pre>[[CommunStyleSheet]]
-/*{{{*/
-body {
- margin: 0 30px 0 30px;
- }
-
-
-#sidebarOptions a {
- font-weight: normal;
-}
-
-
-.tagged, .tagging { float:left; }
-.tagged li, .tagging li { display:inline; }  
-.tagged, .tagging { background:transparent  !important; border:0  !important; }
-.tagged .button {color: [[ColorPalette::TiertiaryPale]] !important; }
-
-
-#backstageButton a {background:none; color:[[ColorPalette::TertiaryLight]]; border:none;}
-#backstageButton a:hover {background:[[ColorPalette::Foreground]]; color:[[ColorPalette::Background]]; border:none;}
-
-
-
-/*}}}*/
-</pre>
-</div>
-<div title="AuthorViewTemplate" modifier="system" created="200702041207" tags="systemTiddler excludeLists excludeSearch" date="200702041207" anon="undefined" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200702041207">
-<pre>&lt;!--{{{--&gt;
-&lt;div class='toolbar' macro='toolbar closeTiddler closeOthers +editTiddler permalink references jump'&gt;&lt;/div&gt;
-&lt;div class='title'&gt;
-	&lt;span class='title' macro='view title'&gt;&lt;/span&gt;
-	&lt;!--&lt;span macro=&quot;miniTag&quot;&gt;--&gt;&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class='subtitle'&gt;&lt;span macro='view modifier link'&gt;&lt;/span&gt;, &lt;span macro='view modified date [[DD MMM YYYY]]'&gt;&lt;/span&gt; (&lt;span macro='message views.wikified.createdPrompt'&gt;&lt;/span&gt; &lt;span macro='view created date [[DD MMM YYYY]]'&gt;&lt;/span&gt;)&lt;/div&gt;
-&lt;div class='tagged' macro='tags'&gt;&lt;/div&gt;
-&lt;div class='tagClear'&gt;&lt;/div&gt;
-&lt;div class='viewer' macro='view text wikified'&gt;&lt;/div&gt;
-&lt;div macro=&quot;showWhenTagged systemList&quot;&gt;
-	&lt;div class='viewer' macro=&quot;listByTag '' created  ''&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class='tagging' macro='tagging'&gt;&lt;/div&gt;
-&lt;div class='tagClear'&gt;&lt;/div&gt;
-&lt;!--}}}--&gt;</pre>
-</div>
-<div title="BSDOpenSourceLicense" modifier="BidiX" modified="200705090928" created="200705071537" tags="basicContent" date="200705071537" changecount="2">
-<pre>Copyright (c) 2005-2007, BidiX (http://BidiX.info)
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-*Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. 
-*Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. 
-*Neither the name of BidiX nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission. 
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-</pre>
-</div>
-<div title="BidiX" modifier="BidiX" modified="200705091003" created="200703170907" tags="basicContent About" server.page.version="200703170907" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703170907" date="200703170907" changecount="2">
-<pre>Contact : [[BidiX@bidix.info|mailto:BidiX@BidiX.info]]
-URL : [[BidiX.info|http://BidiX.info/]]
-Donation : [[Donation via Paypal|https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=BidiX%40bidix%2einfo&amp;item_name=TiddlyWikiHacking%20Donations&amp;item_number=Donations&amp;no_shipping=2&amp;no_note=1&amp;tax=0&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8]] </pre>
-</div>
-<div title="BidiXTW" modifier="system" created="200703170944" tags="contentPublisher basicContent excludeLists excludeSearch" server.page.version="200703170944" date="200703170944" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703170944">
-<pre>|''URL:''|http://tiddlywiki.bidix.info/|
-|''Description:''|Repository for BidiX's TiddlyWiki Extensions|
-|''Author:''|BidiX|</pre>
-</div>
-<div title="CalendarPlugin" modifier="system" created="200703222051" tags="systemConfig excludeLists excludeSearch" date="200703222050" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703222051">
-<pre>/***
-''Name:'' Calendar plugin
-''Version:'' &lt;&lt;getversion calendar&gt;&gt; (&lt;&lt;getversiondate calendar &quot;DD MMM YYYY&quot;&gt;&gt;)
-''Author:'' SteveRumsby
-
-''Configuration:''
-
-|''First day of week:''|&lt;&lt;option txtCalFirstDay&gt;&gt;|(Monday = 0, Sunday = 6)|
-|''First day of weekend:''|&lt;&lt;option txtCalStartOfWeekend&gt;&gt;|(Monday = 0, Sunday = 6)|
-
-''Syntax:'' 
-|{{{&lt;&lt;calendar&gt;&gt;}}}|Produce a full-year calendar for the current year|
-|{{{&lt;&lt;calendar year&gt;&gt;}}}|Produce a full-year calendar for the given year|
-|{{{&lt;&lt;calendar year month&gt;&gt;}}}|Produce a one-month calendar for the given month and year|
-|{{{&lt;&lt;calendar thismonth&gt;&gt;}}}|Produce a one-month calendar for the current month|
-|{{{&lt;&lt;calendar lastmonth&gt;&gt;}}}|Produce a one-month calendar for last month|
-|{{{&lt;&lt;calendar nextmonth&gt;&gt;}}}|Produce a one-month calendar for next month|
-
-***/
-// //Modify this section to change the text displayed for the month and day names, to a different language for example. You can also change the format of the tiddler names linked to from each date, and the colours used.
-
-// // ''Changes by ELS 2005.10.30:''
-// // config.macros.calendar.handler()
-// // ^^use &quot;tbody&quot; element for IE compatibility^^
-// // ^^IE returns 2005 for current year, FF returns 105... fix year adjustment accordingly^^
-// // createCalendarDays()
-// // ^^use showDate() function (if defined) to render autostyled date with linked popup^^
-// // calendar stylesheet definition
-// // ^^use .calendar class-specific selectors, add text centering and margin settings^^
-
-//{{{
-config.macros.calendar = {};
-
-config.macros.calendar.monthnames = [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;];
-config.macros.calendar.daynames = [&quot;M&quot;, &quot;T&quot;, &quot;W&quot;, &quot;T&quot;, &quot;F&quot;, &quot;S&quot;, &quot;S&quot;];
-
-config.macros.calendar.weekendbg = &quot;#c0c0c0&quot;;
-config.macros.calendar.monthbg = &quot;#e0e0e0&quot;;
-config.macros.calendar.holidaybg = &quot;#ffc0c0&quot;;
-
-//}}}
-// //''Code section:''
-// (you should not need to alter anything below here)//
-//{{{
-if(config.options.txtCalFirstDay == undefined)
-  config.options.txtCalFirstDay = 0;
-if(config.options.txtCalStartOfWeekend == undefined)
-  config.options.txtCalStartOfWeekend = 5;
-
-config.macros.calendar.tiddlerformat = &quot;0DD/0MM/YYYY&quot;;  // This used to be changeable - for now, it isn't// &lt;&lt;smiley :-(&gt;&gt; 
-
-version.extensions.calendar = { major: 0, minor: 6, revision: 0, date: new Date(2006, 1, 22)};
-config.macros.calendar.monthdays = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-config.macros.calendar.holidays = [ ]; // Not sure this is required anymore - use reminders instead
-//}}}
-
-// //Is the given date a holiday?
-//{{{
-function calendarIsHoliday(date)
-{
- var longHoliday = date.formatString(&quot;0DD/0MM/YYYY&quot;);
- var shortHoliday = date.formatString(&quot;0DD/0MM&quot;);
-
- for(var i = 0; i &lt; config.macros.calendar.holidays.length; i++) {
-   if(config.macros.calendar.holidays[i] == longHoliday || config.macros.calendar.holidays[i] == shortHoliday) {
-     return true;
-   }
- }
- return false;
-}
-//}}}
-
-// //The main entry point - the macro handler.
-// //Decide what sort of calendar we are creating (month or year, and which month or year)
-// // Create the main calendar container and pass that to sub-ordinate functions to create the structure.
-// ELS 2005.10.30: added creation and use of &quot;tbody&quot; for IE compatibility and fixup for year &gt;1900//
-// ELS 2005.10.30: fix year calculation for IE's getYear() function (which returns '2005' instead of '105')//
-//{{{
-config.macros.calendar.handler = function(place,macroName,params)
-{
-   var calendar = createTiddlyElement(place, &quot;table&quot;, null, &quot;calendar&quot;, null);
-   var tbody = createTiddlyElement(calendar, &quot;tbody&quot;, null, null, null);
-   var today = new Date();
-   var year = today.getYear();
-   if (year&lt;1900) year+=1900;
-   if (params[0] == &quot;thismonth&quot;)
-  {
-      cacheReminders(new Date(year, today.getMonth(), 1, 0, 0), 31);
-      createCalendarOneMonth(tbody, year, today.getMonth());
-  } 
-  else if (params[0] == &quot;lastmonth&quot;) {
-      var month = today.getMonth()-1; if (month==-1) { month=11; year--; }
-      cacheReminders(new Date(year, month, 1, 0, 0), 31);
-      createCalendarOneMonth(tbody, year, month);
-   }
-   else if (params[0] == &quot;nextmonth&quot;) {
-      var month = today.getMonth()+1; if (month&gt;11) { month=0; year++; }
-      cacheReminders(new Date(year, month, 1, 0, 0), 31);
-      createCalendarOneMonth(tbody, year, month);
-   }
-   else {
-      if (params[0]) year = params[0];
-      if(params[1])
-      {
-         cacheReminders(new Date(year, params[1]-1, 1, 0, 0), 31);
-         createCalendarOneMonth(tbody, year, params[1]-1);
-      }
-      else
-      {
-         cacheReminders(new Date(year, 0, 1, 0, 0), 366);
-         createCalendarYear(tbody, year);
-      }
-   }
-  window.reminderCacheForCalendar = null;
-}
-//}}}
-//{{{
-//This global variable is used to store reminders that have been cached
-//while the calendar is being rendered.  It will be renulled after the calendar is fully rendered.
-window.reminderCacheForCalendar = null;
-//}}}
-//{{{
-function cacheReminders(date, leadtime)
-{
-  if (window.findTiddlersWithReminders == null)
-    return;
-  window.reminderCacheForCalendar = {};
-  var leadtimeHash = [];
-  leadtimeHash [0] = 0;
-  leadtimeHash [1] = leadtime;
-  var t = findTiddlersWithReminders(date, leadtimeHash, null, 1);
-  for(var i = 0; i &lt; t.length; i++) {
-    //just tag it in the cache, so that when we're drawing days, we can bold this one.
-     window.reminderCacheForCalendar[t[i][&quot;matchedDate&quot;]] = &quot;reminder:&quot; + t[i][&quot;params&quot;][&quot;title&quot;]; 
-  }
-}
-//}}}
-//{{{
-function createCalendarOneMonth(calendar, year, mon)
-{
-  var row = createTiddlyElement(calendar, &quot;tr&quot;, null, null, null);
-  createCalendarMonthHeader(calendar, row, config.macros.calendar.monthnames[mon] + &quot; &quot; + year, true, year, mon);
-  row = createTiddlyElement(calendar, &quot;tr&quot;, null, null, null);
-  createCalendarDayHeader(row, 1);
-  createCalendarDayRowsSingle(calendar, year, mon);
-}
-//}}}
-
-//{{{
-function createCalendarMonth(calendar, year, mon)
-{
-  var row = createTiddlyElement(calendar, &quot;tr&quot;, null, null, null);
-  createCalendarMonthHeader(calendar, row, config.macros.calendar.monthnames[mon] + &quot; &quot; + year, false, year, mon);
-  row = createTiddlyElement(calendar, &quot;tr&quot;, null, null, null);
-  createCalendarDayHeader(row, 1);
-  createCalendarDayRowsSingle(calendar, year, mon);
-}
-//}}}
-
-//{{{
-function createCalendarYear(calendar, year)
-{
-  var row;
-  row = createTiddlyElement(calendar, &quot;tr&quot;, null, null, null);
-  var back = createTiddlyElement(row, &quot;td&quot;, null, null, null);
-  var backHandler = function() {
-      removeChildren(calendar);
-      createCalendarYear(calendar, year-1);
-    };
-  createTiddlyButton(back, &quot;&lt;&quot;, &quot;Previous year&quot;, backHandler);
-  back.align = &quot;center&quot;;
-
-  var yearHeader = createTiddlyElement(row, &quot;td&quot;, null, &quot;calendarYear&quot;, year);
-  yearHeader.align = &quot;center&quot;;
-  yearHeader.setAttribute(&quot;colSpan&quot;, 19);
-
-  var fwd = createTiddlyElement(row, &quot;td&quot;, null, null, null);
-  var fwdHandler = function() {
-    removeChildren(calendar);
-    createCalendarYear(calendar, year+1);
-  };
-  createTiddlyButton(fwd, &quot;&gt;&quot;, &quot;Next year&quot;, fwdHandler);
-  fwd.align = &quot;center&quot;;
-
-  createCalendarMonthRow(calendar, year, 0);
-  createCalendarMonthRow(calendar, year, 3);
-  createCalendarMonthRow(calendar, year, 6);
-  createCalendarMonthRow(calendar, year, 9);
-}
-//}}}
-
-//{{{
-function createCalendarMonthRow(cal, year, mon)
-{
-  var row = createTiddlyElement(cal, &quot;tr&quot;, null, null, null);
-  createCalendarMonthHeader(cal, row, config.macros.calendar.monthnames[mon], false, year, mon);
-  createCalendarMonthHeader(cal, row, config.macros.calendar.monthnames[mon+1], false, year, mon);
-  createCalendarMonthHeader(cal, row, config.macros.calendar.monthnames[mon+2], false, year, mon);
-  row = createTiddlyElement(cal, &quot;tr&quot;, null, null, null);
-  createCalendarDayHeader(row, 3);
-  createCalendarDayRows(cal, year, mon);
-}
-//}}}
-
-//{{{
-function createCalendarMonthHeader(cal, row, name, nav, year, mon)
-{
-  var month;
-  if(nav) {
-    var back = createTiddlyElement(row, &quot;td&quot;, null, null, null);
-    back.align = &quot;center&quot;;
-    back.style.background = config.macros.calendar.monthbg;
-
-/*
-    back.setAttribute(&quot;colSpan&quot;, 2);
-
-    var backYearHandler = function() {
-      var newyear = year-1;
-      removeChildren(cal);
-      cacheReminders(new Date(newyear, mon , 1, 0, 0), 31);
-      createCalendarOneMonth(cal, newyear, mon);
-    };
-    createTiddlyButton(back, &quot;&lt;&lt;&quot;, &quot;Previous year&quot;, backYearHandler);
-*/
-    var backMonHandler = function() {
-      var newyear = year;
-      var newmon = mon-1;
-      if(newmon == -1) { newmon = 11; newyear = newyear-1;}
-      removeChildren(cal);
-      cacheReminders(new Date(newyear, newmon , 1, 0, 0), 31);
-      createCalendarOneMonth(cal, newyear, newmon);
-    };
-    createTiddlyButton(back, &quot;&lt;&quot;, &quot;Previous month&quot;, backMonHandler);
-
-
-    month = createTiddlyElement(row, &quot;td&quot;, null, &quot;calendarMonthname&quot;, name)
-//    month.setAttribute(&quot;colSpan&quot;, 3);
-    month.setAttribute(&quot;colSpan&quot;, 5);
-
-    var fwd = createTiddlyElement(row, &quot;td&quot;, null, null, null);
-    fwd.align = &quot;center&quot;;
-    fwd.style.background = config.macros.calendar.monthbg; 
-
-//    fwd.setAttribute(&quot;colSpan&quot;, 2);
-    var fwdMonHandler = function() {
-      var newyear = year;
-      var newmon = mon+1;
-      if(newmon == 12) { newmon = 0; newyear = newyear+1;}
-      removeChildren(cal);
-      cacheReminders(new Date(newyear, newmon , 1, 0, 0), 31);
-      createCalendarOneMonth(cal, newyear, newmon);
-    };
-    createTiddlyButton(fwd, &quot;&gt;&quot;, &quot;Next month&quot;, fwdMonHandler);
-/*
-    var fwdYear = createTiddlyElement(row, &quot;td&quot;, null, null, null);
-    var fwdYearHandler = function() {
-      var newyear = year+1;
-      removeChildren(cal);
-      cacheReminders(new Date(newyear, mon , 1, 0, 0), 31);
-      createCalendarOneMonth(cal, newyear, mon);
-    };
-    createTiddlyButton(fwd, &quot;&gt;&gt;&quot;, &quot;Next year&quot;, fwdYearHandler);
-*/
-  } else {
-    month = createTiddlyElement(row, &quot;td&quot;, null, &quot;calendarMonthname&quot;, name)
-    month.setAttribute(&quot;colSpan&quot;, 7);
-  }
-  month.align = &quot;center&quot;;
-  month.style.background = config.macros.calendar.monthbg;
-}
-//}}}
-
-//{{{
-function createCalendarDayHeader(row, num)
-{
-  var cell;
-  for(var i = 0; i &lt; num; i++) {
-    for(var j = 0; j &lt; 7; j++) {
-      var d = j + (config.options.txtCalFirstDay - 0);
-      if(d &gt; 6) d = d - 7;
-      cell = createTiddlyElement(row, &quot;td&quot;, null, null, config.macros.calendar.daynames[d]);
-
-      if(d == (config.options.txtCalStartOfWeekend-0) || d == (config.options.txtCalStartOfWeekend-0+1))
-        cell.style.background = config.macros.calendar.weekendbg;
-    }
-  }
-}
-//}}}
-
-//{{{
-function createCalendarDays(row, col, first, max, year, mon)
-{
-  var i;
-  for(i = 0; i &lt; col; i++) {
-    createTiddlyElement(row, &quot;td&quot;, null, null, null);
-  }
-  var day = first;
-  for(i = col; i &lt; 7; i++) {
-    var d = i + (config.options.txtCalFirstDay - 0);
-    if(d &gt; 6) d = d - 7;
-    var daycell = createTiddlyElement(row, &quot;td&quot;, null, null, null);
-    var isaWeekend = ((d == (config.options.txtCalStartOfWeekend-0) || d == (config.options.txtCalStartOfWeekend-0+1))? true:false);
-
-    if(day &gt; 0 &amp;&amp; day &lt;= max) {
-      var celldate = new Date(year, mon, day);
-      // ELS 2005.10.30: use &lt;&lt;date&gt;&gt; macro's showDate() function to create popup
-      if (window.showDate) {
-        showDate(daycell,celldate,&quot;popup&quot;,&quot;DD&quot;,&quot;DD-MMM-YYYY&quot;,true, isaWeekend); 
-      } else {
-        if(isaWeekend) daycell.style.background = config.macros.calendar.weekendbg;
-        var title = celldate.formatString(config.macros.calendar.tiddlerformat);
-        if(calendarIsHoliday(celldate)) {
-          daycell.style.background = config.macros.calendar.holidaybg;
-        }
-        if(window.findTiddlersWithReminders == null) {
-          var link = createTiddlyLink(daycell, title, false);
-          link.appendChild(document.createTextNode(day));
-        } else {
-          var button = createTiddlyButton(daycell, day, title, onClickCalendarDate);
-        }
-      }
-    }
-    day++;
-  }
-}
-//}}}
-
-// //We've clicked on a day in a calendar - create a suitable pop-up of options.
-// //The pop-up should contain:
-// // * a link to create a new entry for that date
-// // * a link to create a new reminder for that date
-// // * an &lt;hr&gt;
-// // * the list of reminders for that date
-//{{{
-function onClickCalendarDate(e)
-{
-  var button = this;
-  var date = button.getAttribute(&quot;title&quot;);
-  var dat = new Date(date.substr(6,4), date.substr(3,2)-1, date.substr(0, 2));
-
-  date = dat.formatString(config.macros.calendar.tiddlerformat);
-  var popup = createTiddlerPopup(this);
-  popup.appendChild(document.createTextNode(date));
-  var newReminder = function() {
-    var t = store.getTiddlers(date);
-    displayTiddler(null, date, 2, null, null, false, false);
-    if(t) {
-      document.getElementById(&quot;editorBody&quot; + date).value += &quot;\n&lt;&lt;reminder day:&quot; + dat.getDate() +
-                                                                                         &quot; month:&quot; + (dat.getMonth()+1) +
-                                                                                         &quot; year:&quot; + (dat.getYear()+1900) + &quot; title: &gt;&gt;&quot;;
-    } else {
-      document.getElementById(&quot;editorBody&quot; + date).value = &quot;&lt;&lt;reminder day:&quot; + dat.getDate() +
-                                                                                       &quot; month:&quot; + (dat.getMonth()+1) +
-                                                                                       &quot; year:&quot; + (dat.getYear()+1900) + &quot; title: &gt;&gt;&quot;;
-    }
-  };
-  var link = createTiddlyButton(popup, &quot;New reminder&quot;, null, newReminder); 
-  popup.appendChild(document.createElement(&quot;hr&quot;));
-
-  var t = findTiddlersWithReminders(dat, [0,14], null, 1);
-  for(var i = 0; i &lt; t.length; i++) {
-    link = createTiddlyLink(popup, t[i].tiddler, false);
-    link.appendChild(document.createTextNode(t[i].tiddler));
-  }
-}
-//}}}
-
-//{{{
-function calendarMaxDays(year, mon)
-{
- var max = config.macros.calendar.monthdays[mon];
- if(mon == 1 &amp;&amp; (year % 4) == 0 &amp;&amp; ((year % 100) != 0 || (year % 400) == 0)) {
- max++;
- }
- return max;
-}
-//}}}
-
-//{{{
-function createCalendarDayRows(cal, year, mon)
-{
- var row = createTiddlyElement(cal, &quot;tr&quot;, null, null, null);
-
- var first1 = (new Date(year, mon, 1)).getDay() -1 - (config.options.txtCalFirstDay-0);
- if(first1 &lt; 0) first1 = first1 + 7;
- var day1 = -first1 + 1;
- var first2 = (new Date(year, mon+1, 1)).getDay() -1 - (config.options.txtCalFirstDay-0);
- if(first2 &lt; 0) first2 = first2 + 7;
- var day2 = -first2 + 1;
- var first3 = (new Date(year, mon+2, 1)).getDay() -1 - (config.options.txtCalFirstDay-0);
- if(first3 &lt; 0) first3 = first3 + 7;
- var day3 = -first3 + 1;
-
- var max1 = calendarMaxDays(year, mon);
- var max2 = calendarMaxDays(year, mon+1);
- var max3 = calendarMaxDays(year, mon+2);
-
- while(day1 &lt;= max1 || day2 &lt;= max2 || day3 &lt;= max3) {
- row = createTiddlyElement(cal, &quot;tr&quot;, null, null, null);
- createCalendarDays(row, 0, day1, max1, year, mon); day1 += 7;
- createCalendarDays(row, 0, day2, max2, year, mon+1); day2 += 7;
- createCalendarDays(row, 0, day3, max3, year, mon+2); day3 += 7;
- }
-}
-//}}}
-
-//{{{
-function createCalendarDayRowsSingle(cal, year, mon)
-{
- var row = createTiddlyElement(cal, &quot;tr&quot;, null, null, null);
-
- var first1 = (new Date(year, mon, 1)).getDay() -1 - (config.options.txtCalFirstDay-0);
- if(first1 &lt; 0) first1 = first1+ 7;
- var day1 = -first1 + 1;
- var max1 = calendarMaxDays(year, mon);
-
- while(day1 &lt;= max1) {
- row = createTiddlyElement(cal, &quot;tr&quot;, null, null, null);
- createCalendarDays(row, 0, day1, max1, year, mon); day1 += 7;
- }
-}
-//}}}
-
-// //ELS 2005.10.30: added styles
-//{{{
-setStylesheet(&quot;.calendar, .calendar table, .calendar th, .calendar tr, .calendar td { font-size:10pt; text-align:center; } .calendar, .calendar a { margin:0px !important; padding:0px !important; }&quot;, &quot;calendarStyles&quot;);
-//}}}
-</pre>
-</div>
-<div title="ColorPalette" modifier="$owner$" modified="200704281511" created="200702041744" tags="systemTiddler excludeLists excludeSearch" date="200702041744" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200704281511">
-<pre>Background: #fff
-Foreground: #333
-PrimaryPale: #FFBFBF
-PrimaryLight: #BF2323
-PrimaryMid: #BF2323
-PrimaryDark: #660000
-SecondaryPale: #ffc
-SecondaryLight: #fe8
-SecondaryMid: #db4
-SecondaryDark: #841
-TertiaryPale: #eee
-TertiaryLight: #ccc
-TertiaryMid: #999
-TertiaryDark: #666
-Error: #ff0000
-&lt;&lt;viewPalette&gt;&gt;</pre>
-</div>
-<div title="Command" modifier="BidiX" created="200705011953" tags="systemList" date="200705011953" changecount="1">
-<pre></pre>
-</div>
-<div title="CommunStyleSheet" modifier="BidiX" modified="200705071605" created="200702041717" tags="systemTiddler excludeLists excludeSearch" date="200702041717" anon="undefined" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200704281508" changecount="5">
-<pre>/*{{{*/
-
-body {
- background:[[ColorPalette::Background]];
- margin:0 auto;
- font-size: 85%;
- color: [[ColorPalette::Foreground]];
- position: relative;
- font-family: Helvetica, Arial, sans-serif; 
-}
-
-
-h1,h2,h3,h4,h5 {
- font-weight: normal;
- padding-left: 0;
- color: [[ColorPalette::TertiaryDark]];
- background: transparent;
-}
-
-h1 {font-size: 1.5em; font-weight: normal;}
-h2 {font-size: 1.3em;}
-h3 {font-size: 1.1em;}
-h4 {font-size: 1em;}
-h5 {font-size: .9em;}
-
-
-ul, ul ul, ul ul ul {
-list-style-image: url(http://tiddlyhome.bidix.info/lib/square.gif) ;
-}
-
-a { 
- color: [[ColorPalette::PrimaryMid]]; 
-}
-
-a:hover {
- color: [[ColorPalette::PrimaryMid]]; 
- background:transparent; 
- border-bottom:1px solid [[ColorPalette::PrimaryMid]]; 
-}
-
-.button {
- color: [[ColorPalette::PrimaryMid]]; 
- font-weight:bold; 
-}
-
-#header {
- background: [[ColorPalette::Background]];
- }
-
-
-.siteTitle {
- padding: 1em 0 0 0;
- font-weight: normal;
- font-size: 3em;
- color: [[ColorPalette::TertiaryDark]] ; 
-}
-
-.siteSubtitle {
- width: 30em;
- padding: 0.3em 0em 0.2em 1em; 
- font-weight: bold;
- font-size: 1em;
- background: [[ColorPalette::PrimaryMid]]; 
- color: [[ColorPalette::Background]]; 
-}
-
-
-#displayArea {
- margin-left:0.5em; 
- margin-right:19.3em; 
- margin-top:3em; 
- padding-top:0em; 
- padding-bottom:10px;
- padding-left: 1em;
-}
-
-/*}}}*/
-
-
-/***
-!!viewer
-***/
-/*{{{*/
-.title { 
- font-size: 1.5em; 
- font-weight: normal;
- color: [[ColorPalette::TertiaryDark]]; 
- background:transparent; 
- margin: 0; 
- margin-bottom: .5em;
- padding:0;
-}
-
-.viewer {
- line-height:1.5em; 
- }
-
-.tiddler {
- padding:0;
- margin:0;
- padding-bottom:0.5em;
-}
-
-.externalLink {font-weight:bold;}
-.externalLink:hover {border:none;}
-
-/*}}}*/
-
-/*{{{*/
-
-#topMenu { 
- positon:relative; float:right; display:inline; 
- margin-left:3em; 
- margin-top:1em;
- padding: 0.8em 0em;
-}
-
-#topMenu br {display:none; }
-#topMenu a, #topMenu .tiddlyLink, #topMenu .button {
- margin:0 1em; 
- color: [[ColorPalette::Foreground]];
- margin-right:0;
- margin-left:2em; 
- font-size: 18px; 
- font-family: Helvetica, sans-serif;
- font-weight: normal;
- font-style: normal;
-
-
-}
-#topMenu a:hover, #topMenu .activebutton {
- border-bottom:5px 
- solid [[ColorPalette::PrimaryMid]];
-}
-
-.calendar, .calendar table, .calendar th, .calendar tr, .calendar td { font-size:12pt; text-align:center; } .calendar, .calendar a { margin:0px !important; padding:0px !important; }
-
-
-/*}}}*/
-
-/*{{{*/
-
-
-@media print {
-#topMenu {display: none ! important;}
-}
-
-/*}}}*/
-
-
-</pre>
-</div>
-<div title="ConfigSettings" modifier="system" created="200703261014" tags="systemConfig excludeLists excludeSearch" date="200701161252" anon="undefined" server.page.version="200703261014" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703261014">
-<pre>/*{{{*/
-config.options.chkAnimate = false;
-config.options.chkSinglePageMode = true;
-config.options.chkTopOfPageMode = false;
-config.options.chkOpenInNewWindow = true;
-config.options.chkSaveEmptyTemplate = false;
-config.options.chkHttpReadOnly= true; //override in paramifier for editing
-readOnly = true;
-config.options.chkGenerateAnRssFeed=false;
-config.options.txtBackupFolder=(config.browser.isIE ? &quot;&quot;:&quot;backup&quot;);
-config.options.txtUserName='Bruno';
-//config.views.wikified.defaultText= &quot;{{heavy{\nThe page '%0' doesn't exist.\n\n Go [[Home|About]] and try browsing for what you were looking for.\n}}}&quot;;
-/*}}}*/</pre>
-</div>
-<div title="DateCreatedPlugin" modifier="system" created="200703081017" tags="systemConfig excludeLists excludeSearch" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703081017">
-<pre>/*{{{*/
-
-TiddlyWiki.prototype.setValue_BidiX = TiddlyWiki.prototype.setValue;
-
-TiddlyWiki.prototype.setValue = function(tiddler, fieldName, value) {
-
-	if ((fieldName) &amp;&amp; (fieldName == 'date')) 
-		this.setValue_BidiX(tiddler, 'created', value);
-	else
-		this.setValue_BidiX(tiddler, fieldName, value);
-};
-
-TiddlyWiki.prototype.getValue_BidiX = TiddlyWiki.prototype.getValue ;
-
-TiddlyWiki.prototype.getValue = function(tiddler, fieldName) {
-	if ((fieldName) &amp;&amp; (fieldName == 'date')) {
-		if (!store.tiddlerExists(tiddler.title))
-			return (new Date()).convertToYYYYMMDDHHMM();
-		return this.getValue_BidiX(tiddler, 'created');
-	}
-	else
-		return this.getValue_BidiX(tiddler,fieldName);
-
-};
-
-Tiddler.prototype.getSubtitle = function()
-{
-// return (store.getValue(this,&quot;created&quot;)? (Date.convertFromYYYYMMDDHHMM(store.getValue(this,&quot;created&quot;)).formatString(&quot;0DD/0MM/YY&quot;)):&quot;&quot;);
- return this.created.formatString(&quot;0DD/0MM/YY&quot;) + &quot; - &quot; + this.title;
-}
-/*}}}*/</pre>
-</div>
-<div title="DefaultTiddlers" modifier="BidiX" created="200705011945" date="200705011945" changecount="1">
-<pre>GettingStarted</pre>
-</div>
-<div title="Docs" modifier="BidiX" modified="200705101344" created="200705101343" tags="systemList" date="200705101343" changecount="2">
-<pre></pre>
-</div>
-<div title="GenerateRssByTagPlugin" modifier="BidiX" modified="200705071658" created="200703052136" tags="systemConfig excludeLists excludeSearch" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200704210835" date="200703052136" changecount="1">
-<pre>/***
-|''Name:''|GenerateRssByTagPlugin|
-|''Description:''|Only tiddlers with a specific tag are inluded in the RSSFeed. If no tiddlers are selected then works as before. (see ticket #270: http://trac.tiddlywiki.org/tiddlywiki/ticket/270). &lt;br&gt;RssTag: &lt;&lt;option txtRssTag&gt;&gt;|
-|''Version:''|1.0.2|
-|''Date:''|Apr 20, 2007|
-|''Source:''|http://tiddlywiki.bidix.info/#GenerateRssByTagPlugin|
-|''Author:''|BidiX (BidiX (at) bidix (dot) info)|
-|''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
-|''~CoreVersion:''|2.2.0 (Beta 5)|
-***/
-//{{{
-version.extensions.GenerateRssByTagPlugin = {
-	major: 1, minor: 0, revision: 2, 
-	date: new Date(&quot;Apr 20, 2007&quot;),
-	source: 'http://tiddlywiki.bidix.info/#PasswordOptionPlugin',
-	author: 'BidiX (BidiX (at) bidix (dot) info',
-	coreVersion: '2.2.0 (Beta 5)'
-};
-
-if (!window.bidix) window.bidix = {}; // bidix namespace
-
-bidix.generateRssByTag = function()
-{
-	var s = [];
-	var d = new Date();
-	var u = store.getTiddlerText(&quot;SiteUrl&quot;);
-	// Assemble the header
-	s.push(&quot;&lt;&quot; + &quot;?xml version=\&quot;1.0\&quot;&quot; + &quot; encoding='UTF-8' &quot; + &quot;?&quot; + &quot;&gt;&quot;);
-	s.push(&quot;&lt;rss version=\&quot;2.0\&quot;&gt;&quot;);
-	s.push(&quot;&lt;channel&gt;&quot;);
-	s.push(&quot;&lt;title&quot; + &quot;&gt;&quot; + wikifyPlain(&quot;SiteTitle&quot;).htmlEncode() + &quot;&lt;/title&quot; + &quot;&gt;&quot;);
-	if(u)
-		s.push(&quot;&lt;link&gt;&quot; + u.htmlEncode() + &quot;&lt;/link&gt;&quot;);
-	s.push(&quot;&lt;description&gt;&quot; + wikifyPlain(&quot;SiteSubtitle&quot;).htmlEncode() + &quot;&lt;/description&gt;&quot;);
-	s.push(&quot;&lt;language&gt;en-us&lt;/language&gt;&quot;);
-	s.push(&quot;&lt;copyright&gt;Copyright &quot; + d.getFullYear() + &quot; &quot; + config.options.txtUserName.htmlEncode() + &quot;&lt;/copyright&gt;&quot;);
-	s.push(&quot;&lt;pubDate&gt;&quot; + d.toGMTString() + &quot;&lt;/pubDate&gt;&quot;);
-	s.push(&quot;&lt;lastBuildDate&gt;&quot; + d.toGMTString() + &quot;&lt;/lastBuildDate&gt;&quot;);
-	s.push(&quot;&lt;docs&gt;http://blogs.law.harvard.edu/tech/rss&lt;/docs&gt;&quot;);
-	s.push(&quot;&lt;generator&gt;TiddlyWiki &quot; + version.major + &quot;.&quot; + version.minor + &quot;.&quot; + version.revision + &quot;&lt;/generator&gt;&quot;);
-	// The body
-	var tiddlers;
-	if (config.options.txtRssTag &amp;&amp; store.getTaggedTiddlers(config.options.txtRssTag).length &gt; 0)
-		tiddlers = store.getTaggedTiddlers(config.options.txtRssTag,&quot;modified&quot;);
-	else
-		tiddlers = store.getTiddlers(&quot;modified&quot;,&quot;excludeLists&quot;);
-	var n = config.numRssItems &gt; tiddlers.length ? 0 : tiddlers.length-config.numRssItems;
-	for (var t=tiddlers.length-1; t&gt;=n; t--)
-		s.push(tiddlers[t].saveToRss(u));
-	// And footer
-	s.push(&quot;&lt;/channel&gt;&quot;);
-	s.push(&quot;&lt;/rss&gt;&quot;);
-	// Save it all
-	return s.join(&quot;\n&quot;);
-};
-
-//
-// Initializations
-//
-bidix.generateRss = generateRss; // backup core version
-generateRss = bidix.generateRssByTag; // install new one
-config.options.txtRssTag = &quot;toRSS&quot;; // default RssTag. use &lt;&lt;option txtRssTag&gt;&gt; to overwritte
-merge(config.optionsDesc,{txtRssTag: &quot;Only tiddlers with this tag will be included in the RSS Feed.&quot;});
-//}}}</pre>
-</div>
-<div title="GettingStarted" modifier="BidiX" modified="200705152128" created="200704011741" tags="systemTool" date="200704011741" changecount="22" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html">
-<pre>This site provides commands usefull for TiddlyHome administation:
-&lt;&lt;tagging Command&gt;&gt;
-See &lt;&lt;tag Docs&gt;&gt; for documentation.
-</pre>
-</div>
-<div title="Help" modifier="BidiX" modified="200705152111" created="200703170907" tags="basicContent EN" date="200703170907" changecount="3">
-<pre>!!How to navigate
-*TopMenu
-**GettingStarted : Entry point
-**&lt;&lt;tag Command&gt;&gt; : TiddlyHome Command Menu
-**&lt;&lt;tag Docs&gt;&gt; : Documentation (Hope there is some ;)
-**&lt;&lt;tag About&gt;&gt;: some generic items
-*MainMenu
-**&lt;&lt;search&gt;&gt; : Incremental search in articles
-**[[Help]] : This article.
-**&lt;&lt;author&gt;&gt; : Switch between ''Autor Mode'' and ''Presentation Mode''.
-!!Stay tuned
-&lt;&lt;tiddler [[Stay Tuned]]&gt;&gt;</pre>
-</div>
-<div title="HideWhenPlugin" modifier="system" created="200701161719" tags="systemConfig excludeLists excludeSearch" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200701161719">
-<pre>/***
-| Name|HideWhenPlugin|
-| Description|Allows conditional inclusion/exclusion in templates|
-| Version|3.0 ($Rev: 1845 $)|
-| Date|$Date: 2007-03-16 15:19:22 +1000 (Fri, 16 Mar 2007) $|
-| Source|http://mptw.tiddlyspot.com/#HideWhenPlugin|
-| Author|Simon Baird &lt;simon.baird@gmail.com&gt;|
-| License|http://mptw.tiddlyspot.com/#TheBSDLicense|
-For use in ViewTemplate and EditTemplate. Example usage:
-{{{&lt;div macro=&quot;showWhenTagged Task&quot;&gt;[[TaskToolbar]]&lt;/div&gt;}}}
-{{{&lt;div macro=&quot;showWhen tiddler.modifier == 'BartSimpson'&quot;&gt;&lt;img src=&quot;bart.gif&quot;/&gt;&lt;/div&gt;}}}
-***/
-//{{{
-
-window.removeElementWhen = function(test,place) {
-	if (test) {
-		removeChildren(place);
-		place.parentNode.removeChild(place);
-	}
-};
-
-merge(config.macros,{
-
-	hideWhen: { handler: function(place,macroName,params,wikifier,paramString,tiddler) {
-		removeElementWhen( eval(paramString), place);
-	}},
-
-	showWhen: { handler: function(place,macroName,params,wikifier,paramString,tiddler) {
-		removeElementWhen( !eval(paramString), place);
-	}},
-
-	hideWhenTagged: { handler: function (place,macroName,params,wikifier,paramString,tiddler) {
-		removeElementWhen( tiddler.tags.containsAll(params), place);
-	}},
-
-	showWhenTagged: { handler: function (place,macroName,params,wikifier,paramString,tiddler) {
-		removeElementWhen( !tiddler.tags.containsAll(params), place);
-	}},
-
-	hideWhenTaggedAny: { handler: function (place,macroName,params,wikifier,paramString,tiddler) {
-		removeElementWhen( tiddler.tags.containsAny(params), place);
-	}},
-
-	showWhenTaggedAny: { handler: function (place,macroName,params,wikifier,paramString,tiddler) {
-		removeElementWhen( !tiddler.tags.containsAny(params), place);
-	}},
-
-	hideWhenTaggedAll: { handler: function (place,macroName,params,wikifier,paramString,tiddler) {
-		removeElementWhen( tiddler.tags.containsAll(params), place);
-	}},
-
-	showWhenTaggedAll: { handler: function (place,macroName,params,wikifier,paramString,tiddler) {
-		removeElementWhen( !tiddler.tags.containsAll(params), place);
-	}},
-
-	hideWhenExists: { handler: function(place,macroName,params,wikifier,paramString,tiddler) {
-		removeElementWhen( store.tiddlerExists(params[0]) || store.isShadowTiddler(params[0]), place);
-	}},
-
-	showWhenExists: { handler: function(place,macroName,params,wikifier,paramString,tiddler) {
-		removeElementWhen( !(store.tiddlerExists(params[0]) || store.isShadowTiddler(params[0])), place);
-	}}
-
-});
-
-//}}}
-
-</pre>
-</div>
-<div title="HttpGetMacro" modifier="system" modified="200703202153" created="200703181427" tags="systemConfig excludeLists excludeSearch" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703202153">
-<pre>/***
-|''Name:''|HttpGetMacro|
-|''Description:''|Submit an HttpGet and display the response|
-|''Version:''|2.0.0|
-|''Date:''|Mar 18, 2007|
-|''Source:''|http://tiddlywiki.bidix.info/#HttpGetMacro|
-|''Author:''|BidiX (BidiX (at) bidix (dot) info)|
-|''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
-|''~CoreVersion:''|2.2.0|
-***/
-//{{{
-config.macros.HttpGet = {
-	cache: [], 	// url =&gt; responseText
-	messages: {
-		401: &quot;%0 unauthorized (HTTP status:401).&quot;,
-		403: &quot;%0 forbidden (HTTP status:403).&quot;,
-		404: &quot;%0 not found (HTTP status:404).&quot;,
-		405: &quot;Method not allowed to access %0 (HTTP status: 405).&quot;
-	},
-	
-	handler: function(place,macroName,params,wikifier,paramString,tiddler){
-		var url = params[0];
-		var format = params[1];
-		wikify(&quot;^^&lt;&lt;HttpGetUpdate &quot;+url+&quot; [[&quot; + tiddler.title + &quot;]]&gt;&gt;^^\n&quot;,place);
-		var div = createTiddlyElement(place, &quot;div&quot;, &quot;HttpGet&quot;);
-		if (this.cache[url]) {
-			this.display(this.cache[url], format, div);
-					}
-		else {
-			this.get(url, format, div);
-		}
-	},
-	
-	get: function(url, format, place) {
-		var params = {
-				format: format,
-				place:	place
-				};
-		var r = loadRemoteFile(url,config.macros.HttpGet.display,params);
-		if (typeof r == &quot;string&quot;)
-			displayMessage(r);
-		return r;
-	},
-	
-	display: function(status,params,responseText,url,xhr) {
-		if (status) {
-	 		if (params['format'] == 'html') {
-				wikify(&quot;&lt;html&gt;&quot;+responseText+&quot;&lt;/html&gt;&quot;, params['place']);
-			}
-			else { //text
-				wikify(responseText, params['place']);			
-			}
-		} else {
-			if (config.macros.HttpGet.messages[xhr.status])
-				displayMessage(config.macros.HttpGet.messages[xhr.status].format([url]));
-			else
-				displayMessage(&quot;HTTP Error &quot; + xhr.status + &quot; in accessing &quot; + url);
-		}
-		
-	}
-
-};
-
-config.macros.HttpGetUpdate = {
-	label: &quot;Update&quot;,
-	prompt: &quot;Clear the cache and redisplay this tiddler&quot;,
-	handler: function(place,macroName,params) {
-		var url = params[0];
-		var tiddlerTitle = params[1];
-		createTiddlyButton(place, this.label, this.prompt, 
-			function () {
-				if (config.macros.HttpGet.cache[url]) {
-					config.macros.rssReader.cache[url] = null; 
-			}
-			story.refreshTiddler(tiddlerTitle,null, true);
-		return false;});
-	}
-};
-//}}}</pre>
-</div>
-<div title="Initialize TiddlyHome" modifier="BidiX" created="200705152125" tags="TiddlyHome Command iframe" date="200705152125" changecount="2">
+<div title="Change site access" modifier="BidiX" modified="200705192200" created="200705181712" tags="TiddlyHomePackage Commands Site" changecount="1">
 <pre>&lt;html&gt;
-&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=init.php width=100% height=300px&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/site.php?next=change%20access&quot; width=100% height=200px&gt;
 &lt;/iframe&gt;
 &lt;/html&gt;</pre>
 </div>
-<div title="IsDirty" modifier="200703260000" created="200704281252" tags="excludeLists excludeSearch" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200704281252">
-<pre> * </pre>
-</div>
-<div title="IsDirtyPlugin" modifier="system" modified="200703202203" created="200703132048" tags="systemConfig excludeLists excludeSearch" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703202203">
-<pre>/***
-|''Name:''|IsDirtyPlugin|
-|''Description:''|When the TiddlyWiki needs to be saved the tiddler named IsDirty contains ' * ' else it is empty. IsDirty tiddler is also appended in front of the browser page title.&lt;br&gt;Hint: Put it in front of your SiteTitle in your PageTemplate or in your MainMenu as an indicator.&lt;br&gt;For now IsDirty: &lt;&lt;tiddler IsDirty&gt;&gt;|
-|''Version:''|1.0.1|
-|''Date:''|Mar 20, 2007|
-|''Source:''|http://tiddlywiki.bidix.info/#IsDirtyPlugin|
-|''Author:''|BidiX (BidiX (at) bidix (dot) info)|
-|''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
-|''~CoreVersion:''|2.2.0|
-***/
-//{{{
-version.extensions.IsDirtyPlugin = {
-	major: 1, minor: 0, revision: 1, 
-	date: new Date(&quot;Mar 20, 2007&quot;),
-	source: 'http://tiddlywiki.bidix.info/#IsDirtyPlugin',
-	author: 'BidiX (BidiX (at) bidix (dot) info',
-	coreVersion: '2.2.0'
-};
-
-if (!window.bidix) window.bidix = {}; // bidix namespace
-if (!bidix.core) bidix.core = {};
-bidix.setDirty = TiddlyWiki.prototype.setDirty;
-bidix.initIsDirty = function()
-{
-	var tags = &quot;excludeLists excludeSearch&quot;;
-	var tiddler = store.getTiddler(&quot;IsDirty&quot;);
-	if (!tiddler) {
-		tiddler = new Tiddler(&quot;IsDirty&quot;);
-		//tiddler.set(title,text,modifier,modified,tags,created,fields)
-		tiddler.set(null,null,null,null,tags,null,null);
-		store.addTiddler(tiddler);
-	}
-	tiddler.set(null,&quot;&quot;,null,null,null,null,null);
-	return tiddler;
-};
-
-TiddlyWiki.prototype.setDirty = function(dirty)
-{
-	var indic = &quot; * &quot;;
-	var oldDirty = this.isDirty ();
-	bidix.setDirty.apply(this,arguments);
-	var tiddler = bidix.initIsDirty();
-	if (dirty)
-		tiddler.set(null,indic,null,null,null,null,null);
-	else
-		tiddler.set(null,&quot; &quot;,null,null,null,null,null);
-	story.refreshTiddler(tiddler.title);
-	store.notify(tiddler.title, true);	
-	refreshPageTitle();
-};
-
-bidix.refreshPageTitle = function()
-{
-	document.title = wikifyPlain(&quot;IsDirty&quot;) + wikifyPlain(&quot;SiteTitle&quot;) + &quot; - &quot; + wikifyPlain(&quot;SiteSubtitle&quot;);
-};
-
-bidix.core.refreshPageTitle = refreshPageTitle ;
-refreshPageTitle  = bidix.refreshPageTitle;
-bidix.initIsDirty();
-//}}}</pre>
-</div>
-<div title="License" modifier="BidiX" modified="200705090955" created="200705090928" tags="About" date="200705090928" changecount="3">
-<pre>&lt;&lt;tiddler BSDOpenSourceLicense&gt;&gt;</pre>
-</div>
-<div title="ListByTag" modifier="system" created="200611022300" tags="systemConfig excludeLists excludeSearch" date="200611022300" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200611022300">
-<pre>//{{{
-//thanks Simon!
-Array.prototype.tiddlerList = function(listFormat,max) {
-	var output = &quot;&quot;;
-	if (!listFormat) listFormat = &quot;'[[' + tiddler.title + ']] - ' + tiddler.created.formatString('0DD/0MM/YY') + ' - ' + tiddler.modifier + '\\n'&quot;;
-        if (!max) var max = this.length;
-	if (this.length &gt; 0 &amp;&amp; this[0] instanceof Tiddler) {
-		for (var i=0;i&lt;max;i++) {
-			var tiddler = this[i];
-			output += eval(listFormat);
-		}
-	}
-	return output;
-}
-
-// tag, sorted, listformat, max(0), noReverse(true)
-config.macros.listByTag = {};
-config.macros.listByTag.handler = function(place,macroName,params,wikifier,paramString,tiddler)
-{
-    	params[0]  = (params[0] ? params[0] : tiddler.title);
-    	var tiddlers = store.getTaggedTiddlers(params[0],params[1]);
-    	if (params[3] == 0) params[3] = null;
-    	if (! params[4])
-    	    	tiddlers = tiddlers.reverse();
- 	wikify(tiddlers.tiddlerList(params[2],params[3]),place,null,tiddler);
-};
-//}}}</pre>
-</div>
-<div title="LoadRemoteFileThroughProxy" modifier="system" modified="200703182155" created="200703172245" tags="systemConfig ProxyService excludeLists excludeSearch" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703182155">
-<pre>/***
-|''Name:''|LoadRemoteFileThroughProxy (previous LoadRemoteFileHijack)|
-|''Description:''|When the TiddlyWiki file is located on the web (view over http) the content of [[SiteProxy]] tiddler is added in front of the file url. If [[SiteProxy]] does not exist &quot;/proxy/&quot; is added. |
-|''Version:''|1.1.0|
-|''Date:''|mar 17, 2007|
-|''Source:''|http://tiddlywiki.bidix.info/#LoadRemoteFileHijack|
-|''Author:''|BidiX (BidiX (at) bidix (dot) info)|
-|''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
-|''~CoreVersion:''|2.2.0|
-***/
-//{{{
-version.extensions.LoadRemoteFileThroughProxy = {
- major: 1, minor: 1, revision: 0, 
- date: new Date(&quot;mar 17, 2007&quot;), 
- source: &quot;http://tiddlywiki.bidix.info/#LoadRemoteFileThroughProxy&quot;};
-
-if (!window.bidix) window.bidix = {}; // bidix namespace
-if (!bidix.core) bidix.core = {};
-
-bidix.core.loadRemoteFile = loadRemoteFile;
-loadRemoteFile = function(url,callback,params)
-{
- if ((document.location.toString().substr(0,4) == &quot;http&quot;) &amp;&amp; (url.substr(0,4) == &quot;http&quot;)){ 
- url = store.getTiddlerText(&quot;SiteProxy&quot;, &quot;/proxy/&quot;) + url;
- }
- return bidix.core.loadRemoteFile(url,callback,params);
-}
-//}}}
-</pre>
-</div>
-<div title="MainMenu" modifier="BidiX" modified="200705152114" created="200703211733" tags="systemTiddler excludeLists excludeSearch siteTiddler" date="200703211733" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703211733" changecount="6">
-<pre>&lt;&lt;search&gt;&gt;
-[[Index|News]]
-[[Start|GettingStarted]]
-
-----
-[[Help]]
-&lt;html&gt;&lt;a href=$url$download.php class='button'&gt;download&lt;/a&gt;&lt;/html&gt;
-&lt;&lt;tiddler IsDirty&gt;&gt;&lt;&lt;author&gt;&gt;
-----
-&lt;&lt;tiddler NewsWiki&gt;&gt;
-</pre>
-</div>
-<div title="Manage Sites" modifier="BidiX" modified="200705180848" created="200705152057" tags="TiddlyHome Admin iframe Command" date="200705152057" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" changecount="4">
+<div title="Change site group" modifier="BidiX" modified="200705192200" created="200705181730" tags="TiddlyHomePackage Commands Site" changecount="4">
 <pre>&lt;html&gt;
-&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;sites.php&quot; width=100% height=600px&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/site.php?next=change%20group&quot; width=100% height=200px&gt;
 &lt;/iframe&gt;
 &lt;/html&gt;</pre>
 </div>
-<div title="Manage Users" modifier="BidiX" modified="200705180828" created="200705152055" tags="TiddlyHome Admin iframe Command" date="200705152055" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" changecount="3">
+<div title="Change user email" modifier="BidiX" modified="200705191334" created="200705181755" tags="TiddlyHomePackage Commands User" changecount="5">
 <pre>&lt;html&gt;
-&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=users.php width=100% height=600px&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/user.php?next=change%20email&quot; width=100% height=200px&gt;
 &lt;/iframe&gt;
 &lt;/html&gt;</pre>
 </div>
-<div title="MarkupPreHead" modifier="$owner$" modified="200705010955" created="200705010917" tags="systemTiddler excludeLists excludeSearch" date="200705010917" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200705010955">
-<pre>&lt;!--{{{--&gt;
-&lt;link rel='alternate' type='application/rss+xml' title='RSS' href='index.xml'/&gt;
-&lt;link rel=&quot;shortcut icon&quot; href=&quot;lib/favicon.ico&quot; type=&quot;image/vnd.microsoft.icon&quot; /&gt;
-&lt;link rel=&quot;icon&quot; href=&quot;lib/favicon.ico&quot; type=&quot;image/vnd.microsoft.icon&quot; /&gt; 
-&lt;!--}}}--&gt;</pre>
+<div title="Change user password" modifier="BidiX" modified="200705181955" created="200705181953" tags="TiddlyHomePackage Commands User" changecount="1">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/user.php?next=change%20password&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
 </div>
-<div title="News" modifier="system" created="200704032024" tags="systemList excludeLists excludeSearch" date="200704032024" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200704032024">
-<pre></pre>
+<div title="Commands" modifier="BidiX" modified="200705191357" created="200705191345" tags="TiddlyHomePackage">
+<pre>Tags all TiddlyHome commands. 
+
+There are commands for :
+* &lt;&lt;tag User&gt;&gt;
+* &lt;&lt;tag Site&gt;&gt;</pre>
 </div>
-<div title="NewsWiki" modifier="BidiX" modified="200705071633" created="200705011958" tags="basicContent" date="200705011958" changecount="5">
-<pre>Autor: BidiX
-Motor: TiddlyWiki</pre>
+<div title="Delete site" modifier="BidiX" modified="200705192200" created="200705181743" tags="TiddlyHomePackage Commands Site" changecount="1">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/site.php?next=delete&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
 </div>
-<div title="PageTemplate" modifier="system" created="200702041212" tags="systemTiddler excludeLists excludeSearch" date="200702041212" anon="undefined" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200702041212">
-<pre>&lt;!--{{{--&gt;
-&lt;div id='page'&gt;
-&lt;div id='header' class='header'&gt;
- &lt;div id='topMenu' refresh='content' tiddler='TopMenu'&gt;&lt;/div&gt; 
- &lt;div id='title'&gt;
- &lt;div class='siteTitle' refresh='content' tiddler='SiteTitle'&gt;&lt;/div&gt;
- &lt;div class='siteSubtitle' refresh='content' tiddler='SiteSubtitle'&gt;&lt;/div&gt;
- &lt;/div&gt;
- &lt;/div&gt;
-&lt;div id='sidebar'&gt;
- &lt;div id='sidebarOptions' refresh='content' tiddler='MainMenu'&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id='displayArea'&gt;
- &lt;div id='messageArea'&gt;&lt;/div&gt;
- &lt;div id='tiddlerDisplay'&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;!--}}}--&gt;
-</pre>
+<div title="Delete user" modifier="BidiX" modified="200705191341" created="200705181958" tags="TiddlyHomePackage Commands User" changecount="2">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/user.php?next=delete&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
 </div>
-<div title="PasswordOptionPlugin" modifier="system" modified="200704210834" created="200701172059" tags="systemConfig excludeLists excludeSearch" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200704210834">
+<div title="Display site" modifier="BidiX" modified="200705192201" created="200705181733" tags="TiddlyHomePackage Commands Site" changecount="5">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/site.php?next=display&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="Display user" modifier="BidiX" created="200705181951" tags="TiddlyHomePackage Commands User" changecount="2">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/user.php?next=display&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="New site" modifier="BidiX" modified="200705192201" created="200705182000" tags="TiddlyHomePackage Commands Site" changecount="5">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/site.php?next=new&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="New user" modifier="BidiX" created="200705181957" tags="TiddlyHomePackage Commands User" changecount="1">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/user.php?next=new&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="PasswordOptionPlugin" modifier="BidiX" modified="200704210834" created="200701172059" tags="systemConfig" changecount="2">
 <pre>/***
 |''Name:''|PasswordOptionPlugin|
 |''Description:''|Extends TiddlyWiki options with non encrypted password option.|
@@ -1778,370 +649,23 @@ merge(config.optionsDesc,{
 */
 //}}}</pre>
 </div>
-<div title="PresentationPlugin" modifier="BidiX" modified="200705071613" created="200701151119" tags="systemConfig excludeLists excludeSearch" date="200701151119" anon="undefined" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200701151119" changecount="1">
-<pre>//{{{
-TiddlyWiki.prototype.removeNotification = function(title,fn) {
- for (var i=0;i&lt;this.namedNotifications.length;i++)
- if((this.namedNotifications[i].name == title) &amp;&amp; (this.namedNotifications[i].notify == fn))
- this.namedNotifications.splice(i,1);
-}
- 
-TiddlyWiki.prototype.isTiddler= function (title)
- {return store.tiddlerExists(title) || store.isShadowTiddler(title)}
-
-Story.prototype.lewcidrefreshAllTiddlers = function()
-{
- var place = document.getElementById(this.container);
- var e = place.firstChild;
- if(!e) return;
- this.refreshTiddler(e.getAttribute(&quot;tiddler&quot;),null,true);
- while((e = e.nextSibling) != null)
- this.refreshTiddler(e.getAttribute(&quot;tiddler&quot;),null,true);
-}
-
-config.presentationPlugin ={
-};
-
-config.presentationPlugin.defaults = [
- {name: &quot;StyleSheet&quot;, notify: refreshStyles},
- {name: &quot;PageTemplate&quot;, notify: refreshPageTemplate}
- ];
-
-window.presentationMode='';
-
-function applyPresentationMode (oldMode,Mode)
-{
- presentationMode = Mode;
- var defaults = config.presentationPlugin.defaults;
- var oldStyleElement = document.getElementById(oldMode+&quot;StyleSheet&quot;);
- if (oldStyleElement)
- {
- oldStyleElement.parentNode.removeChild(oldStyleElement);
- }
- 	// BidiX: change httpReadOnly and backstage display
-	if (backstage &amp;&amp; !backstage.button)
-		backstage.init();
-	if (backstage &amp;&amp; backstage.button) {
-		if (Mode == &quot;Author&quot;) {
-			backstage.button.style.display = &quot;block&quot;;
-			readOnly = false;
-			}
-		else {
-			backstage.button.style.display = &quot;none&quot;;
-			readOnly = true;
-			}
-		}
- for (var i=0; i&lt;defaults.length; i++)
- {
- var def = defaults[i][&quot;name&quot;];
- var newMode = store.isTiddler(Mode + def)? Mode + def : def;
- store.removeNotification(oldMode + def, defaults[i][&quot;notify&quot;]);
- store.addNotification(newMode,defaults[i][&quot;notify&quot;]);
- store.notify(newMode); //just one do blanket notify instead?
- }
-	
- story.lewcidrefreshAllTiddlers();
-}
-
-config.macros.author={};
-config.macros.author.handler= function (place,macroName,params,wikifier,paramString,tiddler) {
- var e = createTiddlyElement(place,&quot;span&quot;);
- e.setAttribute(&quot;refresh&quot;,&quot;macro&quot;);
- e.setAttribute(&quot;macroName&quot;,&quot;author&quot;);
- e.setAttribute(&quot;params&quot;,paramString);
- this.refresh(e,paramString);
-}
-
-config.macros.author.refresh = function(place,params){
-// if (window.lewcideditmode== false)
-// return false;
- removeChildren(place);
- var oldMode = window.presentationMode;
- var newMode = (oldMode == &quot;Author&quot;)?&quot;&quot;:&quot;Author&quot;;
- var label = (oldMode == &quot;Author&quot;)? &quot;Presentation Mode&quot;:&quot;Author Mode&quot;;
- var tooltip = label;
- createTiddlyButton(place,label,tooltip,function() {
- applyPresentationMode(oldMode,newMode);
- });
-};
-
-Story.prototype.chooseTemplateForTiddler_old_presentation = Story.prototype.chooseTemplateForTiddler;
-
-Story.prototype.chooseTemplateForTiddler = function(title,template)
-{
- if (!template)
- template = DEFAULT_VIEW_TEMPLATE;
- var mode = presentationMode;
- if (template == DEFAULT_VIEW_TEMPLATE)
- {
- if (store.isTiddler(mode+&quot;ViewTemplate&quot;))
- return mode+&quot;ViewTemplate&quot;;
- }
- else if (template == DEFAULT_EDIT_TEMPLATE)
- {
- if (store.isTiddler(mode+&quot;EditTemplate&quot;))
- return mode+&quot;EditTemplate&quot;;
- }
- return this.chooseTemplateForTiddler_old_presentation(title,template);
-}
-
-function loadScripts()
-{
- var scripts = store.getTiddlerText(&quot;AuthorScripts&quot;).readBracketedList();
- for (var i=0; i&lt;scripts.length;i++)
- {
- var script = document.createElement(&quot;script&quot;); script.src = scripts[i];
- document.body.appendChild(script);
- document.body.removeChild(script);
- }
-}
-
-window.lewcideditmode = false;
-config.paramifiers.author = {
- onstart: function(v) {
- if (v!=&quot;true&quot;)
- return false;
- window.lewcideditmode = true;
- loadScripts();
- applyPresentationMode(&quot;&quot;,&quot;Author&quot;);
- if (config.options.chkSinglePageMode)
- config.options.chkSinglePageMode = false;
- config.options.chkHttpReadOnly=false;
- }
-};
-//}}}</pre>
+<div title="Site" modifier="BidiX" modified="200705191401" created="200705191347" tags="Commands TiddlyHomePackage" changecount="2">
+<pre>Tags Commands to manage a TiddlyHome Site</pre>
 </div>
-<div title="PresentationStyleSheet" modifier="BidiX" modified="200705071606" created="200702041723" tags="systemTiddler excludeLists excludeSearch" date="200702041723" anon="undefined" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200702041723" changecount="1">
-<pre>/*{{{*/
-/*
-body {
-	background-color: [[ColorPalette::TertiaryLight]];
-}
-*/
-#page { 
-	border-left: 1px solid [[ColorPalette::TertiaryLight]]; 
-	padding: 0 30px 0 30px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 0px;
-	width: 70em;
-	position: relative;
-	text-align: left;
-	background-color: [[ColorPalette::Background]];
-	color: [[ColorPalette::Foreground]];
- 
-}
+<div title="TiddlyHomePackage" modifier="BidiX" modified="200705191403" created="200705191352" changecount="1">
+<pre>Tags all ressources usefull for a TiddlyHome site.
 
-/*}}}*/
-
-
-/***
-!!Sidebar
-***/
-/*{{{*/
-
-#sidebar {
- position:absolute; 
- width: 16em;
- border-left:1px solid [[ColorPalette::TertiaryLight]]; 
- padding-left:15px;
- margin-top:0.5em; 
- width: 16em;
- font-size:1em;
- line-height:1.5em; 
- font-family: Arial,em sans-serif; 
- background-color: [[ColorPalette::Background]];
-}
-
-#sidebar a {
- display: inline;
- font-weight: normal;
-}
-
-#sidebar h1,#sidebar h2,#sidebar h3,#sidebar h4,#sidebar h5 {
- font-weight: normal;
- margin-bottom:0em;
-}
-
-
-#sidebar h1 {
- margin-left:-0.5em; 
- margin-bottom:0em;
-}
-
-#sidebarOptions hr {
- border:0; 
- border-bottom:1px solid [[ColorPalette::TertiaryLight]]; 
- margin: 1em 0; 
- margin-left:-0.5em;
-}
-
-/*}}}*/
-
+TiddlyHome provides also ShadowedTiddlers that can be overwritten :
+* TiddlyHomeParameters
+* TiddlyHomeSidebar
 </pre>
 </div>
-<div title="PresentationTW" modifier="system" created="200704032054" tags="contentPublisher excludeLists excludeSearch" date="200704032054" anon="undefined" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200704032054">
-<pre>|''URL:''|http://TiddlyHome.bidix.info/template/presentation.html |
-|''Description:''|Repository for BidiX's TiddlyWiki Extensions|
-|''Author:''|BidiX|</pre>
+<div title="TiddlyHomeRessourcesServer" modifier="BidiX" modified="200705191411" created="200705191407" tags="TiddlyHomePackage systemServer" changecount="2">
+<pre>|URL:|$rootUrl$_th/templates/ressources.html|
+|Description| Repository for TiddlyHome ressources|
+|Author:|BidiX|</pre>
 </div>
-<div title="SideBarOptions" modifier="BidiX" modified="200705071631" created="200702041719" tags="systemTiddler excludeLists excludeSearch siteTiddler" date="200702041719" anon="undefined" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.version="200702041719" server.page.revision="200702041719" changecount="1">
-<pre>&lt;&lt;search&gt;&gt;&lt;&lt;author&gt;&gt;&lt;&lt;closeAll&gt;&gt;[[News]]&lt;&lt;permaview&gt;&gt;&lt;&lt;newTiddler tag:@classer tag:News &gt;&gt;&lt;&lt;newJournal title:'YYYY/0MM/0DD' label: &quot;new journal&quot; tag:Journal tag:excludeLists&gt;&gt;&lt;&lt;saveChanges&gt;&gt;&lt;&lt;tiddler TiddlyHomeSidebar&gt;&gt;&lt;&lt;slider chkSliderOptionsPanel OptionsPanel 'options »' 'Change TiddlyWiki advanced options'&gt;&gt;</pre>
-</div>
-<div title="SinglePageModePlugin" modifier="system" created="200512271815" tags="systemConfig excludeLists excludeSearch" date="200512271815" anon="undefined" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200512271815">
-<pre>/***
-|Name|SinglePageModePlugin|
-|Source|http://www.TiddlyTools.com/#SinglePageModePlugin|
-|Version|2.2.3|
-|Author|Eric Shulman - ELS Design Studios|
-|License|http://www.TiddlyTools.com/#LegalStatements &lt;&lt;br&gt;&gt;and [[Creative Commons Attribution-ShareAlike 2.5 License|http://creativecommons.org/licenses/by-sa/2.5/]]|
-|~CoreVersion|2.1|
-|Type|plugin|
-|Requires||
-|Overrides|Story.prototype.displayTiddler(), Story.prototype.displayTiddlers()|
-|Description|Display tiddlers one at a time with automatic update of URL (permalink).  Also, option to always open tiddlers at top of page|
-
-Normally, as you click on the links in TiddlyWiki, more and more tiddlers are displayed on the page. The order of this tiddler display depends upon when and where you have clicked. Some people like this non-linear method of reading the document, while others have reported that when many tiddlers have been opened, it can get somewhat confusing.
-
-!!!!!Usage
-&lt;&lt;&lt;
-SinglePageMode allows you to configure TiddlyWiki to navigate more like a traditional multipage web site with only one item displayed at a time.  When SinglePageMode is enabled, the title of the current tiddler is automatically displayed in the browser window's titlebar and the browser's location URL is updated with a 'permalink' for the current tiddler so that it is easier to create a browser 'bookmark' for the current tiddler.
-
-Even when SinglePageMode is disabled (i.e., displaying multiple tiddlers is permitted), you can reduce the potential for confusion by enable TopOfPageMode, which forces tiddlers to always open at the top of the page instead of being displayed following the tiddler containing the link that was clicked.
-&lt;&lt;&lt;
-!!!!!Configuration
-&lt;&lt;&lt;
-When installed, this plugin automatically adds checkboxes in the AdvancedOptions tiddler so you can enable/disable the plugin behavior.  For convenience, these checkboxes are also included here:
-
-&lt;&lt;option chkSinglePageMode&gt;&gt; Display one tiddler at a time
-&lt;&lt;option chkTopOfPageMode&gt;&gt; Always open tiddlers at the top of the page
-&lt;&lt;&lt;
-!!!!!Installation
-&lt;&lt;&lt;
-import (or copy/paste) the following tiddlers into your document:
-''SinglePageModePlugin'' (tagged with &lt;&lt;tag systemConfig&gt;&gt;)
-^^documentation and javascript for SinglePageMode handling^^
-
-When installed, this plugin automatically adds checkboxes in the ''shadow'' AdvancedOptions tiddler so you can enable/disable this behavior.  However, if you have customized your AdvancedOptions, you will need to ''manually add these checkboxes to your customized tiddler.''
-&lt;&lt;&lt;
-!!!!!Revision History
-&lt;&lt;&lt;
-''2007.02.06 [2.2.3]'' in Story.prototype.displayTiddler(), use convertUnicodeToUTF8() for correct I18N string handling when creating URL hash string from tiddler title (based on bug report from BidiX)
-''2007.01.08 [2.2.2]'' use apply() to invoke hijacked core functions
-''2006.07.04 [2.2.1]'' in hijack for displayTiddlers(), suspend TPM as well as SPM so that DefaultTiddlers displays in the correct order.
-''2006.06.01 [2.2.0]'' added chkTopOfPageMode (TPM) handling
-''2006.02.04 [2.1.1]'' moved global variable declarations to config.* to avoid FireFox 1.5.0.1 crash bug when assigning to globals
-''2005.12.27 [2.1.0]'' hijack displayTiddlers() so that SPM can be suspended during startup while displaying the DefaultTiddlers (or #hash list).  Also, corrected initialization for undefined SPM flag to &quot;false&quot;, so default behavior is to display multiple tiddlers
-''2005.12.27 [2.0.0]'' Update for TW2.0
-''2005.11.24 [1.1.2]'' When the back and forward buttons are used, the page now changes to match the URL.  Based on code added by Clint Checketts
-''2005.10.14 [1.1.1]'' permalink creation now calls encodeTiddlyLink() to handle tiddler titles with spaces in them
-''2005.10.14 [1.1.0]'' added automatic setting of window title and location bar ('auto-permalink').  feature suggestion by David Dickens.
-''2005.10.09 [1.0.1]'' combined documentation and code in a single tiddler
-''2005.08.15 [1.0.0]'' Initial Release
-&lt;&lt;&lt;
-!!!!!Credits
-&lt;&lt;&lt;
-This feature was developed by EricShulman from [[ELS Design Studios|http:/www.elsdesign.com]].
-Support for BACK/FORWARD buttons adapted from code developed by Clint Checketts
-&lt;&lt;&lt;
-!!!!!Code
-***/
-//{{{
-version.extensions.SinglePageMode= {major: 2, minor: 2, revision: 3, date: new Date(2007,2,6)};
-
-if (config.options.chkSinglePageMode==undefined) config.options.chkSinglePageMode=false;
-config.shadowTiddlers.AdvancedOptions += &quot;\n&lt;&lt;option chkSinglePageMode&gt;&gt; Display one tiddler at a time&quot;;
-
-if (config.options.chkTopOfPageMode==undefined) config.options.chkTopOfPageMode=false;
-config.shadowTiddlers.AdvancedOptions += &quot;\n&lt;&lt;option chkTopOfPageMode&gt;&gt; Always open tiddlers at the top of the page&quot;;
-
-config.SPMTimer = 0;
-config.lastURL = window.location.hash;
-function checkLastURL()
-{
-	if (!config.options.chkSinglePageMode)
-		{ window.clearInterval(config.SPMTimer); config.SPMTimer=0; return; }
-	if (config.lastURL == window.location.hash)
-		return;
-	// var tiddlerName = convertUTF8ToUnicode(decodeURI(window.location.hash.substr(1)));
-	var tiddlerName = decodeURI(window.location.hash.substr(1));
-	tiddlerName=tiddlerName.replace(/\[\[/,&quot;&quot;).replace(/\]\]/,&quot;&quot;); // strip any [[ ]] bracketing
-	if (tiddlerName.length) story.displayTiddler(null,tiddlerName,1,null,null);
-}
-
-if (Story.prototype.SPM_coreDisplayTiddler==undefined) Story.prototype.SPM_coreDisplayTiddler=Story.prototype.displayTiddler;
-Story.prototype.displayTiddler = function(srcElement,title,template,animate,slowly)
-{
-	if (config.options.chkSinglePageMode) {
-		// window.location.hash = encodeURIComponent(convertUnicodeToUTF8(String.encodeTiddlyLink(title)));
-		window.location.hash = encodeURIComponent(String.encodeTiddlyLink(title));
-		config.lastURL = window.location.hash;
-		document.title = wikifyPlain(&quot;IsDirty&quot;) + wikifyPlain(&quot;SiteTitle&quot;) + &quot; - &quot; + title;
-		story.closeAllTiddlers();
-		if (!config.SPMTimer) config.SPMTimer=window.setInterval(function() {checkLastURL();},1000);
-	}
-	if (config.options.chkTopOfPageMode) { story.closeTiddler(title); window.scrollTo(0,0); srcElement=null; }
-	this.SPM_coreDisplayTiddler.apply(this,arguments);
-}
-
-if (Story.prototype.SPM_coreDisplayTiddlers==undefined) Story.prototype.SPM_coreDisplayTiddlers=Story.prototype.displayTiddlers;
-Story.prototype.displayTiddlers = function(srcElement,titles,template,unused1,unused2,animate,slowly)
-{
-	// suspend single-page mode when displaying multiple tiddlers
-	var saveSPM=config.options.chkSinglePageMode; config.options.chkSinglePageMode=false;
-	var saveTPM=config.options.chkTopOfPageMode; config.options.chkTopOfPageMode=false;
-	this.SPM_coreDisplayTiddlers.apply(this,arguments);
-	config.options.chkSinglePageMode=saveSPM; config.options.chkTopOfPageMode=saveTPM;
-}
-//}}}</pre>
-</div>
-<div title="SiteSubtitle" modifier="BidiX" modified="200705152102" created="200705011649" tags="siteTiddler excludeLists excludeSearch" date="200705011649" changecount="17" anon="undefined">
-<pre>Administration commands for ~TiddlyHome</pre>
-</div>
-<div title="SiteTitle" modifier="BidiX" modified="200705152101" created="200705011647" tags="siteTiddler excludeLists excludeSearch" date="200705011647" changecount="13" anon="undefined">
-<pre>[img[http://TiddlyHome.bidix.info/lib/TiddlyHome.64.jpg]]&amp;nbsp;&amp;nbsp;&amp;nbsp;~TiddlyHome Admin</pre>
-</div>
-<div title="SiteUrl" modifier="BidiX" created="200705071653" tags="siteTiddler excludeLists excludeSearch" date="200705071652" changecount="1">
-<pre>http://tiddlyhome.bidix.info/</pre>
-</div>
-<div title="Source" modifier="BidiX" modified="200705091003" created="200705090958" tags="About" date="200705090958" changecount="2">
-<pre>!!TiddlyHome Project
-Home: http://code.google.com/p/bidix/
-Source: http://bidix.googlecode.com/svn/</pre>
-</div>
-<div title="Stay Tuned" modifier="BidiX" modified="200705071532" created="200705071456" tags="systemTool basicContent" date="200705071456" changecount="4">
-<pre>*RSS Feed [img[http://www.mozilla.org/images/feed-icon-14x14.png][http://tiddlyhome.bidix.info/index.xml]] : http://tiddlyhome.bidix.info/index.xml
-*[[News page|http://tiddlyhome.bidix.info/news.php]] : http://tiddlyhome.bidix.info/news.php
-*Email BidiX for information</pre>
-</div>
-<div title="StyleSheet" modifier="BidiX" modified="200705071141" created="200702041716" tags="systemTiddler excludeLists excludeSearch" date="200702041716" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200702041716" changecount="1">
-<pre>[[CommunStyleSheet]]
-[[PresentationStyleSheet]]</pre>
-</div>
-<div title="Tiddler Subtitle Tweak" modifier="system" created="200701161252" tags="systemConfig excludeLists excludeSearch" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200701161252">
-<pre>Tiddler.prototype.getSubtitle = function()
-{
- return(this.title);
-}</pre>
-</div>
-<div title="TiddlyHome" modifier="BidiX" modified="200705152100" created="200705071523" tags="News TiddlyHome toRSS About" date="200705071523" changecount="13">
-<pre>TiddlyHome is in alpha stage.
-
-TiddlyHome is a package design as an infrastructure for multi-user and multi-site TiddlyWiki hosting service. 
-
-The main fetaures are :
-*[[BSD open source license|BSDOpenSourceLicense]]
-*written in [[PHP]], no database
-*Based on [[UploadPlugin|http://tiddlywiki.bidix.info/#UploadPluginDoc]]
-*All User management in [[.htpasswd]]
-*All control access in [[.htaccess]]
-*All admin tasks from a dedicated TiddlyWiki
-*User Options and Site Options accessible from TiddlyWiki
-* and much more ...
-The next step will be :
-*GroupAuthoring support</pre>
-</div>
-<div title="TiddlyHomeSetupPlugin" modifier="BidiX" modified="200705071956" created="200703301137" tags="systemConfig TiddlyHome excludeLists excludeSearch" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200705011715" date="200703301137" changecount="7">
+<div title="TiddlyHomeSetupPlugin" modifier="BidiX" modified="200705191216" created="200703301137" tags="systemConfig TiddlyHomePackage" changecount="29">
 <pre>/***
 |''Name:''|TiddlyHomeSetupPlugin|
 |''Description:''|Check and setup all component|
@@ -2151,7 +675,7 @@ The next step will be :
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
 |''~CoreVersion:''|2.2.0|
-|''Requires:''|UploadPlugin |
+|''Requires:''|UploadToHomeMacro|
 ***/
 //{{{
 
@@ -2162,11 +686,6 @@ version.extensions.TiddlyHomeSetupPlugin = {
 	author: 'BidiX (BidiX (at) bidix (dot) info)',
 	coreVersion: '2.2.0'
 };
-config.tiddlyHome = {
-	user: &quot;BidiX&quot;,
-	site: &quot;TiddlyHome&quot;,
-	url: &quot;http://TiddlyHome.bidix.info/&quot;
-}
 
 if (!window.bidix) window.bidix = {}; // bidix namespace
 
@@ -2184,6 +703,15 @@ bidix.checkPlugin = function(plugin, major, minor, revision) {
 	}
 };
 
+bidix.getParamsFromTiddler = function(tiddlerTitle, sliceNames) {
+	tiddlerTitle = (tiddlerTitle ? tiddlerTitle:this.messages.homeParamsTiddler);
+	if (!store.tiddlerExists(tiddlerTitle) &amp;&amp; !store.isShadowTiddler(tiddlerTitle)) {
+		throw(config.macros.uploadToHome.messages.tiddlerNotFound.toString().format([tiddlerTitle]));
+	}
+	return sliceValues = store.getTiddlerSlices(tiddlerTitle,sliceNames);
+};
+
+
 bidix.initOption = function(name,value) {
 	if (!config.options[name])
 		config.options[name] = value;
@@ -2192,126 +720,83 @@ bidix.initOption = function(name,value) {
 bidix.checkPlugin('UploadPlugin',4,0,1);
 config.macros.upload.authenticateUser = false; // authentication check by .htaccess
 
-with (config.shadowTiddlers) {
-	SideBarOptions = SideBarOptions.replace(/(&lt;&lt;saveChanges&gt;&gt;)/,&quot;$1&lt;&lt;tiddler TiddlyHomeSidebar&gt;&gt;&quot;);
-}
+// default TiddlyHomeParameters in shadows
+// user can overide this
+merge(config.shadowTiddlers,{
+	'TiddlyHomeParameters':[
+		&quot;|user:|$owner$|&quot;,
+		&quot;|site:|$site$|&quot;,
+		&quot;|url:|$url$|&quot;,
+		&quot;|rootUrl:|$rootUrl$|&quot;
+	].join(&quot;\n&quot;)});
+// get config from TiddlyHomeParameters
+config.tiddlyHome = {};
+merge(config.tiddlyHome, bidix.getParamsFromTiddler('TiddlyHomeParameters',['user','site','url','rootUrl']));
+// add TiddlyHomeSidebar in SideBarOptions
+config.shadowTiddlers.SideBarOptions = config.shadowTiddlers.SideBarOptions.replace(/(&lt;&lt;saveChanges&gt;&gt;)/,
+	&quot;$1&lt;&lt;tiddler TiddlyHomeSidebar&gt;&gt;&quot;);
 
 merge(config.shadowTiddlers,{
-
-'TiddlyHomeSidebar':[
- &quot;&lt;&lt;upload &quot; + config.tiddlyHome.url + &quot;store.php&quot; + &quot;&gt;&gt;&lt;html&gt;&lt;a href=&quot; + config.tiddlyHome.url + &quot;download.php class='button'&gt;download&lt;/a&gt;&lt;/html&gt;&quot;
-].join(&quot;\n&quot;)
+	// link to favicon.ico
+	'MarkupPreHead':	[
+		&quot;&lt;!--{{{--&gt;&quot;,
+		&quot;&lt;link rel='alternate' type='application/rss+xml' title='RSS' href='index.xml'/&gt;&quot;,
+		&quot;&lt;link rel=\&quot;shortcut icon\&quot;href=\&quot;&quot; + 
+			config.tiddlyHome.rootUrl + 
+			&quot;_th/images/favicon.ico\&quot; type=\&quot;image/vnd.microsoft.icon\&quot; /&gt;&quot;,
+		&quot;&lt;link rel=\&quot;icon\&quot; href=\&quot;&quot; + 
+			config.tiddlyHome.rootUrl + 
+			&quot;_th/images/favicon.ico\&quot; type=\&quot;image/vnd.microsoft.icon\&quot; /&gt; &quot;,
+		&quot;&lt;!--}}}--&gt;&quot;
+	].join(&quot;\n&quot;),
+	// tweaks to UploadToHomeMacro parameters
+	'HomeParameters': [
+		&quot;|UploadUserName:||&quot;,
+		&quot;|UploadStoreUrl:|&quot; + config.tiddlyHome.url + &quot;store.php|&quot;,
+		&quot;|UploadDir:|.|&quot;,
+		&quot;|UploadFilename:|index.html|&quot;,
+		&quot;|UploadBackupDir:|backup|&quot;
+	].join(&quot;\n&quot;),
+	'TiddlyHomeSidebar':[
+ 		&quot;&lt;&lt;uploadToHome&gt;&gt;&lt;html&gt;&lt;a href=&quot; + 
+			config.tiddlyHome.url + &quot;download.php class='button'&gt;download&lt;/a&gt;&lt;/html&gt;&quot;
+			].join(&quot;\n&quot;)
 });
 
+// Options tweaks
 config.options.txtUserName = config.tiddlyHome.user;
+config.options.pasUploadPassword = '';
 config.options.txtBackupFolder = &quot;backup&quot;;
 config.options.chkSaveBackups = true;
 config.options.chkAutoSave = false;
 config.options.chkRegExpSearch = false;
 config.options.chkCaseSensitiveSearch = false;
-config.options.chkAnimate = false;
-config.options.txtRssTag = &quot;toRSS&quot;;
-config.options.chkGenerateAnRssFeed = true;
+//config.options.chkAnimate = false;
 
 
 //}}}
 </pre>
 </div>
-<div title="TiddlyHomeSidebar" modifier="BidiX" modified="200705180828" created="200705071951" tags="excludeLists excludeSearch" date="200705071951" changecount="6">
-<pre>&lt;&lt;upload store.php index.html backup . BidiX&gt;&gt;&lt;&lt;option pasUploadPassword&gt;&gt;&lt;html&gt;&lt;a href=http://TiddlyHome.bidix.info/home/download.php class='button'&gt;download&lt;/a&gt;&lt;/html&gt;
-</pre>
-</div>
-<div title="TiddlyWiki" modifier="BidiX" modified="200705091005" created="200705071633" tags="basicContent About" date="200705071633" changecount="3">
-<pre>&lt;&lt;tiddler TiddlyWikiEN&gt;&gt;</pre>
-</div>
-<div title="TiddlyWikiEN" modifier="BidiX" modified="200705071638" created="200705071615" tags="basicContent EN" date="200705071615" changecount="7">
-<pre>~TiddlyWiki is a powerful [[wiki|http://en.wikipedia.org/wiki/Wiki]] in a single html file which possesses all the features needed to manage and to outline personal notes in an efficient way.
-
-No facility is required. You only need to download an empty ~TiddlyWiki on your desktop to start to use it. It can be stored on USB stick. To send it  just attached it to mail. You can also upload it on web server to publish a whole site.
-
-For details visit [[www.TiddlyWiki.com|http://www.tiddlywiki.com]].
-
-^^Version: &lt;&lt;version&gt;&gt;^^</pre>
-</div>
-<div title="TiddlyWikiFR" modifier="BidiX" modified="200705071637" created="200703170908" tags="basicContent FR" date="200703170908" changecount="2">
-<pre>~TiddlyWiki est un puissant [[wiki|http://fr.wikipedia.org/wiki/Wiki]] dans un simple fichier html qui possède toutes les caractéristiques pour gérer et présenter des notes personnelles d'une manière efficace.
-
-Il ne nécessite aucune installation. Il suffit de sauvegarder un ~TiddlyWiki vide sur son bureau-écran pour commencer à l'utiliser. Il peut être copier sur une clé USB. Pour l'envoyer il suffit de le mettre en pièce jointe d'un courriel. En le téléchargeant sur un site web vous publier un site complet.
-
-Pour plus d'information visiter [[www.TiddlyWiki.com|http://www.tiddlywiki.com]].
-
-^^Version: &lt;&lt;version&gt;&gt;^^</pre>
-</div>
-<div title="TopMenu" modifier="BidiX" modified="200705101345" created="200705011951" tags="siteTiddler excludeLists excludeSearch" date="200705011951" changecount="9">
-<pre>GettingStarted &lt;&lt;tag Command&gt;&gt; &lt;&lt;tag Docs&gt;&gt; &lt;&lt;tag About&gt;&gt;</pre>
-</div>
-<div title="UploadLog" modifier="BidiX" modified="200705180849" created="200702061345" tags="systemTiddler excludeLists excludeSearch" date="200702061345" anon="undefined" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200702061345">
-<pre>| !date | !user | !location | !storeUrl | !uploadDir | !toFilename | !backupdir | !origin |
-| 10/05/2007 15:41:10 | BidiX | [[/|http://tiddlyhome.bidix.info/#SiteSubtitle]] | [[store.php|http://TiddlyHome.bidix.info/store.php]] | . | [[index.html | http://TiddlyHome.bidix.info/index.html]] | backup |
-| 10/05/2007 15:48:09 | BidiX | [[/|http://tiddlyhome.bidix.info/#SiteSubtitle]] | [[store.php|http://TiddlyHome.bidix.info/store.php]] | . | [[index.html | http://TiddlyHome.bidix.info/index.html]] | backup |
-| 10/05/2007 16:18:42 | BidiX | [[/|http://tiddlyhome.bidix.info/#GettingStarted]] | [[store.php|http://TiddlyHome.bidix.info/store.php]] | . | [[index.html | http://TiddlyHome.bidix.info/index.html]] | backup |
-| 15/05/2007 23:17:27 | BidiX | [[index.html|http://ibiza/_th/admin/index.html#TiddlyHomeSidebar]] | [[store.php|http://ibiza/_th/admin/store.php]] | . | [[index.html | http://ibiza/_th/admin/index.html]] | backup |
-| 15/05/2007 23:19:39 | BidiX | [[index.html|http://ibiza/_th/admin/index.html#TiddlyHomeSidebar]] | [[store.php|http://ibiza/_th/admin/store.php]] | . | [[index.html | http://ibiza/_th/admin/index.html]] | backup | ok |
-| 15/05/2007 23:28:33 | BidiX | [[index.html|http://ibiza/_th/admin/index.html#GettingStarted]] | [[store.php|http://ibiza/_th/admin/store.php]] | . | [[index.html | http://ibiza/_th/admin/index.html]] | backup |
-| 18/05/2007 10:28:29 | BidiX | [[/|http://ibiza/_th/admin/#TiddlyHomeSidebar]] | [[store.php|http://ibiza/_th/admin/store.php]] | . | [[index.html | http://ibiza/_th/admin/index.html]] | backup |
-| 18/05/2007 10:45:03 | BidiX | [[/|http://ibiza/_th/admin/#%5B%5BManage%20Sites%5D%5D]] | [[store.php|http://ibiza/_th/admin/store.php]] | . | [[index.html | http://ibiza/_th/admin/index.html]] | backup | ok |
-| 18/05/2007 10:47:26 | BidiX | [[/|http://ibiza/_th/admin/#%5B%5BManage%20Sites%5D%5D]] | [[store.php|http://ibiza/_th/admin/store.php]] | . | [[index.html | http://ibiza/_th/admin/index.html]] | backup | ok |
-| 18/05/2007 10:49:15 | BidiX | [[/|http://ibiza/_th/admin/#GettingStarted]] | [[store.php|http://ibiza/_th/admin/store.php]] | . | [[index.html | http://ibiza/_th/admin/index.html]] | backup |</pre>
-</div>
-<div title="UploadOptions" modifier="system" created="200602122222" tags="systemTiddler excludeLists excludeSearch" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200602122222">
-<pre>UploadPlugin uses the following sequence for finding parameters :
-#''macro'' parameters
-#''Options'' saved in cookies
-#''Plugin'' default values
-!Options used by UploadPlugin
-| Option | Value | Default |
-|Upload Username: |&lt;&lt;option txtUploadUserName&gt;&gt;| |
-|Upload Password: |&lt;&lt;option pasUploadPassword&gt;&gt;| |
-|Url of the UploadService script: |&lt;&lt;option txtUploadStoreUrl urlInput&gt;&gt;| store.php |
-|Relative Directory where to store the file: |&lt;&lt;option txtUploadDir urlInput&gt;&gt;| . (the script directory) |
-|Filename of the uploaded file: |&lt;&lt;option txtUploadFilename urlInput&gt;&gt;| index.html |
-|Directory to backup file on webserver^^(1)^^: |&lt;&lt;option txtUploadBackupDir urlInput&gt;&gt;| //null// (none/no backup) |
-|Log in UploadLog |&lt;&lt;option chkUploadLog&gt;&gt; Trace Upload| true |
-|Maximum of lines in UploadLog |&lt;&lt;option txtUploadLogMaxLine&gt;&gt;| 10 |
-
-^^(1)^^No backup if Backup Directory is empty, the previous file will be overwritten. Use a '.' to backup in the script directory.
-
-&lt;&lt;upload&gt;&gt; with these options.
-
-!Upload Macro parameters
-{{{
-&lt;&lt;upload [storeUrl [toFilename [backupDir [uploadDir [username]]]]]&gt;&gt;
- Optional positional parameters can be passed to overwrite UploadOptions. 
-}}}
-
-!UploadToFile Macro Macro parameters
-{{{
-&lt;&lt;uploadTofile [filename [tiddlerTitle]]&gt;&gt;
- tiddlerTitle, filename: if omitted the title of the current tiddler
-}}}
-
-&lt;&lt;uploadToFile allowedsites.txt allowedsitesX.txt&gt;&gt;</pre>
-</div>
-<div title="UploadPlugin" modifier="system" modified="200704212203" created="200703021728" tags="systemConfig excludeLists excludeSearch Upload" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200704212203">
+<div title="UploadPlugin" modifier="YourName" modified="200705191059" created="200703021728" tags="systemConfig Upload" changecount="3">
 <pre>/***
 |''Name:''|UploadPlugin|
 |''Description:''|Save to web a TiddlyWiki|
-|''Version:''|4.0.2|
-|''Date:''|Apr 21, 2007|
+|''Version:''|4.1.0|
+|''Date:''|May 5, 2007|
 |''Source:''|http://tiddlywiki.bidix.info/#UploadPlugin|
 |''Documentation:''|http://tiddlywiki.bidix.info/#UploadPluginDoc|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
-|''~CoreVersion:''|2.2.0 (beta 5)|
+|''~CoreVersion:''|2.2.0 (#3125)|
 |''Requires:''|PasswordOptionPlugin|
 ***/
 //{{{
 version.extensions.UploadPlugin = {
-	major: 4, minor: 0, revision: 2,
-	date: new Date(&quot;Apr 21, 2007&quot;),
+	major: 4, minor: 1, revision: 0,
+	date: new Date(&quot;May 5, 2007&quot;),
 	source: 'http://tiddlywiki.bidix.info/#UploadPlugin',
 	author: 'BidiX (BidiX (at) bidix (dot) info',
-	coreVersion: '2.2.0 (beta 5)'
+	coreVersion: '2.2.0 (#3125)'
 };
 
 //
@@ -2320,10 +805,9 @@ version.extensions.UploadPlugin = {
 
 if (!window.bidix) window.bidix = {}; // bidix namespace
 bidix.debugMode = false;	// true to activate both in Plugin and UploadService
-
 	
 //
-// Macro Upload
+// Upload Macro
 //
 
 config.macros.upload = {
@@ -2332,7 +816,7 @@ config.macros.upload = {
 	defaultStoreScript: &quot;store.php&quot;,
 	defaultToFilename: &quot;index.html&quot;,
 	defaultUploadDir: &quot;.&quot;,
-	authenticateUser: true	// UploadService Authenticate User
+	authenticateUser: false	// UploadService Authenticate User
 };
 	
 config.macros.upload.label = {
@@ -2349,6 +833,8 @@ config.macros.upload.messages = {
 };
 
 config.macros.upload.handler = function(place,macroName,params) {
+	if (readOnly)
+		return;
 	var label;
 	if (document.location.toString().substr(0,4) == &quot;http&quot;) 
 		label = this.label.saveLabel;
@@ -2356,47 +842,49 @@ config.macros.upload.handler = function(place,macroName,params) {
 		label = this.label.uploadLabel;
 	var prompt;
 	if (params[0]) {
-		prompt = this.label.promptParamMacro.toString().format(this.destFile(params[0], 
-			(params[1] ? params[1]:bidix.basename(window.location.toString())), params[3]));
+		prompt = this.label.promptParamMacro.toString().format([this.destFile(params[0], 
+			(params[1] ? params[1]:bidix.basename(window.location.toString())), params[3])]);
 	} else {
 		prompt = this.label.promptOption;
 	}
-	createTiddlyButton(place, label, prompt, 
-		function () {
-			// for missing macro parameter set value from options
-			var storeUrl = params[0] ? params[0] : config.options.txtUploadStoreUrl;
-			var toFilename = params[1] ? params[1] : config.options.txtUploadFilename;
-			var backupDir = params[2] ? params[2] : config.options.txtUploadBackupDir;
-			var uploadDir = params[3] ? params[3] : config.options.txtUploadDir;
-			var username = params[4] ? params[4] : config.options.txtUploadUserName;
-			var password = config.options.pasUploadPassword; // for security reason no password as macro parameter	
-			// for still missing parameter set default value
-			if ((!storeUrl) &amp;&amp; (document.location.toString().substr(0,4) == &quot;http&quot;)) 
-				storeUrl = bidix.dirname(document.location.toString())+'/'+config.macros.upload.defaultStoreScript;
-			if (storeUrl.substr(0,4) != &quot;http&quot;)
-				storeUrl = bidix.dirname(document.location.toString()) +'/'+ storeUrl;
-			if (!toFilename)
-				toFilename = bidix.basename(window.location.toString());
-			if (!toFilename)
-				toFilename = config.macros.upload.defaultToFilename;
-			if (!uploadDir)
-				uploadDir = config.macros.upload.defaultUploadDir;
-			if (!backupDir)
-				backupDir = config.macros.upload.defaultBackupDir;
-			// report error if still missing
-			if (!storeUrl) {
-				alert(config.macros.upload.messages.noStoreUrl);
-				clearMessage();
-				return false;
-			}
-			if (config.macros.upload.authenticateUser &amp;&amp; (!username || !password)) {
-				alert(config.macros.upload.messages.usernameOrPasswordMissing);
-				clearMessage();
-				return false;
-			}
-			bidix.upload.uploadChanges(false,null,storeUrl, toFilename, uploadDir, backupDir, username, password); 
-			return false;}, 
-		null, null, this.accessKey);
+	createTiddlyButton(place, label, prompt, function() {config.macros.upload.action(params);}, null, null, this.accessKey);
+};
+
+config.macros.upload.action = function(params)
+{
+		// for missing macro parameter set value from options
+		var storeUrl = params[0] ? params[0] : config.options.txtUploadStoreUrl;
+		var toFilename = params[1] ? params[1] : config.options.txtUploadFilename;
+		var backupDir = params[2] ? params[2] : config.options.txtUploadBackupDir;
+		var uploadDir = params[3] ? params[3] : config.options.txtUploadDir;
+		var username = params[4] ? params[4] : config.options.txtUploadUserName;
+		var password = config.options.pasUploadPassword; // for security reason no password as macro parameter	
+		// for still missing parameter set default value
+		if ((!storeUrl) &amp;&amp; (document.location.toString().substr(0,4) == &quot;http&quot;)) 
+			storeUrl = bidix.dirname(document.location.toString())+'/'+config.macros.upload.defaultStoreScript;
+		if (storeUrl.substr(0,4) != &quot;http&quot;)
+			storeUrl = bidix.dirname(document.location.toString()) +'/'+ storeUrl;
+		if (!toFilename)
+			toFilename = bidix.basename(window.location.toString());
+		if (!toFilename)
+			toFilename = config.macros.upload.defaultToFilename;
+		if (!uploadDir)
+			uploadDir = config.macros.upload.defaultUploadDir;
+		if (!backupDir)
+			backupDir = config.macros.upload.defaultBackupDir;
+		// report error if still missing
+		if (!storeUrl) {
+			alert(config.macros.upload.messages.noStoreUrl);
+			clearMessage();
+			return false;
+		}
+		if (config.macros.upload.authenticateUser &amp;&amp; (!username || !password)) {
+			alert(config.macros.upload.messages.usernameOrPasswordMissing);
+			clearMessage();
+			return false;
+		}
+		bidix.upload.uploadChanges(false,null,storeUrl, toFilename, uploadDir, backupDir, username, password); 
+		return false; 
 };
 
 config.macros.upload.destFile = function(storeUrl, toFilename, uploadDir) 
@@ -2409,6 +897,87 @@ config.macros.upload.destFile = function(storeUrl, toFilename, uploadDir)
 		dest = dest + '/' + toFilename;
 	return dest;
 };
+
+//
+// uploadOptions Macro
+//
+
+config.macros.uploadOptions = {
+	handler: function(place,macroName,params) {
+		var wizard = new Wizard();
+		wizard.createWizard(place,this.wizardTitle);
+		wizard.addStep(this.step1Title,this.step1Html);
+		var markList = wizard.getElement(&quot;markList&quot;);
+		var listWrapper = document.createElement(&quot;div&quot;);
+		markList.parentNode.insertBefore(listWrapper,markList);
+		wizard.setValue(&quot;listWrapper&quot;,listWrapper);
+		this.refreshOptions(listWrapper,false);
+		var uploadCaption;
+		if (document.location.toString().substr(0,4) == &quot;http&quot;) 
+			uploadCaption = config.macros.upload.label.saveLabel;
+		else
+			uploadCaption = config.macros.upload.label.uploadLabel;
+		
+		wizard.setButtons([
+				{caption: uploadCaption, tooltip: config.macros.upload.label.promptOption, 
+					onClick: config.macros.upload.action},
+				{caption: this.cancelButton, tooltip: this.cancelButtonPrompt, onClick: this.onCancel}
+				
+			]);
+	},
+	refreshOptions: function(listWrapper) {
+		var uploadOpts = [
+			&quot;txtUploadUserName&quot;,
+			&quot;pasUploadPassword&quot;,
+			&quot;txtUploadStoreUrl&quot;,
+			&quot;txtUploadDir&quot;,
+			&quot;txtUploadFilename&quot;,
+			&quot;txtUploadBackupDir&quot;,
+			&quot;chkUploadLog&quot;,
+			&quot;txtUploadLogMaxLine&quot;,
+			]
+		var opts = [];
+		for(i=0; i&lt;uploadOpts.length; i++) {
+			var opt = {};
+			opts.push()
+			opt.option = &quot;&quot;;
+			n = uploadOpts[i];
+			opt.name = n;
+			opt.lowlight = !config.optionsDesc[n];
+			opt.description = opt.lowlight ? this.unknownDescription : config.optionsDesc[n];
+			opts.push(opt);
+		}
+		var listview = ListView.create(listWrapper,opts,this.listViewTemplate);
+		for(n=0; n&lt;opts.length; n++) {
+			var type = opts[n].name.substr(0,3);
+			var h = config.macros.option.types[type];
+			if (h &amp;&amp; h.create) {
+				h.create(opts[n].colElements['option'],type,opts[n].name,opts[n].name,&quot;no&quot;);
+			}
+		}
+		
+	},
+	onCancel: function(e)
+	{
+		backstage.switchTab(null);
+		return false;
+	},
+	
+	wizardTitle: &quot;Upload with options&quot;,
+	step1Title: &quot;These options are saved in cookies in your browser&quot;,
+	step1Html: &quot;&lt;input type='hidden' name='markList'&gt;&lt;/input&gt;&lt;br&gt;&quot;,
+	cancelButton: &quot;Cancel&quot;,
+	cancelButtonPrompt: &quot;Cancel prompt&quot;,
+	listViewTemplate: {
+		columns: [
+			{name: 'Description', field: 'description', title: &quot;Description&quot;, type: 'WikiText'},
+			{name: 'Option', field: 'option', title: &quot;Option&quot;, type: 'String'},
+			{name: 'Name', field: 'name', title: &quot;Name&quot;, type: 'String'}
+			],
+		rowClasses: [
+			{className: 'lowlight', field: 'lowlight'} 
+			]}
+}
 
 //
 // upload functions
@@ -2581,12 +1150,12 @@ bidix.upload.updateOriginal = function(original, posDiv)
 	var revised = original.substr(0,posDiv[0] + startSaveArea.length) + &quot;\n&quot; +
 				store.allTiddlersAsHtml() + &quot;\n&quot; +
 				original.substr(posDiv[1]);
-	var newSiteTitle = (wikifyPlain(&quot;SiteTitle&quot;) + &quot; - &quot; + wikifyPlain(&quot;SiteSubtitle&quot;).htmlEncode());
+	var newSiteTitle = getPageTitle().htmlEncode();
 	revised = revised.replaceChunk(&quot;&lt;title&quot;+&quot;&gt;&quot;,&quot;&lt;/title&quot;+&quot;&gt;&quot;,&quot; &quot; + newSiteTitle + &quot; &quot;);
 	revised = updateMarkupBlock(revised,&quot;PRE-HEAD&quot;,&quot;MarkupPreHead&quot;);
 	revised = updateMarkupBlock(revised,&quot;POST-HEAD&quot;,&quot;MarkupPostHead&quot;);
 	revised = updateMarkupBlock(revised,&quot;PRE-BODY&quot;,&quot;MarkupPreBody&quot;);
-	revised = updateMarkupBlock(revised,&quot;POST-BODY&quot;,&quot;MarkupPostBody&quot;);
+	revised = updateMarkupBlock(revised,&quot;POST-SCRIPT&quot;,&quot;MarkupPostBody&quot;);
 	return revised;
 };
 
@@ -2721,7 +1290,7 @@ bidix.initOption = function(name,value) {
 bidix.checkPlugin(&quot;PasswordOptionPlugin&quot;, 1, 0, 1);
 
 // styleSheet
-setStylesheet('.urlInput {width: 22em;}',&quot;uploadPluginStyles&quot;);
+setStylesheet('.txtUploadStoreUrl, .txtUploadBackupDir, .txtUploadDir {width: 22em;}',&quot;uploadPluginStyles&quot;);
 
 //optionsDesc
 merge(config.optionsDesc,{
@@ -2744,750 +1313,144 @@ bidix.initOption('txtUploadUserName','');
 bidix.initOption('pasUploadPassword','');
 bidix.initOption('chkUploadLog',true);
 bidix.initOption('txtUploadLogMaxLine','10');
+
+
+// Backstage
+merge(config.tasks,{
+	uploadOptions: {text: &quot;upload...&quot;, tooltip: &quot;Change UploadOptions and Upload&quot;, content: '&lt;&lt;uploadOptions&gt;&gt;'}
+});
+config.backstageTasks.push(&quot;uploadOptions&quot;);
+
+
 //}}}
 
 </pre>
 </div>
-<div title="UploadPluginLingoFR" modifier="system" modified="200704282201" created="200703021732" tags="Upload FR systemConfig excludeLists excludeSearch systemConfigDisable" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200704282201" changecount="3">
+<div title="UploadToHomeMacro" modifier="BidiX" modified="200705191239" created="200705080913" tags="systemConfig Upload" changecount="4">
 <pre>/***
-|''Name:''|UploadPluginLingoFR|
-|''Description:''|French Translation|
-|''Version:''|4.0.2|
-|''Date:''|Apr 21, 2007|
-|''Source:''|http://tiddlywiki.bidix.info/#UploadPluginLingoFR|
+|''Name:''|UploadToHomeMacro|
+|''Description:''|Save TiddlyWiki using HomeParameters tiddler|
+|''Version:''|0.0.2|
+|''Date:''|May 19, 2007|
+|''Source:''|http://tiddlywiki.bidix.info/#UploadToHomeMacro|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
-|''~CoreVersion:''|2.2.0|
+|''~CoreVersion:''|2.2.0 (#3125)|
 |''Requires:''|UploadPlugin|
+|''Usage:''|{{{&lt;&lt;uploadToHome [HomeParameters]&gt;&gt;}}}&lt;br&gt;{{{HomeParameters:}}} optional - Tiddler with upload parameters in slices (see HomeParameters).|
 ***/
 //{{{
-config.macros.upload.label = {
-	promptOption: &quot;Sauvegarde et télécharge ce TiddlyWiki avec les UploadOptions&quot;,
-	promptParamMacro: &quot;Sauvegarde et télécharge ce TiddlyWiki vers %0&quot;,
-	saveLabel: &quot;sauvegarde sur le web&quot;, 
-	saveToDisk: &quot;sauvegarde sur le disque&quot;,
-	uploadLabel: &quot;Télécharge vers le web&quot; 
-};
-
-config.macros.upload.messages = {
-	noStoreUrl: &quot;Pas de 'store URL' dans les paramètres ou dans les options&quot;,
-	usernameOrPasswordMissing: &quot;nom d'utilisateur ou mot de passe absent&quot;
-};
-
-bidix.upload.messages = {
-	//from saving
-	invalidFileError: &quot;Le fichier '%0' d'origine ne semble pas être un TiddlyWiki valide&quot;,
-	backupSaved: &quot;backup enegistré sur le web&quot;,
-	backupFailed: &quot;Echec de l'enregistrement du backup sur le web&quot;,
-	rssSaved: &quot;Flux RSS a été téléchargé&quot;,
-	rssFailed: &quot;Echec du téléchargement du flux RSS&quot;,
-	emptySaved: &quot;Fichier de base 'empty.html' téléchargé&quot;,
-	emptyFailed: &quot;Echec du téléchargement du fichier de base 'empty.html'&quot;,
-	mainSaved: &quot;Fichier principal TiddlyWiki téléchargé&quot;,
-	mainFailed: &quot;Echec du téléchargement du fichier principal TiddlyWiki. Vos modifications n'ont pas été téléchargées&quot;,
-	//specific upload
-	loadOriginalHttpPostError: &quot;Le fichier d'origine n'a pas pu être accédé&quot;,
-	aboutToSaveOnHttpPost: &quot;Préparation du téléchargement du TiddlyWiki vers %0 ...&quot;,
-	storePhpNotFound: &quot;Le script de téléchargement '%0' n'a pas pu être trouvé.&quot;
-};
-
-merge(config.optionsDesc,{
-	txtUploadStoreUrl: &quot;Url du script du Service de Téléchargement (defaut : store.php)&quot;,
-	txtUploadFilename: &quot;Nom du fichier à télécharger vers le web (defaut : in index.html)&quot;,
-	txtUploadDir: &quot;Repertoire relatif où télécharger le fichier (defaut : . (répertoire du Service de Téléchargement))&quot;,
-	txtUploadBackupDir: &quot;Repertoire relatif où sauvegarder le fichier précédent. Si vide il n'y aura pas de sauvegarde. (defaut : '' (néant))&quot;,
-	txtUploadUserName: &quot;Nom d'utilisateur pour le Téléchargement&quot;,
-	pasUploadPassword: &quot;Mot de passe pour le Téléchargement&quot;,
-	chkUploadLog: &quot;Enregistre une trace dans UploadLog (defaut: true)&quot;,
-	txtUploadLogMaxLine: &quot;Nomnre maximum de lignes dans UploadLog (defaut: 10)&quot;
-});
-
-//}}}</pre>
-</div>
-<div title="UploadToFileMacro" modifier="system" modified="200704212208" created="200703191700" tags="Upload systemConfig excludeLists excludeSearch" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200704212208">
-<pre>/***
-|''Name:''|UploadToFileMacro|
-|''Description:''|Upload a tiddler as a file using UploadPlugin context. Used with the SimonBaird's HideWhenPlugin ViewTemplate provides a new command in the tiddler toolbar.|
-|''Version:''|2.0.1|
-|''Date:''|Apr 21, 2007|
-|''Source:''|http://tiddlywiki.bidix.info/#UploadToFileMacro|
-|''Usage:''|{{{&lt;&lt;uploadTofile [filename [tiddlerTitle]]&gt;&gt;}}}&lt;br&gt;{{{tiddlerTitle, filename: if omitted the title of the current tiddler}}}|
-|''Author:''|BidiX (BidiX (at) bidix (dot) info)|
-|''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
-|''CoreVersion:''|2.2.0|
-|''Requires:''|UploadPlugin|
-***/
-//{{{
-version.extensions.UploadToFileMacro = {
-	major: 2, minor: 0, revision: 1, 
-	date: new Date(&quot;Apr 21, 2007&quot;),
-	source: 'http://tiddlywiki.bidix.info/#UploadToFilePlugin',
+version.extensions.UploadToHomeMacro = {
+	major: 0, minor: 0, revision: 1,
+	date: new Date(&quot;May 7, 2007&quot;),
+	source: 'http://tiddlywiki.bidix.info/#UploadToHomeMacro',
 	author: 'BidiX (BidiX (at) bidix (dot) info',
-	coreVersion: '2.2.0'
+	coreVersion: '2.2.0 (#3125)'
 };
 
-// require UploadPlugin 4.0.0 or better
-config.macros.uploadToFile = {
-	label: &quot;upload %0 to file %1&quot;,
-	prompt: &quot;upload tiddler '%0' to file '%1' &quot;,
-	warning: &quot;Are you sure you want to upload '%0'?&quot;,
-	messages: {
-		fileUploaded: &quot;tiddler '%0' uploaded to file '%1'&quot;,
-		fileNotUploaded: &quot;tiddler '%0' NOT uploaded&quot;
-	},
+//
+// Environment
+//
 
-	handler: function(place, macroName, params, wikifier,paramString, tiddler) {
-		// parameters initialization
-		var toFilename = params[0];
-		var tiddlerTitle = params[1];
-		if (!tiddlerTitle) { 
-			tiddlerTitle = tiddler.title;
+if (!window.bidix) window.bidix = {}; // bidix namespace
+bidix.debugMode = false;	// true to activate both in Plugin and UploadService
+bidix.checkPlugin(&quot;UploadPlugin&quot;, 4, 1, 0);
+
+//
+// uploadUsing Macro
+//
+
+config.macros.uploadToHome = {
+	handler: function(place,macroName,params) {
+		if (readOnly)
+			return;
+		var label;
+		if (document.location.toString().substr(0,4) == &quot;http&quot;) 
+			label = config.macros.upload.label.saveLabel;
+		else
+			label = config.macros.upload.label.uploadLabel;
+		var prompt;
+		var homeParams = (params[0] ? params[0]:this.messages.homeParamsTiddler);
+		if (store.tiddlerExists(homeParams) || store.isShadowTiddler(homeParams)) {
+			prompt = this.messages.prompt.toString().format([homeParams]);
 		} else {
-			tiddler = store.getTiddler(tiddlerTitle);
+			throw(this.messages.tiddlerNotFound.toString().format([homeParams]));
 		}
-		if (!toFilename) { 
-			toFilename = tiddlerTitle;
-		} 
-		var prompt = this.prompt.format([tiddlerTitle, toFilename]);
-		createTiddlyButton(place, this.label.format([params[1], params[0]]), this.prompt.format([tiddlerTitle, toFilename]), 
-			function () {
-				config.macros.uploadToFile.upload(tiddler, null, toFilename); 
-				return false;}, 
-			null, null, null);
+		var prompt = this.messages.prompt.toString().format([homeParams]);
+		createTiddlyButton(place, label, prompt, function() {config.macros.uploadToHome.action(homeParams);}, null, null, this.accessKey);		
 	},
-
-	upload:  function(tiddler, storeUrl, toFilename, uploadDir, backupDir, username, password) {
-		if (!tiddler)	{
-			alert(&quot;Tiddler not found.&quot;);
-			return false;
-		}
-		var uploadIt = true; 
-		if ((this.warning) &amp;&amp; (!confirm(this.warning.format([tiddler.title])))) 
-			return false;
-		// parameters initialization
-		storeUrl = (storeUrl ? storeUrl : config.options.txtUploadStoreUrl);
-		toFilename = (toFilename ? toFilename : tiddler.title);
-		backupDir = (backupDir ? backupDir : config.options.txtUploadBackupDir);
-		uploadDir = (uploadDir ? uploadDir : config.options.txtUploadDir);
-		username = (username ? username : config.options.txtUploadUserName);
-		password = (password ? password :config.options.pasUploadPassword);
-		var callback = function(status,params,responseText,url,xhr) {
-			if (status) { 
-				if (responseText.substring(0,1) == '0') {
-					// if backupDir specified
-					if ((params[3]) &amp;&amp; (responseText.indexOf(&quot;backupfile:&quot;) &gt; -1))  {
-						var backupfile = responseText.substring(responseText.indexOf(&quot;backupfile:&quot;)+11,
-							responseText.indexOf(&quot;\n&quot;, responseText.indexOf(&quot;backupfile:&quot;)));
-						displayMessage(bidix.upload.messages.backupSaved,bidix.dirname(url)+'/'+backupfile);
-					}
-					var destfile = responseText.substring(responseText.indexOf(&quot;destfile:&quot;)+9,
-						responseText.indexOf(&quot;\n&quot;, responseText.indexOf(&quot;destfile:&quot;)));
-					if (destfile.substring(0,2) == './') 
-						destfile = destfile.substring(2);
-					displayMessage(config.macros.uploadToFile.messages.fileUploaded.format([params[6],destfile]),
-						bidix.dirname(url)+'/'+destfile);
-				} else {
-					alert(responseText);
-					displayMessage(config.macros.uploadToFile.messages.fileNotUploaded.format([params[1]]));
-				}
-			} else {
-				displayMessage(&quot;HTTP Error &quot; + xhr.status + &quot; in accessing &quot; + url);
-			}
-		};
-		var uploadParams = Array(storeUrl,toFilename,uploadDir,backupDir,username,password, tiddler.title);
-		return bidix.upload.httpUpload(uploadParams,tiddler.text,callback,uploadParams);
-		
-	}
-};
-
-bidix.checkPlugin = function(plugin, major, minor, revision) {
-	var ext = version.extensions[plugin];
-	if (!
-		(ext  &amp;&amp; 
-			((ext.major &gt; major) || 
-			((ext.major == major) &amp;&amp; (ext.minor &gt; minor))  ||
-			((ext.major == major) &amp;&amp; (ext.minor == minor) &amp;&amp; (ext.revision &gt;= revision))))) {
-			// write error in PluginManager
-			if (pluginInfo)
-				pluginInfo.log.push(&quot;Requires &quot; + plugin + &quot; &quot; + major + &quot;.&quot; + minor + &quot;.&quot; + revision);
-			eval(plugin); // generate an error : &quot;Error: ReferenceError: xxxx is not defined&quot;
-	}
-};
-
-//
-// Initializations
-//
-
-// require PasswordOptionPlugin 1.0.1 or better
-bidix.checkPlugin(&quot;UploadPlugin&quot;, 4, 0, 0);
-
-//}}}</pre>
-</div>
-<div title="ViewTemplate" modifier="system" created="200703171320" tags="systemTiddler excludeLists excludeSearch" date="200702041212" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.version="200703171320" server.page.revision="200703171320">
-<pre>&lt;!--{{{--&gt;
-&lt;div class='title'&gt;
-	&lt;span class='title' macro='view title'&gt;&lt;/span&gt;
-	&lt;!--&lt;span macro=&quot;miniTag&quot;&gt;--&gt;&lt;/span&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div macro=&quot;hideWhenTaggedAny systemTool systemList&quot;&gt;
-	&lt;span class = &quot;subtitle&quot;&gt; - &lt;span macro='view created date [[0DD/0MM/YYYY]]'&gt;&lt;/span&gt; - &lt;span macro='view modifier'&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;/div&gt;
-&lt;div macro=&quot;showWhenTagged systemList&quot;&gt;
-	&lt;div class='viewer' macro=&quot;listByTag '' created  ''&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class='viewer' macro='view text wikified'&gt;&lt;/div&gt;
-&lt;!--}}}--&gt;</pre>
-</div>
-<div title="WebDAVSavingPlugin" modifier="system" modified="200704212208" created="200702221114" tags="systemConfig excludeLists excludeSearch" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200704212208">
-<pre>/***
-|''Name:''|WebDAVSavingPlugin|
-|''Description:''|Saves on a WebDAV server without the need of any ServerSide script.&lt;br&gt;When TiddlyWiki is accessed over http, this plugin permits to save back to the server, using http PUT.|
-|''Version:''|0.2.1|
-|''Date:''|Apr 21, 2007|
-|''Source:''|http://tiddlywiki.bidix.info/#WebDAVSavingPlugin|
-|''Author:''|BidiX (BidiX (at) bidix (dot) info)|
-|''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
-|''~CoreVersion:''|2.2.0 (Beta 5)|
-***/
-//{{{
-version.extensions.WebDAVSavingPlugin = {
-	major: 0, minor: 2, revision: 1, 
-	date: new Date(&quot;Apr 21, 2007&quot;),
-	source: 'http://tiddlywiki.bidix.info/#WebDAVSavingPlugin',
-	author: 'BidiX (BidiX (at) bidix (dot) info',
-	license: '[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D]]',
-	coreVersion: '2.2.0 (Beta 5)'
-};
-
-if (!window.bidix) window.bidix = {};
-bidix.WebDAVSaving = {
-	orig_saveChanges: saveChanges,
-	defaultFilename: 'index.html',
-	messages: {
-		loadOriginalHttpDavError: &quot;Original file can't be loaded&quot;,
-		optionsMethodError: &quot;The OPTIONS method can't be used on this ressource : %0&quot;,
-		webDavNotEnabled: &quot;WebDAV is not enabled on this ressource : %0&quot;,
-		notHTTPUrlError: &quot;WebDAV saving can be used for http viewed TiddlyWiki only&quot;,
-		aboutToSaveOnHttpDav: 'About to save on %0 ...'		,
-		folderCreated: &quot;Remote folder '%0' created&quot;
-	}
-};
-
-// Save this tiddlywiki with the pending changes
-saveChanges = function(onlyIfDirty,tiddlers)
-{
-	var originalPath = document.location.toString();
-	if (originalPath.substr(0,5) == &quot;file:&quot;)
-		return bidix.WebDAVSaving.orig_saveChanges(onlyIfDirty,tiddlers);
-	else
-		return bidix.WebDAVSaving.saveChanges(onlyIfDirty,tiddlers);
-}
-
-bidix.WebDAVSaving.saveChanges = function(onlyIfDirty,tiddlers)
-{
-	var callback = function(status,params,original,url,xhr) {
-			url = (url.indexOf(&quot;nocache=&quot;) &lt; 0 ? url : url.substring(0,url.indexOf(&quot;nocache=&quot;)-1));
-		if (!status)
-			displayMessage(bidix.WebDAVSaving.messages.optionsMethodError.format([url]));
-		else {
-			if (!xhr.getResponseHeader(&quot;DAV&quot;))
-				alert(bidix.WebDAVSaving.messages.webDavNotEnabled.format([url]));
-			else
-				bidix.WebDAVSaving.doSaveChanges();
-		}
-	}	
-	if(onlyIfDirty &amp;&amp; !store.isDirty())
-		return;
-	clearMessage();
-	var originalPath = document.location.toString();
-	// Check we were loaded from a HTTP or HTTPS URL
-	if(originalPath.substr(0,4) != &quot;http&quot;) {
-		alert(bidix.WebDAVSaving.messages.notHTTPUrlError);
-		return;
-	}	
-	// is the server WebDAV enabled ?
-	var r = doHttp(&quot;OPTIONS&quot;,originalPath,null,null,null,null,callback,null,null);
-	if (typeof r == &quot;string&quot;)
-		alert(r);
-}
 	
-bidix.WebDAVSaving.doSaveChanges = function()
-{
-	var callback = function(status,params,original,url,xhr) {
-		if (!status) {
-			alert(config.messages.loadOriginalHttpDavError);
-			return;
+	action: function(homeParams) {
+		homeParams = (homeParams ? homeParams : config.macros.uploadToHome.messages.homeParamsTiddler);
+		if (!store.tiddlerExists(homeParams) &amp;&amp; !store.isShadowTiddler(homeParams)) {
+			throw(config.macros.uploadToHome.messages.tiddlerNotFound.toString().format([homeParams]));
 		}
-		url = (url.indexOf(&quot;nocache=&quot;) &lt; 0 ? url : url.substring(0,url.indexOf(&quot;nocache=&quot;)-1));
-		// Locate the storeArea div's 
-		var posDiv = locateStoreArea(original);
-		if((posDiv[0] == -1) || (posDiv[1] == -1)) {
-			alert(config.messages.invalidFileError.format([localPath]));
-			return;
+		config.macros.upload.action(config.macros.uploadToHome.getParamsFromTiddler(homeParams));
+	},
+	
+	getParamsFromTiddler: function(tiddlerTitle) {
+		tiddlerTitle = (tiddlerTitle ? tiddlerTitle:this.messages.homeParamsTiddler);
+		if (!store.tiddlerExists(tiddlerTitle) &amp;&amp; !store.isShadowTiddler(tiddlerTitle)) {
+			throw(config.macros.uploadToHome.messages.tiddlerNotFound.toString().format([tiddlerTitle]));
 		}
-		bidix.WebDAVSaving.mkbackupfolder(null,null,params,original,posDiv);
-	};
-	// get original
-	var originalPath = document.location.toString();
-	if (originalPath.charAt(originalPath.length-1) == &quot;/&quot;)
-		originalPath = originalPath + bidix.WebDAVSaving.defaultFilename;
-	displayMessage(bidix.WebDAVSaving.messages.aboutToSaveOnHttpDav.format([originalPath]));
-	doHttp(&quot;GET&quot;,originalPath,null,null,null,null,callback,originalPath,null);
-};
-
-bidix.WebDAVSaving.mkbackupfolder = function(root,dirs,url,original,posDiv) {
-	if (!root || !dirs) {
-		root = bidix.dirname(url);
-		if (config.options.txtBackupFolder == &quot;&quot;)
-			dirs = null;
+		var sliceNames = [
+			&quot;UploadStoreUrl&quot;,
+			&quot;UploadFilename&quot;,
+			&quot;UploadBackupDir&quot;,
+			&quot;UploadDir&quot;,
+			&quot;UploadUserName&quot;
+			//&quot;UploadPassword&quot;, // no password in tiddlers
+		];
+		var sliceValues = store.getTiddlerSlices(tiddlerTitle,sliceNames);
+		var parameters = [];
+		for(var i=0; i&lt;sliceNames.length; i++) {
+			parameters.push(sliceValues[sliceNames[i]]);
+		}
+		return parameters;
+	},
+	
+	messages: {
+		homeParamsTiddler: &quot;HomeParameters&quot;,
+		prompt: &quot;Save and Upload this TiddlyWiki using parameters in  '%0' tiddler&quot;,
+		tiddlerNotFound: &quot;Tiddler %0 not found&quot;
+	},
+	initAtLoad: function () {
+		// install Shadowed HomeParameters
+		var storeUrl;
+		if ((document.location.toString().substr(0,4) == &quot;http&quot;)) 
+			storeUrl = bidix.dirname(document.location.toString())+'/'+config.macros.upload.defaultStoreScript;
 		else
-			dirs = config.options.txtBackupFolder.split('/');
-	}
-	if (config.options.chkSaveBackups &amp;&amp; dirs &amp;&amp; (dirs.length &gt; 0)) 
-		bidix.WebDAVSaving.mkdir(root,dirs.shift(),dirs,url,original,posDiv);
-	else
-		bidix.WebDAVSaving.saveBackup(url,original,posDiv);
-};
-
-bidix.WebDAVSaving.saveBackup = function(url,original,posDiv)
-{
-	var callback = function(status,params,responseText,url,xhr) {
-		if (!status) {
-			alert(config.messages.backupFailed);
-			return;
-		}
-		url = (url.indexOf(&quot;nocache=&quot;) &lt; 0 ? url : url.substring(0,url.indexOf(&quot;nocache=&quot;)-1));
-		displayMessage(config.messages.backupSaved,url);
-		bidix.WebDAVSaving.saveRss(params[0],params[1],params[2]);
-	};
-	if(config.options.chkSaveBackups) {
-		var backupPath = getBackupPath(url);
-		bidix.httpPut(backupPath,original,callback,Array(url,original,posDiv));
-	} else {
-		bidix.WebDAVSaving.saveRss(url,original,posDiv);
-	}
-}
-
-bidix.WebDAVSaving.saveRss = function(url,original,posDiv) 
-{
-	var callback = function(status,params,responseText,url,xhr) {
-		if (!status) {
-			alert(config.messages.rssFailed);
-			return;
-		}
-		url = (url.indexOf(&quot;nocache=&quot;) &lt; 0 ? url : url.substring(0,url.indexOf(&quot;nocache=&quot;)-1));
-		displayMessage(config.messages.rssSaved,url);
-		bidix.WebDAVSaving.saveEmpty(params[0],params[1],params[2]);
-	};
-	if(config.options.chkGenerateAnRssFeed) {
-		var rssPath = url.substr(0,url.lastIndexOf(&quot;.&quot;)) + &quot;.xml&quot;;
-		bidix.httpPut(rssPath,convertUnicodeToUTF8(generateRss()),callback,Array(url,original,posDiv));
-	} else {
-		bidix.WebDAVSaving.saveEmpty(url,original,posDiv);
-	}
-}
-
-bidix.WebDAVSaving.saveEmpty = function(url,original,posDiv) 
-{
-	var callback = function(status,params,responseText,url,xhr) {
-		if (!status) {
-			alert(config.messages.emptyFailed);
-			return;
-		}
-		url = (url.indexOf(&quot;nocache=&quot;) &lt; 0 ? url : url.substring(0,url.indexOf(&quot;nocache=&quot;)-1));
-		displayMessage(config.messages.emptySaved,url);
-		bidix.WebDAVSaving.saveMain(params[0],params[1],params[2]);
-	};
-	if(config.options.chkSaveEmptyTemplate) {
-		var emptyPath,p;
-		if((p = url.lastIndexOf(&quot;/&quot;)) != -1)
-			emptyPath = url.substr(0,p) + &quot;/empty.html&quot;;
-		else
-			emptyPath = url + &quot;.empty.html&quot;;
-		var empty = original.substr(0,posDiv[0] + startSaveArea.length) + original.substr(posDiv[1]);
-		bidix.httpPut(emptyPath,empty,callback,Array(url,original,posDiv));
-	} else {
-		bidix.WebDAVSaving.saveMain(url,original,posDiv);
-	}
-}
-
-bidix.WebDAVSaving.saveMain = function(url,original,posDiv) 
-{
-	var callback = function(status,params,responseText,url,xhr) {
-		if(status) {
-			url = (url.indexOf(&quot;nocache=&quot;) &lt; 0 ? url : url.substring(0,url.indexOf(&quot;nocache=&quot;)-1));
-			displayMessage(config.messages.mainSaved,url);
-			store.setDirty(false);
-		} else 
-			alert(config.messages.mainFailed);
-	};	
-	// Save new file
-	var revised = updateOriginal(original,posDiv);
-	bidix.httpPut(url,revised,callback,null);
-}
-
-// asynchronous mkdir
-bidix.WebDAVSaving.mkdir = function(root,dir,dirs,url,original,posDiv) {
-	var callback = function(status,params,responseText,url,xhr) {
-		url = (url.indexOf(&quot;nocache=&quot;) &lt; 0 ? url : url.substring(0,url.indexOf(&quot;nocache=&quot;)-1));
-		if (status == null) {
-			alert(&quot;Error in mkdir&quot;);
-			return;
-		}
-		if (xhr.status == httpStatus.ContentCreated) {
-			displayMessage(bidix.WebDAVSaving.messages.folderCreated.format([url]),url);
-			bidix.WebDAVSaving.mkbackupfolder(url,params[1],params[2],params[3],params[4]);
-		} else {
-			if (xhr.status == httpStatus.NotFound)
-				bidix.http('MKCOL',url,null,callback,params);
-			else
-				bidix.WebDAVSaving.mkbackupfolder(url,params[1],params[2],params[3],params[4]);
-		}
-	};
-	if (root.charAt(root.length) != '/')
-		root = root +'/';
-	bidix.http('HEAD',root+dir,null,callback,Array(root,dirs,url,original,posDiv));
-}
-
-bidix.httpPut = function(url,data,callback,params)
-{
-	return bidix.http(&quot;PUT&quot;,url,data,callback,params);
-}
-
-bidix.http = function(type,url,data,callback,params)
-{
-	var r = doHttp(type,url,data,null,null,null,callback,params,null);
-	if (typeof r == &quot;string&quot;)
-		alert(r);
-	return r;
-}
-
-bidix.dirname = function (filePath) {
-	if (!filePath) 
-		return;
-	var lastpos;
-	if ((lastpos = filePath.lastIndexOf(&quot;/&quot;)) != -1) {
-		return filePath.substring(0, lastpos);
-	} else {
-		return filePath.substring(0, filePath.lastIndexOf(&quot;\\&quot;));
+			storeUrl = config.macros.upload.defaultStoreScript;
+		var shadowedHomeParameters = (config.shadowTiddlers['HomeParameters']?config.shadowTiddlers['HomeParameters']:'');
+		shadowedHomeParameters += [
+			&quot;|UploadUserName:|&quot;+config.options['txtUploadUserName']+&quot;|&quot;,
+			&quot;|UploadStoreUrl:|&quot;+storeUrl+&quot;|&quot;,
+			&quot;|UploadDir:|.|&quot;,
+			&quot;|UploadFilename:|index.html|&quot;,
+			&quot;|UploadBackupDir:||&quot;
+			].join(&quot;\n&quot;);
+		merge(config.shadowTiddlers,{'HomeParameters':	shadowedHomeParameters});
+		// install Backstage uploadToHome
+		merge(config.tasks,{
+			uploadToHome: {text: &quot;uploadToHome&quot;, tooltip: &quot;Upload using '&quot; + this.messages.homeParamsTiddler + &quot;' tiddler&quot;, action: this.action}
+		});
+		config.backstageTasks.push(&quot;uploadToHome&quot;);
+				
 	}
 };
+
+config.macros.uploadToHome.initAtLoad();
+
 //}}}</pre>
 </div>
-<div title="allowedsites.txt" modifier="system" created="200703181349" tags="systemTiddler excludeLists excludeSearch file" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703181349">
-<pre>tiddlywiki.abego-software.de
-tiddlywiki.bidix.info
-bob.mcelrath.org
-gimcrackd.com
-jackparke.googlepages.com
-tw.lewcid.org
-mptw.tiddlyspot.com
-bradleymeck.tiddlyspot.com
-solo.dc3.com
-sra.sharedrecords.org
-www.socialtext.net
-tiddlystyles.com
-www.tiddlytools.com
-www.tiddlywiki.com
-www.wikipedia.org
-demo.zimbra.com</pre>
+<div title="User" modifier="BidiX" modified="200705191401" created="200705191351" tags="Commands TiddlyHomePackage" changecount="1">
+<pre>Tags Commands to manage a TiddlyHome User</pre>
 </div>
-<div title="lingoFR" modifier="system" modified="200704291441" created="200701301653" tags="systemConfig excludeLists excludeSearch FR systemConfigDisable" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200704291441" changecount="3">
-<pre>/***
-''Version 2.1.0 3/10/06 ''
-!Traduction française des messages intégrés dans le TiddlyWiki de base de JeremyRuston, à jour avec la version 2.1.0
-__NDT:__
-^^Toute traduction peut-être discutée. Celle-ci a été faite en pensant à un utilisateur non spécialiste.
-D'où les choix :
-| //tiddler -&gt; élément&lt;&lt;br&gt;&gt;tag, to tag -&gt; index, indexer&lt;&lt;br&gt;&gt;plugin -&gt; extension&lt;&lt;br&gt;&gt;empty file template -&gt; fichier de base &quot;empty.html&quot;//&lt;&lt;br&gt;&gt;Mais :&lt;&lt;br&gt;&gt;//backup -&gt; backup//&lt;&lt;br&gt;&gt;(traduire ce terme consacré introduirait des confusions) |
-//Traduction// Jacques Turbé : http://avm.free.fr//TiddlyWiki-fr.html ^^
-
-Avec la version 2.1.0 de TiddlyWiki apparaissent deux nouvelles fonctions intégrées :
-''Importations'' et ''Extensions'' : Les boutons d'appel correspondants sont ajoutés au bas de votre OptionPanel par le code suivant : {{{[[Importations|ImportTiddlers]]}}} et {{{[[Extensions|PluginManager]]}}}
-
-!!!Script de fusion des textes //''pour les versions antérieures à 2.0.11''//
-***/
-/*{{{*/
-if(window.merge == undefined)
-{
-merge = function(dst,src)
-{
- for (p in src)
- dst[p] = src[p];
- return dst;
-}
-}
-/*}}}*/
-/***
-!!!Chaînes traduites
-***/
-/*{{{*/
-
-// Messages
-merge(config.messages,{
- customConfigError: &quot;Problème rencontré pour charger des extensions. Activer le menu 'Extensions' pour les détails&quot;,
- pluginError: &quot;Erreur: %0&quot;,
- pluginDisabled: &quot;Extension désactivée en raison de l'index 'systemConfigDisable' tag&quot;,
- pluginForced: &quot;Exécution forcée en raison de l'index 'systemConfigForce' tag&quot;,
- pluginVersionError: &quot;Cette extension ne peut être exécutée car elle nécessite une version plus récente de TiddlyWiki&quot;,
- nothingSelected: &quot;Pas de sélection faite. Il faut sélectionner au moins un item d'abord&quot;,
- savedSnapshotError: &quot;Cet exemplaire de TiddlyWiki ne semble pas conforme. Reportez-vous à http://www.tiddlywiki.com/#DownloadSoftware&quot;,
- subtitleUnknown: &quot;(inconnu)&quot;,
- undefinedTiddlerToolTip: &quot;L'élément '%0' n'est pas encore créé&quot;,
- shadowedTiddlerToolTip: &quot;L'élément '%0' n'est pas encore créé, mais a un contenu par défaut.&quot;,
- tiddlerLinkTooltip: &quot;%0 - %1, %2&quot;,
- externalLinkTooltip: &quot;%0&quot;,
- noTags: &quot;Il n'y a pas d'éléments indexés&quot;,
- notFileUrlError: &quot;Les données entrées sont mémorisées pendant cette session. Pour les conserver, il faudra faire une sauvegarde avant de quitter&quot;,
- cantSaveError: &quot;Sauvegarde impossible : soit votre navigateur ne permet pas de sauvegarder les changements (préférez FireFox si possible), soit l'adresse de votre fichier contient des caractères invalides.&quot;,
- invalidFileError: &quot;Le fichier '%0' choisi ne semble pas être un TiddlyWiki valide&quot;,
- backupSaved: &quot;Sauvegarde effectuée&quot;,
- backupFailed: &quot;Echec de l'enregistrement du backup&quot;,
- rssSaved: &quot;Flux RSS sauvegardé&quot;,
- rssFailed: &quot;Echec de l'enregistrement du flux RSS&quot;,
- emptySaved: &quot;Fichier de base 'empty.html' enregistré&quot;,
- emptyFailed: &quot;Echec de l'enregistrement du fichier neuf 'empty'&quot;,
- mainSaved: &quot;Mise à jour du fichier TiddlyWiki enregistrée&quot;,
- mainFailed: &quot;Echec de l'enregistrement du nouveau fichier TiddlyWiki. Vos modifications ne sont pas enregistrées&quot;,
- macroError: &quot;Erreur dans la macro &lt;&lt;%0&gt;&gt;&quot;,
- macroErrorDetails: &quot;Erreur d'exécution de la macro &lt;&lt;%0&gt;&gt;:\n%1&quot;,
- missingMacro: &quot;Macro non trouvée&quot;,
- overwriteWarning: &quot;Il y a déjà un élément nommé '%0'. Confirmez pour le remplacer&quot;,
- unsavedChangesWarning: &quot;ATTENTION! Les dernières modifications de ce TiddlyWiki n'ont pas été enregistrées.\n\nOK pour les enregistrer\nANNULER pour les abandonner&quot;,
- confirmExit: &quot;--------------------------------\n\nSi vous quittez maintenant vous perdrez les modifications qui n'ont pas été sauvegardées.\n\n--------------------------------&quot;,
- saveInstructions: &quot;Sauvegarder&quot;});
-
-merge(config.messages.messageClose,{
- text: &quot;fermer&quot;,
- tooltip: &quot;ferme cette zône messages&quot;});
-
-config.messages.dates.months = [&quot;janvier&quot;, &quot;février&quot;, &quot;mars&quot;, &quot;avril&quot;, &quot;mai&quot;, &quot;juin&quot;, &quot;juillet&quot;, &quot;août&quot;, &quot;septembre&quot;, &quot;octobre&quot;, &quot;novembre&quot;,&quot;décembre&quot;];
-config.messages.dates.days = [&quot;dimanche&quot;, &quot;lundi&quot;,&quot;mardi&quot;, &quot;mercredi&quot;, &quot;jeudi&quot;, &quot;vendredi&quot;, &quot;samedi&quot;];
-
-merge(config.views.wikified.tag,{
- labelNoTags: &quot;non indexé&quot;,
- labelTags: &quot;Index : &quot;,
- openTag: &quot;Ouvrir '%0'&quot;,
- tooltip: &quot;Afficher les éléments indexés avec '%0'&quot;,
- openAllText: &quot;Ouvrir tous&quot;,
- openAllTooltip: &quot;Ouvrir tous les éléments de cet index&quot;,
- popupNone: &quot;Pas d'autres éléments indexés avec '%0'&quot;});
-
-merge(config.views.wikified,{
- defaultText: &quot;'%0' n'a pas encore été créé. Double-cliquez pour entrer un texte.&quot;,
- defaultModifier: &quot;(absent)&quot;,
- shadowModifier: &quot;(défaut)&quot;});
-
-merge(config.views.editor,{
- tagPrompt: &quot;Séparez les index avec un espace (doubles crochets si besoin), ou sélectionnez un index existant&quot;,
- defaultText: &quot;Entrez le texte de '%0'&quot;});
-
-merge(config.views.editor.tagChooser,{
- text: &quot;index&quot;,
- tooltip: &quot;Sélectionner les index existants à associer à cet élément&quot;,
- popupNone: &quot;Pas d'index déjà définis&quot;,
- tagTooltip: &quot;Associer à l'index '%0'&quot;});
-
-merge(config.macros.search,{
- label: &quot;chercher&quot;,
- prompt: &quot;Rechercher dans ce TiddlyWiki&quot;,
- accessKey: &quot;F&quot;,
- successMsg: &quot;%0 éléments correspondent à %1&quot;,
- failureMsg: &quot;Aucun élément ne correspond à %0&quot;});
-
-merge(config.macros.tagging,{
- label: &quot;éléments indexés:&quot;,
- labelNotTag: &quot;pas d'index&quot;,
- tooltip: &quot;Lister les éléments indexés '%0'&quot;});
-
-merge(config.macros.timeline,{
- dateFormat: &quot;DD MMM YYYY&quot;});
-
-merge(config.macros.allTags,{
- tooltip: &quot;Afficher les éléments indexés '%0'&quot;,
- noTags: &quot;Pas d'éléments indexés&quot;});
-
-config.macros.list.all.prompt = &quot;Tous les éléments par ordre alphabétique&quot;;
-config.macros.list.missing.prompt = &quot;Eléments désignés par un lien mais non créés&quot;;
-config.macros.list.orphans.prompt = &quot;Eléments ne faisant l'objet d'aucun lien&quot;;
-config.macros.list.shadowed.prompt = &quot;Eléments ayant un contenu par défaut&quot;;
-
-merge(config.macros.closeAll,{
- label: &quot;page blanche&quot;,
- prompt: &quot;Retirer tous les éléments de l'affichage (sauf ceux en cours d'édition)&quot;});
-
-merge(config.macros.permaview,{
- label: &quot;permavue&quot;,
- prompt: &quot;URL de la page actuellement constituée&quot;});
-
-merge(config.macros.saveChanges,{
- label: &quot;sauvegarde sur le disque&quot;,
- prompt: &quot;Créer le fichier TiddlyWiki avec tous les éléments mis à jour - Raccourci : 'S'&quot;});
-
-merge(config.macros.newTiddler,{
- label: &quot;nouveau&quot;,
- prompt: &quot;Créer un nouvel élément&quot;,
- title: &quot;EntréeNouvelle&quot;,
- accessKey: &quot;N&quot;});
-
-
-merge(config.macros.importTiddlers,{
- defaultPath: &quot;http://www.tiddlywiki.com/index.html&quot;,
- fetchLabel: &quot;Accéder&quot;,
- fetchPrompt: &quot;Accèder au fichier tiddlywiki&quot;,
- fetchError: &quot;Problèmes rencontrés pour accéder au fichier tiddlywiki&quot;,
- confirmOverwriteText: &quot;Confirmez l'écrasement de ces éléments :\n\n%0&quot;,
- wizardTitle: &quot;Importation d'éléments depuis un autre fichier TiddlyWiki&quot;,
- step1: &quot;Etape 1: Identification du fichier TiddlyWiki&quot;,
- step1prompt: &quot;Saisir l'URL ou le chemin d'accès: &quot;,
- step1promptFile: &quot;...parcourez les fichiers: &quot;,
- step1promptFeeds: &quot;...ou sélectionnez une importation prédéfinie: &quot;,
- step1feedPrompt: &quot;Choisir...&quot;,
- step2: &quot;Etape 2: Chargement des éléments du fichier TiddlyWiki&quot;,
- step2Text: &quot;Patientez pendant le chargement des éléments de: %0&quot;,
- step3: &quot;Etape 3: Choix des éléments à importer&quot;,
- step4: &quot;%0 élément(s) importés&quot;,
- step5: &quot;Terminé&quot;,
- listViewTemplate: {
- columns: [
- {name: 'Selected', field: 'Selected', rowName: 'title', type: 'Selector'},
- {name: 'Title', field: 'title', title: &quot;Plugin&quot;, type: 'String'},
- {name: 'Snippet', field: 'text', title: &quot;Extrait&quot;, type: 'String'},
- {name: 'Tags', field: 'tags', title: &quot;Index&quot;, type: 'Tags'}
- ],
- rowClasses: [
- ],
- actions: [
- {caption: &quot;Autres actions...&quot;, name: ''},
- {caption: &quot;Importer ces éléments&quot;, name: 'import'}
- ]}
- });
-
-merge(config.macros.newJournal,{
- label: &quot;journal&quot;,
- prompt: &quot;Créer une nouvelle entrée ayant pour titre la date et l'heure&quot;,
- accessKey: &quot;J&quot;});
-
-merge(config.macros.plugins,{
- skippedText: &quot;(Extension non exécutée car ajoutée depuis le début de cette session)&quot;,
- noPluginText: &quot;Il n'y a pas d'extensions installées&quot;,
- confirmDeleteText: &quot;Confirmez-vous la suppression de ces éléments:\n\n%0&quot;,
- listViewTemplate : {
- columns: [
- {name: 'Selected', field: 'Selected', rowName: 'title', type: 'Selector'},
- {name: 'Title', field: 'title', tiddlerLink: 'title', title: &quot;Extension&quot;, type: 'TiddlerLink'},
- {name: 'Forced', field: 'forced', title: &quot;Forcée&quot;, tag: 'systemConfigForce', type: 'TagCheckbox'},
- {name: 'Disabled', field: 'disabled', title: &quot;Désactivée&quot;, tag: 'systemConfigDisable', type: 'TagCheckbox'},
- {name: 'Executed', field: 'executed', title: &quot;Chargée&quot;, type: 'Boolean', trueText: &quot;Yes&quot;, falseText: &quot;No&quot;},
- {name: 'Error', field: 'error', title: &quot;Etat&quot;, type: 'Boolean', trueText: &quot;Error&quot;, falseText: &quot;OK&quot;},
- {name: 'Log', field: 'log', title: &quot;Log&quot;, type: 'StringList'}
- ],
- rowClasses: [
- {className: 'error', field: 'error'},
- {className: 'warning', field: 'warning'}
- ],
- actions: [
- {caption: &quot;Autres actions...&quot;, name: ''},
- {caption: &quot;Supprimer l'index systemConfig&quot;, name: 'remove'},
- {caption: &quot;Supprimer définitivement ces extensions&quot;, name: 'delete'}
- ]}
- });
-
-
-merge(config.commands.closeTiddler,{
- text: &quot;fermer&quot;,
- tooltip: &quot;Retirer cet élément de l'affichage&quot;});
-
-merge(config.commands.closeOthers,{
- text: &quot;isoler&quot;,
- tooltip: &quot;Refermer tous les autres éléments&quot;});
-merge(config.commands.editTiddler,{
- text: &quot;éditer&quot;,
- tooltip: &quot;Editer cet élément&quot;,
- readOnlyText: &quot;voir&quot;,
- readOnlyTooltip: &quot;Montrer le texte source de cet élément&quot;});
-
-merge(config.commands.saveTiddler,{
- text: &quot;valider&quot;,
- tooltip: &quot;Enregistrer les modifications apportées à cet élément&quot;});
-
-merge(config.commands.cancelTiddler,{
- text: &quot;annuler&quot;,
- tooltip: &quot;Abandonner les modifications apportées à cet élément&quot;,
- warning: &quot;Confirmez-vous l'abandon des modifications de '%0'?&quot;,
- readOnlyText: &quot;retour&quot;,
- readOnlyTooltip: &quot;Revenir à l'affichage normal de cet élément&quot;});
-
-merge(config.commands.deleteTiddler,{
- text: &quot;supprimer&quot;,
- tooltip: &quot;Supprimer cet élément du fichier TiddlyWiki&quot;,
- warning: &quot;Confirmez-vous la suppression de '%0'?&quot;});
-
-merge(config.commands.permalink,{
- text: &quot;permalien&quot;,
- tooltip: &quot;Permalien de cet élément&quot;});
-
-merge(config.commands.references,{
- text: &quot;référents&quot;,
- tooltip: &quot;Lister les éléments faisant référence à celui-ci&quot;,
- popupNone: &quot;Pas de référents&quot;});
-
-merge(config.commands.jump,{
- text: &quot;atteindre&quot;,
- tooltip: &quot;Positionner l'affichage sur un autre élément déjà ouvert&quot;});
-
-merge(config.shadowTiddlers,{
- DefaultTiddlers: &quot;PourCommencer&quot;,
- MainMenu: &quot;PourCommencer&quot;,
- SiteTitle: &quot;Mon TiddlyWiki&quot;,
- SiteSubtitle: &quot;organiseur personnel web interactif&quot;,
- SiteUrl: &quot;http://www.tiddlywiki.com/&quot;,
- PourCommencer: &quot;Pour utiliser ce carnet TiddlyWiki, commencez par modifier les éléments suivants (//tiddlers// dans le jargon TiddlyWiki) :\n\n* SiteTitle &amp; SiteSubtitle: Le titre et le sous-titre ci-dessus (après sauvegarde et rafraîchissement ils deviendront votre titre de page, qui s'affichera aussi dans la barre titre du navigateur)\n* MainMenu: Le menu (généralement à gauche)\n* DefaultTiddlers: Liste les noms des éléments que vous voulez voir s'afficher à l'ouverture de votre TiddlyWiki. \n\nEntrez également le nom utilisateur avec lequel seront signées chacune de vos entrées : &lt;&lt;option txtUserName&gt;&gt;&quot;,
- SideBarOptions: &quot;&lt;&lt;search&gt;&gt;&lt;&lt;closeAll&gt;&gt;&lt;&lt;permaview&gt;&gt;&lt;&lt;newTiddler&gt;&gt;&lt;&lt;newJournal 'DD MMM YYYY'&gt;&gt;&lt;&lt;saveChanges&gt;&gt;&lt;&lt;slider chkSliderOptionsPanel OptionsPanel 'options »' 'Modifier les options avancées de ce TiddlyWiki'&gt;&gt;&quot;,
-/*
- OptionsPanel: &quot;Vos options de configuration de TiddlyWiki sont sauvegardées par votre navigateur (cookies).\n\nNom d'utilisateur pour signer vos entrées : entrez-le sous la forme d'un nom Wiki (par exemple RaymondQueneau).&lt;&lt;option txtUserName&gt;&gt;\n&lt;&lt;option chkSaveBackups&gt;&gt;Backup de chaque version\n&lt;&lt;option chkAutoSave&gt;&gt;Sauvegarde automatique après chaque entrée validée&gt;&gt;\n&lt;&lt;option chkRegExpSearch&gt;&gt;Expression régulières dans les recherches\n&lt;&lt;option chkCaseSensitiveSearch&gt;&gt;Respecter la casse dans les recherches\n&lt;&lt;option chkAnimate&gt;&gt;Ouverture animée des éléments\n-----\n[[Importations|ImportTiddlers]]\n[[Extensions|PluginManager]]\n[[Options complémentaires|AdvancedOptions]]&quot;,
-*/
-/*
- AdvancedOptions: &quot;&lt;&lt;option chkGenerateAnRssFeed&gt;&gt; Création flux RSS\n&lt;&lt;option chkOpenInNewWindow&gt;&gt; Ouverture des liens externes dans une nouvelle fenêtre\n&lt;&lt;option chkSaveEmptyTemplate&gt;&gt; Sauvegarde du fichier de base 'empty.html' de la dernière version\n&lt;&lt;option chkToggleLinks&gt;&gt; Recliquer sur un lien ferme l'élément qu'il a ouvert\n^^(hors fonction en appuyant sur la touche Ctrl)^^\n&lt;&lt;option chkHttpReadOnly&gt;&gt; Masque les fonctions d'édition lorsque le fichier est accédé depuis le Web\n&lt;&lt;option chkForceMinorUpdate&gt;&gt; L'entrée d'une modification ne modifie pas la date et l'heure déjà enregistrées pour l'élément\n^^(hors fonction en cliquant 'valider' avecla touche Maj enfoncée, ou en appuyant Ctrl-Maj-Entrée^^\n&lt;&lt;option chkConfirmDelete&gt;&gt; Confirmations avant suppressions\nNombre maximum de lignes de la fenêtre d'édition: &lt;&lt;option txtMaxEditRows&gt;&gt;\nRépertoire des backups : &lt;&lt;option txtBackupFolder&gt;&gt;\n&quot;,
-*/
- SideBarTabs: &quot;&lt;&lt;tabs txtMainTab Chrono 'Affichage chronologique' TabTimeline Alpha 'Liste alphabétique des éléments' TabAll Index 'Liste des index' TabTags Suite 'Autres listes' TabMore&gt;&gt;&quot;,
- TabTimeline: &quot;&lt;&lt;timeline&gt;&gt;&quot;,
- TabAll: &quot;&lt;&lt;list all&gt;&gt;&quot;,
- TabTags: &quot;&lt;&lt;allTags&gt;&gt;&quot;,
- TabMore: &quot;&lt;&lt;tabs txtMoreTab Manquants 'Eléments désignés par un lien mais non créés' TabMoreMissing Orphelins 'Eléments sans liens pour les appeler' TabMoreOrphans Défauts 'Eléments ayant un contenu par défaut' TabMoreShadowed&gt;&gt;&quot;,
- TabMoreMissing: &quot;&lt;&lt;list missing&gt;&gt;&quot;,
- TabMoreOrphans: &quot;&lt;&lt;list orphans&gt;&gt;&quot;,
- TabMoreShadowed: &quot;&lt;&lt;list shadowed&gt;&gt;&quot;});
-
-/*}}}*/
-</pre>
-</div>
-<div title="systemContentTW" modifier="system" created="200703172057" tags="systemTiddler excludeLists excludeSearch contentPublisher" date="200703172057" anon="undefined" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703172057">
-<pre>|''URL:''|http://tiddlyhome.bidix.info/template/system.html |
-|''Description:''|Repository for BidiX's TiddlyWiki Extensions|
-|''Author:''|BidiX|</pre>
-</div>
-<div title="systemList" modifier="system" created="200703151224" tags="systemTiddler excludeLists excludeSearch" date="200703151224" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703151224">
-<pre>when this tag is present, a list of ''tagging'' tiddlers is appended to the view.
-
-The tiddler subtitle is not display.</pre>
-</div>
-<div title="systemTool" modifier="system" created="200703151227" tags="systemTiddler excludeLists excludeSearch" date="200703151227" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703151227">
-<pre>The tiddler subtitle is not display.</pre>
-</div>
-<div title="zConfigTweak" modifier="system" created="200703171805" tags="systemConfig excludeLists excludeSearch" date="200703171805" anon="undefined" server.page.version="200703171805" server.type="file" server.host="file:///Users/bruno/Sites/TiddlyHome/admin/template/presentation.html" server.page.revision="200703171805">
-<pre>//{{{
-merge(config.views.wikified.tag,{
- labelNoTags: &quot;&quot;,
- labelTags: &quot;&quot;});
-merge(config.macros.tagging,{
- label: &quot;&quot;,
- labelNotTag: &quot;&quot;,
- tooltip: &quot;&quot;});
-
-//}}}</pre>
+<div title="Verify user password" modifier="BidiX" modified="200705181956" created="200705181954" tags="TiddlyHomePackage Commands User" changecount="3">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/user.php?next=verify&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
 </div>
 </div>
 <!--POST-STOREAREA-->
@@ -3559,7 +1522,6 @@ config.options = {
 	txtMainTab: "tabTimeline",
 	txtMoreTab: "moreTabAll",
 	txtMaxEditRows: "30",
-	txtRssTag: "toRSS",
 	txtFileSystemCharSet: "UTF-8"
 	};
 config.optionsDesc = {};
@@ -4134,7 +2096,7 @@ merge(config.shadowTiddlers,{
 	SiteTitle: "My TiddlyWiki",
 	SiteSubtitle: "a reusable non-linear personal web notebook",
 	SiteUrl: "http://www.tiddlywiki.com/",
-	SideBarOptions: '<<search>><<closeAll>><<permaview>><<newTiddler>><<newJournal "DD MMM YYYY">><<saveChanges>><<slider chkSliderOptionsPanel OptionsPanel "options \u00bb" "Change TiddlyWiki advanced options">>',
+	SideBarOptions: '<<search>><<closeAll>><<permaview>><<newTiddler>><<newJournal "DD MMM YYYY">><<saveChanges>><<slider chkSliderOptionsPanel OptionsPanel "options »" "Change TiddlyWiki advanced options">>',
 	SideBarTabs: '<<tabs txtMainTab "Timeline" "Timeline" TabTimeline "All" "All tiddlers" TabAll "Tags" "All tags" TabTags "More" "More lists" TabMore>>',
 	TabMore: '<<tabs txtMoreTab "Missing" "Missing tiddlers" TabMoreMissing "Orphans" "Orphaned tiddlers" TabMoreOrphans "Shadowed" "Shadowed tiddlers" TabMoreShadowed>>'});
 
@@ -5655,22 +3617,22 @@ config.macros.slider.handler = function(place,macroName,params)
 config.macros.option.genericCreate = function(place,type,opt,className,desc)
 {
 	var typeInfo = config.macros.option.types[type];
-    var c = document.createElement(typeInfo.elementType);
-    if(typeInfo.typeValue)
-        c.setAttribute("type",typeInfo.typeValue);
-    c[typeInfo.eventName] = typeInfo.onChange;
-    c.setAttribute("option",opt);
+	var c = document.createElement(typeInfo.elementType);
+	if(typeInfo.typeValue)
+		c.setAttribute("type",typeInfo.typeValue);
+	c[typeInfo.eventName] = typeInfo.onChange;
+	c.setAttribute("option",opt);
 	if(className)
 		c.className = className;
 	else
-    	c.className = typeInfo.className;
+		c.className = typeInfo.className;
 	if(config.optionsDesc[opt])
 		c.setAttribute("title",config.optionsDesc[opt]);
-    place.appendChild(c);
+	place.appendChild(c);
 	if(desc != "no")
 		createTiddlyText(place,config.optionsDesc[opt] ? config.optionsDesc[opt] : opt);
-    c[typeInfo.valueField] = config.options[opt];
-    return c;
+	c[typeInfo.valueField] = config.options[opt];
+	return c;
 };
 
 config.macros.option.genericOnChange = function(e)
@@ -5808,7 +3770,7 @@ config.macros.newTiddler.createNewTiddlerButton = function(place,title,params,la
 config.macros.newTiddler.onClickNewTiddler = function()
 {
 	var title = this.getAttribute("newTitle");
-	if(this.getAttribute("isJournal")) {
+	if(this.getAttribute("isJournal") == "true") {
 		var now = new Date();
 		title = now.formatString(title.trim());
 	}
@@ -6093,10 +4055,6 @@ config.macros.tagChooser.handler = function(place,macroName,params,wikifier,para
 };
 
 // Create a toolbar command button
-// place - parent DOM element
-// command - reference to config.commands[] member -or- name of member
-// tiddler - reference to tiddler that toolbar applies to
-// theClass - the class to give the button
 config.macros.toolbar.createCommand = function(place,commandName,tiddler,theClass)
 {
 	if(typeof commandName != "string") {
@@ -7073,6 +5031,8 @@ TiddlyWiki.prototype.getMissingLinks = function(sortField)
 		this.updateTiddlers();
 	var results = [];
 	this.forEachTiddler(function (title,tiddler) {
+		if(tiddler.isTagged("excludeMissing") || tiddler.isTagged("systemConfig"))
+			return;
 		for(var n=0; n<tiddler.links.length;n++) {
 			var link = tiddler.links[n];
 			if(this.fetchTiddler(link) == null && !this.isShadowTiddler(link))
@@ -8877,7 +6837,14 @@ function refreshDisplay(hint)
 
 function refreshPageTitle()
 {
-	document.title = wikifyPlain("SiteTitle") + " - " + wikifyPlain("SiteSubtitle");
+	document.title = getPageTitle();
+}
+
+function getPageTitle()
+{
+	var st = wikifyPlain("SiteTitle");
+	var ss = wikifyPlain("SiteSubtitle");
+	return st + ((st == "" || ss == "") ? "" : " - ") + ss;
 }
 
 function refreshStyles(title,doc)
@@ -9022,7 +6989,7 @@ function updateOriginal(original,posDiv)
 	var revised = original.substr(0,posDiv[0] + startSaveArea.length) + "\n" +
 				convertUnicodeToUTF8(store.allTiddlersAsHtml()) + "\n" +
 				original.substr(posDiv[1]);
-	var newSiteTitle = convertUnicodeToUTF8((wikifyPlain("SiteTitle") + " - " + wikifyPlain("SiteSubtitle")).htmlEncode());
+	var newSiteTitle = convertUnicodeToUTF8(getPageTitle()).htmlEncode();
 	revised = revised.replaceChunk("<title"+">","</title"+">"," " + newSiteTitle + " ");
 	revised = updateLanguageAttribute(revised);
 	revised = updateMarkupBlock(revised,"PRE-HEAD","MarkupPreHead");
@@ -9196,7 +7163,7 @@ function generateRss()
 	var d = new Date();
 	var u = store.getTiddlerText("SiteUrl");
 	// Assemble the header
-	s.push("<" + "?xml version=\"1.0\"" + " encoding='UTF-8' " + "?" + ">");
+	s.push("<" + "?xml version=\"1.0\"?" + ">");
 	s.push("<rss version=\"2.0\">");
 	s.push("<channel>");
 	s.push("<title" + ">" + wikifyPlain("SiteTitle").htmlEncode() + "</title" + ">");
@@ -9210,11 +7177,7 @@ function generateRss()
 	s.push("<docs>http://blogs.law.harvard.edu/tech/rss</docs>");
 	s.push("<generator>TiddlyWiki " + version.major + "." + version.minor + "." + version.revision + "</generator>");
 	// The body
-	var tiddlers;
-	if (config.options.txtRssTag && store.getTaggedTiddlers(config.options.txtRssTag).length > 0)
-		tiddlers = store.getTaggedTiddlers(config.options.txtRssTag,"modified");
-	else
-	    tiddlers = store.getTiddlers("modified","excludeLists");
+	var tiddlers = store.getTiddlers("modified","excludeLists");
 	var n = config.numRssItems > tiddlers.length ? 0 : tiddlers.length-config.numRssItems;
 	for (var t=tiddlers.length-1; t>=n; t--)
 		s.push(tiddlers[t].saveToRss(u));
@@ -9623,15 +7586,6 @@ function doHttp(type,url,data,contentType,username,password,callback,params,head
 		return "Can't create XMLHttpRequest object";
 	// Install callback
 	x.onreadystatechange = function() {
-		if (window.netscape){
-			try {
-				if (document.location.protocol.indexOf("http") == -1) {
-					netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
-				}
-			}
-			catch (e) { displayMessage(e.description?e.description:e.toString()); }
-		}
-		
 		if (x.readyState == 4 && callback && (x.status !== undefined)) {
 			if([0, httpStatus.OK, httpStatus.ContentCreated, httpStatus.NoContent].contains(x.status))
 				callback(true,params,x.responseText,url,x);

@@ -3,7 +3,7 @@
 <head>
 <script type="text/javascript">
 //<![CDATA[
-var version = {title: "TiddlyWiki", major: 2, minor: 2, revision: 0, beta: 5, date: new Date("Apr 18, 2007"), extensions: {}};
+var version = {title: "TiddlyWiki", major: 2, minor: 2, revision: 0, beta: "#2135", date: new Date("Apr 18, 2007"), extensions: {}};
 //]]>
 </script>
 <!--
@@ -40,6 +40,8 @@ DAMAGE.
 <!--PRE-HEAD-START-->
 <!--{{{-->
 <link rel='alternate' type='application/rss+xml' title='RSS' href='index.xml'/>
+<link rel="shortcut icon"href="$rootUrl$_th/images/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="icon" href="$rootUrl$_th/images/favicon.ico" type="image/vnd.microsoft.icon" /> 
 <!--}}}-->
 <!--PRE-HEAD-END-->
 <style type="text/css">
@@ -500,27 +502,92 @@ Welcome to TiddlyWiki by Jeremy Ruston, Copyright &copy; 2007 Osmosoft Limited
 <div id="contentWrapper"></div>
 <div id="contentStash"></div>
 <div id="storeArea">
-<div title="PasswordOptionPlugin" modifier="BidiX" created="200703061347" tags="systemConfig TiddlyHome" server.type="file" server.host="file://C:\sPerso\sTiddlyHome\sTiddlyHome\sadmin\slib\spresentation.html" server.page.version="200703061347" date="200701192113">
+<div title="Change my site access" modifier="$owner$" modified="200705191332" created="200705181712" tags="TiddlyHomePackage Commands Site" changecount="6">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/site.php?next=change%20access&amp;site=$site$&amp;owner=$owner$&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="Change site group" modifier="$owner$" modified="200705191333" created="200705181730" tags="TiddlyHomePackage Commands Site" changecount="3">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/site.php?next=change%20group&amp;site=$site$&amp;owner=$owner$&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="Change user email" modifier="$owner$" modified="200705191334" created="200705181755" tags="TiddlyHomePackage Commands User" changecount="5">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/user.php?next=change%20email&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="Change user password" modifier="BidiX" modified="200705181955" created="200705181953" tags="TiddlyHomePackage Commands User" changecount="1">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/user.php?next=change%20password&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="Commands" modifier="BidiX" modified="200705191357" created="200705191345" tags="TiddlyHomePackage">
+<pre>Tags all TiddlyHome commands. 
+
+There are commands for :
+* &lt;&lt;tag User&gt;&gt;
+* &lt;&lt;tag Site&gt;&gt;</pre>
+</div>
+<div title="Delete my site" modifier="$owner$" modified="200705191332" created="200705181743" tags="TiddlyHomePackage Commands Site" changecount="2">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/site.php?next=delete&amp;site=$site$&amp;owner=$owner$&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="Delete user" modifier="$owner$" modified="200705191341" created="200705181958" tags="TiddlyHomePackage Commands User" changecount="2">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/user.php?next=delete&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="Display site" modifier="$owner$" modified="200705191333" created="200705181733" tags="TiddlyHomePackage Commands Site" changecount="4">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/site.php?next=display&amp;site=$site$&amp;owner=$owner$&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="Display user" modifier="BidiX" created="200705181951" tags="TiddlyHomePackage Commands User" changecount="2">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/user.php?next=display&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="New site" modifier="$owner$" modified="200705191334" created="200705182000" tags="TiddlyHomePackage Commands Site" changecount="4">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/site.php?next=new&amp;owner=$owner$&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="New user" modifier="BidiX" created="200705181957" tags="TiddlyHomePackage Commands User" changecount="1">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/user.php?next=new&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="PasswordOptionPlugin" modifier="BidiX" modified="200704210834" created="200701172059" tags="systemConfig" changecount="2">
 <pre>/***
 |''Name:''|PasswordOptionPlugin|
-|''Description:''|Extends TiddlyWiki options with non encrypted password option. &lt;br&gt;Password: &lt;&lt;option pasPassword&gt;&gt;|
-|''Version:''|1.0.1|
-|''Date:''|Jan 19, 2007|
+|''Description:''|Extends TiddlyWiki options with non encrypted password option.|
+|''Version:''|1.0.2|
+|''Date:''|Apr 19, 2007|
 |''Source:''|http://tiddlywiki.bidix.info/#PasswordOptionPlugin|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
-|''~CoreVersion:''|2.2.0 (Changeset 1316)|
-|''Browser:''|http://www.tiddlywiki.com/#browsers|
+|''~CoreVersion:''|2.2.0 (Beta 5)|
 ***/
 //{{{
 version.extensions.PasswordOptionPlugin = {
- major: 1, minor: 0, revision: 1, 
- date: new Date(2007,19,0),
- source: 'http://tiddlywiki.bidix.info/#PasswordOptionPlugin',
- author: 'BidiX (BidiX (at) bidix (dot) info',
- license: '[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D]]',
- coreVersion: '2.2.0 (Changeset 1316)',
- browser: 'Firefox 1.5; InternetExplorer 6.0; Safari' 
+	major: 1, minor: 0, revision: 2, 
+	date: new Date(&quot;Apr 19, 2007&quot;),
+	source: 'http://tiddlywiki.bidix.info/#PasswordOptionPlugin',
+	author: 'BidiX (BidiX (at) bidix (dot) info',
+	license: '[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D]]',
+	coreVersion: '2.2.0 (Beta 5)'
 };
 
 config.macros.option.passwordCheckboxLabel = &quot;Save this password on this computer&quot;;
@@ -528,55 +595,77 @@ config.macros.option.passwordInputType = &quot;password&quot;; // password | tex
 setStylesheet(&quot;.pasOptionInput {width: 11em;}\n&quot;,&quot;passwordInputTypeStyle&quot;);
 
 merge(config.macros.option.types, {
- 'pas': {
- elementType: &quot;input&quot;,
- valueField: &quot;value&quot;,
- eventName: &quot;onkeyup&quot;,
- className: &quot;pasOptionInput&quot;,
- typeValue: config.macros.option.passwordInputType,
- create: function(opt,place,params) {
- // password field
- config.macros.option.createHelper(opt,place,params,this);
- // checkbox linked with this password &quot;save this password on this computer&quot;
- config.macros.option.createHelper(&quot;chk&quot;+opt,place,params,config.macros.option.types['chk']); 
- // text savePasswordCheckboxLabel
- place.appendChild(document.createTextNode(config.macros.option.passwordCheckboxLabel));
- }
- }
+	'pas': {
+		elementType: &quot;input&quot;,
+		valueField: &quot;value&quot;,
+		eventName: &quot;onkeyup&quot;,
+		className: &quot;pasOptionInput&quot;,
+		typeValue: config.macros.option.passwordInputType,
+		create: function(place,type,opt,className,desc) {
+			// password field
+			config.macros.option.genericCreate(place,'pas',opt,className,desc);
+			// checkbox linked with this password &quot;save this password on this computer&quot;
+			config.macros.option.genericCreate(place,'chk','chk'+opt,className,desc);			
+			// text savePasswordCheckboxLabel
+			place.appendChild(document.createTextNode(config.macros.option.passwordCheckboxLabel));
+		},
+		onChange: config.macros.option.genericOnChange
+	}
 });
 
 merge(config.optionHandlers['chk'], {
- get: function(name) {
- // is there an option linked with this chk ?
- var opt = name.substr(3);
- if (config.options[opt]) 
- saveOptionCookie(opt);
- return config.options[name] ? &quot;true&quot; : &quot;false&quot;;
- }
+	get: function(name) {
+		// is there an option linked with this chk ?
+		var opt = name.substr(3);
+		if (config.options[opt]) 
+			saveOptionCookie(opt);
+		return config.options[name] ? &quot;true&quot; : &quot;false&quot;;
+	}
 });
 
 merge(config.optionHandlers, {
- 'pas': {
- get: function(name) {
- if (config.options[&quot;chk&quot;+name]) {
- return encodeCookie(config.options[name].toString());
- } else {
- return &quot;&quot;;
- }
- },
- set: function(name,value) {config.options[name] = decodeCookie(value);}
- }
+	'pas': {
+ 		get: function(name) {
+			if (config.options[&quot;chk&quot;+name]) {
+				return encodeCookie(config.options[name].toString());
+			} else {
+				return &quot;&quot;;
+			}
+		},
+		set: function(name,value) {config.options[name] = decodeCookie(value);}
+	}
 });
 
 // need to reload options to load passwordOptions
 loadOptionsCookie();
 
+/*
 if (!config.options['pasPassword'])
- config.options['pasPassword'] = '';
+	config.options['pasPassword'] = '';
 
+merge(config.optionsDesc,{
+		pasPassword: &quot;Test password&quot;
+	});
+*/
 //}}}</pre>
 </div>
-<div title="TiddlyHomeSetupPlugin" modifier="$owner$" modified="200705011715" created="200703301137" tags="systemConfig TiddlyHome" changecount="5">
+<div title="Site" modifier="$owner$" modified="200705191401" created="200705191347" tags="Commands TiddlyHomePackage" changecount="2">
+<pre>Tags Commands to manage a TiddlyHome Site</pre>
+</div>
+<div title="TiddlyHomePackage" modifier="$owner$" modified="200705191403" created="200705191352" changecount="1">
+<pre>Tags all ressources usefull for a TiddlyHome site.
+
+TiddlyHome provides also ShadowedTiddlers that can be overwritten :
+* TiddlyHomeParameters
+* TiddlyHomeSidebar
+</pre>
+</div>
+<div title="TiddlyHomeRessourcesServer" modifier="$owner$" modified="200705191411" created="200705191407" tags="TiddlyHomePackage systemServer" changecount="2">
+<pre>|URL:|$rootUrl$_th/templates/ressources.html|
+|Description| Repository for TiddlyHome ressources|
+|Author:|BidiX|</pre>
+</div>
+<div title="TiddlyHomeSetupPlugin" modifier="BidiX" modified="200705191216" created="200703301137" tags="systemConfig TiddlyHomePackage" changecount="29">
 <pre>/***
 |''Name:''|TiddlyHomeSetupPlugin|
 |''Description:''|Check and setup all component|
@@ -586,7 +675,7 @@ if (!config.options['pasPassword'])
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
 |''~CoreVersion:''|2.2.0|
-|''Requires:''|UploadPlugin |
+|''Requires:''|UploadToHomeMacro|
 ***/
 //{{{
 
@@ -597,11 +686,6 @@ version.extensions.TiddlyHomeSetupPlugin = {
 	author: 'BidiX (BidiX (at) bidix (dot) info)',
 	coreVersion: '2.2.0'
 };
-config.tiddlyHome = {
-	user: &quot;$owner$&quot;,
-	site: &quot;$site$&quot;,
-	url: &quot;$url$&quot;
-}
 
 if (!window.bidix) window.bidix = {}; // bidix namespace
 
@@ -619,6 +703,15 @@ bidix.checkPlugin = function(plugin, major, minor, revision) {
 	}
 };
 
+bidix.getParamsFromTiddler = function(tiddlerTitle, sliceNames) {
+	tiddlerTitle = (tiddlerTitle ? tiddlerTitle:this.messages.homeParamsTiddler);
+	if (!store.tiddlerExists(tiddlerTitle) &amp;&amp; !store.isShadowTiddler(tiddlerTitle)) {
+		throw(config.macros.uploadToHome.messages.tiddlerNotFound.toString().format([tiddlerTitle]));
+	}
+	return sliceValues = store.getTiddlerSlices(tiddlerTitle,sliceNames);
+};
+
+
 bidix.initOption = function(name,value) {
 	if (!config.options[name])
 		config.options[name] = value;
@@ -627,50 +720,88 @@ bidix.initOption = function(name,value) {
 bidix.checkPlugin('UploadPlugin',4,0,1);
 config.macros.upload.authenticateUser = false; // authentication check by .htaccess
 
-with (config.shadowTiddlers) {
-	SideBarOptions = SideBarOptions.replace(/(&lt;&lt;saveChanges&gt;&gt;)/,&quot;$1&lt;&lt;tiddler TiddlyHomeSidebar&gt;&gt;&quot;);
-}
+// default TiddlyHomeParameters in shadows
+// user can overide this
+merge(config.shadowTiddlers,{
+	'TiddlyHomeParameters':[
+		&quot;|user:|$owner$|&quot;,
+		&quot;|site:|$site$|&quot;,
+		&quot;|url:|$url$|&quot;,
+		&quot;|rootUrl:|$rootUrl$|&quot;
+	].join(&quot;\n&quot;)});
+// get config from TiddlyHomeParameters
+config.tiddlyHome = {};
+merge(config.tiddlyHome, bidix.getParamsFromTiddler('TiddlyHomeParameters',['user','site','url','rootUrl']));
+// add TiddlyHomeSidebar in SideBarOptions
+config.shadowTiddlers.SideBarOptions = config.shadowTiddlers.SideBarOptions.replace(/(&lt;&lt;saveChanges&gt;&gt;)/,
+	&quot;$1&lt;&lt;tiddler TiddlyHomeSidebar&gt;&gt;&quot;);
 
 merge(config.shadowTiddlers,{
-
-'TiddlyHomeSidebar':[
- &quot;&lt;&lt;upload &quot; + config.tiddlyHome.url + &quot;store.php&quot; + &quot;&gt;&gt;&lt;html&gt;&lt;a href=&quot; + config.tiddlyHome.url + &quot;download.php class='button'&gt;download&lt;/a&gt;&lt;/html&gt;&quot;
-].join(&quot;\n&quot;)
+	// link to favicon.ico
+	'MarkupPreHead':	[
+		&quot;&lt;!--{{{--&gt;&quot;,
+		&quot;&lt;link rel='alternate' type='application/rss+xml' title='RSS' href='index.xml'/&gt;&quot;,
+		&quot;&lt;link rel=\&quot;shortcut icon\&quot;href=\&quot;&quot; + 
+			config.tiddlyHome.rootUrl + 
+			&quot;_th/images/favicon.ico\&quot; type=\&quot;image/vnd.microsoft.icon\&quot; /&gt;&quot;,
+		&quot;&lt;link rel=\&quot;icon\&quot; href=\&quot;&quot; + 
+			config.tiddlyHome.rootUrl + 
+			&quot;_th/images/favicon.ico\&quot; type=\&quot;image/vnd.microsoft.icon\&quot; /&gt; &quot;,
+		&quot;&lt;!--}}}--&gt;&quot;
+	].join(&quot;\n&quot;),
+	// tweaks to UploadToHomeMacro parameters
+	'HomeParameters': [
+		&quot;|UploadUserName:||&quot;,
+		&quot;|UploadStoreUrl:|&quot; + config.tiddlyHome.url + &quot;store.php|&quot;,
+		&quot;|UploadDir:|.|&quot;,
+		&quot;|UploadFilename:|index.html|&quot;,
+		&quot;|UploadBackupDir:|backup|&quot;
+	].join(&quot;\n&quot;),
+	'TiddlyHomeSidebar':[
+ 		&quot;&lt;&lt;uploadToHome&gt;&gt;&lt;html&gt;&lt;a href=&quot; + 
+			config.tiddlyHome.url + &quot;download.php class='button'&gt;download&lt;/a&gt;&lt;/html&gt;&quot;
+			].join(&quot;\n&quot;)
 });
 
+// Options tweaks
 config.options.txtUserName = config.tiddlyHome.user;
+config.options.pasUploadPassword = '';
 config.options.txtBackupFolder = &quot;backup&quot;;
 config.options.chkSaveBackups = true;
 config.options.chkAutoSave = false;
 config.options.chkRegExpSearch = false;
 config.options.chkCaseSensitiveSearch = false;
-config.options.chkAnimate = false;
+//config.options.chkAnimate = false;
 
 
 //}}}
 </pre>
 </div>
-<div title="UploadPlugin" modifier="BidiX" created="200703202129" tags="systemConfig TiddlyHome" server.host="file://C:\sPerso\sTiddlyHome\sTiddlyHome\sadmin\slib\spresentation.html" server.type="file" server.page.version="200703202129" anon="undefined">
+<div title="UploadLog" modifier="BidiX" modified="200705191300" created="200705191240">
+<pre>| !date | !user | !location | !storeUrl | !uploadDir | !toFilename | !backupdir | !origin |
+| 19/05/2007 14:40:35 | BidiX | [[/|http://ibiza/home/]] | [[store.php|http://ibiza/home/store.php]] | . | [[index.html | http://ibiza/home/index.html]] | backup |
+| 19/05/2007 15:00:15 | BidiX | [[/|http://ibiza/empty/]] | [[store.php|http://ibiza/empty/store.php]] | . | [[index.html | http://ibiza/empty/index.html]] | backup |</pre>
+</div>
+<div title="UploadPlugin" modifier="YourName" modified="200705191059" created="200703021728" tags="systemConfig Upload" changecount="3">
 <pre>/***
 |''Name:''|UploadPlugin|
 |''Description:''|Save to web a TiddlyWiki|
-|''Version:''|4.0.1|
-|''Date:''|Mar 20, 2007|
+|''Version:''|4.1.0|
+|''Date:''|May 5, 2007|
 |''Source:''|http://tiddlywiki.bidix.info/#UploadPlugin|
 |''Documentation:''|http://tiddlywiki.bidix.info/#UploadPluginDoc|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
-|''~CoreVersion:''|2.2.0 (Changeset 1583)|
-|''Browser:''|Firefox 1.5; InternetExplorer 6.0; Safari|
-|''Require:''|[[PasswordOptionPlugin V1.0.1|http://tiddlywiki.bidix.info/#PasswordOptionPlugin]]&lt;br&gt;[[UploadService|http://tiddlywiki.bidix.info/#UploadService]]|
+|''~CoreVersion:''|2.2.0 (#3125)|
+|''Requires:''|PasswordOptionPlugin|
 ***/
 //{{{
 version.extensions.UploadPlugin = {
-	major: 4, minor: 0, revision: 1,
-	date: new Date(&quot;Mar 20, 2007&quot;),
+	major: 4, minor: 1, revision: 0,
+	date: new Date(&quot;May 5, 2007&quot;),
 	source: 'http://tiddlywiki.bidix.info/#UploadPlugin',
 	author: 'BidiX (BidiX (at) bidix (dot) info',
-	coreVersion: '2.2.0 (Changeset 1316)'
+	coreVersion: '2.2.0 (#3125)'
 };
 
 //
@@ -679,10 +810,9 @@ version.extensions.UploadPlugin = {
 
 if (!window.bidix) window.bidix = {}; // bidix namespace
 bidix.debugMode = false;	// true to activate both in Plugin and UploadService
-
 	
 //
-// Macro Upload
+// Upload Macro
 //
 
 config.macros.upload = {
@@ -691,7 +821,7 @@ config.macros.upload = {
 	defaultStoreScript: &quot;store.php&quot;,
 	defaultToFilename: &quot;index.html&quot;,
 	defaultUploadDir: &quot;.&quot;,
-	authenticateUser: true	// UploadService Authenticate User
+	authenticateUser: false	// UploadService Authenticate User
 };
 	
 config.macros.upload.label = {
@@ -708,6 +838,8 @@ config.macros.upload.messages = {
 };
 
 config.macros.upload.handler = function(place,macroName,params) {
+	if (readOnly)
+		return;
 	var label;
 	if (document.location.toString().substr(0,4) == &quot;http&quot;) 
 		label = this.label.saveLabel;
@@ -715,47 +847,49 @@ config.macros.upload.handler = function(place,macroName,params) {
 		label = this.label.uploadLabel;
 	var prompt;
 	if (params[0]) {
-		prompt = this.label.promptParamMacro.toString().format(this.destFile(params[0], 
-			(params[1] ? params[1]:bidix.basename(window.location.toString())), params[3]));
+		prompt = this.label.promptParamMacro.toString().format([this.destFile(params[0], 
+			(params[1] ? params[1]:bidix.basename(window.location.toString())), params[3])]);
 	} else {
 		prompt = this.label.promptOption;
 	}
-	createTiddlyButton(place, label, prompt, 
-		function () {
-			// for missing macro parameter set value from options
-			var storeUrl = params[0] ? params[0] : config.options.txtUploadStoreUrl;
-			var toFilename = params[1] ? params[1] : config.options.txtUploadFilename;
-			var backupDir = params[2] ? params[2] : config.options.txtUploadBackupDir;
-			var uploadDir = params[3] ? params[3] : config.options.txtUploadDir;
-			var username = params[4] ? params[4] : config.options.txtUploadUserName;
-			var password = config.options.pasUploadPassword; // for security reason no password as macro parameter	
-			// for still missing parameter set default value
-			if ((!storeUrl) &amp;&amp; (document.location.toString().substr(0,4) == &quot;http&quot;)) 
-				storeUrl = bidix.dirname(document.location.toString())+'/'+config.macros.upload.defaultStoreScript;
-			if (storeUrl.substr(0,4) != &quot;http&quot;)
-				storeUrl = bidix.dirname(document.location.toString()) +'/'+ storeUrl;
-			if (!toFilename)
-				toFilename = bidix.basename(window.location.toString());
-			if (!toFilename)
-				toFilename = config.macros.upload.defaultToFilename;
-			if (!uploadDir)
-				uploadDir = config.macros.upload.defaultUploadDir;
-			if (!backupDir)
-				backupDir = config.macros.upload.defaultBackupDir;
-			// report error if still missing
-			if (!storeUrl) {
-				alert(config.macros.upload.messages.noStoreUrl);
-				clearMessage();
-				return false;
-			}
-			if (config.macros.upload.authenticateUser &amp;&amp; (!username || !password)) {
-				alert(config.macros.upload.messages.usernameOrPasswordMissing);
-				clearMessage();
-				return false;
-			}
-			bidix.upload.uploadChanges(false,null,storeUrl, toFilename, uploadDir, backupDir, username, password); 
-			return false;}, 
-		null, null, this.accessKey);
+	createTiddlyButton(place, label, prompt, function() {config.macros.upload.action(params);}, null, null, this.accessKey);
+};
+
+config.macros.upload.action = function(params)
+{
+		// for missing macro parameter set value from options
+		var storeUrl = params[0] ? params[0] : config.options.txtUploadStoreUrl;
+		var toFilename = params[1] ? params[1] : config.options.txtUploadFilename;
+		var backupDir = params[2] ? params[2] : config.options.txtUploadBackupDir;
+		var uploadDir = params[3] ? params[3] : config.options.txtUploadDir;
+		var username = params[4] ? params[4] : config.options.txtUploadUserName;
+		var password = config.options.pasUploadPassword; // for security reason no password as macro parameter	
+		// for still missing parameter set default value
+		if ((!storeUrl) &amp;&amp; (document.location.toString().substr(0,4) == &quot;http&quot;)) 
+			storeUrl = bidix.dirname(document.location.toString())+'/'+config.macros.upload.defaultStoreScript;
+		if (storeUrl.substr(0,4) != &quot;http&quot;)
+			storeUrl = bidix.dirname(document.location.toString()) +'/'+ storeUrl;
+		if (!toFilename)
+			toFilename = bidix.basename(window.location.toString());
+		if (!toFilename)
+			toFilename = config.macros.upload.defaultToFilename;
+		if (!uploadDir)
+			uploadDir = config.macros.upload.defaultUploadDir;
+		if (!backupDir)
+			backupDir = config.macros.upload.defaultBackupDir;
+		// report error if still missing
+		if (!storeUrl) {
+			alert(config.macros.upload.messages.noStoreUrl);
+			clearMessage();
+			return false;
+		}
+		if (config.macros.upload.authenticateUser &amp;&amp; (!username || !password)) {
+			alert(config.macros.upload.messages.usernameOrPasswordMissing);
+			clearMessage();
+			return false;
+		}
+		bidix.upload.uploadChanges(false,null,storeUrl, toFilename, uploadDir, backupDir, username, password); 
+		return false; 
 };
 
 config.macros.upload.destFile = function(storeUrl, toFilename, uploadDir) 
@@ -768,6 +902,87 @@ config.macros.upload.destFile = function(storeUrl, toFilename, uploadDir)
 		dest = dest + '/' + toFilename;
 	return dest;
 };
+
+//
+// uploadOptions Macro
+//
+
+config.macros.uploadOptions = {
+	handler: function(place,macroName,params) {
+		var wizard = new Wizard();
+		wizard.createWizard(place,this.wizardTitle);
+		wizard.addStep(this.step1Title,this.step1Html);
+		var markList = wizard.getElement(&quot;markList&quot;);
+		var listWrapper = document.createElement(&quot;div&quot;);
+		markList.parentNode.insertBefore(listWrapper,markList);
+		wizard.setValue(&quot;listWrapper&quot;,listWrapper);
+		this.refreshOptions(listWrapper,false);
+		var uploadCaption;
+		if (document.location.toString().substr(0,4) == &quot;http&quot;) 
+			uploadCaption = config.macros.upload.label.saveLabel;
+		else
+			uploadCaption = config.macros.upload.label.uploadLabel;
+		
+		wizard.setButtons([
+				{caption: uploadCaption, tooltip: config.macros.upload.label.promptOption, 
+					onClick: config.macros.upload.action},
+				{caption: this.cancelButton, tooltip: this.cancelButtonPrompt, onClick: this.onCancel}
+				
+			]);
+	},
+	refreshOptions: function(listWrapper) {
+		var uploadOpts = [
+			&quot;txtUploadUserName&quot;,
+			&quot;pasUploadPassword&quot;,
+			&quot;txtUploadStoreUrl&quot;,
+			&quot;txtUploadDir&quot;,
+			&quot;txtUploadFilename&quot;,
+			&quot;txtUploadBackupDir&quot;,
+			&quot;chkUploadLog&quot;,
+			&quot;txtUploadLogMaxLine&quot;,
+			]
+		var opts = [];
+		for(i=0; i&lt;uploadOpts.length; i++) {
+			var opt = {};
+			opts.push()
+			opt.option = &quot;&quot;;
+			n = uploadOpts[i];
+			opt.name = n;
+			opt.lowlight = !config.optionsDesc[n];
+			opt.description = opt.lowlight ? this.unknownDescription : config.optionsDesc[n];
+			opts.push(opt);
+		}
+		var listview = ListView.create(listWrapper,opts,this.listViewTemplate);
+		for(n=0; n&lt;opts.length; n++) {
+			var type = opts[n].name.substr(0,3);
+			var h = config.macros.option.types[type];
+			if (h &amp;&amp; h.create) {
+				h.create(opts[n].colElements['option'],type,opts[n].name,opts[n].name,&quot;no&quot;);
+			}
+		}
+		
+	},
+	onCancel: function(e)
+	{
+		backstage.switchTab(null);
+		return false;
+	},
+	
+	wizardTitle: &quot;Upload with options&quot;,
+	step1Title: &quot;These options are saved in cookies in your browser&quot;,
+	step1Html: &quot;&lt;input type='hidden' name='markList'&gt;&lt;/input&gt;&lt;br&gt;&quot;,
+	cancelButton: &quot;Cancel&quot;,
+	cancelButtonPrompt: &quot;Cancel prompt&quot;,
+	listViewTemplate: {
+		columns: [
+			{name: 'Description', field: 'description', title: &quot;Description&quot;, type: 'WikiText'},
+			{name: 'Option', field: 'option', title: &quot;Option&quot;, type: 'String'},
+			{name: 'Name', field: 'name', title: &quot;Name&quot;, type: 'String'}
+			],
+		rowClasses: [
+			{className: 'lowlight', field: 'lowlight'} 
+			]}
+}
 
 //
 // upload functions
@@ -940,12 +1155,12 @@ bidix.upload.updateOriginal = function(original, posDiv)
 	var revised = original.substr(0,posDiv[0] + startSaveArea.length) + &quot;\n&quot; +
 				store.allTiddlersAsHtml() + &quot;\n&quot; +
 				original.substr(posDiv[1]);
-	var newSiteTitle = (wikifyPlain(&quot;SiteTitle&quot;) + &quot; - &quot; + wikifyPlain(&quot;SiteSubtitle&quot;).htmlEncode());
+	var newSiteTitle = getPageTitle().htmlEncode();
 	revised = revised.replaceChunk(&quot;&lt;title&quot;+&quot;&gt;&quot;,&quot;&lt;/title&quot;+&quot;&gt;&quot;,&quot; &quot; + newSiteTitle + &quot; &quot;);
 	revised = updateMarkupBlock(revised,&quot;PRE-HEAD&quot;,&quot;MarkupPreHead&quot;);
 	revised = updateMarkupBlock(revised,&quot;POST-HEAD&quot;,&quot;MarkupPostHead&quot;);
 	revised = updateMarkupBlock(revised,&quot;PRE-BODY&quot;,&quot;MarkupPreBody&quot;);
-	revised = updateMarkupBlock(revised,&quot;POST-BODY&quot;,&quot;MarkupPostBody&quot;);
+	revised = updateMarkupBlock(revised,&quot;POST-SCRIPT&quot;,&quot;MarkupPostBody&quot;);
 	return revised;
 };
 
@@ -1080,7 +1295,19 @@ bidix.initOption = function(name,value) {
 bidix.checkPlugin(&quot;PasswordOptionPlugin&quot;, 1, 0, 1);
 
 // styleSheet
-setStylesheet('.urlInput {width: 22em;}',&quot;uploadPluginStyles&quot;);
+setStylesheet('.txtUploadStoreUrl, .txtUploadBackupDir, .txtUploadDir {width: 22em;}',&quot;uploadPluginStyles&quot;);
+
+//optionsDesc
+merge(config.optionsDesc,{
+	txtUploadStoreUrl: &quot;Url of the UploadService script (default: store.php)&quot;,
+	txtUploadFilename: &quot;Filename of the uploaded file (default: in index.html)&quot;,
+	txtUploadDir: &quot;Relative Directory where to store the file (default: . (downloadService directory))&quot;,
+	txtUploadBackupDir: &quot;Relative Directory where to backup the file. If empty no backup. (default: ''(empty))&quot;,
+	txtUploadUserName: &quot;Upload Username&quot;,
+	pasUploadPassword: &quot;Upload Password&quot;,
+	chkUploadLog: &quot;do Logging in UploadLog (default: true)&quot;,
+	txtUploadLogMaxLine: &quot;Maximum of lines in UploadLog (default: 10)&quot;
+});
 
 // Options Initializations
 bidix.initOption('txtUploadStoreUrl','');
@@ -1091,9 +1318,144 @@ bidix.initOption('txtUploadUserName','');
 bidix.initOption('pasUploadPassword','');
 bidix.initOption('chkUploadLog',true);
 bidix.initOption('txtUploadLogMaxLine','10');
+
+
+// Backstage
+merge(config.tasks,{
+	uploadOptions: {text: &quot;upload...&quot;, tooltip: &quot;Change UploadOptions and Upload&quot;, content: '&lt;&lt;uploadOptions&gt;&gt;'}
+});
+config.backstageTasks.push(&quot;uploadOptions&quot;);
+
+
 //}}}
 
 </pre>
+</div>
+<div title="UploadToHomeMacro" modifier="BidiX" modified="200705191239" created="200705080913" tags="systemConfig Upload" changecount="4">
+<pre>/***
+|''Name:''|UploadToHomeMacro|
+|''Description:''|Save TiddlyWiki using HomeParameters tiddler|
+|''Version:''|0.0.2|
+|''Date:''|May 19, 2007|
+|''Source:''|http://tiddlywiki.bidix.info/#UploadToHomeMacro|
+|''Author:''|BidiX (BidiX (at) bidix (dot) info)|
+|''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
+|''~CoreVersion:''|2.2.0 (#3125)|
+|''Requires:''|UploadPlugin|
+|''Usage:''|{{{&lt;&lt;uploadToHome [HomeParameters]&gt;&gt;}}}&lt;br&gt;{{{HomeParameters:}}} optional - Tiddler with upload parameters in slices (see HomeParameters).|
+***/
+//{{{
+version.extensions.UploadToHomeMacro = {
+	major: 0, minor: 0, revision: 1,
+	date: new Date(&quot;May 7, 2007&quot;),
+	source: 'http://tiddlywiki.bidix.info/#UploadToHomeMacro',
+	author: 'BidiX (BidiX (at) bidix (dot) info',
+	coreVersion: '2.2.0 (#3125)'
+};
+
+//
+// Environment
+//
+
+if (!window.bidix) window.bidix = {}; // bidix namespace
+bidix.debugMode = false;	// true to activate both in Plugin and UploadService
+bidix.checkPlugin(&quot;UploadPlugin&quot;, 4, 1, 0);
+
+//
+// uploadUsing Macro
+//
+
+config.macros.uploadToHome = {
+	handler: function(place,macroName,params) {
+		if (readOnly)
+			return;
+		var label;
+		if (document.location.toString().substr(0,4) == &quot;http&quot;) 
+			label = config.macros.upload.label.saveLabel;
+		else
+			label = config.macros.upload.label.uploadLabel;
+		var prompt;
+		var homeParams = (params[0] ? params[0]:this.messages.homeParamsTiddler);
+		if (store.tiddlerExists(homeParams) || store.isShadowTiddler(homeParams)) {
+			prompt = this.messages.prompt.toString().format([homeParams]);
+		} else {
+			throw(this.messages.tiddlerNotFound.toString().format([homeParams]));
+		}
+		var prompt = this.messages.prompt.toString().format([homeParams]);
+		createTiddlyButton(place, label, prompt, function() {config.macros.uploadToHome.action(homeParams);}, null, null, this.accessKey);		
+	},
+	
+	action: function(homeParams) {
+		homeParams = (homeParams ? homeParams : config.macros.uploadToHome.messages.homeParamsTiddler);
+		if (!store.tiddlerExists(homeParams) &amp;&amp; !store.isShadowTiddler(homeParams)) {
+			throw(config.macros.uploadToHome.messages.tiddlerNotFound.toString().format([homeParams]));
+		}
+		config.macros.upload.action(config.macros.uploadToHome.getParamsFromTiddler(homeParams));
+	},
+	
+	getParamsFromTiddler: function(tiddlerTitle) {
+		tiddlerTitle = (tiddlerTitle ? tiddlerTitle:this.messages.homeParamsTiddler);
+		if (!store.tiddlerExists(tiddlerTitle) &amp;&amp; !store.isShadowTiddler(tiddlerTitle)) {
+			throw(config.macros.uploadToHome.messages.tiddlerNotFound.toString().format([tiddlerTitle]));
+		}
+		var sliceNames = [
+			&quot;UploadStoreUrl&quot;,
+			&quot;UploadFilename&quot;,
+			&quot;UploadBackupDir&quot;,
+			&quot;UploadDir&quot;,
+			&quot;UploadUserName&quot;
+			//&quot;UploadPassword&quot;, // no password in tiddlers
+		];
+		var sliceValues = store.getTiddlerSlices(tiddlerTitle,sliceNames);
+		var parameters = [];
+		for(var i=0; i&lt;sliceNames.length; i++) {
+			parameters.push(sliceValues[sliceNames[i]]);
+		}
+		return parameters;
+	},
+	
+	messages: {
+		homeParamsTiddler: &quot;HomeParameters&quot;,
+		prompt: &quot;Save and Upload this TiddlyWiki using parameters in  '%0' tiddler&quot;,
+		tiddlerNotFound: &quot;Tiddler %0 not found&quot;
+	},
+	initAtLoad: function () {
+		// install Shadowed HomeParameters
+		var storeUrl;
+		if ((document.location.toString().substr(0,4) == &quot;http&quot;)) 
+			storeUrl = bidix.dirname(document.location.toString())+'/'+config.macros.upload.defaultStoreScript;
+		else
+			storeUrl = config.macros.upload.defaultStoreScript;
+		var shadowedHomeParameters = (config.shadowTiddlers['HomeParameters']?config.shadowTiddlers['HomeParameters']:'');
+		shadowedHomeParameters += [
+			&quot;|UploadUserName:|&quot;+config.options['txtUploadUserName']+&quot;|&quot;,
+			&quot;|UploadStoreUrl:|&quot;+storeUrl+&quot;|&quot;,
+			&quot;|UploadDir:|.|&quot;,
+			&quot;|UploadFilename:|index.html|&quot;,
+			&quot;|UploadBackupDir:||&quot;
+			].join(&quot;\n&quot;);
+		merge(config.shadowTiddlers,{'HomeParameters':	shadowedHomeParameters});
+		// install Backstage uploadToHome
+		merge(config.tasks,{
+			uploadToHome: {text: &quot;uploadToHome&quot;, tooltip: &quot;Upload using '&quot; + this.messages.homeParamsTiddler + &quot;' tiddler&quot;, action: this.action}
+		});
+		config.backstageTasks.push(&quot;uploadToHome&quot;);
+				
+	}
+};
+
+config.macros.uploadToHome.initAtLoad();
+
+//}}}</pre>
+</div>
+<div title="User" modifier="$owner$" modified="200705191401" created="200705191351" tags="Commands TiddlyHomePackage" changecount="1">
+<pre>Tags Commands to manage a TiddlyHome User</pre>
+</div>
+<div title="Verify user password" modifier="BidiX" modified="200705181956" created="200705181954" tags="TiddlyHomePackage Commands User" changecount="3">
+<pre>&lt;html&gt;
+&lt;iframe style=&quot;border: 1px; background: #eee;&quot; src=&quot;../_th/lib/user.php?next=verify&quot; width=100% height=200px&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;</pre>
 </div>
 </div>
 <!--POST-STOREAREA-->
@@ -1165,7 +1527,6 @@ config.options = {
 	txtMainTab: "tabTimeline",
 	txtMoreTab: "moreTabAll",
 	txtMaxEditRows: "30",
-	txtRssTag: "toRSS",
 	txtFileSystemCharSet: "UTF-8"
 	};
 config.optionsDesc = {};
@@ -1740,7 +2101,7 @@ merge(config.shadowTiddlers,{
 	SiteTitle: "My TiddlyWiki",
 	SiteSubtitle: "a reusable non-linear personal web notebook",
 	SiteUrl: "http://www.tiddlywiki.com/",
-	SideBarOptions: '<<search>><<closeAll>><<permaview>><<newTiddler>><<newJournal "DD MMM YYYY">><<saveChanges>><<slider chkSliderOptionsPanel OptionsPanel "options \u00bb" "Change TiddlyWiki advanced options">>',
+	SideBarOptions: '<<search>><<closeAll>><<permaview>><<newTiddler>><<newJournal "DD MMM YYYY">><<saveChanges>><<slider chkSliderOptionsPanel OptionsPanel "options »" "Change TiddlyWiki advanced options">>',
 	SideBarTabs: '<<tabs txtMainTab "Timeline" "Timeline" TabTimeline "All" "All tiddlers" TabAll "Tags" "All tags" TabTags "More" "More lists" TabMore>>',
 	TabMore: '<<tabs txtMoreTab "Missing" "Missing tiddlers" TabMoreMissing "Orphans" "Orphaned tiddlers" TabMoreOrphans "Shadowed" "Shadowed tiddlers" TabMoreShadowed>>'});
 
@@ -3261,22 +3622,22 @@ config.macros.slider.handler = function(place,macroName,params)
 config.macros.option.genericCreate = function(place,type,opt,className,desc)
 {
 	var typeInfo = config.macros.option.types[type];
-    var c = document.createElement(typeInfo.elementType);
-    if(typeInfo.typeValue)
-        c.setAttribute("type",typeInfo.typeValue);
-    c[typeInfo.eventName] = typeInfo.onChange;
-    c.setAttribute("option",opt);
+	var c = document.createElement(typeInfo.elementType);
+	if(typeInfo.typeValue)
+		c.setAttribute("type",typeInfo.typeValue);
+	c[typeInfo.eventName] = typeInfo.onChange;
+	c.setAttribute("option",opt);
 	if(className)
 		c.className = className;
 	else
-    	c.className = typeInfo.className;
+		c.className = typeInfo.className;
 	if(config.optionsDesc[opt])
 		c.setAttribute("title",config.optionsDesc[opt]);
-    place.appendChild(c);
+	place.appendChild(c);
 	if(desc != "no")
 		createTiddlyText(place,config.optionsDesc[opt] ? config.optionsDesc[opt] : opt);
-    c[typeInfo.valueField] = config.options[opt];
-    return c;
+	c[typeInfo.valueField] = config.options[opt];
+	return c;
 };
 
 config.macros.option.genericOnChange = function(e)
@@ -3414,7 +3775,7 @@ config.macros.newTiddler.createNewTiddlerButton = function(place,title,params,la
 config.macros.newTiddler.onClickNewTiddler = function()
 {
 	var title = this.getAttribute("newTitle");
-	if(this.getAttribute("isJournal")) {
+	if(this.getAttribute("isJournal") == "true") {
 		var now = new Date();
 		title = now.formatString(title.trim());
 	}
@@ -3699,10 +4060,6 @@ config.macros.tagChooser.handler = function(place,macroName,params,wikifier,para
 };
 
 // Create a toolbar command button
-// place - parent DOM element
-// command - reference to config.commands[] member -or- name of member
-// tiddler - reference to tiddler that toolbar applies to
-// theClass - the class to give the button
 config.macros.toolbar.createCommand = function(place,commandName,tiddler,theClass)
 {
 	if(typeof commandName != "string") {
@@ -4679,6 +5036,8 @@ TiddlyWiki.prototype.getMissingLinks = function(sortField)
 		this.updateTiddlers();
 	var results = [];
 	this.forEachTiddler(function (title,tiddler) {
+		if(tiddler.isTagged("excludeMissing") || tiddler.isTagged("systemConfig"))
+			return;
 		for(var n=0; n<tiddler.links.length;n++) {
 			var link = tiddler.links[n];
 			if(this.fetchTiddler(link) == null && !this.isShadowTiddler(link))
@@ -6483,7 +6842,14 @@ function refreshDisplay(hint)
 
 function refreshPageTitle()
 {
-	document.title = wikifyPlain("SiteTitle") + " - " + wikifyPlain("SiteSubtitle");
+	document.title = getPageTitle();
+}
+
+function getPageTitle()
+{
+	var st = wikifyPlain("SiteTitle");
+	var ss = wikifyPlain("SiteSubtitle");
+	return st + ((st == "" || ss == "") ? "" : " - ") + ss;
 }
 
 function refreshStyles(title,doc)
@@ -6628,7 +6994,7 @@ function updateOriginal(original,posDiv)
 	var revised = original.substr(0,posDiv[0] + startSaveArea.length) + "\n" +
 				convertUnicodeToUTF8(store.allTiddlersAsHtml()) + "\n" +
 				original.substr(posDiv[1]);
-	var newSiteTitle = convertUnicodeToUTF8((wikifyPlain("SiteTitle") + " - " + wikifyPlain("SiteSubtitle")).htmlEncode());
+	var newSiteTitle = convertUnicodeToUTF8(getPageTitle()).htmlEncode();
 	revised = revised.replaceChunk("<title"+">","</title"+">"," " + newSiteTitle + " ");
 	revised = updateLanguageAttribute(revised);
 	revised = updateMarkupBlock(revised,"PRE-HEAD","MarkupPreHead");
@@ -6802,7 +7168,7 @@ function generateRss()
 	var d = new Date();
 	var u = store.getTiddlerText("SiteUrl");
 	// Assemble the header
-	s.push("<" + "?xml version=\"1.0\"" + " encoding='UTF-8' " + "?" + ">");
+	s.push("<" + "?xml version=\"1.0\"?" + ">");
 	s.push("<rss version=\"2.0\">");
 	s.push("<channel>");
 	s.push("<title" + ">" + wikifyPlain("SiteTitle").htmlEncode() + "</title" + ">");
@@ -6816,11 +7182,7 @@ function generateRss()
 	s.push("<docs>http://blogs.law.harvard.edu/tech/rss</docs>");
 	s.push("<generator>TiddlyWiki " + version.major + "." + version.minor + "." + version.revision + "</generator>");
 	// The body
-	var tiddlers;
-	if (config.options.txtRssTag && store.getTaggedTiddlers(config.options.txtRssTag).length > 0)
-		tiddlers = store.getTaggedTiddlers(config.options.txtRssTag,"modified");
-	else
-	    tiddlers = store.getTiddlers("modified","excludeLists");
+	var tiddlers = store.getTiddlers("modified","excludeLists");
 	var n = config.numRssItems > tiddlers.length ? 0 : tiddlers.length-config.numRssItems;
 	for (var t=tiddlers.length-1; t>=n; t--)
 		s.push(tiddlers[t].saveToRss(u));
@@ -7229,15 +7591,6 @@ function doHttp(type,url,data,contentType,username,password,callback,params,head
 		return "Can't create XMLHttpRequest object";
 	// Install callback
 	x.onreadystatechange = function() {
-		if (window.netscape){
-			try {
-				if (document.location.protocol.indexOf("http") == -1) {
-					netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
-				}
-			}
-			catch (e) { displayMessage(e.description?e.description:e.toString()); }
-		}
-		
 		if (x.readyState == 4 && callback && (x.status !== undefined)) {
 			if([0, httpStatus.OK, httpStatus.ContentCreated, httpStatus.NoContent].contains(x.status))
 				callback(true,params,x.responseText,url,x);
