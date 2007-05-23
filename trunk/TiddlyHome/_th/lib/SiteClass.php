@@ -63,6 +63,9 @@ class Site {
 	function setGroup() {
 		global $ADMIN_DIR, $HTGROUP_FILENAME;
 		$groups = new Htgroup("$ADMIN_DIR/$HTGROUP_FILENAME");
+		// always add owner in front of group
+		if (!preg_match("/\b".$this->owner."\b/",$this->group))
+			$this->group = $this->owner . " ". $this->group;
 		$groups->setGroup($this->name, $this->group);
 		$groups->save();
 		return true;		

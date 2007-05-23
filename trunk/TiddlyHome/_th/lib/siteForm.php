@@ -60,7 +60,7 @@ function checkAndSubmit() {
 		($action == 'change group')) {
 ?>
 			<tr>
-				<td>Group :</td><td><input type="text" name="group" id="group" value="<?=$group?>"></td>
+				<td>Author Team :</td><td><input type="text" name="group" id="group" value="<?=$group?>"></td>
 			</tr>
 <?php 
 	}
