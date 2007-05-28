@@ -6,14 +6,14 @@
 |''Source:''|http://tiddlywiki.bidix.info/#UploadToHomeMacro|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
-|''~CoreVersion:''|2.2.0 (#3125)|
+|''~CoreVersion:''|2.2.0 (#2125)|
 |''Requires:''|UploadPlugin|
 |''Usage:''|{{{<<uploadToHome [HomeParameters]>>}}}<br>{{{HomeParameters:}}} optional - Tiddler with upload parameters in slices (see HomeParameters).|
 ***/
 //{{{
 version.extensions.UploadToHomeMacro = {
-	major: 0, minor: 0, revision: 1,
-	date: new Date("May 7, 2007"),
+	major: 0, minor: 0, revision: 2,
+	date: new Date("May 19, 2007"),
 	source: 'http://tiddlywiki.bidix.info/#UploadToHomeMacro',
 	author: 'BidiX (BidiX (at) bidix (dot) info',
 	coreVersion: '2.2.0 (#3125)'

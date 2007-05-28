@@ -537,7 +537,7 @@ bidix.initOption('txtUploadLogMaxLine','10');
 
 // Backstage
 merge(config.tasks,{
-	uploadOptions: {text: "upload...", tooltip: "Change UploadOptions and Upload", content: '<<uploadOptions>>'}
+	uploadOptions: {text: "upload", tooltip: "Change UploadOptions and Upload", content: '<<uploadOptions>>'}
 });
 config.backstageTasks.push("uploadOptions");
 

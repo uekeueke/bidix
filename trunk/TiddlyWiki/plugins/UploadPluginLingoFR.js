@@ -69,7 +69,7 @@ merge(config.optionsDesc,{
 });
 
 merge(config.tasks,{
-	uploadOptions: {text: "télécharge...", tooltip: "Edite les options et télécharge vers le seveur", content: '<<uploadOptions>>'}
+	uploadOptions: {text: "télécharge", tooltip: "Edite les options et télécharge vers le seveur", content: '<<uploadOptions>>'}
 });
 //}}}
 
