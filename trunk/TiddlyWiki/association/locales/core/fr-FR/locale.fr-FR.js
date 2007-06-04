@@ -1,8 +1,8 @@
 /***
 |''Name:''|locale.fr-FR|
 |''Description:''|Translation of TiddlyWiki into French|
-|''Version:''|0.0.1|
-|''Date:''|Jun 3, 2007|
+|''Version:''|0.0.2|
+|''Date:''|Jun 4, 2007|
 |''Source:''|http://???/#locale.fr-FR (temporairement http://TiddlyWikiFR.bidix.info/)|
 |''fichier de base "empty.html":''|http://???/empty.fr-FR.html (temporairement http://TiddlyWikiFR.bidix.info/empty.fr-FR.html)|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
@@ -14,11 +14,8 @@
 /***
 Je suis reparti du fichier officiel locale.en.js en intégrant la traduction de Jacques Turbé http://avm.free.fr//TiddlyWiki-fr.html et en reprenant les mêmes choix de traduction. 
 
-J'ai du faire des choix pour des nouveaux termes que je soumets à vos commentaires :
-	* Backstage -> Coulisses
-J'ai pris la liberté de changer :
-	* pour 'save' : valider -> enregistrer
-Par ailleurs, je me demandais si 'tiddler' ne pouvait être traduit en 'article' ???
+Après discussion avec Jacques Turbé nous avons retenu :
+	* Backstage -> Services
 
 Ci-dessous les commentaires de Jacques Turbé attachés à la version précédente :
 ----
@@ -122,9 +119,9 @@ merge(config.messages.messageClose,{
 	tooltip: "ferme cette zône messages"});
 
 config.messages.backstage = {
-	open: {text: "coulisses", tooltip: "Ouvre les coulisses pour effectuer des tâches d'auteur et d'editeur"},
-	close: {text: "ferme", tooltip: "Ferme les coulisses"},
-	prompt: "coulisses : ",
+	open: {text: "services", tooltip: "Ouvre les services pour effectuer des tâches d'auteur et d'editeur"},
+	close: {text: "ferme", tooltip: "Ferme les services"},
+	prompt: "services : ",
 	decal: {
 		edit: {text: "éditer", tooltip: "Editer l'élément '%0'"}
 	}
@@ -293,7 +290,7 @@ merge(config.macros.importTiddlers,{
 	readOnlyWarning: "Importation dans un TiddlyWiki en lecture seule impossible. Essayez de l'ouvrir à partir d'une URL 'file://'",
 	wizardTitle: "Importer des éléments depuis un autre fichier ou serveur",
 	step1Title: "Etape 1 : localiser le serveur ou le ficher TiddlyWiki",
-	step1Html: "Spécifiez le type du serveur : <select name='selTypes'><option value=''>Choisir ...</option></select><br>URL ou chemin : <input type='text' size=50 name='txtPath'><br>... ou recherchez un fichier : <input type='file' size=50 name='txtBrowse'><br><hr>... ou selectionnez une source pré-définie : <select name='selFeeds'><option value=''>Choose...</option></select>",
+	step1Html: "Spécifiez le type du serveur : <select name='selTypes'><option value=''>Choisir ...</option></select><br>URL ou chemin : <input type='text' size=50 name='txtPath'><br>... ou recherchez un fichier : <input type='file' size=50 name='txtBrowse'><br><hr>... ou selectionnez une source pré-définie : <select name='selFeeds'><option value=''>Choisir ...</option></select>",
 	openLabel: "ouvre",
 	openPrompt: "Ouvre la connexion vers ce fichier ou serveur",
 	openError: "Il y a des erreurs lors de l'accès au fichier TiddlyWiki",
@@ -384,8 +381,8 @@ merge(config.commands.editTiddler,{
 	readOnlyTooltip: "Montrer le texte source de cet élément"});
 
 merge(config.commands.saveTiddler,{
-	text: "enregistrer",
-	tooltip: "Enregistrer les modifications apportées à cet élément"});
+	text: "valider",
+	tooltip: "Valider les modifications apportées à cet élément"});
 
 merge(config.commands.cancelTiddler,{
 	text: "annuler",
