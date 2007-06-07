@@ -1,8 +1,8 @@
 /***
 |''Name:''|locale.fr-FR|
 |''Description:''|Translation of TiddlyWiki into French|
-|''Version:''|0.0.3|
-|''Date:''|Jun 6, 2007|
+|''Version:''|0.0.4|
+|''Date:''|Jun 7, 2007|
 |''Source:''|http://???/#locale.fr-FR (temporairement http://TiddlyWikiFR.bidix.info/)|
 |''fichier de base "empty.html":''|http://???/empty.fr-FR.html (temporairement http://TiddlyWikiFR.bidix.info/empty.fr-FR.html)|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
@@ -57,9 +57,9 @@ plugins: {text: "extensions", tooltip: "Gère les extensions installées", conte
 // Options that can be set in the options panel and/or cookies
 merge(config.optionsDesc,{
 	txtUserName: "Nom utilisé pour signer les modifications",
-	chkRegExpSearch: "Active les expression srégulières pour la recherche",
-	chkCaseSensitiveSearch: "Recheche sensible à la casse",
-	chkAnimate: "Acive les animations",
+	chkRegExpSearch: "Active les expressions régulières pour la recherche",
+	chkCaseSensitiveSearch: "Recherche sensible à la casse",
+	chkAnimate: "Active les animations",
 	chkSaveBackups: "Conserve un fichier backup en enregistrant les modifications",
 	chkAutoSave: "Enregistre les modifications automatiquement",
 	chkGenerateAnRssFeed: "Génère un flux RSS en enregistrant les modifications",
@@ -120,7 +120,7 @@ merge(config.messages.messageClose,{
 
 config.messages.backstage = {
 	open: {text: "services", tooltip: "Ouvre les services pour effectuer des tâches d'auteur et d'editeur"},
-	close: {text: "ferme", tooltip: "Ferme les services"},
+	close: {text: "fermer", tooltip: "Ferme les services"},
 	prompt: "services : ",
 	decal: {
 		edit: {text: "éditer", tooltip: "Editer l'élément '%0'"}
