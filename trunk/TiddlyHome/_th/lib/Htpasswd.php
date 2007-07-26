@@ -8,6 +8,16 @@
  *
  ***/
 
+function bidix_crypt($passwd, $salt = null) {
+	$os = php_uname();
+	if (eregi("windows",$os)) {
+		return $passwd;
+	}
+	else {
+		return crypt($passwd, $salt);
+	}
+}
+
 class Htpasswd {
 	var $path;
 	var $txt;	// file content 
@@ -33,7 +43,8 @@ class Htpasswd {
 	}
 	
 	function verifyPassword($user,$password) {
-		return (crypt($password, $this->users[$user]['password']) == $this->users[$user]['password']);
+		// return (crypt($password, $this->users[$user]['password']) == $this->users[$user]['password']);
+		return (bidix_crypt($password, $this->users[$user]['password']) == $this->users[$user]['password']);
 
 	}
 	
@@ -47,11 +58,11 @@ class Htpasswd {
 	}
 	
 	function setUser($user,$passwd,$email) {
-		$this->users[$user] = array('password' => crypt($passwd), 'email' => $email);
+		$this->users[$user] = array('password' => bidix_crypt($passwd), 'email' => $email);
 	}
 	
 	function setPassword($user,$passwd) {
-		$this->users[$user]['password'] = crypt($passwd);
+		$this->users[$user]['password'] = bidix_crypt($passwd);
 		return true;
 	}
 	
