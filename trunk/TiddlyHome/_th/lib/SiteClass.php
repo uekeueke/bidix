@@ -19,10 +19,12 @@ class Site {
 	var $group;
 	var $access;
 	var $htaccess;
+	var $flavour;
 	
 	function Site($name) {
 		global $ROOT, $HTACCESS_FILENAME, $ADMIN_DIR, $HTGROUP_FILENAME;
 		$this->name = $name;
+		$this->flavour = 'empty.html';
 		chdir($ROOT);
 		if (is_dir($this->name) && is_file("$this->name/$HTACCESS_FILENAME")) {
 			chdir($this->name);
@@ -45,7 +47,7 @@ class Site {
 		// create dir links
 		// doLink('../lib', 'lib');
 		//copy command
-		doCopyUniqueTemplate($refDir,'empty.html','index.html',$this->owner,$this->name,$rootUrl);
+		doCopyUniqueTemplate($refDir, $this->flavour,'index.html',$this->owner,$this->name,$rootUrl);
 		doPHPLink('download.php');
 		doPHPLink('logout.php');
 		doPHPLink('news.php');

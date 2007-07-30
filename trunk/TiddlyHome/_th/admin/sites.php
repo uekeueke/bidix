@@ -13,14 +13,38 @@ function displayPage($root,$owner,$password,$site,$group,$private,$msg,$next,$ac
 	global $LIB_DIR, $ROOT_URN;
 		$pageTitle = "Sites";
 require("$LIB_DIR/pageHeader.php");
+function dir_list($dir)
+{
+    if ($dir[strlen($dir)-1] != '/') $dir .= '/';
+
+    if (!is_dir($dir)) return array();
+
+    $dir_handle  = opendir($dir);
+    $dir_objects = array();
+    while ($object = readdir($dir_handle))
+        if (!in_array($object, array('.','..')))
+        {
+            $filename    = $dir . $object;
+            $file_object = array(
+                                    'name' => $object,
+                                    'size' => filesize($filename),
+                                    'type' => filetype($filename),
+                                    'time' => date("d F Y H:i:s", filemtime($filename))
+                                );
+            $dir_objects[filemtime($filename)] = $file_object;
+        }
+	krsort($dir_objects);
+    return $dir_objects;
+}
+
 ?>
 	</center>
 	<table>
 <?php
-chdir($root);
-if ($dh = opendir($root)) {
-	while(($f= readdir($dh)) !== false ) {
-		//if (is_dir($file) && (!preg_match('/^\./',$file ))) {
+	chdir($root);
+	$dir_objects = dir_list($root);
+	foreach ($dir_objects as $key => $file_object) {
+		$f = $file_object['name'];
 		if (!preg_match('/^[_.]/',$f ) && is_dir($f)) {
 			$s = stat($f);
 			$htaccess = new Htaccess("$f/.htaccess");
@@ -43,10 +67,7 @@ if ($dh = opendir($root)) {
 				echo (" | <a href=?next=change%20access&site=$f>change access<a>");
 				echo ("</td>");
 				echo("</tr>\n");	
-			//}
-		}	
 	}
-	closedir($dh);
 }
 ?>
 	</table>

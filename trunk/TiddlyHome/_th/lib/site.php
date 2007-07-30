@@ -46,6 +46,7 @@ $password = $_REQUEST['password'];
 $siteName = $_REQUEST['site'];
 $group = $_REQUEST['group'];
 $private = $_REQUEST['private'];
+$flavour = $_REQUEST['flavour'];
 
 // GET
 

@@ -73,6 +73,20 @@ function checkAndSubmit() {
 			<tr>
 <?php 
 	}
+	if ($action == 'new') {
+?>
+			</tr>
+				<td>Flavour :</td>
+				<td>
+					<select name="flavour" id="flavour">
+						<option value="empty.html">Empty TiddlyWiki
+						<option value="NewsWiki.html">NewsWiki
+						<option value="NewsWikiFR.html">French NewsWiki (NewsWiki en Français)
+					</select>
+				</td>
+			<tr>
+<?php 
+	}
 	if ($action != 'display') {
 	
 ?>
@@ -104,6 +118,7 @@ function process() {
 	$group = $_REQUEST['group'];
 	$private = $_REQUEST['private'];
 	$action = $_REQUEST['action'];
+	$flavour = $_REQUEST['flavour'];
 
 	/*
 	 * process action
@@ -127,6 +142,8 @@ function process() {
 				else {
 					$site->owner = $owner;
 					$site->group = $group;
+					if($flavour)
+						$site->flavour = $flavour;
 					if ($private == 'on') 
 						$site->access = 'private';
 					else
