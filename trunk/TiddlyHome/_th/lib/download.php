@@ -2,7 +2,7 @@
 //{{{
 /***
  * download.php - download an html file as an attachement. 
- * version:1.0.0 - 2007/03/08 - BidiX@BidiX.info
+ * version:1.1.0 - 2007/08/01 - BidiX@BidiX.info
  * source: http://tiddlywiki.bidix.info/#download.php
  * license: BSD open source license (http://tiddlywiki.bidix.info/#[[BSD open source license]])
  *
@@ -13,6 +13,8 @@
  *				afile.html : for security reason, must be a file with an .html suffix
  *				?file=afile.html : if not specified index.html is used
  *				?help : display the "usage" message
+ * 
+ *	each external javascript file is included in the downloaded file
  ***/
 
 function display($msg) {
@@ -25,7 +27,7 @@ function display($msg) {
 		</head>
 		<body>
 			<p>
-			<p>download.php V 1.0.0
+			<p>download.php V 1.1.0
 			<p>BidiX@BidiX.info
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
@@ -37,6 +39,28 @@ function display($msg) {
 	</html>
 	<?php
 	return;
+}
+
+/*
+ * Recusrsively for each external javascript
+ *		- Insert a comment : DOWNLOAD-INSERT-FILE
+ *		- insert the content of the file 
+ */
+
+function insertJSFileIn($content) {
+	if (preg_match ('<script\s+type=\"text\/javascript\"\s+src=\"')) {
+		if (preg_match ('/^(.*?)<script\s+type=\"text\/javascript\"\s+src=\"(.+?)\"\s*>\s*<\/script>(.*)$/ms', $content,$matches)) {
+			$front = $matches[1];
+			$js = $matches[2];
+			$tail = $matches[3];
+			$jsContent = "<!--DOWNLOAD-INSERT-FILE:\"$js\"--><script type=\"text/javascript\">\n" . 
+				file_get_contents ($js) . 
+				"\n</script>";
+			$tail = insertJSFileIn($tail);
+			return($front.$jsContent.$tail);
+		}
+	}
+	return $content;
 }
 
 /*
@@ -60,11 +84,13 @@ if (!preg_match('/\.html$/',$filename )) {
 	display("The file $filename could not be found.");
 	exit;
 }
+$content = insertJSFileIn(file_get_contents ('index.html'));	
+
 //return the file
 header('Pragma: private');
 header('Cache-control: private, must-revalidate');
 header('Content-type: text/html');
 header('Content-Disposition: attachment; filename='.$filename);
-readfile($filename);	
+echo($content);	
 //}}}
 ?>
