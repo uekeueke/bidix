@@ -48,12 +48,14 @@ function display($msg) {
  */
 
 function insertJSFileIn($content) {
-	if (preg_match ('<script\s+type=\"text\/javascript\"\s+src=\"')) {
+	
+	// if (preg_match ('<script\s+type=\"text\/javascript\"\s+src=\"')) {
+	if (preg_match ('/<script\s+type=\"text\/javascript\"\s+src=\"/ms', $content)) {
 		if (preg_match ('/^(.*?)<script\s+type=\"text\/javascript\"\s+src=\"(.+?)\"\s*>\s*<\/script>(.*)$/ms', $content,$matches)) {
 			$front = $matches[1];
 			$js = $matches[2];
 			$tail = $matches[3];
-			$jsContent = "<!--DOWNLOAD-INSERT-FILE:\"$js\"--><script type=\"text/javascript\">\n" . 
+			$jsContent = "<!--DOWNLOAD-INSERT-FILE:\"$js\"--><script type=\"text/javascript\">" . 
 				file_get_contents ($js) . 
 				"\n</script>";
 			$tail = insertJSFileIn($tail);

@@ -207,25 +207,6 @@ function cleanFiles($dirname, $prefix) {
 	return $toDelete;
 }
 
-function replaceJSContentIn2($content) {
-	echo("replaceJSContentIn2\n");
-		if (preg_match ("/^(.*?)<!--DOWNLOAD-INSERT-FILE:\"(.*?)\"--><script\s+type=\"text\/javascript\">.*?<\/script>(.*)$/Dsu", $content,&$matches)) {
-//	if (preg_match ("/^(.*)<!--DOWNLOAD-INSERT-FILE:\"(.*?)\"--><script\s+type=\"text\/javascript\">.*?<\/script>(.*)/Dsu", $content,$matches)) {
-		$front = $matches[1];
-		$js = $matches[2];
-		$tail = $matches[3];
-		$jsContent = "<script type=\"text/javascript\" src=\"$js\"></script>\n";
-		echo("ToreplaceJSContentIn2 $js\n");
-		//$front = replaceJSContentIn($matches[1]);
-		echo("FromreplaceJSContentIn\n");
-		return($front.$jsContent.$tail);
-		return $content;
-	}
-	else
-		return $content;
-}
-
-
 function replaceJSContentIn($content) {
 	if (preg_match ("/(.*?)<!--DOWNLOAD-INSERT-FILE:\"(.*?)\"--><script\s+type=\"text\/javascript\">(.*)/ms", $content,$matches)) {
 		$front = $matches[1];
@@ -234,15 +215,13 @@ function replaceJSContentIn($content) {
 		if (preg_match ("/<\/script>(.*)/ms", $tail,$matches2)) {		
 			$tail = $matches2[1];
 		}
-		$jsContent = "<script type=\"text/javascript\" src=\"$js\"></script>\n";
+		$jsContent = "<script type=\"text/javascript\" src=\"$js\"></script>";
 		$tail = replaceJSContentIn($tail);
 		return($front.$jsContent.$tail);
 	}
 	else
 		return $content;
 }
-
-
 
 // Check if file_uploads is active in php config
 if (ini_get('file_uploads') != '1') {
