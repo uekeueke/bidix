@@ -796,6 +796,11 @@ return this.saveTiddler_weaveLinks.apply(this, arguments);
 }
 //}}}</pre>
 </div>
+<div title="BidiXTW" modifier="BidiX" modified="200706081206" created="200607281659" tags="systemServer admin TiddlyHomeSystem" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/TiddlyHomeSystem.html" server.page.revision="200706081206">
+<pre>|''URL:''|http://tiddlywiki.bidix.info/|
+|''Description:''|Repository for BidiX's TiddlyWiki Extensions|
+|''Author:''|BidiX|</pre>
+</div>
 <div title="CalendarPlugin" modifier="BidiX" modified="200707281357" created="200703222051" tags="systemConfig admin NewsWiki" date="200703222050">
 <pre>/***
 ''Name:'' CalendarPlugin
@@ -1411,7 +1416,7 @@ config.paramifiers.mode = {
 
 </pre>
 </div>
-<div title="ColorPalette" created="200708032039" tags="admin">
+<div title="ColorPalette" created="200708042037" tags="admin">
 <pre>Background: #fff
 Foreground: #000
 PrimaryPale: #8cf
@@ -2712,6 +2717,37 @@ config.macros.listByTag.handler = function(place,macroName,params,wikifier,param
 };
 //}}}</pre>
 </div>
+<div title="LoadRemoteFileThroughProxy" modifier="BidiX" modified="200703182155" created="200703172245" tags="admin systemConfig TiddlyHomeSystem" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/TiddlyHomeSystem.html" server.page.revision="200703182155">
+<pre>/***
+|''Name:''|LoadRemoteFileThroughProxy (previous LoadRemoteFileHijack)|
+|''Description:''|When the TiddlyWiki file is located on the web (view over http) the content of [[SiteProxy]] tiddler is added in front of the file url. If [[SiteProxy]] does not exist &quot;/proxy/&quot; is added. |
+|''Version:''|1.1.0|
+|''Date:''|mar 17, 2007|
+|''Source:''|http://tiddlywiki.bidix.info/#LoadRemoteFileHijack|
+|''Author:''|BidiX (BidiX (at) bidix (dot) info)|
+|''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
+|''~CoreVersion:''|2.2.0|
+***/
+//{{{
+version.extensions.LoadRemoteFileThroughProxy = {
+ major: 1, minor: 1, revision: 0, 
+ date: new Date(&quot;mar 17, 2007&quot;), 
+ source: &quot;http://tiddlywiki.bidix.info/#LoadRemoteFileThroughProxy&quot;};
+
+if (!window.bidix) window.bidix = {}; // bidix namespace
+if (!bidix.core) bidix.core = {};
+
+bidix.core.loadRemoteFile = loadRemoteFile;
+loadRemoteFile = function(url,callback,params)
+{
+ if ((document.location.toString().substr(0,4) == &quot;http&quot;) &amp;&amp; (url.substr(0,4) == &quot;http&quot;)){ 
+ url = store.getTiddlerText(&quot;SiteProxy&quot;, &quot;/proxy/&quot;) + url;
+ }
+ return bidix.core.loadRemoteFile(url,callback,params);
+}
+//}}}
+</pre>
+</div>
 <div title="MarkupPreHead" modifier="BidiX" modified="200705291126" created="200705010917" tags="admin TiddlyHomeSystem" date="200705010917" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291126">
 <pre>&lt;!--{{{--&gt;
 &lt;link rel='alternate' type='application/rss+xml' title='RSS' href='index.xml'/&gt;
@@ -3212,12 +3248,12 @@ Story.prototype.displayTiddlers = function(srcElement,titles,template,unused1,un
 <div title="TabUser" modifier="BidiX" modified="200705242047" created="200705241503" tags="admin NewsWiki" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705242047">
 <pre>&lt;&lt;list user&gt;&gt;</pre>
 </div>
-<div title="TiddlyHomeSetupPlugin" modifier="BidiX" modified="200707281549" created="200703301137" tags="admin systemConfig TiddlyHomeSystem" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/TiddlyHomeSystem.html" server.page.revision="200707281549">
+<div title="TiddlyHomeSetupPlugin" modifier="BidiX" modified="200708042027" created="200703301137" tags="admin systemConfig TiddlyHomeSystem" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/TiddlyHomeSystem.html" server.page.revision="200708042027">
 <pre>/***
 |''Name:''|TiddlyHomeSetupPlugin|
 |''Description:''|Check and setup all components|
-|''Version:''|1.0.0|
-|''Date:''|Jul 28, 2007|
+|''Version:''|1.1.0|
+|''Date:''|Aug 04, 2007|
 |''Source:''|http://tiddlywiki.bidix.info/#TiddlyHomeSetupPlugin|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
@@ -3227,8 +3263,8 @@ Story.prototype.displayTiddlers = function(srcElement,titles,template,unused1,un
 //{{{
 
 version.extensions.TiddlyHomeSetupPlugin = {
-	major: 1, minor: 0, revision: 0,
-	date: new Date(&quot;Jul 28, 2007&quot;),
+	major: 1, minor: 1, revision: 0,
+	date: new Date(&quot;Aug 04, 2007&quot;),
 	source: 'http://tiddlywiki.bidix.info/#TiddlyHomeSetupPlugin',
 	author: 'BidiX (BidiX (at) bidix (dot) info)',
 	coreVersion: '2.2.0'
@@ -3271,14 +3307,28 @@ config.macros.upload.authenticateUser = false; // authentication check by .htacc
 // user can overide this
 merge(config.shadowTiddlers,{
 	'TiddlyHomeParameters':[
-		&quot;|owner:|$owner$|&quot;,
-		&quot;|site:|$site$|&quot;,
-		&quot;|url:|$url$|&quot;,
-		&quot;|rootUrl:|$rootUrl$|&quot;
+	&quot;|owner:|$owner$|&quot;,
+	&quot;|site:|$site$|&quot;,
+	&quot;|url:|$url$|&quot;,
+	&quot;|rootUrl:|$rootUrl$|&quot;
 	].join(&quot;\n&quot;)});
 // get config from TiddlyHomeParameters
 config.tiddlyHome = {};
 merge(config.tiddlyHome, bidix.getParamsFromTiddler('TiddlyHomeParameters',['user','site','url','rootUrl']));
+config.shadowTiddlers.TiddlyHomeParameters += [
+	&quot;!Usefull url for your site&quot;,
+	&quot;* &quot; + config.tiddlyHome.url + &quot;backup: List of backup files&quot;,
+	&quot;* &quot; + config.tiddlyHome.url + &quot;download.php : to download thisTiddlyWiki&quot;,
+	&quot;* &quot; + config.tiddlyHome.url + &quot;index.xml : your RSSFeed&quot;,
+	&quot;* &quot; + config.tiddlyHome.url + &quot;news.php : to display your RSSFeed&quot;,
+	&quot;!Access and change data&quot;,
+	&quot;* &quot; + config.tiddlyHome.rootUrl + &quot;Site : Site properties&quot;,
+	&quot;* &quot; + config.tiddlyHome.rootUrl + &quot;#User : User properties&quot;,
+	&quot;!More Information on TiddlyHome&quot;,
+	&quot;* &quot; + config.tiddlyHome.rootUrl + &quot; for your hosting service&quot;,
+	&quot;*http://TiddlyHome.bidix.info/ for BidiX's TiddlyHome Package&quot;
+	].join(&quot;\n&quot;);
+
 // add TiddlyHomeSidebar in SideBarOptions
 config.shadowTiddlers.SideBarOptions = config.shadowTiddlers.SideBarOptions.replace(/(&lt;&lt;saveChanges&gt;&gt;)/,
 	&quot;$1&lt;&lt;tiddler TiddlyHomeSidebar&gt;&gt;&quot;);
@@ -3296,24 +3346,18 @@ merge(config.shadowTiddlers,{
 			&quot;_th/images/favicon.ico\&quot; type=\&quot;image/vnd.microsoft.icon\&quot; /&gt; &quot;,
 		&quot;&lt;!--}}}--&gt;&quot;
 	].join(&quot;\n&quot;),
+	'SiteProxy':	[
+		&quot;proxy.php?url=&quot;
+	].join(&quot;\n&quot;),
+	'SiteUrl':	config.tiddlyHome.url,
+
 	// tweaks to UploadToHomeMacro parameters
 	'HomeParameters': [
 &quot;|UploadUserName:||&quot;,
 &quot;|UploadStoreUrl:|&quot; + config.tiddlyHome.url + &quot;store.php|&quot;,
 &quot;|UploadDir:|.|&quot;,
 &quot;|UploadFilename:|index.html|&quot;,
-&quot;|UploadBackupDir:|backup|&quot;,
-&quot;!Usefull url for your site&quot;,
-&quot;*&quot; + config.tiddlyHome.url + &quot;backup : List of backup files&quot;,
-&quot;*&quot; + config.tiddlyHome.url + &quot;download.php : to download thisTiddlyWiki&quot;,
-&quot;*&quot; + config.tiddlyHome.url + &quot;index.xml : your RSSFeed&quot;,
-&quot;*&quot; + config.tiddlyHome.url + &quot;news.php : to display your RSSFeed&quot;,
-&quot;!Access and change data&quot;,
-&quot;*&quot; + config.tiddlyHome.rootUrl + &quot;#Site : Site properties&quot;,
-&quot;*&quot; + config.tiddlyHome.rootUrl + &quot;#User : User properties&quot;,
-&quot;!More Information on TiddlyHome&quot;,
-&quot;*&quot; + config.tiddlyHome.rootUrl + &quot; for your hosting service&quot;,
-&quot;*http://TiddlyHome.bidix.info/ for BidiX's TiddlyHome Package&quot;
+&quot;|UploadBackupDir:|backup|&quot;
 	].join(&quot;\n&quot;),
 	'TiddlyHomeSidebar':[
  		&quot;&lt;&lt;uploadToHome&gt;&gt;&lt;html&gt;&lt;a href=&quot; + 

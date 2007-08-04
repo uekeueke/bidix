@@ -2,7 +2,7 @@
 //{{{
 /***
  * proxy.php - access an url if the target host is allowed
- * version: 2.1.0 - 2007/04/15 - BidiX@BidiX.info
+ * version: 2.2.0 - 2007/08/03 - BidiX@BidiX.info
  * source: http://tiddlywiki.bidix.info/#proxy.php
  * license: BSD open source license (http://tiddlywiki.bidix.info/#[[BSD open source license]])
  * Copyright (c) BidiX@BidiX.info 2006-2007
@@ -38,7 +38,7 @@ function display($msg) {
 		</head>
 		<body>
 			<p>
-			<p>proxy.php V 2.0.0
+			<p>proxy.php V 2.2.0
 			<p>BidiX@BidiX.info
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
@@ -63,6 +63,16 @@ function inMyDomain($host) {
 	return (domain($_SERVER['HTTP_HOST']) == domain($host));
 }
 
+function isAllowed($host) {
+	global $ALLOWED_SITE_FILENAME;
+	// load allowed hosts
+	$allowedHosts = array_map('rtrim',file($ALLOWED_SITE_FILENAME));
+	if (!$allowedHosts) {
+		echo("allowedSites file '$ALLOWED_SITE_FILENAME' is not found or empty.");
+		exit;	
+	}
+	return in_array($host, $allowedHosts);
+}
 /*
  * Main
  */
@@ -74,18 +84,12 @@ if (array_key_exists('help',$_GET)) {
 	exit;
 }
 
-// load allowed hosts
-
-$allowedHosts = array_map('rtrim',file($ALLOWED_SITE_FILENAME));
-if (!$allowedHosts) {
-	echo("allowedSites file '$ALLOWED_SITE_FILENAME' is not found or empty.");
-	exit;	
-}
 
 // list command
 
 if (array_key_exists('list',$_GET)) {
 	echo "<h3>Hosts allowed through this proxy :</h3>\n<ul>\n";	
+	$allowedHosts = array_map('rtrim',file($ALLOWED_SITE_FILENAME));
 	foreach ($allowedHosts as $host) 
 		echo("<li>$host</li>\n");
 	echo "</ul>\n";
@@ -100,7 +104,7 @@ if (!$url) {
 	display('');
 	exit;
 }
-$url = strtolower($url);
+
 if (substr($url, 0, 4) != 'http')
 	$url = 'http://'.$url;
 $urlArray = parse_url($url);
@@ -108,7 +112,7 @@ if (!$urlArray) {
 	echo("URL '$url' is not well formed");
 	exit;
 }
-$host = $urlArray['host'];
+$host = strtolower($urlArray['host']);
 
 if (isset($urlArray['port']))
 	$port = $urlArray['port'];
@@ -121,7 +125,7 @@ if (isset($urlArray['fragment']))
 	$file = $file.'#'.$urlArray['fragment'];
 
 // is $host allowed ?
-if (!in_array($host, $allowedHosts) && !inMyDomain($host)) {
+if (!inMyDomain($host) && !isAllowed($host)) {
 	echo("Host '$host' is not allowed.");
 	exit;
 }
