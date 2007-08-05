@@ -259,9 +259,16 @@ if (($AUTHENTICATE_USER)
 	toExit();
 }
 
+
+
 // make uploadDir
 if ($options['uploaddir']) {
 	$uploadDir = $options['uploaddir'];
+	// path control for uploadDir   
+    if (!(strpos($uploadDir, "../") === false)) {
+        echo "Error: directory to upload specifies a parent folder";
+        toExit();
+	}
 	if (! is_dir($uploadDir)) {
 		mkdirs($uploadDir);
 	}
