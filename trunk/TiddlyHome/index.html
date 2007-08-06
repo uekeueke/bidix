@@ -511,10 +511,10 @@ siteForm.php
 <div title="2007/05/25" modifier="BidiX" modified="200705282006" created="200705281955" tags="Changes admin" changecount="2">
 <pre>*Install TiddlyHome site in NewsWiki model</pre>
 </div>
-<div title="2007/05/28" modifier="BidiX" modified="200706032121" created="200705282008" tags="Changes admin toRSS News" changecount="4">
+<div title="2007/05/28" modifier="BidiX" modified="200706032121" created="200705282008" tags="Changes admin News" changecount="5">
 <pre>*release new version of TiddlyHome Site</pre>
 </div>
-<div title="2007/06/05" modifier="BidiX" modified="200706071324" created="200706052054" tags="Changes toRSS">
+<div title="2007/06/05" modifier="BidiX" modified="200706071324" created="200706052054" tags="Changes" changecount="1">
 <pre>*Upgrade to TiddlyWiki 2.2.0
 *Upgrade to NewsWiki 1.0.0</pre>
 </div>
@@ -522,6 +522,20 @@ siteForm.php
 <pre>*Upgrade to TiddlyWiki 2.2.4
 *change in _th/lib/Htpasswd.php
 **On Windows password isn't encrpted see :  [[Password Management in TiddlyHome on Windows]] for details</pre>
+</div>
+<div title="2007/08/06" modifier="BidiX" modified="200708062017" created="200708062004" tags="Changes excludeList" changecount="3">
+<pre>New release TiddlyHome 0.1.0
+*index.html and Admin use NewsWiki 1.2.0
+*TiddlyHomeSetupPlugin 1.1.0
+*core is externalized in _th/lib/twcore.js
+**Templates use externalized core
+**download.php expands referenced javascript (src=...) 
+**store.php retract javascript (reinstall src=...)
+**sites sorted by modified in admin/sites.php 
+*proxy full functionnal in TiddlyHome
+**LoadRemoteFileThroughProxy added in TiddlyHomeSystem
+**proxy.php don't need allowedsites.txt in the same domain
+**Add TiddlyHomeSetupPlugin shadow SiteProxy added by TiddlyHomeSetupPlugin as shadow tiddler</pre>
 </div>
 <div title="About" modifier="BidiX" created="200705242113" tags="admin" changecount="1">
 <pre></pre>
@@ -534,7 +548,7 @@ Motor: TiddlyWiki &lt;&lt;version&gt;&gt;</pre>
 <div title="AdminMode" modifier="BidiX" created="200705241501" changecount="1">
 <pre>&lt;&lt;changeMode&gt;&gt;</pre>
 </div>
-<div title="AuthorColorPalette" modifier="BidiX" modified="200705221243" created="200702041744" tags="admin NewsWiki" date="200702041744" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705221243">
+<div title="AuthorColorPalette" modifier="BidiX" modified="200705221243" created="200702041744" tags="admin NewsWiki" date="200702041744" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705221243">
 <pre>Background: #fff
 Foreground: #333
 PrimaryPale: #FFBFBF
@@ -552,7 +566,7 @@ TertiaryDark: #666
 Error: #ff0000
 &lt;&lt;viewPalette&gt;&gt;</pre>
 </div>
-<div title="AuthorEditTemplate" modifier="BidiX" modified="200705231349" created="200702042046" tags="admin NewsWiki" date="200702042046" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705231349">
+<div title="AuthorEditTemplate" modifier="BidiX" modified="200705231349" created="200702042046" tags="admin NewsWiki" date="200702042046" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705231349">
 <pre>&lt;!--{{{--&gt;
 &lt;div class='toolbar' macro='toolbar +saveTiddler -cancelTiddler deleteTiddler'&gt;&lt;/div&gt;
 &lt;div class='title' macro='view title'&gt;&lt;/div&gt;
@@ -578,7 +592,7 @@ Error: #ff0000
 &lt;&lt;changeMode&gt;&gt;
 Author : &lt;&lt;option txtUserName&gt;&gt;</pre>
 </div>
-<div title="AuthorPageTemplate" modifier="BidiX" modified="200705282005" created="200702041207" tags="admin NewsWiki" date="200702041207" anon="undefined" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705282005">
+<div title="AuthorPageTemplate" modifier="BidiX" modified="200705282005" created="200702041207" tags="admin NewsWiki" date="200702041207" anon="undefined" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705282005">
 <pre>&lt;!--{{{--&gt;
 &lt;div id='header' class='header'&gt;
 	&lt;div id='topMenu' refresh='content' tiddler='TopMenu'&gt;&lt;/div&gt; 
@@ -598,10 +612,10 @@ Author : &lt;&lt;option txtUserName&gt;&gt;</pre>
 &lt;/div&gt;
 &lt;!--}}}--&gt;</pre>
 </div>
-<div title="AuthorSidebarTabs" modifier="BidiX" modified="200706102141" created="200705241502" tags="admin NewsWiki" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200706102141">
+<div title="AuthorSidebarTabs" modifier="BidiX" modified="200706102141" created="200705241502" tags="admin NewsWiki" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200706102141">
 <pre>&lt;&lt;tabs txtMainTab &quot;Chrono&quot; &quot;Affichage chronologique des éléments utilisateur&quot; UserTabTimeline &quot;Alpha&quot; &quot;Liste aphabétique des éléments utilisateur&quot; TabUser &quot;Index&quot; &quot;Liste des index utilisateur&quot; UserTabTags&gt;&gt;</pre>
 </div>
-<div title="AuthorStyleSheet" modifier="BidiX" modified="200705222047" created="200702041725" tags="admin NewsWiki" date="200702041725" anon="undefined" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705222047">
+<div title="AuthorStyleSheet" modifier="BidiX" modified="200705222047" created="200702041725" tags="admin NewsWiki" date="200702041725" anon="undefined" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705222047">
 <pre>[[CommunStyleSheet]]
 /*{{{*/
 body {
@@ -618,7 +632,7 @@ body {
 
 </pre>
 </div>
-<div title="AuthorViewTemplate" modifier="Bruno" modified="200706120530" created="200702041207" tags="admin NewsWiki" date="200702041207" anon="undefined" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200706120530">
+<div title="AuthorViewTemplate" modifier="BidiX" modified="200706120530" created="200702041207" tags="admin NewsWiki" date="200702041207" anon="undefined" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200706120530">
 <pre>&lt;!--{{{--&gt;
 &lt;div class='toolbar' macro='toolbar closeTiddler closeOthers +editTiddler &gt; fields syncing permalink references jump'&gt;&lt;/div&gt;
 &lt;div class='title'&gt;
@@ -636,7 +650,7 @@ body {
 &lt;div class='tagClear'&gt;&lt;/div&gt;
 &lt;!--}}}--&gt;</pre>
 </div>
-<div title="AutoWeavePluginPatched" modifier="BidiX" modified="200707280949" created="200703121927" tags="systemConfig admin patched" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707280949">
+<div title="AutoWeavePluginPatched" modifier="BidiX" modified="200707280949" created="200703121927" tags="systemConfig admin patched" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707280949">
 <pre>/***
 |''Name:''|AutoWeavePlugin|
 |''Description:''|Automatically adds brackets to nonwikiwords on saving a tiddler.|
@@ -866,12 +880,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&
 URL : [[BidiX.info|http://BidiX.info/]]
 Donation : [[Donation via Paypal|https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=BidiX%40bidix%2einfo&amp;item_name=TiddlyWikiHacking%20Donations&amp;item_number=Donations&amp;no_shipping=2&amp;no_note=1&amp;tax=0&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8]] </pre>
 </div>
-<div title="BidiXTW" modifier="BidiX" modified="200705240602" created="200703170944" tags="admin systemServer" date="200703170944" changecount="2">
+<div title="BidiXTW" modifier="BidiX" modified="200706081206" created="200607281659" tags="systemServer admin TiddlyHomeSystem" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200706081206">
 <pre>|''URL:''|http://tiddlywiki.bidix.info/|
 |''Description:''|Repository for BidiX's TiddlyWiki Extensions|
 |''Author:''|BidiX|</pre>
 </div>
-<div title="CalendarPlugin" modifier="Bruno" modified="200707281357" created="200703222051" tags="systemConfig admin NewsWiki" date="200703222050" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707281357">
+<div title="CalendarPlugin" modifier="BidiX" modified="200707281357" created="200703222051" tags="systemConfig admin NewsWiki" date="200703222050" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707281357">
 <pre>/***
 ''Name:'' CalendarPlugin
 ''Version:'' &lt;&lt;getversion calendar&gt;&gt; (&lt;&lt;getversiondate calendar &quot;DD MMM YYYY&quot;&gt;&gt;)
@@ -1326,7 +1340,7 @@ setStylesheet(&quot;.calendar, .calendar table, .calendar th, .calendar tr, .cal
 &lt;/iframe&gt;
 &lt;/html&gt;</pre>
 </div>
-<div title="ChangeModePlugin" modifier="BidiX" modified="200707281727" created="200705202007" tags="admin systemConfig" date="" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707281727">
+<div title="ChangeModePlugin" modifier="BidiX" modified="200707281727" created="200705202007" tags="admin systemConfig" date="" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707281727">
 <pre>/***
 |''Name:''|ChangeModePlugin|
 |''Description:''|Change template and styleSheet|
@@ -1522,7 +1536,7 @@ config.paramifiers.mode = {
  tiddler.text;'
 &gt;&gt;</pre>
 </div>
-<div title="ColorPalette" created="200708040732" tags="admin">
+<div title="ColorPalette" created="200708062028" tags="admin">
 <pre>Background: #fff
 Foreground: #333
 PrimaryPale: #FFBFBF
@@ -1547,7 +1561,7 @@ There are commands for :
 * &lt;&lt;tag User&gt;&gt;
 * &lt;&lt;tag Site&gt;&gt;</pre>
 </div>
-<div title="CommunStyleSheet" modifier="BidiX" modified="200706081419" created="200702041717" tags="admin NewsWiki" date="200702041717" anon="undefined" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200706081419">
+<div title="CommunStyleSheet" modifier="BidiX" modified="200706081419" created="200702041717" tags="admin NewsWiki" date="200702041717" anon="undefined" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200706081419">
 <pre>/*{{{*/
 
 body {
@@ -1800,14 +1814,14 @@ a:hover {
 <div title="Docs" modifier="BidiX" modified="200705101344" created="200705101343" tags="systemList" date="200705101343">
 <pre></pre>
 </div>
-<div title="Download and install package" modifier="BidiX" modified="200707282255" created="200705201005" tags="News Docs" date="200705201005" changecount="2">
+<div title="Download and install package" modifier="BidiX" modified="200708062037" created="200705201005" tags="News Docs" date="200705201005" changecount="3">
 <pre>To install TiddlyHome to your own site :
 #[[download|TiddlyHomePackage_0.1.0.zip]] the full package
 #unzip and move the TiddlyHome folder in its final location
 #go to this file at your own new TiddlyHome at [[Initialize your own TiddlyHome]]
 </pre>
 </div>
-<div title="ForEachTiddlerPlugin" modifier="BidiX" modified="200705242031" created="200701301159" tags="admin NewsWiki systemConfig" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705242031">
+<div title="ForEachTiddlerPlugin" modifier="BidiX" modified="200705242031" created="200701301159" tags="admin NewsWiki systemConfig" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705242031">
 <pre>/***
 |''Name:''|ForEachTiddlerPlugin|
 |''Version:''|1.0.6 (2006-09-16)|
@@ -2638,7 +2652,7 @@ DAMAGE.
 
 </pre>
 </div>
-<div title="GenerateRssByTagPlugin" modifier="BidiX" modified="200705281308" created="200703052156" tags="admin NewsWiki systemConfig" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705281308">
+<div title="GenerateRssByTagPlugin" modifier="BidiX" modified="200705281308" created="200703052156" tags="admin NewsWiki systemConfig" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705281308">
 <pre>/***
 |''Name:''|GenerateRssByTagPlugin|
 |''Description:''|Only tiddlers with a specific tag are inluded in the RSSFeed. If no tiddlers are selected then works as before. (see ticket #270: http://trac.tiddlywiki.org/tiddlywiki/ticket/270). &lt;br&gt;RssTag: &lt;&lt;option txtRssTag&gt;&gt;|
@@ -2704,7 +2718,7 @@ config.options.txtRssTag = &quot;toRSS&quot;; // default RssTag. use &lt;&lt;opt
 merge(config.optionsDesc,{txtRssTag: &quot;Only tiddlers with this tag will be included in the RSS Feed.&quot;});
 //}}}</pre>
 </div>
-<div title="GettingStarted" modifier="BidiX" modified="200707282254" created="200704011741" tags="systemTool News toRSS" date="200704011741" changecount="8">
+<div title="GettingStarted" modifier="BidiX" modified="200707282254" created="200704011741" tags="systemTool News" date="200704011741" changecount="9">
 <pre>[img[http://tiddlyhome.bidix.info/_th/images/TiddlyHomeLogo.32.jpg][http://tiddlyhome.bidix.info/]] TiddlyHome is a package design as an infrastructure for multi-user and multi-site TiddlyWiki hosting service based on UploadPlugin. 
 
 TiddlyHome 0.1.0 is in beta stage and use TiddlyWiki &lt;&lt;version&gt;&gt;.
@@ -2744,7 +2758,7 @@ Not sure how it works ? Try it here*. http://TiddlyHome.bidix.info/ is a SandBox
 !!Stay tuned
 &lt;&lt;tiddler [[Stay tuned]]&gt;&gt;</pre>
 </div>
-<div title="HideWhenPlugin" modifier="BidiX" modified="200705202029" created="200701161719" tags="admin NewsWiki systemConfig" date="" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705202029">
+<div title="HideWhenPlugin" modifier="BidiX" modified="200705202029" created="200701161719" tags="admin NewsWiki systemConfig" date="" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705202029">
 <pre>/***
 | Name|HideWhenPlugin|
 | Description|Allows conditional inclusion/exclusion in templates|
@@ -2820,10 +2834,10 @@ merge(config.macros,{
 If you are at your own TiddlyHome go to your new own ~TiddlyHome [[admin/|_th/admin/]] site.
 </pre>
 </div>
-<div title="IsDirty" modifier="BidiX" modified="200705291404" created="200705291033" tags="excludeLists excludeSearch admin NewsWiki" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291404">
-<pre></pre>
+<div title="IsDirty" modifier="BidiX" modified="200705291404" created="200705291033" tags="excludeLists excludeSearch admin NewsWiki" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291404">
+<pre> * </pre>
 </div>
-<div title="IsDirtyPlugin" modifier="BidiX" modified="200705202029" created="200703132048" tags="admin NewsWiki systemConfig" date="" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705202029">
+<div title="IsDirtyPlugin" modifier="BidiX" modified="200705202029" created="200703132048" tags="admin NewsWiki systemConfig" date="" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705202029">
 <pre>/***
 |''Name:''|IsDirtyPlugin|
 |''Description:''|When the TiddlyWiki needs to be saved the tiddler named IsDirty contains ' * ' else it is empty. IsDirty tiddler is also appended in front of the browser page title.&lt;br&gt;Hint: Put it in front of your SiteTitle in your PageTemplate or in your MainMenu as an indicator.&lt;br&gt;For now IsDirty: &lt;&lt;tiddler IsDirty&gt;&gt;|
@@ -2904,7 +2918,7 @@ bidix.initIsDirty();
 <div title="License" modifier="BidiX" modified="200705242113" created="200705090928" tags="About basicContent" date="200705090928" changecount="1">
 <pre>&lt;&lt;tiddler BSDOpenSourceLicense&gt;&gt;</pre>
 </div>
-<div title="ListByTag" modifier="BidiX" modified="200705202030" created="200611022300" tags="admin NewsWiki systemConfig" date="200611022300" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705202030">
+<div title="ListByTag" modifier="BidiX" modified="200705202030" created="200611022300" tags="admin NewsWiki systemConfig" date="200611022300" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705202030">
 <pre>//{{{
 //thanks Simon!
 Array.prototype.tiddlerList = function(listFormat,max) {
@@ -2933,6 +2947,37 @@ config.macros.listByTag.handler = function(place,macroName,params,wikifier,param
 };
 //}}}</pre>
 </div>
+<div title="LoadRemoteFileThroughProxy" modifier="BidiX" modified="200703182155" created="200703172245" tags="admin systemConfig TiddlyHomeSystem" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200703182155">
+<pre>/***
+|''Name:''|LoadRemoteFileThroughProxy (previous LoadRemoteFileHijack)|
+|''Description:''|When the TiddlyWiki file is located on the web (view over http) the content of [[SiteProxy]] tiddler is added in front of the file url. If [[SiteProxy]] does not exist &quot;/proxy/&quot; is added. |
+|''Version:''|1.1.0|
+|''Date:''|mar 17, 2007|
+|''Source:''|http://tiddlywiki.bidix.info/#LoadRemoteFileHijack|
+|''Author:''|BidiX (BidiX (at) bidix (dot) info)|
+|''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
+|''~CoreVersion:''|2.2.0|
+***/
+//{{{
+version.extensions.LoadRemoteFileThroughProxy = {
+ major: 1, minor: 1, revision: 0, 
+ date: new Date(&quot;mar 17, 2007&quot;), 
+ source: &quot;http://tiddlywiki.bidix.info/#LoadRemoteFileThroughProxy&quot;};
+
+if (!window.bidix) window.bidix = {}; // bidix namespace
+if (!bidix.core) bidix.core = {};
+
+bidix.core.loadRemoteFile = loadRemoteFile;
+loadRemoteFile = function(url,callback,params)
+{
+ if ((document.location.toString().substr(0,4) == &quot;http&quot;) &amp;&amp; (url.substr(0,4) == &quot;http&quot;)){ 
+ url = store.getTiddlerText(&quot;SiteProxy&quot;, &quot;/proxy/&quot;) + url;
+ }
+ return bidix.core.loadRemoteFile(url,callback,params);
+}
+//}}}
+</pre>
+</div>
 <div title="MainMenu" modifier="BidiX" modified="200706052057" created="200705281523" tags="admin siteTiddler" changecount="4">
 <pre>[[home|GettingStarted]]
 [[Index|News]]
@@ -2951,7 +2996,7 @@ config.macros.listByTag.handler = function(place,macroName,params,wikifier,param
 &lt;link rel=&quot;icon&quot; href=&quot;http://TiddlyHome.bidix.info/_th/images/favicon.ico&quot; type=&quot;image/vnd.microsoft.icon&quot; /&gt; 
 &lt;!--}}}--&gt;</pre>
 </div>
-<div title="New release of TiddlyHome" modifier="BidiX" modified="200707262102" created="200707262034" tags="News toRSS" changecount="8" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html">
+<div title="New release of TiddlyHome" modifier="BidiX" modified="200707262102" created="200707262034" tags="News" changecount="9" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html">
 <pre>This new release of TiddlyHome is a bug fix only release. It is the [[Ticket 5|Tickets]] correction.
 
 Read [[Password Management in TiddlyHome on Windows]] for un important security notice on Windows.
@@ -2973,7 +3018,7 @@ Get the full package [[here|TiddlyHomePackage_0.0.2.zip]]</pre>
 <div title="News" modifier="BidiX" modified="200705242052" created="200704032024" tags="systemList admin NewsWiki" date="200704032024" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705242052">
 <pre></pre>
 </div>
-<div title="NewsWiki" modifier="Bruno" modified="200707281441" created="200705011958" tags="NewsWiki" date="200705011958" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707281441">
+<div title="NewsWiki" modifier="BidiX" modified="200708062043" created="200705011958" tags="NewsWiki toRSS" date="200705011958" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707281441" changecount="2">
 <pre>!Description
 A vertical TiddlyWiki for publishing.
 !Features
@@ -3020,18 +3065,18 @@ all tagged NewsWiki :
 *--French version--
 *--In French Version, [[locale.fr-FR]] is loaded after NewsWikiTweaks. NewsWikiTweaksFR should require local.fr-FR--
 !History
-!!2007/06/05
+!![[2007/06/05]]
 *Version 1.0.0
 !!2007/07/28
 *Version 1.2.0
 </pre>
 </div>
-<div title="NewsWikiTW" modifier="BidiX" modified="200706080903" created="200705191407" tags="admin systemServer NewsWiki" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200706080903">
+<div title="NewsWikiTW" modifier="BidiX" modified="200706080903" created="200705191407" tags="admin systemServer NewsWiki" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200706080903">
 <pre>|URL:|http://tiddlyhome.bidix.info/systemServer/NewsWiki.html|
 |Description|Repository for NewsWiki system ressources |
 |Author:|BidiX|</pre>
 </div>
-<div title="NewsWikiTweaks" modifier="BidiX" modified="200707281728" created="200705231401" tags="admin NewsWiki systemConfig" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707281728">
+<div title="NewsWikiTweaks" modifier="BidiX" modified="200707281728" created="200705231401" tags="admin NewsWiki systemConfig" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707281728">
 <pre>/***
 |''Name:''|NewsWikiTweaks|
 |''Description:''|Some tweaks for NewsWiki|
@@ -3194,7 +3239,7 @@ config.macros.version.handler = function(place)
 
 //}}}</pre>
 </div>
-<div title="PDCI temporary web site" modifier="BidiX" modified="200707232040" created="200707232032" tags="News toRSS" changecount="6">
+<div title="PDCI temporary web site" modifier="BidiX" modified="200708062042" created="200707232032" tags="News toRSS" changecount="7">
 <pre>[img[http://tiddlyhome.bidix.info/_th/images/TiddlyHomeLogo.32.jpg][http://tiddlyhome.bidix.info/]] TiddlyHome is hosting PDCI's temporary web site.
 
 [img[http://tiddlyhome.bidix.info/_th/images/PDCI.jpeg][http://tiddlyhome.bidix.info/PDCI]]
@@ -3203,7 +3248,7 @@ config.macros.version.handler = function(place)
 
 </pre>
 </div>
-<div title="Password Management in TiddlyHome on Windows" modifier="BidiX" modified="200707242036" created="200707240601" tags="News toRSS" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" changecount="5">
+<div title="Password Management in TiddlyHome on Windows" modifier="BidiX" modified="200708062042" created="200707240601" tags="News toRSS" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" changecount="6">
 <pre>TiddlyHome doesn't manage properly password on windows as it does on Linux and OSX.
 
 !!Password management in TiddlyHome
@@ -3229,7 +3274,7 @@ But it is only on Windows. On other operating system they are encrypted with the
 
 </pre>
 </div>
-<div title="PasswordOptionPlugin" modifier="BidiX" modified="200704210834" created="200701172059" tags="admin systemConfig TiddlyHomeSystem" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200704210834">
+<div title="PasswordOptionPlugin" modifier="BidiX" modified="200704210834" created="200701172059" tags="admin systemConfig TiddlyHomeSystem" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200704210834">
 <pre>/***
 |''Name:''|PasswordOptionPlugin|
 |''Description:''|Extends TiddlyWiki options with non encrypted password option.|
@@ -3309,7 +3354,7 @@ merge(config.optionsDesc,{
 */
 //}}}</pre>
 </div>
-<div title="ReaderColorPalette" modifier="BidiX" created="200705212047" tags="admin NewsWiki" date="" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705212047">
+<div title="ReaderColorPalette" modifier="BidiX" created="200705212047" tags="admin NewsWiki" date="" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705212047">
 <pre>Background: #fff
 Foreground: #333
 PrimaryPale: #FFBFBF
@@ -3340,7 +3385,7 @@ Error: #ff0000
 &lt;&lt;tiddler [[About site]]&gt;&gt;
 </pre>
 </div>
-<div title="ReaderPageTemplate" modifier="BidiX" modified="200705281522" created="200702041212" tags="admin NewsWiki" date="200702041212" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705281522">
+<div title="ReaderPageTemplate" modifier="BidiX" modified="200705281522" created="200702041212" tags="admin NewsWiki" date="200702041212" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705281522">
 <pre>&lt;!--{{{--&gt;
 &lt;div id='page'&gt;
 	&lt;div id='header' class='header'&gt;
@@ -3361,7 +3406,7 @@ Error: #ff0000
 &lt;!--}}}--&gt;
 </pre>
 </div>
-<div title="ReaderStyleSheet" modifier="BidiX" modified="200705222128" created="200705202043" tags="admin NewsWiki" date="" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705222128">
+<div title="ReaderStyleSheet" modifier="BidiX" modified="200705222128" created="200705202043" tags="admin NewsWiki" date="" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705222128">
 <pre>[[CommunStyleSheet]]
 /***
 !!page
@@ -3385,7 +3430,7 @@ Error: #ff0000
 
 </pre>
 </div>
-<div title="ReaderViewTemplate" modifier="BidiX" modified="200707291128" created="200703171320" tags="admin NewsWiki" date="200702041212" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200706080857" changecount="1">
+<div title="ReaderViewTemplate" modifier="BidiX" modified="200707291123" created="200703171320" tags="admin NewsWiki" date="200702041212" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707291123">
 <pre>&lt;!--{{{--&gt;
 &lt;div class='title'&gt;
 	&lt;span class='title' macro='view title'&gt;&lt;/span&gt;
@@ -3415,7 +3460,7 @@ ClientSide :
 *TiddlyWiki
 *UploadPlugin</pre>
 </div>
-<div title="SinglePageModePlugin" modifier="BidiX" modified="200705202031" created="200512271815" tags="admin NewsWiki systemConfig" date="200512271815" anon="undefined" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705202031">
+<div title="SinglePageModePlugin" modifier="BidiX" modified="200705202031" created="200512271815" tags="admin NewsWiki systemConfig" date="200512271815" anon="undefined" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705202031">
 <pre>/***
 |Name|SinglePageModePlugin|
 |Source|http://www.TiddlyTools.com/#SinglePageModePlugin|
@@ -3544,7 +3589,7 @@ Source: http://bidix.googlecode.com/svn/</pre>
 *[[News page|http://tiddlyhome.bidix.info/news.php]] : http://tiddlyhome.bidix.info/news.php
 *Email BidiX for information</pre>
 </div>
-<div title="TabUser" modifier="BidiX" modified="200705242047" created="200705241503" tags="admin NewsWiki" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705242047">
+<div title="TabUser" modifier="BidiX" modified="200705242047" created="200705241503" tags="admin NewsWiki" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705242047">
 <pre>&lt;&lt;list user&gt;&gt;</pre>
 </div>
 <div title="Terms of Service" modifier="BidiX" modified="200705231134" created="200705201035" tags="News About ToDo" date="200705201035">
@@ -3558,7 +3603,7 @@ Source: http://bidix.googlecode.com/svn/</pre>
 #--TiddlyHome isn't working on Windows. See [[Password Management in TiddlyHome on Windows]]--
 </pre>
 </div>
-<div title="TiddlyHome" modifier="BidiX" modified="200707282253" created="200705071523" tags="News TiddlyHome toRSS About" date="200705071523" changecount="4">
+<div title="TiddlyHome" modifier="BidiX" modified="200708062046" created="200705071523" tags="News TiddlyHome toRSS About" date="200705071523" changecount="5">
 <pre>[img[http://tiddlyhome.bidix.info/_th/images/TiddlyHomeLogo.32.jpg][http://tiddlyhome.bidix.info/]] TiddlyHome is a package design as an infrastructure for multi-user and multi-site TiddlyWiki hosting service based on UploadPlugin. 
 
 TiddlyHome 0.1.0 is in beta stage and use TiddlyWiki &lt;&lt;version&gt;&gt;.
@@ -3580,6 +3625,12 @@ All comments, feedback and enquiries to [[TiddlyHome @ bidix.info|mailto:tiddlyh
 Enjoy,
 
 -- BidiX</pre>
+</div>
+<div title="TiddlyHome Release 0.1.0 " modifier="BidiX" modified="200708062046" created="200708062036" tags="News toRSS" changecount="2">
+<pre>This new release of TiddlyHome includes some enhancements :
+*TiddlyWiki core is externalise in _th/lib/twcore.js
+*download.php and store.php maintain the single file paradigm when the tiddlywiki is &quot;detached'&quot; from is TiddlyHome
+*proxy.php is full functional allowing importTiddlers to work in the same domain or by using an allowedsites.txt. Usefull to upgrade when online.</pre>
 </div>
 <div title="TiddlyHome setup" modifier="BidiX" created="200707282247" tags="News Docs" changecount="1">
 <pre>A TiddlyWiki is prepared for TiddlyHome with TiddlyHomeSetupPlugin.
@@ -3605,12 +3656,12 @@ TiddlyHome provides also ShadowedTiddlers that can be overwritten :
 |Description| Repository for TiddlyHome ressources|
 |Author:|BidiX|</pre>
 </div>
-<div title="TiddlyHomeSetupPlugin" modifier="BidiX" modified="200707282246" created="200703301137" tags="admin systemConfig TiddlyHomeSystem" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707281549" changecount="1">
+<div title="TiddlyHomeSetupPlugin" modifier="BidiX" modified="200708062026" created="200703301137" tags="admin systemConfig TiddlyHomeSystem" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200708042119" changecount="2">
 <pre>/***
 |''Name:''|TiddlyHomeSetupPlugin|
 |''Description:''|Check and setup all components|
-|''Version:''|1.0.0|
-|''Date:''|Jul 28, 2007|
+|''Version:''|1.1.0|
+|''Date:''|Aug 04, 2007|
 |''Source:''|http://tiddlywiki.bidix.info/#TiddlyHomeSetupPlugin|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
@@ -3620,8 +3671,8 @@ TiddlyHome provides also ShadowedTiddlers that can be overwritten :
 //{{{
 
 version.extensions.TiddlyHomeSetupPlugin = {
-	major: 1, minor: 0, revision: 0,
-	date: new Date(&quot;Jul 28, 2007&quot;),
+	major: 1, minor: 1, revision: 0,
+	date: new Date(&quot;Aug 04, 2007&quot;),
 	source: 'http://tiddlywiki.bidix.info/#TiddlyHomeSetupPlugin',
 	author: 'BidiX (BidiX (at) bidix (dot) info)',
 	coreVersion: '2.2.0'
@@ -3664,14 +3715,28 @@ config.macros.upload.authenticateUser = false; // authentication check by .htacc
 // user can overide this
 merge(config.shadowTiddlers,{
 	'TiddlyHomeParameters':[
-		&quot;|owner:|BidiX|&quot;,
-		&quot;|site:|home|&quot;,
-		&quot;|url:|http://TiddlyHome.bidix.info/home/|&quot;,
-		&quot;|rootUrl:|http://TiddlyHome.bidix.info/|&quot;
+	&quot;|owner:|BidiX|&quot;,
+	&quot;|site:|TiddlyHome|&quot;,
+	&quot;|url:|http://TiddlyHome.bidix.info/|&quot;,
+	&quot;|rootUrl:|http://TiddlyHome.bidix.info/|&quot;
 	].join(&quot;\n&quot;)});
 // get config from TiddlyHomeParameters
 config.tiddlyHome = {};
 merge(config.tiddlyHome, bidix.getParamsFromTiddler('TiddlyHomeParameters',['user','site','url','rootUrl']));
+config.shadowTiddlers.TiddlyHomeParameters += [
+	&quot;\n!Usefull url for your site&quot;,
+	&quot;* &quot; + config.tiddlyHome.url + &quot;backup: List of backup files&quot;,
+	&quot;* &quot; + config.tiddlyHome.url + &quot;download.php : to download thisTiddlyWiki&quot;,
+	&quot;* &quot; + config.tiddlyHome.url + &quot;index.xml : your RSSFeed&quot;,
+	&quot;* &quot; + config.tiddlyHome.url + &quot;news.php : to display your RSSFeed&quot;,
+	&quot;!Access and change data&quot;,
+	&quot;* &quot; + config.tiddlyHome.rootUrl + &quot;Site : Site properties&quot;,
+	&quot;* &quot; + config.tiddlyHome.rootUrl + &quot;#User : User properties&quot;,
+	&quot;!More Information on TiddlyHome&quot;,
+	&quot;* &quot; + config.tiddlyHome.rootUrl + &quot; for your hosting service&quot;,
+	&quot;*http://TiddlyHome.bidix.info/ for BidiX's TiddlyHome Package&quot;
+	].join(&quot;\n&quot;);
+
 // add TiddlyHomeSidebar in SideBarOptions
 config.shadowTiddlers.SideBarOptions = config.shadowTiddlers.SideBarOptions.replace(/(&lt;&lt;saveChanges&gt;&gt;)/,
 	&quot;$1&lt;&lt;tiddler TiddlyHomeSidebar&gt;&gt;&quot;);
@@ -3689,24 +3754,18 @@ merge(config.shadowTiddlers,{
 			&quot;_th/images/favicon.ico\&quot; type=\&quot;image/vnd.microsoft.icon\&quot; /&gt; &quot;,
 		&quot;&lt;!--}}}--&gt;&quot;
 	].join(&quot;\n&quot;),
+	'SiteProxy':	[
+		&quot;proxy.php?url=&quot;
+	].join(&quot;\n&quot;),
+	'SiteUrl':	config.tiddlyHome.url,
+
 	// tweaks to UploadToHomeMacro parameters
 	'HomeParameters': [
 &quot;|UploadUserName:||&quot;,
 &quot;|UploadStoreUrl:|&quot; + config.tiddlyHome.url + &quot;store.php|&quot;,
 &quot;|UploadDir:|.|&quot;,
 &quot;|UploadFilename:|index.html|&quot;,
-&quot;|UploadBackupDir:|backup|&quot;,
-&quot;!Usefull url for your site&quot;,
-&quot;*&quot; + config.tiddlyHome.url + &quot;backup : List of backup files&quot;,
-&quot;*&quot; + config.tiddlyHome.url + &quot;download.php : to download thisTiddlyWiki&quot;,
-&quot;*&quot; + config.tiddlyHome.url + &quot;index.xml : your RSSFeed&quot;,
-&quot;*&quot; + config.tiddlyHome.url + &quot;news.php : to display your RSSFeed&quot;,
-&quot;!Access and change data&quot;,
-&quot;*&quot; + config.tiddlyHome.rootUrl + &quot;#Site : Site properties&quot;,
-&quot;*&quot; + config.tiddlyHome.rootUrl + &quot;#User : User properties&quot;,
-&quot;!More Information on TiddlyHome&quot;,
-&quot;*&quot; + config.tiddlyHome.rootUrl + &quot; for your hosting service&quot;,
-&quot;*http://TiddlyHome.bidix.info/ for BidiX's TiddlyHome Package&quot;
+&quot;|UploadBackupDir:|backup|&quot;
 	].join(&quot;\n&quot;),
 	'TiddlyHomeSidebar':[
  		&quot;&lt;&lt;uploadToHome&gt;&gt;&lt;html&gt;&lt;a href=&quot; + 
@@ -3730,7 +3789,7 @@ config.options.chkSaveEmptyTemplate = false;
 //}}}
 </pre>
 </div>
-<div title="TiddlyHomeSystemTW" modifier="BidiX" modified="200705291122" created="200705191407" tags="admin systemServer TiddlyHomeSystem" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291122">
+<div title="TiddlyHomeSystemTW" modifier="BidiX" modified="200705291122" created="200705191407" tags="admin systemServer TiddlyHomeSystem" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291122">
 <pre>|URL:|http://TiddlyHome.bidix.info/systemServer/TiddlyHomeSystem.html|
 |Description|Repository for TiddlyHome system ressources |
 |Author:|BidiX|</pre>
@@ -3772,7 +3831,7 @@ Pour plus d'information visiter [[www.TiddlyWiki.com|http://www.tiddlywiki.com]]
 | 24/07/2007 22:36:23 | BidiX | [[/|http://tiddlyhome.bidix.info/home/#%5B%5BPassword%20Management%20in%20TiddlyHome%20on%20Windows%5D%5D]] | [[store.php|http://tiddlyhome.bidix.info/home/store.php]] | . | [[index.html | http://tiddlyhome.bidix.info/home/index.html]] | backup |
 | 26/07/2007 23:01:12 | BidiX | [[index.html|file:///Users/bruno/Sites/TiddlyHome/index.html#2007%2F06%2F05]] | [[store.php|http://tiddlyhome.bidix.info/home/store.php]] | . | [[index.html | http://tiddlyhome.bidix.info/home/index.html]] | backup | ok |</pre>
 </div>
-<div title="UploadPlugin" modifier="BidiX" modified="200705291325" created="200703021728" tags="systemConfig Upload admin TiddlyHomeSystem" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291325">
+<div title="UploadPlugin" modifier="BidiX" modified="200705291325" created="200703021728" tags="systemConfig Upload admin TiddlyHomeSystem" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291325">
 <pre>/***
 |''Name:''|UploadPlugin|
 |''Description:''|Save to web a TiddlyWiki|
@@ -4321,7 +4380,7 @@ config.backstageTasks.push(&quot;uploadOptions&quot;);
 
 </pre>
 </div>
-<div title="UploadToHomeMacro" modifier="BidiX" modified="200705291325" created="200705281041" tags="systemConfig Upload admin TiddlyHomeSystem" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291325">
+<div title="UploadToHomeMacro" modifier="BidiX" modified="200705291325" created="200705281041" tags="systemConfig Upload admin TiddlyHomeSystem" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291325">
 <pre>/***
 |''Name:''|UploadToHomeMacro|
 |''Description:''|Save TiddlyWiki using HomeParameters tiddler|
@@ -4449,10 +4508,10 @@ config.macros.uploadToHome.initAtLoad();
 <div title="User" modifier="BidiX" modified="200705301100" created="200705191351" tags="Commands TiddlyHomePackage systemList" changecount="1">
 <pre>Available User commands:</pre>
 </div>
-<div title="UserTabTags" modifier="BidiX" modified="200705242046" created="200705241547" tags="admin NewsWiki" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705242046">
+<div title="UserTabTags" modifier="BidiX" modified="200705242046" created="200705241547" tags="admin NewsWiki" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705242046">
 <pre>&lt;&lt;allTags [[admin]]&gt;&gt;</pre>
 </div>
-<div title="UserTabTimeline" modifier="BidiX" modified="200705241542" created="200705241518" tags="admin NewsWiki" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705241542">
+<div title="UserTabTimeline" modifier="BidiX" modified="200705241542" created="200705241518" tags="admin NewsWiki" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705241542">
 <pre>&lt;&lt;userTimeline&gt;&gt;</pre>
 </div>
 <div title="Verify user password" modifier="BidiX" modified="200705181956" created="200705181954" tags="TiddlyHomePackage Commands User">
@@ -4461,28 +4520,28 @@ config.macros.uploadToHome.initAtLoad();
 &lt;/iframe&gt;
 &lt;/html&gt;</pre>
 </div>
-<div title="admin" modifier="BidiX" modified="200707281549" created="200705241549" tags="admin TiddlyHomeSystem" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707281549">
+<div title="admin" modifier="BidiX" modified="200707281549" created="200705241549" tags="admin TiddlyHomeSystem" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200707281549">
 <pre></pre>
 </div>
 <div title="basicContent" modifier="BidiX" modified="200705242047" created="200705241550" tags="admin" changecount="3">
 <pre></pre>
 </div>
-<div title="excludeLists" modifier="BidiX" modified="200705291405" created="200705291404" tags="admin NewsWiki" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291405">
+<div title="excludeLists" modifier="BidiX" modified="200705291405" created="200705291404" tags="admin NewsWiki" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291405">
 <pre></pre>
 </div>
-<div title="excludeSearch" modifier="BidiX" created="200705291405" tags="admin NewsWiki" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291405">
+<div title="excludeSearch" modifier="BidiX" created="200705291405" tags="admin NewsWiki" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291405">
 <pre></pre>
 </div>
 <div title="siteTiddler" modifier="BidiX" created="200705292009" tags="admin" changecount="1">
 <pre></pre>
 </div>
-<div title="systemConfig" modifier="BidiX" created="200705291406" tags="admin NewsWiki" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291406">
+<div title="systemConfig" modifier="BidiX" created="200705291406" tags="admin NewsWiki" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291406">
 <pre></pre>
 </div>
-<div title="systemList" modifier="BidiX" created="200705241626" tags="admin NewsWiki" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705241626">
+<div title="systemList" modifier="BidiX" created="200705241626" tags="admin NewsWiki" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705241626">
 <pre></pre>
 </div>
-<div title="systemTool" modifier="BidiX" created="200705241627" tags="admin NewsWiki" server.type="file" server.host="http://TiddlyHome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705241627">
+<div title="systemTool" modifier="BidiX" created="200705241627" tags="admin NewsWiki" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705241627">
 <pre></pre>
 </div>
 </div>
