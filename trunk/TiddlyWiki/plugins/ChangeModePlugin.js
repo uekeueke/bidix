@@ -1,20 +1,20 @@
 /***
-|''Name:''|changeModePlugin|
+|''Name:''|ChangeModePlugin|
 |''Description:''|Change template and styleSheet|
 |''Credits:''|SaqImtiaz for is PresentationPlugin|
-|''Version:''|0.0.2|
-|''Date:''|Jun 3, 2007|
+|''Version:''|0.0.4|
+|''Date:''|Jun 5, 2007|
 |''Source:''|http://tiddlywiki.bidix.info/#changeModePlugin|
 |''Usage:''|{{{<<changeMode [newMode]>>}}}<br>{{{newMode: if omitted the default mode is applied}}}|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
-|''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
+|''[[License]]:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
 |''CoreVersion:''|2.2.0|
 ***/
 //{{{
 version.extensions.ChangeModePlugin = 
 {
-	major: 0, minor: 0, revision: 2, 
-	date: new Date("Jun 3, 2007"),
+	major: 0, minor: 0, revision: 4, 
+	date: new Date("Jun 9, 2007"),
 	source: 'http://tiddlywiki.bidix.info/#ChangeModePlugin',
 	author: 'BidiX (BidiX (at) bidix (dot) info',
 	coreVersion: '2.2.0'
@@ -107,6 +107,7 @@ config.macros.changeMode =
 		// change Palette
 		if (store.isTiddler(newMode + 'ColorPalette')) {
 			var tiddler = new Tiddler('ColorPalette');
+			tiddler.tags.push('admin');
 			if (!newMode) {
 				if (store.isTiddler('defaultColorPalette'))
 					tiddler.text = store.getTiddlerText('defaultColorPalette');
@@ -156,8 +157,9 @@ config.macros.changeMode =
 		
 		this.currentMode = newMode;
 		story.lewcidrefreshAllTiddlers ();
+		// store.refreshPalette();
 		store.notifyAll();
-	},
+		},
 	init: function() {
 		if (!store.isTiddler('defaultColorPalette'))
 			config.shadowTiddlers['defaultColorPalette'] = config.shadowTiddlers['ColorPalette'];
