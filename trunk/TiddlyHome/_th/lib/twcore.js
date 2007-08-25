@@ -1,5 +1,5 @@
 //<![CDATA[
-var version = {title: "TiddlyWiki", major: 2, minor: 2, revision: 4, date: new Date("Jun 19, 2007"), extensions: {}};
+var version = {title: "TiddlyWiki", major: 2, minor: 2, revision: 5, date: new Date("Aug 24, 2007"), extensions: {}};
 //]]>
 /*
 <!--
@@ -100,7 +100,7 @@ config.options = {
 	txtFileSystemCharSet: "UTF-8"
 	};
 config.optionsDesc = {};
-	
+
 // List of notification functions to be called when certain tiddlers are changed or deleted
 config.notifyTiddlers = [
 	{name: "StyleSheetLayout", notify: refreshStyles},
@@ -239,7 +239,7 @@ config.textPrimitives.cssLookaheadRegExp = new RegExp(config.textPrimitives.cssL
 config.textPrimitives.brackettedLink = "\\[\\[([^\\]]+)\\]\\]";
 config.textPrimitives.titledBrackettedLink = "\\[\\[([^\\[\\]\\|]+)\\|([^\\[\\]\\|]+)\\]\\]";
 config.textPrimitives.tiddlerForcedLinkRegExp = new RegExp("(?:" + config.textPrimitives.titledBrackettedLink + ")|(?:" +
-	config.textPrimitives.brackettedLink + ")|(?:" + 
+	config.textPrimitives.brackettedLink + ")|(?:" +
 	config.textPrimitives.urlPattern + ")","mg");
 config.textPrimitives.tiddlerAnyLinkRegExp = new RegExp("("+ config.textPrimitives.wikiLink + ")|(?:" +
 	config.textPrimitives.titledBrackettedLink + ")|(?:" +
@@ -249,7 +249,7 @@ config.textPrimitives.tiddlerAnyLinkRegExp = new RegExp("("+ config.textPrimitiv
 config.glyphs = {
 	browsers: [
 		function() {return config.browser.isIE;},
-		function() {return true}
+		function() {return true;}
 	],
 	currBrowser: null,
 	codes: {
@@ -487,7 +487,7 @@ merge(config.macros.options,{
 			{name: 'Name', field: 'name', title: "Name", type: 'String'}
 			],
 		rowClasses: [
-			{className: 'lowlight', field: 'lowlight'} 
+			{className: 'lowlight', field: 'lowlight'}
 			]}
 	});
 
@@ -840,9 +840,10 @@ function loadPlugins()
 		var p = getPluginInfo(tiddlers[i]);
 		installedPlugins[i] = p;
 		var n = p.Name;
-		if(n) 
+		if(n)
 			map[n] = p;
-		if(n = p.Source) 
+		n = p.Source;
+		if(n)
 			map[n] = p;
 	}
 	var visit = function(p) {
@@ -857,8 +858,8 @@ function loadPlugins()
 		}
 		toLoad.push(p);
 	};
-	for(i=0; i<nPlugins; i++) 
-		visit(installedPlugins[i]);	
+	for(i=0; i<nPlugins; i++)
+		visit(installedPlugins[i]);
 	for(i=0; i<toLoad.length; i++) {
 		p = toLoad[i];
 		pluginInfo = p;
@@ -875,7 +876,7 @@ function loadPlugins()
 					p.log.push(config.messages.pluginError.format([exceptionText(ex)]));
 					p.error = true;
 				}
-				pluginInfo.startupTime = String((new Date()) - startTime) + "ms"; 
+				pluginInfo.startupTime = String((new Date()) - startTime) + "ms";
 			} else {
 				nPlugins--;
 			}
@@ -1054,7 +1055,7 @@ config.formatterHelpers = {
 	{
 		w.subWikifyTerm(createTiddlyElement(w.output,this.element),this.termRegExp);
 	},
-	
+
 	inlineCssHelper: function(w)
 	{
 		var styles = [];
@@ -1258,7 +1259,7 @@ config.formatters = [
 	{
 		var stack = [w.output];
 		var currLevel = 0, currType = null;
-		var listLevel, listType, itemType;
+		var listLevel, listType, itemType, baseType;
 		w.nextMatch = w.matchStart;
 		this.lookaheadRegExp.lastIndex = w.nextMatch;
 		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
@@ -1276,6 +1277,8 @@ config.formatters = [
 				listType = "dl";
 				itemType = "dd";
 			}
+			if (!baseType)
+			   baseType = listType;
 			listLevel = lookaheadMatch[0].length;
 			w.nextMatch += lookaheadMatch[0].length;
 			var t;
@@ -1284,6 +1287,9 @@ config.formatters = [
 					var target = (currLevel == 0) ? stack[stack.length-1] : stack[stack.length-1].lastChild;
 					stack.push(createTiddlyElement(target,listType));
 				}
+			} else if (listType!=baseType && listLevel==1) {
+				w.nextMatch -= lookaheadMatch[0].length;
+				return;
 			} else if(listLevel < currLevel) {
 				for(t=currLevel; t>listLevel; t--)
 					stack.pop();
@@ -1398,7 +1404,7 @@ config.formatters = [
 	name: "wikifyCommentForTemplate",
 	match: "^<!---\\n",
 	termRegExp: /(^--->\n)/mg,
-	handler: function(w) 
+	handler: function(w)
 	{
 		w.subWikifyTerm(w.output,this.termRegExp);
 	}
@@ -1691,13 +1697,14 @@ function getParser(tiddler,format)
 	if(tiddler) {
 		if(!format)
 			format = tiddler.fields["wikiformat"];
+		var i;
 		if(format) {
-			for(var i in config.parsers) {
+			for(i in config.parsers) {
 				if(format == config.parsers[i].format)
 					return config.parsers[i];
 			}
 		} else {
-			for(var i in config.parsers) {
+			for(i in config.parsers) {
 				if(tiddler.isTagged(config.parsers[i].formatTag))
 					return config.parsers[i];
 			}
@@ -1970,13 +1977,14 @@ config.macros.timeline.handler = function(place,macroName,params)
 	var tiddlers = store.reverseLookup("tags","excludeLists",false,field);
 	var lastDay = "";
 	var last = params[1] ? tiddlers.length-Math.min(tiddlers.length,parseInt(params[1])) : 0;
+	var dateFormat = params[2] ? params[2] : this.dateFormat;
 	for(var t=tiddlers.length-1; t>=last; t--) {
 		var tiddler = tiddlers[t];
 		var theDay = tiddler[field].convertToLocalYYYYMMDDHHMM().substr(0,8);
 		if(theDay != lastDay) {
 			var theDateList = document.createElement("ul");
 			place.appendChild(theDateList);
-			createTiddlyElement(theDateList,"li",null,"listTitle",tiddler[field].formatString(this.dateFormat));
+			createTiddlyElement(theDateList,"li",null,"listTitle",tiddler[field].formatString(dateFormat));
 			lastDay = theDay;
 		}
 		var theDateListItem = createTiddlyElement(theDateList,"li",null,"listLink");
@@ -2022,9 +2030,9 @@ config.macros.search.onClick = function(e)
 	return false;
 };
 
-config.macros.search.onKeyPress = function(e)
+config.macros.search.onKeyPress = function(ev)
 {
-	if(!e) var e = window.event;
+	var e = ev ? ev : window.event;
 	switch(e.keyCode) {
 		case 13: // Ctrl-Enter
 		case 10: // Ctrl-Enter on IE PC
@@ -2084,7 +2092,7 @@ config.macros.tiddler.handler = function(place,macroName,params,wikifier,paramSt
 	}
 };
 
-config.macros.tiddler.renderText = function(place,text,tiddlerName,params) 
+config.macros.tiddler.renderText = function(place,text,tiddlerName,params)
 {
 	wikify(text,place,null,store.getTiddler(tiddlerName));
 };
@@ -2167,9 +2175,9 @@ config.macros.saveChanges.onClick = function(e)
 	return false;
 };
 
-config.macros.slider.onClickSlider = function(e)
+config.macros.slider.onClickSlider = function(ev)
 {
-	if(!e) var e = window.event;
+	var e = ev ? ev : window.event;
 	var n = this.nextSibling;
 	var cookie = n.getAttribute("cookie");
 	var isOpen = n.style.display != "none";
@@ -2184,11 +2192,11 @@ config.macros.slider.onClickSlider = function(e)
 
 config.macros.slider.createSlider = function(place,cookie,title,tooltip)
 {
-	var cookie = cookie ? cookie : "";
+	var c = cookie ? cookie : "";
 	var btn = createTiddlyButton(place,title,tooltip,this.onClickSlider);
 	var panel = createTiddlyElement(null,"div",null,"sliderPanel");
-	panel.setAttribute("cookie",cookie);
-	panel.style.display = config.options[cookie] ? "block" : "none";
+	panel.setAttribute("cookie",c);
+	panel.style.display = config.options[c] ? "block" : "none";
 	place.appendChild(panel);
 	return panel;
 };
@@ -2298,7 +2306,7 @@ config.macros.options.handler = function(place,macroName,params,wikifier,paramSt
 };
 
 config.macros.options.refreshOptions = function(listWrapper,showUnknown)
-{	
+{
 	var opts = [];
 	for(var n in config.options) {
 		var opt = {};
@@ -2353,7 +2361,7 @@ config.macros.newTiddler.createNewTiddlerButton = function(place,title,params,la
 	if(customFields !== "")
 		btn.setAttribute("customFields",customFields);
 	var text = getParam(params,"text");
-	if(text !== undefined) 
+	if(text !== undefined)
 		btn.setAttribute("newText",text);
 	return btn;
 };
@@ -2408,8 +2416,9 @@ config.macros.sparkline.handler = function(place,macroName,params)
 	var data = [];
 	var min = 0;
 	var max = 0;
+	var v;
 	for(var t=0; t<params.length; t++) {
-		var v = parseInt(params[t]);
+		v = parseInt(params[t]);
 		if(v < min)
 			min = v;
 		if(v > max)
@@ -2432,7 +2441,7 @@ config.macros.sparkline.handler = function(place,macroName,params)
 		tick.src = "data:image/gif,GIF89a%01%00%01%00%91%FF%00%FF%FF%FF%00%00%00%C0%C0%C0%00%00%00!%F9%04%01%00%00%02%00%2C%00%00%00%00%01%00%01%00%40%02%02T%01%00%3B";
 		tick.style.left = d*2 + "px";
 		tick.style.width = "2px";
-		var v = Math.floor(((data[d] - min)/(max-min)) * h);
+		v = Math.floor(((data[d] - min)/(max-min)) * h);
 		tick.style.top = (h-v) + "px";
 		tick.style.height = v + "px";
 		box.appendChild(tick);
@@ -2574,14 +2583,15 @@ config.macros.edit.handler = function(place,macroName,params,wikifier,paramStrin
 	var rows = params[1];
 	if((tiddler instanceof Tiddler) && field) {
 		story.setDirty(tiddler.title,true);
+		var e,v;
 		if(field != "text" && !rows) {
-			var e = createTiddlyElement(null,"input");
+			e = createTiddlyElement(null,"input");
 			if(tiddler.isReadOnly())
 				e.setAttribute("readOnly","readOnly");
 			e.setAttribute("edit",field);
 			e.setAttribute("type","text");
-			var v = store.getValue(tiddler,field);
-			if(!v) 
+			v = store.getValue(tiddler,field);
+			if(!v)
 				v = "";
 			e.value = v;
 			e.setAttribute("size","40");
@@ -2590,14 +2600,14 @@ config.macros.edit.handler = function(place,macroName,params,wikifier,paramStrin
 		} else {
 			var wrapper1 = createTiddlyElement(null,"fieldset",null,"fieldsetFix");
 			var wrapper2 = createTiddlyElement(wrapper1,"div");
-			var e = createTiddlyElement(wrapper2,"textarea");
+			e = createTiddlyElement(wrapper2,"textarea");
 			if(tiddler.isReadOnly())
 				e.setAttribute("readOnly","readOnly");
-			var v = store.getValue(tiddler,field);
-			if(!v) 
+			v = store.getValue(tiddler,field);
+			if(!v)
 				v = "";
 			e.value = v;
-			var rows = rows ? rows : 10;
+			rows = rows ? rows : 10;
 			var lines = v.match(/\n/mg);
 			var maxLines = Math.max(parseInt(config.options.txtMaxEditRows),5);
 			if(lines != null && lines.length > rows)
@@ -2610,9 +2620,9 @@ config.macros.edit.handler = function(place,macroName,params,wikifier,paramStrin
 	}
 };
 
-config.macros.tagChooser.onClick = function(e)
+config.macros.tagChooser.onClick = function(ev)
 {
-	if(!e) var e = window.event;
+	var e = ev ? ev : window.event;
 	var lingo = config.views.editor.tagChooser;
 	var popup = Popup.create(this);
 	var tags = store.getTags();
@@ -2629,9 +2639,9 @@ config.macros.tagChooser.onClick = function(e)
 	return false;
 };
 
-config.macros.tagChooser.onTagClick = function(e)
+config.macros.tagChooser.onTagClick = function(ev)
 {
-	if(!e) var e = window.event;
+	var e = ev ? ev : window.event;
 	var tag = this.getAttribute("tag");
 	var title = this.getAttribute("tiddler");
 	if(!readOnly)
@@ -2703,18 +2713,18 @@ config.macros.toolbar.getCommandTooltip = function(command,tiddler)
 	return tiddler.isReadOnly() && command.readOnlyTooltip ? command.readOnlyTooltip : command.tooltip;
 };
 
-config.macros.toolbar.onClickCommand = function(e)
+config.macros.toolbar.onClickCommand = function(ev)
 {
-	if(!e) var e = window.event;
+	var e = ev ? ev : window.event;
 	e.cancelBubble = true;
 	if (e.stopPropagation) e.stopPropagation();
 	var command = config.commands[this.getAttribute("commandName")];
 	return command.handler(e,this,this.getAttribute("tiddler"));
 };
 
-config.macros.toolbar.onClickPopup = function(e)
+config.macros.toolbar.onClickPopup = function(ev)
 {
-	if(!e) var e = window.event;
+	var e = ev ? ev : window.event;
 	e.cancelBubble = true;
 	if (e.stopPropagation) e.stopPropagation();
 	var popup = Popup.create(this);
@@ -2741,7 +2751,7 @@ config.macros.toolbar.invokeCommand = function(place,theClass,event)
 	}
 };
 
-config.macros.toolbar.onClickMore = function(e)
+config.macros.toolbar.onClickMore = function(ev)
 {
 	var e = this.nextSibling;
 	e.style.display = "inline";
@@ -3547,26 +3557,28 @@ TiddlyWiki.prototype.search = function(searchRegExp,sortField,excludeTag)
 	return results;
 };
 
-// Return an array of all the tags in use. Each member of the array is another array where [0] is the name of the tag and [1] is the number of occurances
+// Returns a list of all tags in use
+//   excludeTag - if present, excludes tags that are themselves tagged with excludeTag
+// Returns an array of arrays where [tag][0] is the name of the tag and [tag][1] is the number of occurances
 TiddlyWiki.prototype.getTags = function(excludeTag)
 {
 	var results = [];
 	this.forEachTiddler(function(title,tiddler) {
 		for(var g=0; g<tiddler.tags.length; g++) {
 			var tag = tiddler.tags[g];
-			if(excludeTag) {
-				var t = store.fetchTiddler(tag);
-				if(t && t.isTagged(excludeTag))
-					return false;
-			}
-			var f = false;
+			var n = true;
 			for(var c=0; c<results.length; c++) {
 				if(results[c][0] == tag) {
-					f = true;
+					n = false;
 					results[c][1]++;
 				}
 			}
-			if(!f)
+			if(n && excludeTag) {
+				var t = store.fetchTiddler(tag);
+				if(t && t.isTagged(excludeTag))
+					n = false;
+			}
+			if(n)
 				results.push([tag,1]);
 		}
 	});
@@ -3842,19 +3854,20 @@ TiddlyWiki.prototype.forEachField = function(tiddler,callback,onlyExtendedFields
 	var t = this.resolveTiddler(tiddler);
 	if(!t)
 		return undefined;
-	for(var n in t.fields) {
-		var result = callback(t,n,t.fields[n]);
+	var n,result;
+	for(n in t.fields) {
+		result = callback(t,n,t.fields[n]);
 		if(result)
 			return result;
 		}
 	if(onlyExtendedFields)
 		return undefined;
-	for(var n in TiddlyWiki.standardFieldAccess) {
+	for(n in TiddlyWiki.standardFieldAccess) {
 		if(n == "tiddler")
 			// even though the "title" field can also be referenced through the name "tiddler"
 			// we only visit this field once.
 			continue;
-		var result = callback(t,n,TiddlyWiki.standardFieldAccess[n].get(t));
+		result = callback(t,n,TiddlyWiki.standardFieldAccess[n].get(t));
 		if(result)
 			return result;
 	}
@@ -4017,7 +4030,12 @@ Story.prototype.refreshTiddler = function(title,template,force,customFields,defa
 		var currTemplate = tiddlerElem.getAttribute("template");
 		if((template != currTemplate) || force) {
 			var tiddler = store.getTiddler(title);
-			if(!tiddler) {
+			if(tiddler) {
+				var f = tiddler.fields;
+				if(customFields)
+					f = merge(customFields.decodeHashMap(),f);
+				customFields = String.encodeHashMap(f);
+			} else {
 				tiddler = new Tiddler();
 				if(store.isShadowTiddler(title)) {
 					tiddler.set(title,store.getTiddlerText(title),config.views.wikified.shadowModifier,version.date,[],version.date);
@@ -4077,14 +4095,14 @@ Story.prototype.addCustomFields = function(place,customFields)
 	}
 };
 
-Story.prototype.refreshAllTiddlers = function() 
+Story.prototype.refreshAllTiddlers = function()
 {
 	var place = document.getElementById(this.container);
 	var e = place.firstChild;
 	if(!e)
 		return;
 	this.refreshTiddler(e.getAttribute("tiddler"),e.getAttribute("template"),true);
-	while((e = e.nextSibling) != null) 
+	while((e = e.nextSibling) != null)
 		this.refreshTiddler(e.getAttribute("tiddler"),e.getAttribute("template"),true);
 };
 
@@ -4100,9 +4118,9 @@ Story.prototype.onTiddlerMouseOut = function(e)
 		removeClass(this,"selected");
 };
 
-Story.prototype.onTiddlerDblClick = function(e)
+Story.prototype.onTiddlerDblClick = function(ev)
 {
-	if(!e) var e = window.event;
+	var e = ev ? ev : window.event;
 	var theTarget = resolveTarget(e);
 	if(theTarget && theTarget.nodeName.toLowerCase() != "input" && theTarget.nodeName.toLowerCase() != "textarea") {
 		if(document.selection && document.selection.empty)
@@ -4116,18 +4134,18 @@ Story.prototype.onTiddlerDblClick = function(e)
 	}
 };
 
-Story.prototype.onTiddlerKeyPress = function(e)
+Story.prototype.onTiddlerKeyPress = function(ev)
 {
-	if(!e) var e = window.event;
+	var e = ev ? ev : window.event;
 	clearMessage();
-	var consume = false; 
+	var consume = false;
 	var title = this.getAttribute("tiddler");
 	var target = resolveTarget(e);
 	switch(e.keyCode) {
 		case 9: // Tab
 			if(config.options.chkInsertTabs && target.tagName.toLowerCase() == "textarea") {
 				replaceSelection(target,String.fromCharCode(9));
-				consume = true; 
+				consume = true;
 			}
 			if(config.isOpera) {
 				target.onblur = function() {
@@ -4144,7 +4162,7 @@ Story.prototype.onTiddlerKeyPress = function(e)
 				config.macros.toolbar.invokeCommand(this,"defaultCommand",e);
 				consume = true;
 			}
-			break; 
+			break;
 		case 27: // Escape
 			blurElement(this);
 			config.macros.toolbar.invokeCommand(this,"cancelCommand",e);
@@ -4349,11 +4367,11 @@ Story.prototype.saveTiddler = function(title,minorUpdate)
 		if(!store.tiddlerExists(newTitle))
 			minorUpdate = false;
 		var newDate = new Date();
-		var extendedFields = store.tiddlerExists(newTitle) ? store.fetchTiddler(newTitle).fields : {};
+		var extendedFields = store.tiddlerExists(newTitle) ? store.fetchTiddler(newTitle).fields : (newTitle!=title && store.tiddlerExists(title) ? store.fetchTiddler(title).fields : {});
 		for(var n in fields) {
 			if(!TiddlyWiki.isStandardField(n))
 				extendedFields[n] = fields[n];
-			}
+		}
 		var tiddler = store.saveTiddler(title,newTitle,fields.text,minorUpdate ? undefined : config.options.txtUserName,minorUpdate ? undefined : newDate,fields.tags,extendedFields);
 		autoSaveChanges(null,[tiddler]);
 		return newTitle;
@@ -4427,11 +4445,11 @@ var backstage = {
 		else
 			this.hide();
 	},
-	
+
 	isVisible: function () {
 		return this.area ? this.area.style.display == "block" : false;
 	},
-	
+
 	show: function() {
 		this.area.style.display = "block";
 		if(anim && config.options.chkAnimate) {
@@ -4525,7 +4543,7 @@ var backstage = {
 		removeChildren(backstage.panelBody);
 		return backstage.panelBody;
 	},
-	
+
 	showPanel: function() {
 		backstage.panel.style.display = "block";
 		if(anim && config.options.chkAnimate) {
@@ -4539,7 +4557,7 @@ var backstage = {
 		}
 		return backstage.panelBody;
 	},
-	
+
 	hidePanel: function() {
 		backstage.currTabName = null;
 		backstage.currTabElem = null;
@@ -4865,7 +4883,7 @@ config.macros.importTiddlers.onGetTiddler = function(context,wizard)
 		store.setValue(tiddler.title,'server',null);
 	}
 	store.resumeNotifications();
-	if(!context.isSynchronous) 
+	if(!context.isSynchronous)
 		store.notify(tiddler.title,true);
 	var remainingImports = wizard.getValue("remainingImports")-1;
 	wizard.setValue("remainingImports",remainingImports);
@@ -5329,7 +5347,7 @@ config.refreshers = {
 		refreshTiddlyLink(e,title);
 		return true;
 		},
-	
+
 	tiddler: function(e,changeList)
 		{
 		var title = e.getAttribute("tiddler");
@@ -6351,8 +6369,10 @@ function onClickTiddlerLink(e)
 		noToggle = theLink.getAttribute("noToggle");
 		theLink = theLink.parentNode;
 	} while(title == null && theLink != null);
-	if(!fields && !store.isShadowTiddler(title))
-		fields = String.encodeHashMap(config.defaultCustomFields);
+	if(!store.isShadowTiddler(title)) {
+		var f = fields ? fields.decodeHashMap() : {};
+		fields = String.encodeHashMap(merge(f,config.defaultCustomFields,true));
+	}
 	if(title) {
 		var toggling = e.metaKey || e.ctrlKey;
 		if(config.options.chkToggleLinks)
@@ -6376,10 +6396,9 @@ function createTagButton(place,tag,excludeTiddler)
 }
 
 // Event handler for clicking on a tiddler tag
-function onClickTag(e)
+function onClickTag(ev)
 {
-	if(!e) var e = window.event;
-	var theTarget = resolveTarget(e);
+	var e = ev ? ev : window.event;
 	var popup = Popup.create(this);
 	var tag = this.getAttribute("tag");
 	var title = this.getAttribute("tiddler");
@@ -6413,9 +6432,9 @@ function onClickTag(e)
 }
 
 // Event handler for 'open all' on a tiddler popup
-function onClickTagOpenAll(e)
+function onClickTagOpenAll(ev)
 {
-	if(!e) var e = window.event;
+	var e = ev ? ev : window.event;
 	var tag = this.getAttribute("tag");
 	var tagged = store.getTaggedTiddlers(tag);
 	var titles = [];
@@ -6425,9 +6444,9 @@ function onClickTagOpenAll(e)
 	return false;
 }
 
-function onClickError(e)
+function onClickError(ev)
 {
-	if(!e) var e = window.event;
+	var e = ev ? ev : window.event;
 	var popup = Popup.create(this);
 	var lines = this.getAttribute("errorText").split("\n");
 	for(var t=0; t<lines.length; t++)
@@ -6462,9 +6481,9 @@ function createTiddlyPopup(place,caption,tooltip,tiddler)
 	}
 }
 
-function onClickTiddlyPopup(e)
+function onClickTiddlyPopup(ev)
 {
-	if(!e) var e = window.event;
+	var e = ev ? ev : window.event;
 	var tiddler = this.tiddler;
 	if(tiddler.text) {
 		var popup = Popup.create(this,"div","popupTiddler");
@@ -6727,10 +6746,9 @@ Popup.create = function(root,elem,theClass)
 	return popup;
 };
 
-Popup.onDocumentClick = function(e)
+Popup.onDocumentClick = function(ev)
 {
-	if (!e) var e = window.event;
-	var target = resolveTarget(e);
+	var e = ev ? ev : window.event;
 	if(e.eventPhase == undefined)
 		Popup.remove();
 	else if(e.eventPhase == Event.BUBBLING_PHASE || e.eventPhase == Event.AT_TARGET)
@@ -6766,7 +6784,7 @@ Popup.place = function(root,popup,offset)
 	popup.style.left = popupLeft + "px";
 	popup.style.top = popupTop + "px";
 	popup.style.display = "block";
-}
+};
 
 Popup.remove = function()
 {
@@ -7402,7 +7420,7 @@ String.prototype.readBracketedList = function(unique)
 };
 
 // Returns array with start and end index of chunk between given start and end marker, or undefined.
-String.prototype.getChunkRange = function(start,end) 
+String.prototype.getChunkRange = function(start,end)
 {
 	var s = this.indexOf(start);
 	if(s != -1) {
@@ -7476,7 +7494,7 @@ String.zeroPad = function(n,d)
 	return s;
 };
 
-String.prototype.startsWith = function(prefix) 
+String.prototype.startsWith = function(prefix)
 {
 	return !prefix || this.substring(0,prefix.length) == prefix;
 };
@@ -7533,7 +7551,7 @@ Date.prototype.getWeek = function()
 	var d = dt.getDay();
 	if (d==0) d=7;// JavaScript Sun=0, ISO Sun=7
 	dt.setTime(dt.getTime()+(4-d)*86400000);// shift day to Thurs of same week to calculate weekNo
-	var n = Math.floor((dt.getTime()-new Date(dt.getFullYear(),0,1)+3600000)/86400000); 
+	var n = Math.floor((dt.getTime()-new Date(dt.getFullYear(),0,1)+3600000)/86400000);
 	return Math.floor(n/7)+1;
 };
 
@@ -8023,6 +8041,8 @@ function removeNode(e)
 // Remove any event handlers or non-primitve custom attributes
 function scrubNode(e)
 {
+	if(!config.browser.isIE)
+		return;
 	var att = e.attributes;
 	if(att) {
 		for(var t=0; t<att.length; t++) {
@@ -8105,7 +8125,7 @@ function replaceSelection(e,text)
 // Returns the text of the given (text) node, possibly merging subsequent text nodes
 function getNodeText(e)
 {
-	var t = ""; 
+	var t = "";
 	while(e && e.nodeName == "#text") {
 		t += e.nodeValue;
 		e = e.nextSibling;
