@@ -537,7 +537,7 @@ siteForm.php
 **proxy.php don't need allowedsites.txt in the same domain
 **Add TiddlyHomeSetupPlugin shadow SiteProxy added by TiddlyHomeSetupPlugin as shadow tiddler</pre>
 </div>
-<div title="25/08/2007" modifier="BidiX" created="200708250827" tags="Changes excludeList" changecount="2">
+<div title="2007/08/25" modifier="BidiX" modified="200708260813" created="200708250827" tags="Changes excludeList" changecount="3">
 <pre>New release TiddlyHome 0.1.1 :
 *_th/lib/twcore.js : TiddlyWiki 2.2.5 core</pre>
 </div>
@@ -1528,19 +1528,7 @@ config.paramifiers.mode = {
 
 </pre>
 </div>
-<div title="Changes" modifier="BidiX" modified="200706052053" created="200705231143" tags="systemTool Dev" date="200705231143" changecount="12">
-<pre>&lt;&lt;forEachTiddler
- where
- 'tiddler.tags.contains(&quot;Changes&quot;) /*&amp;&amp; tiddler.tags.contains(&quot;toRSS&quot;)*/' 
- sortBy
- 'store.getValue(tiddler,&quot;created&quot;)'
- descending
- write
- '&quot;\n!![[&quot;+tiddler.title+&quot;]] \n&quot; +
- tiddler.text;'
-&gt;&gt;</pre>
-</div>
-<div title="ColorPalette" created="200708250822" tags="admin">
+<div title="ColorPalette" created="200708260810" tags="admin">
 <pre>Background: #fff
 Foreground: #333
 PrimaryPale: #FFBFBF
@@ -2722,10 +2710,10 @@ config.options.txtRssTag = &quot;toRSS&quot;; // default RssTag. use &lt;&lt;opt
 merge(config.optionsDesc,{txtRssTag: &quot;Only tiddlers with this tag will be included in the RSS Feed.&quot;});
 //}}}</pre>
 </div>
-<div title="GettingStarted" modifier="BidiX" modified="200707282254" created="200704011741" tags="systemTool News" date="200704011741" changecount="9">
+<div title="GettingStarted" modifier="BidiX" modified="200708260807" created="200704011741" tags="systemTool News" date="200704011741" changecount="10">
 <pre>[img[http://tiddlyhome.bidix.info/_th/images/TiddlyHomeLogo.32.jpg][http://tiddlyhome.bidix.info/]] TiddlyHome is a package design as an infrastructure for multi-user and multi-site TiddlyWiki hosting service based on UploadPlugin. 
 
-TiddlyHome 0.1.0 is in beta stage and use TiddlyWiki &lt;&lt;version&gt;&gt;.
+TiddlyHome &lt;&lt;tiddler TiddlyHomeVersion&gt;&gt; is in beta stage and use TiddlyWiki &lt;&lt;version&gt;&gt;.
 
 !!How does it works ?
 To use TiddlyHome it is really easy. All is done from this page.
@@ -2831,6 +2819,18 @@ merge(config.macros,{
 //}}}
 
 </pre>
+</div>
+<div title="History" modifier="BidiX" modified="200708260809" created="200705231143" tags="systemTool Dev" date="200705231143" changecount="14">
+<pre>&lt;&lt;forEachTiddler
+ where
+ 'tiddler.tags.contains(&quot;Changes&quot;) /*&amp;&amp; tiddler.tags.contains(&quot;toRSS&quot;)*/' 
+ sortBy
+ 'store.getValue(tiddler,&quot;created&quot;)'
+ descending
+ write
+ '&quot;\n!![[&quot;+tiddler.title+&quot;]] \n&quot; +
+ tiddler.text;'
+&gt;&gt;</pre>
 </div>
 <div title="Initialize your own TiddlyHome" modifier="BidiX" modified="200705201315" created="200705201013" tags="News Docs" date="200705201013">
 <pre>//If you are not at your own TiddlyHome go immediately to it.//
@@ -3607,10 +3607,10 @@ Source: http://bidix.googlecode.com/svn/</pre>
 #--TiddlyHome isn't working on Windows. See [[Password Management in TiddlyHome on Windows]]--
 </pre>
 </div>
-<div title="TiddlyHome" modifier="BidiX" modified="200708062046" created="200705071523" tags="News TiddlyHome toRSS About" date="200705071523" changecount="6">
+<div title="TiddlyHome" modifier="BidiX" modified="200708260805" created="200705071523" tags="News TiddlyHome toRSS About" date="200705071523" changecount="7">
 <pre>[img[http://tiddlyhome.bidix.info/_th/images/TiddlyHomeLogo.32.jpg][http://tiddlyhome.bidix.info/]] TiddlyHome is a package design as an infrastructure for multi-user and multi-site TiddlyWiki hosting service based on UploadPlugin. 
 
-TiddlyHome 0.1.1 is in beta stage and use TiddlyWiki &lt;&lt;version&gt;&gt;.
+TiddlyHome &lt;&lt;tiddler TiddlyHomeVersion&gt;&gt; is in beta stage and use TiddlyWiki &lt;&lt;version&gt;&gt;.
 
 The main fetaures are :
 *[[BSD open source license|BSDOpenSourceLicense]]
@@ -3630,13 +3630,13 @@ Enjoy,
 
 -- BidiX</pre>
 </div>
-<div title="TiddlyHome Release 0.1.0 " modifier="BidiX" modified="200708062046" created="200708062036" tags="News toRSS" changecount="2">
+<div title="TiddlyHome Release 0.1.0 " modifier="BidiX" modified="200708062046" created="200708062036" tags="News" changecount="3">
 <pre>This new release of TiddlyHome includes some enhancements :
 *TiddlyWiki core is externalise in _th/lib/twcore.js
 *download.php and store.php maintain the single file paradigm when the tiddlywiki is &quot;detached'&quot; from is TiddlyHome
 *proxy.php is full functional allowing importTiddlers to work in the same domain or by using an allowedsites.txt. Usefull to upgrade when online.</pre>
 </div>
-<div title="TiddlyHome Release 0.1.1" modifier="BidiX" modified="200708250828" created="200708250825" tags="News toRSS" changecount="2">
+<div title="TiddlyHome Release 0.1.1" modifier="BidiX" modified="200708260812" created="200708250825" tags="News toRSS" changecount="3">
 <pre>This new release of TiddlyHome includes only the new TiddlyWiki 2.2.5 core.
 
 Get it at http://TiddlyHome.bidix.info/TiddlyHomePackage_0.1.1.zip</pre>
@@ -3802,6 +3802,9 @@ config.options.chkSaveEmptyTemplate = false;
 <pre>|URL:|http://TiddlyHome.bidix.info/systemServer/TiddlyHomeSystem.html|
 |Description|Repository for TiddlyHome system ressources |
 |Author:|BidiX|</pre>
+</div>
+<div title="TiddlyHomeVersion" modifier="BidiX" modified="200708260806" created="200708260804" tags="TiddlyHomePackage" changecount="3">
+<pre>0.1.1</pre>
 </div>
 <div title="TiddlyWiki" modifier="BidiX" modified="200705091005" created="200705071633" tags="basicContent About" date="200705071633">
 <pre>&lt;&lt;tiddler TiddlyWikiEN&gt;&gt;</pre>
