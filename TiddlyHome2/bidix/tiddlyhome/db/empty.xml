@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding='UTF-8' ?>
+<rss version="2.0">
+<channel>
+<title>%(title)s</title>
+<link>%(link)s</link>
+<description>%(description)s</description>
+<language>en-us</language>
+<copyright>Copyright 2008 %(username)s</copyright>
+<pubDate>%(pubDate)s</pubDate>
+<lastBuildDate>%(lastBuildDate)s</lastBuildDate>
+<docs>http://blogs.law.harvard.edu/tech/rss</docs>
+<generator>TiddlyHome 2.0</generator>
+%(items)s
+</channel>
+</rss>
