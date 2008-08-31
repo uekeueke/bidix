@@ -1,0 +1,7 @@
+<item>
+<title>%(title)s</title>
+<description>%(text)s</description>
+<category>%(tag)s</category>
+<link>%(link)s</link>
+<pubDate>%(date)s</pubDate>
+</item>
