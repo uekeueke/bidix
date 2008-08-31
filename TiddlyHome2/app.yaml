@@ -1,0 +1,36 @@
+application: tiddlyhome
+version: 0-1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /stylesheets
+  static_dir: stylesheets
+
+- url: /static/(.*)
+  static_files: static/\1
+  upload: static/(.*)
+
+- url: /css/(.*)
+  static_files: static/css/\1
+  upload: static/css(.*)
+
+- url: /images/(.*)
+  static_files: static/images/\1
+  upload: static/images/(.*)
+ 
+- url: /BidiX/tiddlywikis/images/(.*)
+  static_files: static/images/\1
+  upload: static/images/(.*)
+
+ 
+- url: /js/(.*)
+  static_files: static/js/\1
+  upload: static/js/(.*)
+
+- url: /favicon.ico
+  static_files: static/images/favicon.ico
+  upload: static/images/favicon.ico
+
+- url: /.*
+  script: main.py
