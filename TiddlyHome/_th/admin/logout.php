@@ -1,1 +1,0 @@
-<?php require("../lib/logout.php")?>
