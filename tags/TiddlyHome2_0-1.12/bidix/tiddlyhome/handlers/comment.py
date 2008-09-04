@@ -41,4 +41,4 @@ class CommentHandler(Handler):
 		comment.put()
 		self.redirect(config.comments_url)
 	else:
-		self.response.out.write("You need to login to be able to leave a message.")
+		self.error(401)
