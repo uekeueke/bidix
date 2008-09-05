@@ -100,6 +100,9 @@ class TiddlerHandler(Handler):
 		return r
 		
 	def display_in_tw(self, tiddler):
+		formatted_modified = ""
+		if (tiddler.modified):
+			formatted_modified = tiddler.modified.strftime("%Y%m%d%H%M")
 		"""
 		<div title="Test tiddler" modifier="BidiX" created="200805181741" modified="200805181742" tags="Test Bruno" changecount="2">
 		<pre>Text for 'Test tiddler'</pre>
@@ -109,7 +112,7 @@ class TiddlerHandler(Handler):
 <pre>%(text)s</pre>
 </div>
 """%{'title': tiddler.title, 'modifier': tiddler.modifier, 'created': tiddler.created.strftime("%Y%m%d%H%M"),
-			'modified': tiddler.modified.strftime("%Y%m%d%H%M"), 'tags': tiddler.tags, 'changecount': 0,
+			'modified': formatted_modified, 'tags': tiddler.tags, 'changecount': 0,
 			'text': tiddler.text}
 		return r
 	
