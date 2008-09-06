@@ -1552,13 +1552,13 @@ config.paramifiers.mode = {
 
 </pre>
 </div>
-<div title="ColorPalette" created="200809012037" tags="admin">
+<div title="ColorPalette" created="200809062110" tags="admin">
 <pre>Background: #fff
-Foreground: #333
-PrimaryPale: #FFBFBF
-PrimaryLight: #BF2323
-PrimaryMid: #BF2323
-PrimaryDark: #660000
+Foreground: #000
+PrimaryPale: #8cf
+PrimaryLight: #18f
+PrimaryMid: #04b
+PrimaryDark: #014
 SecondaryPale: #ffc
 SecondaryLight: #fe8
 SecondaryMid: #db4
@@ -1567,8 +1567,7 @@ TertiaryPale: #eee
 TertiaryLight: #ccc
 TertiaryMid: #999
 TertiaryDark: #666
-Error: #ff0000
-&lt;&lt;viewPalette&gt;&gt;</pre>
+Error: #f88</pre>
 </div>
 <div title="Commands" modifier="BidiX" created="200705191345" modified="200705191357" tags="TiddlyHomePackage">
 <pre>Tags all TiddlyHome commands. 
@@ -2734,7 +2733,7 @@ config.options.txtRssTag = &quot;toRSS&quot;; // default RssTag. use &lt;&lt;opt
 merge(config.optionsDesc,{txtRssTag: &quot;Only tiddlers with this tag will be included in the RSS Feed.&quot;});
 //}}}</pre>
 </div>
-<div title="GettingStarted" modifier="BidiX" created="200704011741" modified="200708260807" tags="systemTool News" date="200704011741" changecount="10">
+<div title="GettingStarted" modifier="BidiX" created="200704011741" modified="200809062111" tags="systemTool News" date="200704011741" changecount="11">
 <pre>[img[http://tiddlyhome.bidix.info/_th/images/TiddlyHomeLogo.32.jpg][http://tiddlyhome.bidix.info/]] TiddlyHome is a package design as an infrastructure for multi-user and multi-site TiddlyWiki hosting service based on UploadPlugin. 
 
 TiddlyHome &lt;&lt;tiddler TiddlyHomeVersion&gt;&gt; is in beta stage and use TiddlyWiki &lt;&lt;version&gt;&gt;.
@@ -3668,16 +3667,25 @@ Enjoy,
 *download.php and store.php maintain the single file paradigm when the tiddlywiki is &quot;detached'&quot; from is TiddlyHome
 *proxy.php is full functional allowing importTiddlers to work in the same domain or by using an allowedsites.txt. Usefull to upgrade when online.</pre>
 </div>
-<div title="TiddlyHome Release 0.1.1" modifier="BidiX" created="200708250825" modified="200708260812" tags="News toRSS" changecount="3">
+<div title="TiddlyHome Release 0.1.1" modifier="BidiX" created="200708250825" modified="200809062116" tags="News" changecount="4">
 <pre>This new release of TiddlyHome includes only the new TiddlyWiki 2.2.5 core.
 
 Get it at http://TiddlyHome.bidix.info/TiddlyHomePackage_0.1.1.zip</pre>
 </div>
-<div title="TiddlyHome Release 0.1.2" modifier="BidiX" created="200712082130" tags="News toRSS" changecount="1">
+<div title="TiddlyHome Release 0.1.2" modifier="BidiX" created="200712082130" modified="200809062112" tags="News" changecount="2">
 <pre>Changes :
 *_th/lib/twcore.js : TiddlyWiki 2.3.0 core&lt;br&gt;From now all TiddlyHome hosted TiddlyWikis use this new release.
 *MarkupPreBody : Content display in the //info:// google request like in http://www.google.com/search?q=info:tiddlywiki.bidix.info
 [[Get it |TiddlyHomePackage_0.1.2.zip]]</pre>
+</div>
+<div title="TiddlyHome Release 0.1.3" modifier="BidiX" created="200809062115" modified="200809062118" tags="News toRSS" changecount="4">
+<pre>It is only an Update release.
+Changes :
+*New site uses templates in SingleFileMode. No more core extracted.
+* All templates uses :
+** Core 2.4.1
+** UploadTiddlerPlugin V 1.2.1
+** UploadPlugin V 4.1.4 </pre>
 </div>
 <div title="TiddlyHome setup" modifier="BidiX" created="200707282247" tags="News Docs" changecount="1">
 <pre>A TiddlyWiki is prepared for TiddlyHome with TiddlyHomeSetupPlugin.
@@ -3841,8 +3849,8 @@ config.options.chkSaveEmptyTemplate = false;
 |Description|Repository for TiddlyHome system ressources |
 |Author:|BidiX|</pre>
 </div>
-<div title="TiddlyHomeVersion" modifier="BidiX" created="200708260804" modified="200712082119" tags="TiddlyHomePackage" changecount="4">
-<pre>0.1.2</pre>
+<div title="TiddlyHomeVersion" modifier="BidiX" created="200708260804" modified="200809062110" tags="TiddlyHomePackage" changecount="5">
+<pre>0.1.3</pre>
 </div>
 <div title="TiddlyWiki" modifier="BidiX" created="200705071633" modified="200705091005" tags="basicContent About" date="200705071633">
 <pre>&lt;&lt;tiddler TiddlyWikiEN&gt;&gt;</pre>

@@ -53,6 +53,7 @@ class Site {
 		doPHPLink('news.php');
 		doPHPLink('proxy.php');
 		doPHPLink('store.php');
+		doPHPLink('storeTiddler.php');
 		if ($this->access == 'private')
 			doCopyTemplate($refDir,'htaccessPrivate','.htaccess',$this->owner,$this->name,$rootUrl);
 		else
