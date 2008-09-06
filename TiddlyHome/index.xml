@@ -6,17 +6,17 @@
 <description>Multi-site &amp; multi-user hosting service package for TiddlyWiki </description>
 <language>en-us</language>
 <copyright>Copyright 2008 BidiX</copyright>
-<pubDate>Sat, 06 Sep 2008 21:20:30 GMT</pubDate>
-<lastBuildDate>Sat, 06 Sep 2008 21:20:30 GMT</lastBuildDate>
+<pubDate>Sat, 06 Sep 2008 21:37:04 GMT</pubDate>
+<lastBuildDate>Sat, 06 Sep 2008 21:37:04 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.4.1</generator>
 <item>
 <title>TiddlyHome Release 0.1.3</title>
-<description>It is only an Update release.&lt;br&gt;Changes :&lt;br&gt;&lt;ul&gt;&lt;li&gt;New site uses templates in &lt;a tiddlylink=&quot;SingleFileMode&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://tiddlyhome.bidix.info/#SingleFileMode&quot; href=&quot;http://tiddlyhome.bidix.info/#SingleFileMode&quot; class=&quot;externalLink null&quot;&gt;SingleFileMode&lt;/a&gt;. No more core extracted.&lt;/li&gt;&lt;li&gt; All templates uses :&lt;ul&gt;&lt;li&gt; Core 2.4.1&lt;/li&gt;&lt;li&gt; &lt;a tiddlylink=&quot;UploadTiddlerPlugin&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://tiddlyhome.bidix.info/#UploadTiddlerPlugin&quot; href=&quot;http://tiddlyhome.bidix.info/#UploadTiddlerPlugin&quot; class=&quot;externalLink null&quot;&gt;UploadTiddlerPlugin&lt;/a&gt; V 1.2.1&lt;/li&gt;&lt;li&gt; &lt;a tiddlylink=&quot;UploadPlugin&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://tiddlyhome.bidix.info/#UploadPlugin&quot; href=&quot;http://tiddlyhome.bidix.info/#UploadPlugin&quot; class=&quot;externalLink null&quot;&gt;UploadPlugin&lt;/a&gt; V 4.1.4 &lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</description>
+<description>It is only an Update release.&lt;br&gt;Changes :&lt;br&gt;&lt;ul&gt;&lt;li&gt;New site uses templates in &lt;a tiddlylink=&quot;SingleFileMode&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://tiddlyhome.bidix.info/#SingleFileMode&quot; href=&quot;http://tiddlyhome.bidix.info/#SingleFileMode&quot; class=&quot;externalLink null&quot;&gt;SingleFileMode&lt;/a&gt;. No more core extracted.&lt;/li&gt;&lt;li&gt; All templates uses :&lt;ul&gt;&lt;li&gt; Core 2.4.1&lt;/li&gt;&lt;li&gt; &lt;a tiddlylink=&quot;UploadTiddlerPlugin&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://tiddlyhome.bidix.info/#UploadTiddlerPlugin&quot; href=&quot;http://tiddlyhome.bidix.info/#UploadTiddlerPlugin&quot; class=&quot;externalLink null&quot;&gt;UploadTiddlerPlugin&lt;/a&gt; V 1.2.1&lt;/li&gt;&lt;li&gt; &lt;a tiddlylink=&quot;UploadPlugin&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://tiddlyhome.bidix.info/#UploadPlugin&quot; href=&quot;http://tiddlyhome.bidix.info/#UploadPlugin&quot; class=&quot;externalLink null&quot;&gt;UploadPlugin&lt;/a&gt; V 4.1.4&lt;/li&gt;&lt;li&gt; _th/lib/storeTiddler.php &lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</description>
 <category>News</category>
 <category>toRSS</category>
 <link>http://tiddlyhome.bidix.info/#%5B%5BTiddlyHome%20Release%200.1.3%5D%5D</link>
-<pubDate>Sat, 06 Sep 2008 21:18:28 GMT</pubDate>
+<pubDate>Sat, 06 Sep 2008 21:29:24 GMT</pubDate>
 </item>
 <item>
 <title>TiddlyHome</title>
