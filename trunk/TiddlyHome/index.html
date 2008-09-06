@@ -1829,9 +1829,9 @@ a:hover {
 <div title="Docs" modifier="BidiX" created="200705101343" modified="200705101344" tags="systemList" date="200705101343">
 <pre></pre>
 </div>
-<div title="Download and install package" modifier="BidiX" created="200705201005" modified="200712082119" tags="News Docs" date="200705201005" changecount="6">
+<div title="Download and install package" modifier="BidiX" created="200705201005" modified="200809062132" tags="News Docs" date="200705201005" changecount="7">
 <pre>To install TiddlyHome to your own site :
-#[[download|TiddlyHomePackage_0.1.2.zip]] the full package
+#[[download|TiddlyHomePackage_0.1.3.zip]] the full package
 #unzip and move the TiddlyHome folder in its final location
 #go to this file at your own new TiddlyHome at [[Initialize your own TiddlyHome]]
 </pre>
@@ -2862,7 +2862,7 @@ If you are at your own TiddlyHome go to your new own ~TiddlyHome [[admin/|_th/ad
 </pre>
 </div>
 <div title="IsDirty" modifier="BidiX" created="200705291033" modified="200705291404" tags="excludeLists excludeSearch admin NewsWiki" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291404">
-<pre> * </pre>
+<pre> </pre>
 </div>
 <div title="IsDirtyPlugin" modifier="BidiX" created="200703132048" modified="200705202029" tags="admin NewsWiki systemConfig" date="" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705202029">
 <pre>/***
@@ -3678,14 +3678,15 @@ Get it at http://TiddlyHome.bidix.info/TiddlyHomePackage_0.1.1.zip</pre>
 *MarkupPreBody : Content display in the //info:// google request like in http://www.google.com/search?q=info:tiddlywiki.bidix.info
 [[Get it |TiddlyHomePackage_0.1.2.zip]]</pre>
 </div>
-<div title="TiddlyHome Release 0.1.3" modifier="BidiX" created="200809062115" modified="200809062118" tags="News toRSS" changecount="4">
+<div title="TiddlyHome Release 0.1.3" modifier="BidiX" created="200809062115" modified="200809062129" tags="News toRSS" changecount="5">
 <pre>It is only an Update release.
 Changes :
 *New site uses templates in SingleFileMode. No more core extracted.
 * All templates uses :
 ** Core 2.4.1
 ** UploadTiddlerPlugin V 1.2.1
-** UploadPlugin V 4.1.4 </pre>
+** UploadPlugin V 4.1.4
+** _th/lib/storeTiddler.php </pre>
 </div>
 <div title="TiddlyHome setup" modifier="BidiX" created="200707282247" tags="News Docs" changecount="1">
 <pre>A TiddlyWiki is prepared for TiddlyHome with TiddlyHomeSetupPlugin.
@@ -3889,26 +3890,26 @@ Pour plus d'information visiter [[www.TiddlyWiki.com|http://www.tiddlywiki.com]]
 | 24/07/2007 22:36:23 | BidiX | [[/|http://tiddlyhome.bidix.info/home/#%5B%5BPassword%20Management%20in%20TiddlyHome%20on%20Windows%5D%5D]] | [[store.php|http://tiddlyhome.bidix.info/home/store.php]] | . | [[index.html | http://tiddlyhome.bidix.info/home/index.html]] | backup |
 | 26/07/2007 23:01:12 | BidiX | [[index.html|file:///Users/bruno/Sites/TiddlyHome/index.html#2007%2F06%2F05]] | [[store.php|http://tiddlyhome.bidix.info/home/store.php]] | . | [[index.html | http://tiddlyhome.bidix.info/home/index.html]] | backup | ok |</pre>
 </div>
-<div title="UploadPlugin" modifier="BidiX" created="200703021728" modified="200705291325" tags="systemConfig Upload admin TiddlyHomeSystem" server.type="file" server.host="http://tiddlyhome.bidix.info/systemServer/NewsWiki.html" server.page.revision="200705291325">
+<div title="UploadPlugin" modifier="BDi" created="200703021728" modified="200808120546" tags="systemConfig Upload TiddlyHomeSystem" server.type="file" server.host="tiddlywiki.bidix.info" server.page.revision="200808120546">
 <pre>/***
 |''Name:''|UploadPlugin|
 |''Description:''|Save to web a TiddlyWiki|
-|''Version:''|4.1.0|
-|''Date:''|May 5, 2007|
+|''Version:''|4.1.4|
+|''Date:''|2008-08-11|
 |''Source:''|http://tiddlywiki.bidix.info/#UploadPlugin|
 |''Documentation:''|http://tiddlywiki.bidix.info/#UploadPluginDoc|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''License:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
-|''~CoreVersion:''|2.2.0 (#3125)|
+|''~CoreVersion:''|2.2.0|
 |''Requires:''|PasswordOptionPlugin|
 ***/
 //{{{
 version.extensions.UploadPlugin = {
-	major: 4, minor: 1, revision: 0,
-	date: new Date(&quot;May 5, 2007&quot;),
+	major: 4, minor: 1, revision: 4,
+	date: new Date(&quot;2008-08-11&quot;),
 	source: 'http://tiddlywiki.bidix.info/#UploadPlugin',
 	author: 'BidiX (BidiX (at) bidix (dot) info',
-	coreVersion: '2.2.0 (#3125)'
+	coreVersion: '2.2.0'
 };
 
 //
@@ -3965,6 +3966,7 @@ config.macros.upload.handler = function(place,macroName,params) {
 config.macros.upload.action = function(params)
 {
 		// for missing macro parameter set value from options
+		if (!params) params = {};
 		var storeUrl = params[0] ? params[0] : config.options.txtUploadStoreUrl;
 		var toFilename = params[1] ? params[1] : config.options.txtUploadFilename;
 		var backupDir = params[2] ? params[2] : config.options.txtUploadBackupDir;
@@ -4037,23 +4039,23 @@ config.macros.uploadOptions = {
 				
 			]);
 	},
+	options: [
+		&quot;txtUploadUserName&quot;,
+		&quot;pasUploadPassword&quot;,
+		&quot;txtUploadStoreUrl&quot;,
+		&quot;txtUploadDir&quot;,
+		&quot;txtUploadFilename&quot;,
+		&quot;txtUploadBackupDir&quot;,
+		&quot;chkUploadLog&quot;,
+		&quot;txtUploadLogMaxLine&quot;		
+	],
 	refreshOptions: function(listWrapper) {
-		var uploadOpts = [
-			&quot;txtUploadUserName&quot;,
-			&quot;pasUploadPassword&quot;,
-			&quot;txtUploadStoreUrl&quot;,
-			&quot;txtUploadDir&quot;,
-			&quot;txtUploadFilename&quot;,
-			&quot;txtUploadBackupDir&quot;,
-			&quot;chkUploadLog&quot;,
-			&quot;txtUploadLogMaxLine&quot;,
-			]
 		var opts = [];
-		for(i=0; i&lt;uploadOpts.length; i++) {
+		for(i=0; i&lt;this.options.length; i++) {
 			var opt = {};
-			opts.push()
+			opts.push();
 			opt.option = &quot;&quot;;
-			n = uploadOpts[i];
+			n = this.options[i];
 			opt.name = n;
 			opt.lowlight = !config.optionsDesc[n];
 			opt.description = opt.lowlight ? this.unknownDescription : config.optionsDesc[n];
@@ -4089,7 +4091,7 @@ config.macros.uploadOptions = {
 		rowClasses: [
 			{className: 'lowlight', field: 'lowlight'} 
 			]}
-}
+};
 
 //
 // upload functions
@@ -4142,7 +4144,7 @@ bidix.upload.uploadChanges = function(onlyIfDirty,tiddlers,storeUrl,toFilename,u
 		saveChanges();
 	}
 	// get original
-	var uploadParams = Array(storeUrl,toFilename,uploadDir,backupDir,username,password);
+	var uploadParams = new Array(storeUrl,toFilename,uploadDir,backupDir,username,password);
 	var originalPath = document.location.toString();
 	// If url is a directory : add index.html
 	if (originalPath.charAt(originalPath.length-1) == &quot;/&quot;)
@@ -4153,7 +4155,7 @@ bidix.upload.uploadChanges = function(onlyIfDirty,tiddlers,storeUrl,toFilename,u
 	displayMessage(bidix.upload.messages.aboutToSaveOnHttpPost.format([dest]));
 	if (bidix.debugMode) 
 		alert(&quot;about to execute Http - GET on &quot;+originalPath);
-	var r = doHttp(&quot;GET&quot;,originalPath,null,null,null,null,callback,uploadParams,null);
+	var r = doHttp(&quot;GET&quot;,originalPath,null,null,username,password,callback,uploadParams,null);
 	if (typeof r == &quot;string&quot;)
 		displayMessage(r);
 	return r;
@@ -4173,8 +4175,12 @@ bidix.upload.uploadRss = function(uploadParams,original,posDiv)
 	// do uploadRss
 	if(config.options.chkGenerateAnRssFeed) {
 		var rssPath = uploadParams[1].substr(0,uploadParams[1].lastIndexOf(&quot;.&quot;)) + &quot;.xml&quot;;
-		var rssUploadParams = Array(uploadParams[0],rssPath,uploadParams[2],'',uploadParams[4],uploadParams[5]);
-		bidix.upload.httpUpload(rssUploadParams,convertUnicodeToUTF8(generateRss()),callback,Array(uploadParams,original,posDiv));
+		var rssUploadParams = new Array(uploadParams[0],rssPath,uploadParams[2],'',uploadParams[4],uploadParams[5]);
+		var rssString = generateRss();
+		// no UnicodeToUTF8 conversion needed when location is &quot;file&quot; !!!
+		if (document.location.toString().substr(0,4) != &quot;file&quot;)
+			rssString = convertUnicodeToUTF8(rssString);	
+		bidix.upload.httpUpload(rssUploadParams,rssString,callback,Array(uploadParams,original,posDiv));
 	} else {
 		bidix.upload.uploadMain(uploadParams,original,posDiv);
 	}
@@ -4209,7 +4215,7 @@ bidix.upload.httpUpload = function(uploadParams,data,callback,params)
 {
 	var localCallback = function(status,params,responseText,url,xhr) {
 		url = (url.indexOf(&quot;nocache=&quot;) &lt; 0 ? url : url.substring(0,url.indexOf(&quot;nocache=&quot;)-1));
-		if (xhr.status == httpStatus.NotFound)
+		if (xhr.status == 404)
 			alert(bidix.upload.messages.storePhpNotFound.format([url]));
 		if ((bidix.debugMode) || (responseText.indexOf(&quot;Debug mode&quot;) &gt;= 0 )) {
 			alert(responseText);
@@ -4244,7 +4250,7 @@ bidix.upload.httpUpload = function(uploadParams,data,callback,params)
 	strailer = &quot;\r\n--&quot; + boundary + &quot;--\r\n&quot;;
 	data = sheader + data + strailer;
 	if (bidix.debugMode) alert(&quot;about to execute Http - POST on &quot;+uploadParams[0]+&quot;\n with \n&quot;+data.substr(0,500)+ &quot; ... &quot;);
-	var r = doHttp(&quot;POST&quot;,uploadParams[0],data,&quot;multipart/form-data; boundary=&quot;+boundary,uploadParams[4],uploadParams[5],localCallback,params,null);
+	var r = doHttp(&quot;POST&quot;,uploadParams[0],data,&quot;multipart/form-data; ;charset=UTF-8; boundary=&quot;+boundary,uploadParams[4],uploadParams[5],localCallback,params,null);
 	if (typeof r == &quot;string&quot;)
 		displayMessage(r);
 	return r;
@@ -4433,6 +4439,125 @@ merge(config.tasks,{
 });
 config.backstageTasks.push(&quot;uploadOptions&quot;);
 
+
+//}}}
+
+</pre>
+</div>
+<div title="UploadTiddlerPlugin" modifier="BidiX" created="200802222218" modified="200808201958" tags="systemConfig Upload" server.type="file" server.host="tiddlywiki.bidix.info" server.page.revision="200808201958">
+<pre>/***
+|''Name:''|UploadTiddlerPlugin|
+|''Description:''|Upload a tiddler and Update a remote TiddlyWiki |
+|''Version:''|1.2.1|
+|''Date:''|2008-08-19|
+|''Source:''|http://tiddlywiki.bidix.info/#UploadTiddlerPlugin|
+|''Usage:''|Uses {{{uploadOptions&gt;&gt;}}}&lt;br&gt;with those UploadTiddler Options : &lt;br&gt;chkUploadTiddler: &lt;&lt;option chkUploadTiddler&gt;&gt;&lt;br&gt;txtUploadTiddlerStoreUrl: &lt;&lt;option txtUploadTiddlerStoreUrl&gt;&gt;|
+|''Author:''|BidiX (BidiX (at) bidix (dot) info)|
+|''[[License]]:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
+|''CoreVersion:''|2.3.0|
+***/
+//{{{
+version.extensions.UploadTiddlerPlugin = {
+	major: 1, minor: 2, revision: 1, 
+	date: new Date(&quot;2008-08-11&quot;),
+	source: 'http://tiddlywiki.bidix.info/#UploadTiddlerPlugin',
+	author: 'BidiX (BidiX (at) bidix (dot) info',
+	coreVersion: '2.3.0'
+};
+
+if (!window.bidix) window.bidix = {}; // bidix namespace
+bidix.debugMode = false;
+bidix.uploadTiddler = {
+	messages: {
+		aboutToSaveTiddler: &quot;About to update tiddler '%0'...&quot;,
+		storeTiddlerNotFound: &quot;Script store tiddler '%0' not found&quot;,
+		tiddlerSaved: &quot;Tiddler '%0' updated in '%1'&quot;
+	},
+	upload: function(title,tiddler,oldTitle) {
+		var callback = function(status,params,responseText,url,xhr) {
+			if (xhr.status == 404) {
+				alert(bidix.uploadTiddler.messages.storeTiddlerNotFound.format([url]));
+				return;
+			}
+			if ((bidix.debugMode) || (responseText.indexOf(&quot;Debug mode&quot;) &gt;= 0 )) {
+				alert(responseText);
+				if (responseText.indexOf(&quot;Debug mode&quot;) &gt;= 0 )
+					responseText = responseText.substring(responseText.indexOf(&quot;\n\n&quot;)+2);
+			} else if (responseText.charAt(0) != '0') 
+				alert(responseText);
+			else 
+				displayMessage(bidix.uploadTiddler.messages.tiddlerSaved.format([params[0], params[1]]));
+				store.setDirty(false);
+			}
+
+		if ((config.options['chkUploadTiddler']) &amp;&amp; (document.location.toString().substr(0,4) == &quot;http&quot;)){
+			displayMessage(bidix.uploadTiddler.messages.aboutToSaveTiddler.format([title]));
+			var ExtTiddler = null;
+			var html = null;
+			if (tiddler) {
+				ExtTiddler = store.getSaver().externalizeTiddler(store,tiddler);
+				html = wikifyStatic(tiddler.text,null,tiddler).htmlEncode();
+			}
+			var form = &quot;title=&quot;+encodeURIComponent(title);
+			form = form + &quot;&amp;tiddler=&quot;+(ExtTiddler?encodeURIComponent(ExtTiddler):'');
+			form = form + &quot;&amp;html=&quot;+(html?encodeURIComponent(html):'');
+			var filename = (config.options['txtUploadFilename']?config.options['txtUploadFilename']:'index.html');
+			form = form +&quot;&amp;oldTitle=&quot;+encodeURIComponent(oldTitle);
+			form = form +&quot;&amp;fileName=&quot;+encodeURIComponent(filename);
+			form = form +&quot;&amp;backupDir=&quot;+encodeURIComponent(config.options['txtUploadBackupDir']);
+			form = form +&quot;&amp;user=&quot;+encodeURIComponent(config.options['txtUploadUserName']);
+			form = form +&quot;&amp;password=&quot;+encodeURIComponent(config.options['pasUploadPassword']);
+			form = form +&quot;&amp;uploadir=&quot;+encodeURIComponent(config.options['txtUploadDir']);
+			form = form +&quot;&amp;debug=&quot;+encodeURIComponent(0);
+			var storeScript = (config.options.txtUploadTiddlerStoreUrl 
+								? config.options.txtUploadTiddlerStoreUrl : 'storeTiddler.php');
+			var r = doHttp(&quot;POST&quot;,storeScript,form+&quot;\n&quot;,'application/x-www-form-urlencoded',
+				config.options['txtUploadUserName'],config.options['pasUploadPassword'],callback,Array(title,filename),null);
+		}
+	}
+}
+TiddlyWiki.prototype.saveTiddler_bidix = TiddlyWiki.prototype.saveTiddler;
+TiddlyWiki.prototype.saveTiddler = function(oldTitle,newTitle,newBody,modifier,modified,tags,fields,clearChangeCount,created) {
+	var tiddler = TiddlyWiki.prototype.saveTiddler_bidix.apply(this,arguments);
+	var title = (newTitle?newTitle:oldTitle);
+	if (oldTitle == title)
+		oldTitle = '';
+	bidix.uploadTiddler.upload(title, tiddler, oldTitle);
+}
+TiddlyWiki.prototype.removeTiddler_bidix =TiddlyWiki.prototype.removeTiddler;
+TiddlyWiki.prototype.removeTiddler = function(title) {
+	TiddlyWiki.prototype.removeTiddler_bidix.apply(this,arguments);
+	bidix.uploadTiddler.upload(title, null);
+}
+
+//
+// Initializations
+//
+
+bidix.initOption = function(name,value) {
+	if (!config.options[name])
+		config.options[name] = value;
+};
+
+// styleSheet
+setStylesheet('.txtUploadTiddlerStoreUrl {width: 22em;}',&quot;uploadTiddlerPluginStyles&quot;);
+
+//optionsDesc
+merge(config.optionsDesc,{
+	txtUploadTiddlerStoreUrl: &quot;Url of the UploadTiddlerService script (default: storeTiddler.php)&quot;,
+	chkUploadTiddler: &quot;Do per Tiddler upload using txtUploadTiddlerStoreUrl (default: false)&quot;
+});
+
+// Options Initializations
+bidix.initOption('txtUploadTiddlerStoreUrl','');
+bidix.initOption('chkUploadTiddler','');
+
+// add options in backstage UploadOptions
+if (config.macros.uploadOptions) {
+	if (config.macros.uploadOptions.options) {
+		config.macros.uploadOptions.options.push(&quot;txtUploadTiddlerStoreUrl&quot;,&quot;chkUploadTiddler&quot;);
+	}
+}
 
 //}}}
 
