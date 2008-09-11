@@ -188,7 +188,8 @@ class Tiddlywiki(db.Model):
 		tiddlers = []
 		for t in self.tiddlers:
 			t = Tiddler.get(t)
-			tiddlers.append((t.modified, t))
+			if t and t.modified:
+				tiddlers.append((t.modified, t))
 		tiddlers.sort()
 		tiddlers.reverse()
 		for (modified, t) in tiddlers:
