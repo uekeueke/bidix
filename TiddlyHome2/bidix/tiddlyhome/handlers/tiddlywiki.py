@@ -7,7 +7,7 @@
 #
 
 from bidix.tiddlyhome import util, config
-from bidix.tiddlyhome.db import Namespace, Tiddler, Tiddlywiki 
+from bidix.tiddlyhome.db import Namespace, Tiddler, Tiddlywiki, OwnerException
 
 from handler import Handler
 
@@ -37,7 +37,7 @@ class TiddlywikiHandler(Handler):
 <form action="%(action)s" method="POST">
 <input type="hidden" name="return_url" value="%(return_url)s">
 <input type="hidden" name="previous_name" value="%(previous_name)s">
-<strong>%(error)s</strong><br>
+<strong>%(error)s</strong><P>
 	Name: <input name=name value="%(name)s" size=80><br>
 	Namespace: <input name=namespace_name value="%(namespace_name)s" size=80><br>
 	Private access: <input type="checkbox" name="access" %(access)s><br>
@@ -189,15 +189,25 @@ subtitle: %(subtitle)s<br>
 			private_access = False
 		namespace = None
 		tiddlers = []
-		if namespace_name:
-			namespace = Namespace.get_by_key_name(namespace_name, parent=self.user)
-		if not namespace:
-			error = "Namespace '%s' unknown"%namespace_name
-		else:
-			for tiddler in Tiddler.list_for(namespace):
-				if self.request.get(util.url_encode(tiddler.title)) == 'on':
-					tiddlers.append(tiddler.key())
-		return_url = self.request.get('return_url')
+		try:
+			if namespace_name:
+				namespace = Namespace.get_by_key_name(namespace_name, parent=self.user)
+			else:
+				#use tiddlywiki name as default namespace_name
+				namespace_name = name
+				namespace = Namespace.get_by_key_name(namespace_name, parent=self.user)
+				if not namespace:
+					# then create default namespace
+					namespace = Namespace.create_or_update(name, self.user, private_access=private_access)
+			if not namespace:
+				error = "Namespace '%s' unknown"%namespace_name
+			else:
+				for tiddler in Tiddler.list_for(namespace):
+					if self.request.get(util.url_encode(tiddler.title)) == 'on':
+						tiddlers.append(tiddler.key())
+			return_url = self.request.get('return_url')
+		except OwnerException, e:
+			error = e
 		if (error):
 			body = self.create_form(self.type_url,self.type_url,error=error, namespace=namespace, name=name, private_access= private_access, title=title, subtitle=subtitle, tiddlers=tiddlers)
 			self.send_page(body, content_menu=ressource_menu)
