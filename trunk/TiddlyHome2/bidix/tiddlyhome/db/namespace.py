@@ -33,7 +33,11 @@ class Namespace(db.Model):
 		namespace = Namespace(key_name=name, parent=owner, name=name, owner=owner.key(), authors=authors, readers=readers, private_access=private_access)
 		# Only owner can update an instance
 		if namespace and not namespace.own_by(User.get_current_user()):
-			raise OwnerException("user '%s' try to update a namespace owns by '%s'."%(User.get_current_user().username, owner.username))
+			if User.get_current_user():
+				username = User.get_current_user().username
+			else:
+				username = 'Anonymous'
+			raise OwnerException("user '%s' try to update a namespace owns by '%s'."%(username, owner.username))
 		key = namespace.put()
 		return namespace
 		
@@ -75,7 +79,11 @@ class Namespace(db.Model):
 		"""
 		# Only owner can delete an instance
 		if not self.own_by(User.get_current_user()):
-			raise OwnerException("user '%s' try to update a namespace owns by '%s'."%(User.get_current_user().username, self.owner.username))
+			if User.get_current_user():
+				username = User.get_current_user().username
+			else:
+				username = 'Anonymous'
+			raise OwnerException("user '%s' try to update a namespace owns by '%s'."%(username, self.owner.username))
 		# first delete all tiddlers
 		query = Tiddler.all().ancestor(self)
 		tiddlers = query.fetch(999)
