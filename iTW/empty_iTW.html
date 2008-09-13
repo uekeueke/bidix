@@ -797,10 +797,11 @@ merge(config.macros,{
 <div title="Indexes" modifier="BidiX" created="200712012213" modified="200803261445" tags="iTW excludeLists excludeSearch Menu" server.page.revision="200803261445" server.host="itw.bidix.info/iTWRepository/index.html" server.type="file">
 <pre>&lt;&lt;tabs txtMainTab &quot;Timeline&quot; &quot;Timeline&quot; TabTimeline &quot;All&quot; &quot;All tiddlers&quot; TabAll &quot;Tags&quot; &quot;All tags&quot; TabTags &quot;More&quot; &quot;More lists&quot; TabMore&gt;&gt;</pre>
 </div>
-<div title="ListByTag" modifier="BidiX" created="200808140844" modified="200808151113" tags="iTW systemConfig excludeLists excludeSearch" server.page.revision="200808151113" server.host="itw.bidix.info/iTWRepository/index.html" server.type="file">
+<div title="ListByTag" modifier="YourName" created="200808140844" modified="200809081912" tags="iTW systemConfig excludeLists excludeSearch" server.page.revision="200809081912" server.host="itw.bidix.info/iTWRepository/index.html" server.type="file">
 <pre>//{{{
 /*
  * ListByTag
+ * 2008-09-08
  */
 
 Array.prototype.tiddlerList = function(listFormat,max) {
@@ -812,7 +813,7 @@ Array.prototype.tiddlerList = function(listFormat,max) {
 		if (this.length &gt; 0 &amp;&amp; this[0] instanceof Tiddler) {
 			for (var i=0;i&lt;max;i++) {
 				var tiddler = this[i];
-				var text = &quot;{{{&quot;+wikifyPlain(tiddler.title, store, 100)+&quot;}}}&quot;;
+				var text = &quot;{{{&quot;+wikifyPlain(tiddler.title, store).substr(0,100)+&quot;}}}&quot;;
 				output += eval(listFormat);
 			}
 		}
@@ -897,7 +898,7 @@ loadRemoteFile = function(url,callback,params)
 <div title="Menu" modifier="BidiX" created="200803301007" tags="iTW excludeLists excludeSearch systemList" server.page.revision="200803301007" server.host="itw.bidix.info/iTWRepository/index.html" server.type="file">
 <pre></pre>
 </div>
-<div title="Options" modifier="BidiX" created="200712062042" modified="200809031038" tags="iTW excludeLists excludeSearch Menu" server.type="file" server.host="itw.bidix.info/iTWRepository/index.html" server.page.revision="200809031038">
+<div title="Options" modifier="YourName" created="200712062042" modified="200809132111" tags="iTW excludeLists excludeSearch Menu" server.page.revision="200809132111" server.host="itw.bidix.info/iTWRepository/index.html" server.type="file">
 <pre>!Basic
 These Interface Options for customising TiddlyWiki are saved in your browser
 
@@ -919,10 +920,10 @@ UploadLog : &lt;&lt;option chkUploadLog&gt;&gt;
 UploadLogMaxLine : &lt;&lt;option txtUploadLogMaxLine&gt;&gt;
 !~UploadTiddler
 UploadTiddler: &lt;&lt;option chkUploadTiddler&gt;&gt;
+UploadTiddlerFromFile: &lt;&lt;option chkUploadTiddlerFromFile&gt;&gt;
 UploadTiddlerStoreUrl : &lt;&lt;option txtUploadTiddlerStoreUrl&gt;&gt;
-
 ----
-see also AdvancedOptions and [[iTWTweaks]] 
+see also AdvancedOptions, UploadOptions and [[iTWTweaks]] 
 
 
 </pre>
@@ -1268,6 +1269,9 @@ Current Version: &lt;&lt;version&gt;&gt;
 &lt;&lt;history&gt;&gt;
 &lt;&lt;forward&gt;&gt;
 &lt;&lt;search&gt;&gt;</pre>
+</div>
+<div title="UploadOptions" modifier="YourName" created="200809132108" modified="200809132112" tags="upload excludeLists excludeSearch" server.type="file" server.host="itw.bidix.info/iTWRepository/index.html" server.page.revision="200809132112">
+<pre>&lt;&lt;uploadOptions&gt;&gt;</pre>
 </div>
 <div title="UploadPlugin" modifier="BidiX" created="200703021728" modified="200808170738" tags="systemConfig upload excludeLists excludeSearch" server.page.revision="200808170738" server.host="itw.bidix.info/iTWRepository/index.html" server.type="file">
 <pre>/***
@@ -1823,22 +1827,22 @@ config.backstageTasks.push(&quot;uploadOptions&quot;);
 
 </pre>
 </div>
-<div title="UploadTiddlerPlugin" modifier="YourName" created="200802222218" modified="200808190911" tags="systemConfig upload excludeLists excludeSearch" server.type="file" server.host="itw.bidix.info/iTWRepository/index.html" server.page.revision="200808190911">
+<div title="UploadTiddlerPlugin" modifier="YourName" created="200802222218" modified="200809132103" tags="systemConfig upload excludeLists excludeSearch" server.page.revision="200809132103" server.host="itw.bidix.info/iTWRepository/index.html" server.type="file">
 <pre>/***
 |''Name:''|UploadTiddlerPlugin|
 |''Description:''|Upload a tiddler and Update a remote TiddlyWiki |
-|''Version:''|1.2.1|
-|''Date:''|2008-08-19|
+|''Version:''|1.2.2|
+|''Date:''|2008-09-13|
 |''Source:''|http://tiddlywiki.bidix.info/#UploadTiddlerPlugin|
-|''Usage:''|Uses {{{uploadOptions&gt;&gt;}}}&lt;br&gt;with those UploadTiddler Options : &lt;br&gt;chkUploadTiddler: &lt;&lt;option chkUploadTiddler&gt;&gt;&lt;br&gt;txtUploadTiddlerStoreUrl: &lt;&lt;option txtUploadTiddlerStoreUrl&gt;&gt;|
+|''Usage:''|Uses {{{&lt;&lt;uploadOptions&gt;&gt;}}}&lt;br&gt;with those UploadTiddler Options : &lt;br&gt;chkUploadTiddler: &lt;&lt;option chkUploadTiddler&gt;&gt;&lt;br&gt;txtUploadTiddlerStoreUrl: &lt;&lt;option txtUploadTiddlerStoreUrl&gt;&gt;&lt;br&gt;chkUploadTiddlerFromFile: &lt;&lt;option chkUploadTiddlerFromFile&gt;&gt;|
 |''Author:''|BidiX (BidiX (at) bidix (dot) info)|
 |''[[License]]:''|[[BSD open source license|http://tiddlywiki.bidix.info/#%5B%5BBSD%20open%20source%20license%5D%5D ]]|
 |''CoreVersion:''|2.3.0|
 ***/
 //{{{
 version.extensions.UploadTiddlerPlugin = {
-	major: 1, minor: 2, revision: 1, 
-	date: new Date(&quot;2008-08-11&quot;),
+	major: 1, minor: 2, revision: 2, 
+	date: new Date(&quot;2008-09-13&quot;),
 	source: 'http://tiddlywiki.bidix.info/#UploadTiddlerPlugin',
 	author: 'BidiX (BidiX (at) bidix (dot) info',
 	coreVersion: '2.3.0'
@@ -1849,8 +1853,9 @@ bidix.debugMode = false;
 bidix.uploadTiddler = {
 	messages: {
 		aboutToSaveTiddler: &quot;About to update tiddler '%0'...&quot;,
+		aboutToRemotelySaveTiddler: &quot;About to REMOTELY update tiddler '%0'...&quot;,
 		storeTiddlerNotFound: &quot;Script store tiddler '%0' not found&quot;,
-		tiddlerSaved: &quot;Tiddler '%0' updated in '%1'&quot;
+		tiddlerSaved: &quot;Tiddler '%0' updated in '%1' using '%2' &quot;
 	},
 	upload: function(title,tiddler,oldTitle) {
 		var callback = function(status,params,responseText,url,xhr) {
@@ -1865,12 +1870,17 @@ bidix.uploadTiddler = {
 			} else if (responseText.charAt(0) != '0') 
 				alert(responseText);
 			else 
-				displayMessage(bidix.uploadTiddler.messages.tiddlerSaved.format([params[0], params[1]]));
+				displayMessage(bidix.uploadTiddler.messages.tiddlerSaved.format([params[0], params[1], params[2]]));
 				store.setDirty(false);
 			}
 
-		if ((config.options['chkUploadTiddler']) &amp;&amp; (document.location.toString().substr(0,4) == &quot;http&quot;)){
-			displayMessage(bidix.uploadTiddler.messages.aboutToSaveTiddler.format([title]));
+		if ((config.options['chkUploadTiddler']) &amp;&amp; 
+				((document.location.toString().substr(0,4) == &quot;http&quot;) || config.options['chkUploadTiddlerFromFile'])) {
+			clearMessage();
+			if (document.location.toString().substr(0,4) != &quot;http&quot;)
+				displayMessage(bidix.uploadTiddler.messages.aboutToRemotelySaveTiddler.format([title]));
+			else
+				displayMessage(bidix.uploadTiddler.messages.aboutToSaveTiddler.format([title]));
 			var ExtTiddler = null;
 			var html = null;
 			if (tiddler) {
@@ -1891,7 +1901,7 @@ bidix.uploadTiddler = {
 			var storeScript = (config.options.txtUploadTiddlerStoreUrl 
 								? config.options.txtUploadTiddlerStoreUrl : 'storeTiddler.php');
 			var r = doHttp(&quot;POST&quot;,storeScript,form+&quot;\n&quot;,'application/x-www-form-urlencoded',
-				config.options['txtUploadUserName'],config.options['pasUploadPassword'],callback,Array(title,filename),null);
+				config.options['txtUploadUserName'],config.options['pasUploadPassword'],callback,Array(title,filename, storeScript),null);
 		}
 	}
 }
@@ -1924,17 +1934,20 @@ setStylesheet('.txtUploadTiddlerStoreUrl {width: 22em;}',&quot;uploadTiddlerPlug
 //optionsDesc
 merge(config.optionsDesc,{
 	txtUploadTiddlerStoreUrl: &quot;Url of the UploadTiddlerService script (default: storeTiddler.php)&quot;,
-	chkUploadTiddler: &quot;Do per Tiddler upload using txtUploadTiddlerStoreUrl (default: false)&quot;
+	chkUploadTiddler: &quot;Do per Tiddler upload using txtUploadTiddlerStoreUrl (default: false)&quot;,
+	chkUploadTiddlerFromFile: &quot;Upload tiddler even if TiddlyWiki is located on local file (default: false)&quot;
 });
 
 // Options Initializations
 bidix.initOption('txtUploadTiddlerStoreUrl','');
 bidix.initOption('chkUploadTiddler','');
+bidix.initOption('chkUploadTiddlerFromFile','');
+
 
 // add options in backstage UploadOptions
 if (config.macros.uploadOptions) {
 	if (config.macros.uploadOptions.options) {
-		config.macros.uploadOptions.options.push(&quot;txtUploadTiddlerStoreUrl&quot;,&quot;chkUploadTiddler&quot;);
+		config.macros.uploadOptions.options.push(&quot;txtUploadTiddlerStoreUrl&quot;,&quot;chkUploadTiddler&quot;, &quot;chkUploadTiddlerFromFile&quot;);
 	}
 }
 
@@ -1966,11 +1979,11 @@ if (config.macros.uploadOptions) {
 
 </pre>
 </div>
-<div title="iTWTweaks" modifier="BidiX" created="200712042115" modified="200808181614" tags="iTW excludeLists excludeSearch systemConfig" server.page.revision="200808181614" server.host="itw.bidix.info/iTWRepository/index.html" server.type="file">
+<div title="iTWTweaks" modifier="YourName" created="200712042115" modified="200809132111" tags="iTW excludeLists excludeSearch systemConfig" server.type="file" server.host="itw.bidix.info/iTWRepository/index.html" server.page.revision="200809132111">
 <pre>//// iTW specific tweaks :
 
 //// This settings always overwrite core defaults or previous cookies,
-//// but they can be changed temporarily using [[Options]] or AdvancedOptions
+//// but they can be changed temporarily using [[Options]] [[UploadOptions]] or AdvancedOptions
 //// Edit this to fix your default values for this iTW
 
 //{{{
@@ -1992,7 +2005,8 @@ config.options.txtUploadBackupDir = &quot;backup&quot;;
 config.options.chkUploadLog = true;
 config.options.txtUploadLogMaxLine = 3;
 config.options. chkUploadTiddler = true;
-config.options.txtUploadTiddlerStoreUrl = &quot;storeTiddler.php&quot;;
+config.options. chkUploadTiddlerFromFile = false;
+config.options.txtUploadTiddlerStoreUrl = &quot;http://itw.bidix.info/YourSite/storeTiddler.php&quot;;
 
 // Always editable
 config.options.chkHttpReadOnly = false;
