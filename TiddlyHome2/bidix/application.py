@@ -88,7 +88,10 @@ class Handler(webapp.RequestHandler):
 		if (self.request.method == 'GET') and ((self.query_string == 'NEW') or (self.query_string == 'EDIT')):
 			self.in_form = True;
 		self.url_groupdict = self.match.groupdict()
-		logging.warning("%s | %s : method: %s - path: %s  - matches: %s - query_string: %s - in_form: %r" % (users.get_current_user(),self.__class__.__name__, self.request.method, self.request.path, self.url_groupdict, self.query_string, self.in_form))
+		if (not users.get_current_user()):
+			logging.info("%s | %s : method: %s - path: %s  - matches: %s - query_string: %s - in_form: %r" % (users.get_current_user(),self.__class__.__name__, self.request.method, self.request.path, self.url_groupdict, self.query_string, self.in_form))
+		else:
+			logging.warning("%s | %s : method: %s - path: %s  - matches: %s - query_string: %s - in_form: %r" % (users.get_current_user(),self.__class__.__name__, self.request.method, self.request.path, self.url_groupdict, self.query_string, self.in_form))
 		
 	def error(self,code):
 		"""
