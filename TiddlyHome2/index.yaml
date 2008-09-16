@@ -20,7 +20,7 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
-# Unused in query history -- copied from input.
+# Used 24 times in query history.
 - kind: Comment
   properties:
   - name: date
@@ -52,13 +52,13 @@ indexes:
 - kind: Tiddler
   ancestor: yes
 
-# Used once in query history.
+# Used 3 times in query history.
 - kind: Tiddler
   ancestor: yes
   properties:
   - name: title
 
-# Used 3 times in query history.
+# Used 16 times in query history.
 - kind: Tiddlywiki
   properties:
   - name: owner
