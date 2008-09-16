@@ -167,7 +167,11 @@ subtitle: %(subtitle)s<br>
 		results = Tiddlywiki.query_for_user(owner, for_user)
 		r = "<ul>\n"
 		for tiddlywiki in results:
-			r += "<li><a href=\"%s/%s\">%s</a></li>\n"%(type_url, util.url_encode(tiddlywiki.name),tiddlywiki.name)
+			if tiddlywiki.title:
+				label = tiddlywiki.title + " - " + tiddlywiki.subtitle
+			else:
+				label = tiddlywiki.name
+			r += "<li><a href=\"%s/%s\">%s</a></li>\n"%(type_url, tiddlywiki.name, label)
 		r += "</ul>\n"
 		return r
 
