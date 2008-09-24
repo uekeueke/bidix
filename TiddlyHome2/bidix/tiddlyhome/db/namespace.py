@@ -102,6 +102,6 @@ class Namespace(db.Model):
 		return Tiddler.listAll(self)
 	"""		
 	def own_by(self, user):
-		return user and (self.owner.key() == user.key())
+		return user and user.is_saved() and (self.owner.key() == user.key())
 		
 

@@ -38,6 +38,7 @@ def run():
 			('/help', HelpHandler),
 			('/comments', CommentHandler),
 			('/admin', AdminHandler),
+			('/user', UserHandler),
 			('/storeTiddler', StoreTiddlerHandler),
 			('/BidiX/tiddlywiki/feed.xml', RedirectFeedHandler),
 			#/user

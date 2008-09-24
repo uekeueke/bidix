@@ -130,8 +130,6 @@ class Tiddler(db.Model):
 		return cls.all().ancestor(namespace).order('title')
 
 	def displayInStorearea(self, tiddlywiki_name=''):
-		#if not self.modifier:
-		#	self.modifier = users.get_current_user()
 		title = self.title;
 		if tiddlywiki_name:
 			title = self.title.replace(tiddlywiki_name+"::", "")

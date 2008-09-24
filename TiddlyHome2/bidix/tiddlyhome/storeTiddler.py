@@ -133,6 +133,8 @@ class StoreTiddlerHandler(Handler):
 			return
 		else:
 			#delete tiddler and remove it from TiddlyWiki
+			if title[0].isdigit():
+				title = " "+title
 			t = Tiddler.get_by_key_name(title, parent=tiddlywiki.namespace)
 			tiddlywiki.removeTiddler(t)
 			t.delete()
