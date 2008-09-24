@@ -17,6 +17,9 @@
 import os
 import cgi
 import logging
+
+import banned_ip
+
 from google.appengine.ext import webapp
 from google.appengine.api import users
 
@@ -80,6 +83,7 @@ class Handler(webapp.RequestHandler):
 		* get dispatch args as a dictionnary
 		* Log each request
 		"""
+			
 		super(Handler, self).initialize(request, response)
 		self.query_string = self.request.query_string.upper();
 		self.in_form = False;
@@ -124,8 +128,15 @@ class Application(WSGIApplication):
 
 	def __call__(self, environ, start_response):
 		"""Called by WSGI when a request comes in."""
+
 		request = Request(environ)
 		response = Response()
+		
+		# BidiX 2008-09-22 : try to setup a firewall at least a nop
+		if banned_ip.is_banned(request.remote_addr):
+			response.set_status(403)
+			response.wsgi_write(start_response)
+			return ['']
 
 		WSGIApplication.active_instance = self
 

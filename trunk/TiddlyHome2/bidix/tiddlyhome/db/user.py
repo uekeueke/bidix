@@ -13,7 +13,7 @@ class User(db.Model):
 	"""
 	Registered user in Application.
 		parent: None
-		key_name: systemUser
+		key_name: system_user
 	"""
 	system_user = db.UserProperty()		# google users.current_user()
 	username = db.StringProperty()		# used in Application

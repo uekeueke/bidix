@@ -151,7 +151,7 @@ class Tiddlywiki(db.Model):
 			# add dynamic tiddlywiki
 			tiddlers.append(Namespace.get_tiddler('UploadTiddlerPlugin').key())
 			tiddler = None
-			if User.get_current_user():
+			if self.namespace.own_by(User.get_current_user()):
 				tiddler = Tiddler.create_or_update(self.namespace, 'zzTiddlyHomeTweaks', self.owner.username, tags='systemConfig excludeLists excludeSearch', 
 					newTitle='zzTiddlyHomeTweaks', 
 					text= config.tweaks_tiddler%{'username': self.owner.username, 'filename': self.name, 'storeUrl': config.storeTiddler_url})
@@ -188,8 +188,10 @@ class Tiddlywiki(db.Model):
 		tiddlers = []
 		for t in self.tiddlers:
 			t = Tiddler.get(t)
-			if t and t.modified:
+			if t.modified:
 				tiddlers.append((t.modified, t))
+			else:
+				tiddlers.append((datetime.today(),t))
 		tiddlers.sort()
 		tiddlers.reverse()
 		for (modified, t) in tiddlers:
