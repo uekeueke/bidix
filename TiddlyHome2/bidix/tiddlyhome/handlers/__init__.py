@@ -10,6 +10,7 @@ from comment import CommentHandler
 from handler import Handler
 from help import HelpHandler
 from home import HomeHandler
+from login import LoginHandler
 from namespace import NamespaceHandler
 from tiddler import TiddlerHandler
 from tiddlywiki import TiddlywikiHandler

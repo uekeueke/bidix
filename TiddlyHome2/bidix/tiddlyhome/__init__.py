@@ -19,7 +19,7 @@ from bidix.application import Application, BadrequestHandler, Handler
 
 # tiddlyhome handlers
 from admin import AdminHandler
-from handlers import CommentHandler, HelpHandler, HomeHandler, NamespaceHandler, TiddlerHandler, TiddlywikiHandler, UserHandler
+from handlers import CommentHandler, HelpHandler, HomeHandler, LoginHandler, NamespaceHandler, TiddlerHandler, TiddlywikiHandler, UserHandler
 from bidix.tiddlyhome.storeTiddler import StoreTiddlerHandler
 
 class RedirectFeedHandler(Handler):
@@ -38,10 +38,11 @@ def run():
 			('/help', HelpHandler),
 			('/comments', CommentHandler),
 			('/admin', AdminHandler),
-			('/user', UserHandler),
 			('/storeTiddler', StoreTiddlerHandler),
 			('/BidiX/tiddlywiki/feed.xml', RedirectFeedHandler),
-			#/user
+			#/login
+			('/login/?', LoginHandler),
+			#//<username>
 			('/(?P<username>[^/]*?)/?', UserHandler),
 			#/<username>/namespaces[/]
 			('/(?P<username>[^/]*?)/(?P<type>namespaces)/?', NamespaceHandler),

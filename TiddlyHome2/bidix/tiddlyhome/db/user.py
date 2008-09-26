@@ -24,7 +24,7 @@ class User(db.Model):
 	@classmethod
 	def register_user(cls, username):
 		"""
-		Store google current user as Application user with username
+		Store google current user as User with username
 		Args:
 			username: string 
 		Returns: 
@@ -50,7 +50,7 @@ class User(db.Model):
 	def get_current_user(cls):
 		"""
 		Returns a User corresponding to google current user. 
-		user.is_registered() must be tested to see if 
+		to see if user is already registered: user.is_registered()
 		Returns: 
 			User or None
 		"""
@@ -68,7 +68,7 @@ class User(db.Model):
 	def get_by_username(cls, username):
 		"""
 		Returns:
-			User with username
+			First User with username
 		"""
 		query = db.Query(User)
 		query.filter('username = ', username)
@@ -78,5 +78,4 @@ class User(db.Model):
 		else:
 			return None
 
-#-----------------------------------------------------------------------------------------------------------------------
 

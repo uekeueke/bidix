@@ -188,7 +188,7 @@ class Tiddlywiki(db.Model):
 		tiddlers = []
 		for t in self.tiddlers:
 			t = Tiddler.get(t)
-			if t.modified:
+			if t and t.modified:
 				tiddlers.append((t.modified, t))
 			else:
 				tiddlers.append((datetime.today(),t))
