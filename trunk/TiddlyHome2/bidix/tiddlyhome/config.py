@@ -17,6 +17,9 @@ user_name = 'users'
 comments_url = '/comments'
 storeTiddler_url = '/storeTiddler'
 
+# tag for tiddler only in this TiddlyWiki
+in_this_tiddlywiki_only_tag = 'in_this_tw_only'
+
 #Site params
 TH_namespace = 'TiddlyHome'
 TH_owner = 'BidiX'

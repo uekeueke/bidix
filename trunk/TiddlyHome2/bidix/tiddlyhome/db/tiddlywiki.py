@@ -141,26 +141,32 @@ class Tiddlywiki(db.Model):
 		data = self.__update_markup_block(data, "PRE-BODY","MarkupPreBody")
 		data = self.__update_markup_block(data, "POST-SCRIPT","MarkupPostBody")
 			
-		#find storearea and insert tiddlers
+		#find storearea and insert tiddlers	
 		match = re.match("^(.*?<div id=\"storeArea\">).*?(</div>.*?<!--POST-STOREAREA-->.*?)$", data, re.DOTALL)
 		if match:
 			begin = match.group(1)
 			end = match.group(2)
 			out.write(begin)
-			tiddlers = self.tiddlers
+			tiddlers = {}
+			for t in self.tiddlers:
+				if t:
+					tiddler = Tiddler.get(t)
+					if tiddler:
+						tiddlers[tiddler.title] = tiddler
 			# add dynamic tiddlywiki
-			tiddlers.append(Namespace.get_tiddler('UploadTiddlerPlugin').key())
+			if 'UploadTiddlerPlugin' not in tiddlers:
+				tiddlers['UploadTiddlerPlugin'] = Namespace.get_tiddler('UploadTiddlerPlugin')
 			tiddler = None
 			if self.namespace.own_by(User.get_current_user()):
 				tiddler = Tiddler.create_or_update(self.namespace, 'zzTiddlyHomeTweaks', self.owner.username, tags='systemConfig excludeLists excludeSearch', 
 					newTitle='zzTiddlyHomeTweaks', 
 					text= config.tweaks_tiddler%{'username': self.owner.username, 'filename': self.name, 'storeUrl': config.storeTiddler_url})
-				tiddlers.append(tiddler.key())
-			
-			tiddlers.sort()
-			for t in tiddlers:
-				if t and Tiddler.get(t):
-					out.write(Tiddler.get(t).displayInStorearea(self.name))
+				tiddlers['zzTiddlyHomeTweaks'] = tiddler
+				keys = tiddlers.keys()
+				keys.sort()
+			for ti in keys:
+				if ti:
+					out.write(tiddlers[ti].displayInStorearea(self.name))
 			out.write(end)
 			
 			if tiddler:
@@ -231,7 +237,7 @@ class Tiddlywiki(db.Model):
 					tiddlers = re.findall("(<div title=.*?</div>)", storearea, re.DOTALL)
 					self.tiddlers = []
 					for t in tiddlers:
-						ti = Tiddler.from_div(self.namespace, t)
+						ti = Tiddler.from_div(self.namespace, t, self.name)
 						self.tiddlers.append(ti.key())
 					self.put()
 			
