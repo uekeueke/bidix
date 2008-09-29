@@ -142,7 +142,7 @@ subtitle: %(subtitle)s<br>
 					self.send_page(content_body=body, content_title=container_title, content_menu=container_menu)
 				elif self.query_string == 'DOWNLOAD':
 					self.response.headers['Content-type'] = "text/html"
-					self.response.headers['Content-Disposition'] = "attachment; filename=iTW.html"
+					self.response.headers['Content-Disposition'] = "attachment; filename="+str(self.tiddlywiki.name)+".html"
 					self.tiddlywiki.display_in_html(self.response.out, config.TH_url+self.ressource_url+'.html')
 					return
 				elif self.tiddlywiki.accessible_by(self.current_user):

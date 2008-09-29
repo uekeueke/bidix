@@ -32,7 +32,7 @@ indexes:
   - name: date
     direction: desc
 
-# Unused in query history -- copied from input.
+# Used 5 times in query history.
 - kind: Namespace
   properties:
   - name: owner
@@ -48,17 +48,17 @@ indexes:
 - kind: Namespace
   ancestor: yes
 
-# Unused in query history -- copied from input.
+# Used once in query history.
 - kind: Tiddler
   ancestor: yes
 
-# Unused in query history -- copied from input.
+# Used 9 times in query history.
 - kind: Tiddler
   ancestor: yes
   properties:
   - name: title
 
-# Unused in query history -- copied from input.
+# Used 21 times in query history.
 - kind: Tiddlywiki
   properties:
   - name: owner

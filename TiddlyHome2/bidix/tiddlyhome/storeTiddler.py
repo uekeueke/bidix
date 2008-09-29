@@ -122,9 +122,7 @@ class StoreTiddlerHandler(Handler):
 		tiddlywiki = Tiddlywiki.get_by_key_name(fileName, parent=current_user)
 		if tiddler:
 			# add or change tiddler
-			(title, modifier, modified, created, tags, text) = parse_tiddler_from_div(tiddler)
-			if title[0].isdigit():
-				title = " "+title
+			(title, modifier, modified, created, tags, text) = parse_tiddler_from_div(tiddler, fileName)
 			if not oldTitle:
 				oldTitle = title
 			t = Tiddler.create_or_update(tiddlywiki.namespace, oldTitle, modifier, modified=modified, created=created, tags=tags, text=text, html=html, newTitle=title)

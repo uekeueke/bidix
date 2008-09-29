@@ -18,7 +18,7 @@ from exception import OwnerException
 from user import User
 
 
-def parse_tiddler_from_div(div):
+def parse_tiddler_from_div(div, tw_name):
 	"""
 	Parse tiddler in storeara format
 	Args:
@@ -37,6 +37,13 @@ def parse_tiddler_from_div(div):
 		modified = datetime.strptime(modified, "%Y%m%d%H%M")	
 	if created:
 		created = datetime.strptime(created, "%Y%m%d%H%M")
+	if title[0].isdigit():
+		title = " "+title
+	if not modifier:
+		modifier = "anonymous"
+	if tags.find(config.in_this_tiddlywiki_only_tag) != -1:
+		title = tw_name+'::'+title
+		
 	return (title, modifier, modified, created, tags, text)
 
 def searchValue(regex, str):
@@ -114,12 +121,9 @@ class Tiddler(db.Model):
 			return t
 
 	@classmethod
-	def from_div(cls, namespace, div):
-		(title, modifier, modified, created, tags, text) = parse_tiddler_from_div(div)
-		if title[0].isdigit():
-			title = " "+title
-		if not modifier:
-			modifier = "anonymous"
+	def from_div(cls, namespace, div, tw_name):
+		(title, modifier, modified, created, tags, text) = parse_tiddler_from_div(div, tw_name)
+			
 		t = Tiddler(namespace_name=namespace.name, parent=namespace, key_name= title, 
 			title=title, modifier=modifier, modified=modified, created=created, text=text, tags=tags)
 		t.put()
